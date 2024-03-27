@@ -3,31 +3,48 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --blue: #2292a4;
+    --rose: #701633;
+    --cream: #f5efed;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+h1 {
+    font-weight: bold;
+    letter-spacing: -0.250rem;
+    font-size: 68px;
+    line-height: 68px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+h2 {
+    font-weight: 600;
+    letter-spacing: -0.125rem;
+    font-size: 48px;
+    line-height: 52px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+h3 {
+    font-weight: 400;
+    letter-spacing: 0.125rem;
+    text-transform: uppercase;
+    font-size: 21px;
+    line-height: 24px;
+}
+
+h4 {
+    font-weight: 600;
+    letter-spacing: -0.05rem;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+p {
+    font-weight: 200;
+    line-height: 24px;
+    font-size: 18px;
+}
+
+.menuitem {
+    font-weight: 600;
+    line-height: 24px;
+    font-size: 16px;
 }
