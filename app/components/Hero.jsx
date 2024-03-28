@@ -14,7 +14,7 @@ export default function Hero() {
             <h1 className="text-center text-white">Egy érme, végleten emlékek</h1>
             <p className="text-center text-white">Készítsd el saját emlékérmed, hogy együtt osztozhassatok az emlékekben szeretteiddel</p>
             <Link 
-              href="/erem-muhely" 
+              href="/erme-muhely" 
               className="flex flex-nowrap items-center justify-center gap-2 hover:gap-3 w-fit py-1 px-4 lg:py-2 lg:px-6 mx-1 hover:mx-0 rounded-full bg-[--blue] hover:bg-[--rose] transition-all text-white">
                   <TbHammer 
                       className="w-6 h-6"
