@@ -95,11 +95,11 @@ export default function MainNav() {
             </div>
             
             <button onClick={toggleProfileMenu} className={`${profilemenuopen === false ? 'flex' : 'hidden'} flex-nowrap justify-center items-center gap-2 hover:bg-[--blue] rounded-full hover:text-white transition-all duration-150 cursor-pointer p-1 lg:p-2 label`}>
-              {session? `Szia ${session.user?.name.split(' ').slice(-1)[0]}` : null}
+              {session? `Szia ${session.user?.name?.split(' ').slice(-1)[0]}` : null}
               <TbUser className="w-6 h-6" />
             </button>
             <button onClick={toggleProfileMenu} className={`${profilemenuopen === false ? 'hidden' : 'flex bg-[--blue] text-white '} flex-nowrap justify-center items-center gap-2 rounded-full hover:text-white transition-all duration-1500 cursor-pointer p-1 lg:p-2 label`}>
-              {session? `Szia ${session.user?.name.split(' ').slice(-1)[0]}` : null}
+              {session? `Szia ${session.user?.name?.split(' ').slice(-1)[0]}` : null}
               <CgClose className="w-6 h-6"/>
             </button>
             
