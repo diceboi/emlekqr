@@ -3,7 +3,7 @@ import { redirect } from "next/navigation"
 import Image from "next/image"
 import Tiptap from "../../components/Tiptap"
 
-export default async function Emlekadatlapok() {
+export default async function Emlekadatlap() {
   const session = await getServerSession();
 
   if(!session) {
