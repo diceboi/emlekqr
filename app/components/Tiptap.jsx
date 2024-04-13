@@ -218,7 +218,7 @@ const content = `
   </blockquote>
 `
 
-export default function Tiptap() {
+export default function Tiptapp() {
   return (
     <EditorProvider slotBefore={<MenuBar />} extensions={extensions} content={content}></EditorProvider>
   )
