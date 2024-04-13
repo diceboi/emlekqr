@@ -3,11 +3,12 @@
 import { useState, useRef, useEffect } from "react";
 import { signOut, useSession } from "next-auth/react"
 import BaseLogo from "./BaseLogo"
+import MobileLogo from "./MobileLogo"
 import Link from "next/link"
 
 import { TbMenu2 } from "react-icons/tb";
 import { TbUser } from "react-icons/tb";
-import { TbHammer } from "react-icons/tb";
+import { BsQrCode } from "react-icons/bs";
 import { CgClose } from "react-icons/cg";
 
 export default function MainNav() {
@@ -42,7 +43,7 @@ export default function MainNav() {
 
   return (
 
-    <nav className="w-full min-w-[330px] lg:w-full h-[70px] fixed top-0 z-50 bg-[#ffffffd3] backdrop-blur-md shadow-xl">
+    <nav className="w-full min-w-[330px] lg:w-full h-[70px] fixed top-0 z-50 bg-white border-b border-[--cream]">
       <div className="relative flex justify-between h-full px-4 w-full z-50">
 
         <div className="flex flex-nowrap gap-8">
@@ -63,8 +64,9 @@ export default function MainNav() {
               </ul>
             </div>
 
-            <Link id="logo" href="/" className="min-w-[150px] xl:min-w-[200px]">
+            <Link id="logo" href="/" className="min-w-[40px] md:min-w-[200px]">
               <BaseLogo />
+              <MobileLogo />
             </Link>
           </div>
 
@@ -78,17 +80,17 @@ export default function MainNav() {
             </ul>
           </div>
         </div>
-        <div id="cta-user" className="flex flex-row justify-end items-center w-full lg:w-full gap-2 lg:gap-4">
+        <div id="cta-user" className="relative flex flex-row justify-end items-center min-w-fit gap-2 lg:gap-4">
           <div className="flex flex-row gap-4">
-            <div ref={menuRef} id="profile-nav" className={`absolute flex ${profilemenuopen === false ? 'right-20 pointer-events-none opacity-0' : 'right-200 pointer-events-auto opacity-100'} top-20 sm:right-20 w-full sm:w-[300px] py-4 h-auto bg-[#ffffffd3] transition-all rounded-2xl backdrop-blur-md shadow-xl z-0`}>
+            <div ref={menuRef} id="profile-nav" className={`absolute flex ${profilemenuopen === false ? 'left-20 pointer-events-none opacity-0' : 'left-0 pointer-events-auto opacity-100'} top-20 sm:right-20 w-full sm:max-w-min py-4 h-auto bg-[#ffffffd3] transition-all rounded-2xl backdrop-blur-md shadow-xl z-0`}>
             {session? <ul className="flex flex-col gap-2 px-4 menuitem">
-                <Link href="/profil"><li>Profil</li></Link>
-                <Link href="/emlekadatlapok"><li>Emlékadatlapok</li></Link>
-                <li onClick={signOut} className="cursor-pointer">Kijelentkezés</li>
+                <Link href="/profil"><li className=" hover:bg-[--cream] py-1 px-2 rounded-full">Profil</li></Link>
+                <Link href="/emlekadatlapok"><li className=" hover:bg-[--cream] py-1 px-2 rounded-full">Emlékadatlapok</li></Link>
+                <li onClick={signOut} className="cursor-pointer hover:bg-[--cream] py-1 px-2 rounded-full">Kijelentkezés</li>
               </ul>
              : 
               <ul className="flex flex-col gap-2 px-4 menuitem">
-                <Link href="/bejelentkezes"><li>Bejelentkezés / Regisztráció</li></Link>
+                <Link href="/bejelentkezes"><li className=" text-nowrap hover:bg-[--cream] py-1 px-2 rounded-full">Bejelentkezés / Regisztráció</li></Link>
               </ul> 
             }
 
@@ -106,18 +108,18 @@ export default function MainNav() {
           </div>
           
           <Link 
-              href="/erme-muhely" 
+              href="/erme" 
               className="hidden sm:flex flex-nowrap items-center justify-center gap-2 hover:gap-3 py-1 px-4 lg:py-2 lg:px-6 ml-1 hover:ml-0 rounded-full bg-[--blue] hover:bg-[--rose] transition-all text-white">
-                  <TbHammer 
+                  <BsQrCode 
                       className="w-6 h-6"
                   />
-                  Érme műhely
+                  Az érme
           </Link>
 
           <Link 
-              href="/erem-muhely" 
+              href="/erme" 
               className="sm:hidden flex flex-nowrap items-center justify-center gap-2 hover:gap-3 py-1 px-4 lg:py-2 lg:px-6 ml-1 hover:ml-0 rounded-full bg-[--blue] hover:bg-[--rose] transition-all text-white">
-                  <TbHammer 
+                  <BsQrCode 
                       className="w-6 h-6"
                   />
           </Link>

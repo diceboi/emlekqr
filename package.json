@@ -9,6 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tiptap/extension-color": "^2.3.0",
+    "@tiptap/extension-list-item": "^2.3.0",
+    "@tiptap/extension-text-style": "^2.3.0",
+    "@tiptap/pm": "^2.2.6",
+    "@tiptap/react": "^2.2.6",
+    "@tiptap/starter-kit": "^2.2.6",
     "bcrypt": "^5.1.1",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.4",
@@ -16,7 +22,9 @@
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^5.0.1"
+    "react-icons": "^5.0.1",
+    "stripe": "^15.1.0",
+    "yet-another-react-lightbox": "^3.17.2"
   },
   "devDependencies": {
     "@types/node": "20.11.30",

@@ -6,6 +6,7 @@ export default function BaseLogo() {
         src="/emleqr-logo-base.svg" 
         width={200} 
         height={100}
+        className="hidden md:block"
     />
   )
 }

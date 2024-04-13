@@ -4,8 +4,11 @@
 
 :root {
     --blue: #2292a4;
+    --blue-15: #2293a421;
     --rose: #701633;
     --cream: #f5efed;
+    --cream-25: #f5efed4b;
+    --cream-10: #f5efed1f;
 }
 
 h1 {
@@ -18,16 +21,16 @@ h1 {
 h2 {
     font-weight: 600;
     letter-spacing: -0.125rem;
-    font-size: 48px;
-    line-height: 52px;
+    font-size: 40px;
+    line-height: 44px;
 }
 
 h3 {
     font-weight: 400;
     letter-spacing: 0.125rem;
     text-transform: uppercase;
-    font-size: 21px;
-    line-height: 24px;
+    font-size: 18px;
+    line-height: 22px;
 }
 
 h4 {
@@ -54,3 +57,60 @@ p {
     line-height: 24px;
     font-size: 16px;
 }
+
+/*Container*/
+
+.container-inner {
+    width: 100%;
+}
+@media (min-width: 640px) {
+    .container-inner {
+        max-width: 640px;
+    }
+}
+@media (min-width: 768px) {
+    .container-inner {
+        max-width: 640px;
+    }
+}
+@media (min-width: 1024px) {
+    .container-inner {
+        max-width: 640px;
+    }
+}
+@media (min-width: 1280px) {
+    .container-inner {
+        max-width: 768px;
+    }
+}
+@media (min-width: 1536px) {
+    .container-inner {
+        max-width: 1024px;
+    }
+}
+
+
+/*SCROLLBARS*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--cream);
+    border-radius: 5px; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--blue); 
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--blue); 
+  }

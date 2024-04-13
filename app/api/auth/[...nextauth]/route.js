@@ -15,7 +15,6 @@ const AuthOptions = {
       credentials: {
         email: { label: "Email", type: "text" },
         jelszo: { label: "Password", type: "password" },
-        
       },
       async authorize(credentials) {
         await connect();

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
+import Loading from "../components/UI/Loading"
+
 const RegisterForm = () => {
   const [error, setError] = useState("");
   const router = useRouter();
@@ -66,7 +68,7 @@ const RegisterForm = () => {
   };
 
   if (sessionStatus === "loading") {
-    return <h1>Betöltés...</h1>;
+    return <Loading />;
   }
 
   return (

@@ -19,7 +19,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <AuthProvider session={session}>
-        <body className={geologica.className}>
+        <body className={`${geologica.className} mt-[70px] bg-neutral-50`}>
           <MainNav/>
           {children}
         </body>
