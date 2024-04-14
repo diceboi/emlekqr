@@ -20,9 +20,26 @@ export async function POST(req: NextRequest, res: NextResponse) {
             process.env.STRIPE_WEBHOOK_SECRET!,
         )
 
-        console.log("event", event.type)
+        console.log("Event", event?.type);
+        // charge.succeeded
+        // payment_intent.succeeded
+        // payment_intent.created
 
-        return NextResponse.json({ status: "success", event: event.type })
+        console.log(
+        response?.data?.object?.billing_details?.email, // email
+        response?.data?.object?.amount, // amount
+        JSON.stringify(res), // payment info
+        response?.type, // type
+        String(timeString), // time
+        String(dateTime), // date
+        response?.data?.object?.receipt_email, // email
+        response?.data?.object?.receipt_url, // url
+        JSON.stringify(response?.data?.object?.payment_method_details), // Payment method details
+        JSON.stringify(response?.data?.object?.billing_details), // Billing details
+        response?.data?.object?.currency // Currency
+        );
+
+        return NextResponse.json({ status: "success", event: event.type, response: res })
     } catch (error) {
         return NextResponse.json({ status: "failed", error })
     }
