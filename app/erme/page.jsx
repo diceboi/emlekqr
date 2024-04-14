@@ -12,17 +12,31 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { PiShoppingCart } from "react-icons/pi";
 
 import { FaCircleCheck } from "react-icons/fa6";
+import { IoIosInfinite } from "react-icons/io";
+
+import Arrow from "./../components/Animations/Arrow"
+import Camel from "./../components/Animations/Camel"
+import Hearth from "./../components/Animations/Hearth"
 
 export default function Erme() {
 
     const [open, setOpen] = React.useState(false);
 
   return (
-    <section className="w-full lg:px-0 py-10 lg:py-20 min-h-[100vh]">
+    <section className="flex flex-col gap-8 w-full lg:px-0 py-10 lg:py-20 min-h-[100vh]">
 
         <div className="relative flex flex-col container w-full m-auto px-4">
 
-            <div className="flex flex-col gap-20 p-8 lg:flex-row w-full min-h-[60vh] bg-[--cream] bg-opacity-25 rounded-2xl">
+            <div className="relative flex flex-col gap-20 p-8 lg:flex-row w-full min-h-[60vh] bg-[--cream] bg-opacity-25 rounded-2xl">
+                <div className="absolute top-0 left-[30vw] w-52 h-52 opacity-25 ">
+                    <Arrow />
+                </div>
+                <div className="absolute top-2/3 left-[30vw] w-52 h-52 opacity-25">
+                    <Camel />
+                </div>
+                <div className="absolute top-3/3 right-0 w-52 h-52 opacity-25">
+                    <Hearth />
+                </div>
                 <div className="flex flex-col justify-center gap-8 p-8 w-1/2">
                     <h3 className="text-[--blue] px-2 p-1 bg-white w-fit rounded-full">EmlékQR emlékérme</h3>
                     <h1 className="text-[--rose]">Az emlékek életre kelnek</h1>
@@ -72,12 +86,12 @@ export default function Erme() {
                     <div className="flex flex-col gap-4">
                         <p className="font-bold">Mit tartalmaz a csomag?</p>
                         <ul className="flex flex-col gap-2 list-disc">
-                            <li className="flex flex-nowrap gap-4 justify-start items-center">
+                            <li className="flex flex-nowrap gap-4 justify-start items-start">
                                 <div className="flex justify-center items-center min-w-6 h-6">
                                     <AiOutlineQrcode className="text-[--blue] w-full h-auto"/> 
                                 </div>
                                 <p>
-                                    2 db emlékérmét (1 db tartalék)
+                                    2 db gravírozott aluminium emlékérmét (1 db tartalék)
                                 </p>
                             </li>
                             <li className="flex flex-nowrap gap-4 justify-start items-start">
@@ -155,6 +169,75 @@ export default function Erme() {
                 </p>
             </div>
 
+            <div className="flex flex-col justify-center gap-4 pl-16 py-8 w-1/2">
+                <div className="flex flex-col gap-8 p-8 bg-gradient-to-br from-[--rose-15] to-[--cream] rounded-2xl">
+                    
+                            <div className="flex flex-nowrap gap-4 justify-start items-center">
+                                <div className="flex justify-center items-center min-w-6 h-6">
+                                    <IoIosInfinite className="text-[--blue] w-auto h-full"/>
+                                </div>
+                                <p className="uppercase font-bold">
+                                    Életre szóló garancia
+                                </p>
+                            </div>
+                            <p className="">Ha az idők során megrongálódna vagy elveszne emlékérméd <b>ingyenesen cseréljük</b>!</p>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div className="container m-auto flex flex-col gap-8 py-20">
+        <h2 className="text-[--rose] ml-20">Ezt mondták rólunk</h2>
+        <div className="relative flex flex-col gap-20 px-8 lg:flex-row w-full bg-[--cream] rounded-2xl">
+
+        <div className="m-auto flex flex-col gap-20 p-8 lg:flex-row w-full bg-[--cream] rounded-2xl overflow-x-scroll z-0">
+             
+            <div className="flex flex-row min-w-max gap-10 p-8">
+
+                <div className="flex flex-nowrap gap-4 max-w-[30vw]">
+                    <div className="w-1/2">
+                        <Image src="/image-kepek/family-trip.webp" width={300} height={300} className="rounded-xl"/>
+                    </div>                 
+                    <div className="flex flex-col w-1/2">
+                        <p className="font-bold">Nagy Tímea</p>
+                        <p>"Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja"</p>
+                    </div>
+                </div>
+
+                <div className="flex flex-nowrap gap-4 max-w-[30vw]">
+                    <div className="w-1/2">
+                        <Image src="/image-kepek/family-trip.webp" width={300} height={300} className="rounded-xl"/>
+                    </div>                 
+                    <div className="flex flex-col w-1/2">
+                        <p className="font-bold">Nagy Tímea</p>
+                        <p>"Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja"</p>
+                    </div>
+                </div>
+
+                <div className="flex flex-nowrap gap-4 max-w-[30vw]">
+                    <div className="w-1/2">
+                        <Image src="/image-kepek/family-trip.webp" width={300} height={300} className="rounded-xl"/>
+                    </div>                 
+                    <div className="flex flex-col w-1/2">
+                        <p className="font-bold">Nagy Tímea</p>
+                        <p>"Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja"</p>
+                    </div>
+                </div>
+
+                <div className="flex flex-nowrap gap-4 max-w-[30vw]">
+                    <div className="w-1/2">
+                        <Image src="/image-kepek/family-trip.webp" width={300} height={300} className="rounded-xl"/>
+                    </div>                 
+                    <div className="flex flex-col w-1/2">
+                        <p className="font-bold">Nagy Tímea</p>
+                        <p>"Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja"</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div className="absolute top-0 right-8 w-1/4 h-full bg-gradient-to-l from-[--cream] to-transparent rounded-2xl z-50 pointer-events-none"></div>
+        </div>
         </div>
         
         
