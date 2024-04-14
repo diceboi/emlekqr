@@ -201,7 +201,7 @@ export default function Erme() {
                     </div>                 
                     <div className="flex flex-col w-1/2">
                         <p className="font-bold">Nagy Tímea</p>
-                        <p>"Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja"</p>
+                        <p>Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja</p>
                     </div>
                 </div>
 
@@ -211,7 +211,7 @@ export default function Erme() {
                     </div>                 
                     <div className="flex flex-col w-1/2">
                         <p className="font-bold">Nagy Tímea</p>
-                        <p>"Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja"</p>
+                        <p>Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja</p>
                     </div>
                 </div>
 
@@ -221,7 +221,7 @@ export default function Erme() {
                     </div>                 
                     <div className="flex flex-col w-1/2">
                         <p className="font-bold">Nagy Tímea</p>
-                        <p>"Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja"</p>
+                        <p>Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja</p>
                     </div>
                 </div>
 
@@ -231,7 +231,7 @@ export default function Erme() {
                     </div>                 
                     <div className="flex flex-col w-1/2">
                         <p className="font-bold">Nagy Tímea</p>
-                        <p>"Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja"</p>
+                        <p>Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja</p>
                     </div>
                 </div>
                 </div>
