@@ -4,12 +4,15 @@
 
 :root {
     --blue: #2292a4;
+    --blue-hover:rgb(24, 103, 116)4;
     --blue-15: #2293a421;
     --rose: #701633;
     --rose-15: #70163241;
     --cream: #f5efed;
     --cream-25: #f5efed4b;
     --cream-10: #f5efed1f;
+    --success: rgb(0, 255, 0);
+    --error: red;
 }
 
 h1 {
@@ -114,4 +117,10 @@ p {
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: var(--blue); 
+  }
+
+  /*Custom shadow*/
+
+  .shadow-special {
+    box-shadow: 0px 5px 30px -15px var(--rose-15);
   }

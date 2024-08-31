@@ -3,7 +3,8 @@ import "./globals.css";
 import MainNav from "./components/UI/MainNav";
 import AuthProvider from "./Utils/AuthProvider";
 import { getServerSession } from "next-auth";
-getServerSession
+import ContextProvider from "./Context";
+import UpdateEmlekadatlapContextProvider from "./UpdateEmlekadatlapContext";
 
 const geologica = Geologica({ subsets: ["latin"] });
 
@@ -13,17 +14,20 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-
   const session = getServerSession();
 
   return (
     <html lang="en">
-      <AuthProvider session={session}>
-        <body className={`${geologica.className} mt-[70px] bg-neutral-50`}>
-          <MainNav/>
-          {children}
-        </body>
-      </AuthProvider>
+      <ContextProvider>
+        <UpdateEmlekadatlapContextProvider>
+          <AuthProvider session={session}>
+            <body className={`${geologica.className} mt-[70px] bg-neutral-50`}>
+              <MainNav />
+              {children}
+            </body>
+          </AuthProvider>
+        </UpdateEmlekadatlapContextProvider>
+      </ContextProvider>
     </html>
   );
 }

@@ -1,57 +1,89 @@
-import { getServerSession } from "next-auth"
-import { redirect } from "next/navigation"
-import Image from "next/image"
-import Tiptap from "../../components/Tiptap"
+import { getServerSession } from "next-auth";
+import CoverPicture from "../../components/Emlekadatlap/CoverPicture";
+import ProfilePicture from "../../components/Emlekadatlap/ProfilePicture";
+import ProfileData from "../../components/Emlekadatlap/ProfileData";
+import ProfileInfo from "../../components/Emlekadatlap/ProfileInfo";
+import ProfileEditButton from "../../components/Emlekadatlap/ProfileEditButton";
 
-export default async function Emlekadatlap() {
+export const dynamic = 'force-dynamic'
+
+const getEmlekadatlap = async (uri) => {
+  try {
+    const baseUrl = "http://localhost:3000"; // Adjust this as per your environment
+    const res = await fetch(`${baseUrl}/api/emlekadatlap?uri=${uri}`, { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error("Az adatok letöltése nem sikerült");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("Az adatok betöltése sikertlen", error);
+    return null;
+  }
+};
+
+const getUserData = async (email) => {
+  try {
+    const baseUrl = "http://localhost:3000"; // Adjust this as per your environment
+    const res = await fetch(`${baseUrl}/api/getUserData?email=${email}`, { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error("Az adatok letöltése nem sikerült");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("Az adatok betöltése sikertlen", error);
+    return null;
+  }
+};
+
+const getTributes = async (id) => {
+  try {
+    const baseUrl = "http://localhost:3000"; // Adjust this as per your environment
+    const res = await fetch(`${baseUrl}/api/tributes?uri=${id}`, { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error("Az adatok letöltése nem sikerült");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("Az adatok betöltése sikertlen", error);
+    return null;
+  }
+};
+
+export default async function Emlekadatlap({ params }) {
   const session = await getServerSession();
 
-  if(!session) {
-    redirect("/bejelentkezes")
+  let currentUser = null;
+
+  if (session) {
+    const userData = await getUserData(session.user.email);
+    currentUser = userData?.data?.User || null;
   }
+  
+  const emlekadatlap = await getEmlekadatlap(params.emlekadatlap);
+  const currentData = emlekadatlap?.data?.Emlekadatlap || null;
+
+  const tribute = await getTributes(params.emlekadatlap);
+  const currentTributes = tribute?.data?.Tribute || null;
+
+
 
   return (
-    <section className="w-full px-2 lg:px-0 py-10 lg:py-20">
+    <section className="relative w-full px-2 lg:px-0 py-10 lg:py-20">
       <div className="container-inner flex flex-col m-auto gap-8">
-        <div id="cover-picture" className="relative w-full h-[300px] lg:h-[500px] rounded-2xl shadow-xl">
-          <Image 
-            src="/emlekadatlapok/0000001/test1.webp"
-            fill 
-            style={{objectFit: "cover", borderRadius:"1rem"}}
-          />
+        <CoverPicture session={session} data={currentData} />
+        <div
+          id="profile-data"
+          className="flex flex-col xl:flex-row gap-8 xl:gap-20 xlitems-end items-center w-full"
+        >
+          <ProfilePicture session={session} data={currentData} />
+          <ProfileData session={session} data={currentData} />
         </div>
-        <div id="profile-data" className="flex flex-col xl:flex-row w-full">
-
-          <div id="profile-pic" className="relative w-full xl:w-1/2">
-          <Image 
-              src="/emlekadatlapok/0000001/profil.webp"
-              width={250}
-              height={250}
-              className="absolute -bottom-1/3 translate-y-1/3 xl:left-[50px] left-1/2 xl:translate-x-0 -translate-x-1/2 rounded-full border-8 border-white"
-            />
-          </div>
-
-          <div className="flex flex-col gap-4 items-center xl:items-start xl:w-1/2 w-full mt-[100px] xl:mt-0">
-            <div className="flex flex-row items-center gap-2">
-              <h4>Nagy Imre</h4>
-              <p>(43)</p>
-            </div>
-            <p className="label">Élt: 1975 - 2018</p>
-          </div>
-          
-        </div>
-        <div id="profile-info" className="flex flex-col w-full mt-0 xl:mt-[125px]">
-          <div className="overflow-x-scroll sm:overflow-hidden w-full">
-            <div className="flex flex-row justify-between border-b border-[--rose] min-w-[640px] ">
-              <button className="hover:bg-[--cream] py-2 px-4 w-full transition-all duration-200 rounded-t-2xl">Adatok</button>
-              <button className="hover:bg-[--cream] py-2 px-4 w-full transition-all duration-200 rounded-t-2xl">Történet</button>
-              <button className="hover:bg-[--cream] py-2 px-4 w-full transition-all duration-200 rounded-t-2xl">Média</button>
-              <button className="hover:bg-[--cream] py-2 px-4 w-full transition-all duration-200 rounded-t-2xl">Tiszteletnyilvánítás</button>
-            </div>
-          </div>
-        </div>
-        <Tiptap />
+        <ProfileInfo session={session} data={currentData} tributes={currentTributes}/>
       </div>
+      <ProfileEditButton session={session} user={currentUser} data={currentData}/>
     </section>
-  )
+  );
 }

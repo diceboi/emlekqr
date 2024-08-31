@@ -1,75 +1,54 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react";
-import { signOut, useSession } from "next-auth/react"
+import Link from "next/link"
+import { useRef, useEffect, useContext } from "react";
+import { Context } from "./../../Context"
+
 import BaseLogo from "./BaseLogo"
 import MobileLogo from "./MobileLogo"
-import Link from "next/link"
 
-import { TbMenu2 } from "react-icons/tb";
-import { TbUser } from "react-icons/tb";
+import Cart from "./Cart"
+import UserMenu from "./UserMenu"
+import MobileMenu from "./MobileMenu"
+
 import { BsQrCode } from "react-icons/bs";
+import { TbMenu2 } from "react-icons/tb";
 import { CgClose } from "react-icons/cg";
 
 export default function MainNav() {
 
-  const {data: session} = useSession();
+  const { isMobileMenuOpen, toggleMobileMenu, setMobileMenuOpen, setUserMenuOpen, setCartMenuOpen, isUserMenuOpen, toggleUserMenu, isCartMenuOpen, toggleCartMenu } = useContext(Context);
 
-  const [mobilemenuopen, setMobilemenuopen] = useState(false);
-  const [profilemenuopen, setProfilemenuopen] = useState(false);
-  const menuRef = useRef(null);
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setMobilemenuopen(false);
-        setProfilemenuopen(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [menuRef]);
-
-  function toggleMobileMenu() {
-    setMobilemenuopen((prev) => !prev);
-  }
-
-  function toggleProfileMenu() {
-    setProfilemenuopen((prev) => !prev);
-  }
+  const handleOpenClose = () => {
+    toggleMobileMenu();
+    setUserMenuOpen(false)
+    setCartMenuOpen(false)
+  };
 
   return (
 
     <nav className="w-full min-w-[330px] lg:w-full h-[70px] fixed top-0 z-50 bg-white border-b border-[--cream]">
       <div className="relative flex justify-between h-full px-4 w-full z-50">
-
         <div className="flex flex-nowrap gap-8">
           <div  id="logo" className="flex justify-start w-full items-center gap-4">
-
             <button id="hamburger" className="flex lg:hidden">
-              <TbMenu2 className={`w-6 h-6 ${mobilemenuopen === true ? 'hidden' : 'flex'}`} onClick={toggleMobileMenu}/>
-              <CgClose className={`w-6 h-6 ${mobilemenuopen === false ? 'hidden' : 'flex'}`} onClick={toggleMobileMenu}/>
+                <TbMenu2 className={`w-6 h-6 ${isMobileMenuOpen === true ? 'hidden' : 'flex'}`} onClick={handleOpenClose}/>
+                <CgClose className={`w-6 h-6 ${isMobileMenuOpen === false ? 'hidden' : 'flex'}`} onClick={handleOpenClose}/>
             </button>
-            
-            <div ref={menuRef} id="mobile-nav" className={`absolute lg:hidden flex ${mobilemenuopen === false ? '-left-full' : 'left-0'} top-[70px] w-full sm:w-[300px] py-4 h-auto bg-[--cream] transition-all`}>
-              <ul className="flex flex-col gap-2 px-4 menuitem">
-                <li>Használata</li>
-                <li>Rólunk</li>
-                <li>GYIK</li>
-                <li>Felfedezés</li>
-                <li>Kapcsolat</li>
-              </ul>
+            <div id="mobile-nav" className={`absolute lg:hidden flex ${isMobileMenuOpen === false ? '-left-full' : 'left-0'} top-[70px] w-full sm:w-[300px] py-4 h-auto bg-[--cream] transition-all`}>
+                <ul className="flex flex-col gap-2 px-4 menuitem">
+                    <li>Használata</li>
+                    <li>Rólunk</li>
+                    <li>GYIK</li>
+                    <li>Felfedezés</li>
+                    <li>Kapcsolat</li>
+                </ul>
             </div>
-
             <Link id="logo" href="/" className="min-w-[40px] md:min-w-[200px]">
-              <BaseLogo />
-              <MobileLogo />
+                <BaseLogo />
+                <MobileLogo/>
             </Link>
           </div>
-
           <div id="nav" className="flex flex-row justify-center items-center w-full gap-4">
             <ul className="hidden lg:flex flex-row gap-8 px-4 menuitem">
               <li>Használata</li>
@@ -80,33 +59,11 @@ export default function MainNav() {
             </ul>
           </div>
         </div>
-        <div id="cta-user" className="relative flex flex-row justify-end items-center min-w-fit gap-2 lg:gap-4">
-          <div className="flex flex-row gap-4">
-            <div ref={menuRef} id="profile-nav" className={`absolute flex ${profilemenuopen === false ? 'left-20 pointer-events-none opacity-0' : 'left-0 pointer-events-auto opacity-100'} top-20 sm:right-20 w-full sm:max-w-min py-4 h-auto bg-[#ffffffd3] transition-all rounded-2xl backdrop-blur-md shadow-xl z-0`}>
-            {session? <ul className="flex flex-col gap-2 px-4 menuitem">
-                <Link href="/profil"><li className=" hover:bg-[--cream] py-1 px-2 rounded-full">Profil</li></Link>
-                <Link href="/emlekadatlapok"><li className=" hover:bg-[--cream] py-1 px-2 rounded-full">Emlékadatlapok</li></Link>
-                <li onClick={signOut} className="cursor-pointer hover:bg-[--cream] py-1 px-2 rounded-full">Kijelentkezés</li>
-              </ul>
-             : 
-              <ul className="flex flex-col gap-2 px-4 menuitem">
-                <Link href="/bejelentkezes"><li className=" text-nowrap hover:bg-[--cream] py-1 px-2 rounded-full">Bejelentkezés / Regisztráció</li></Link>
-              </ul> 
-            }
-
-            </div>
-            
-            <button onClick={toggleProfileMenu} className={`${profilemenuopen === false ? 'flex' : 'hidden'} flex-nowrap justify-center items-center gap-2 hover:bg-[--blue] rounded-full hover:text-white transition-all duration-150 cursor-pointer p-1 lg:p-2 label`}>
-              {session? `Szia ${session.user?.name?.split(' ').slice(-1)[0]}` : null}
-              <TbUser className="w-6 h-6" />
-            </button>
-            <button onClick={toggleProfileMenu} className={`${profilemenuopen === false ? 'hidden' : 'flex bg-[--blue] text-white '} flex-nowrap justify-center items-center gap-2 rounded-full hover:text-white transition-all duration-1500 cursor-pointer p-1 lg:p-2 label`}>
-              {session? `Szia ${session.user?.name?.split(' ').slice(-1)[0]}` : null}
-              <CgClose className="w-6 h-6"/>
-            </button>
-            
+        <div id="cta-user" className="relative flex flex-row justify-end items-center min-w-fit gap-1 lg:gap-2">
+          <div className="flex flex-row ">
+            <UserMenu />
+            <Cart />
           </div>
-          
           <Link 
               href="/erme" 
               className="hidden sm:flex flex-nowrap items-center justify-center gap-2 hover:gap-3 py-1 px-4 lg:py-2 lg:px-6 ml-1 hover:ml-0 rounded-full bg-[--blue] hover:bg-[--rose] transition-all text-white">
@@ -115,7 +72,6 @@ export default function MainNav() {
                   />
                   Az érme
           </Link>
-
           <Link 
               href="/erme" 
               className="sm:hidden flex flex-nowrap items-center justify-center gap-2 hover:gap-3 py-1 px-4 lg:py-2 lg:px-6 ml-1 hover:ml-0 rounded-full bg-[--blue] hover:bg-[--rose] transition-all text-white">

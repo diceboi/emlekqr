@@ -47,7 +47,7 @@ const LoginForm = () => {
   
       if (res?.error) {
         setError("Az email cím vagy jelszó érvénytelen");
-        if (res?.url) router.replace("/emlekadatlapok");
+        if (res?.url) router.replace("/emlekadatlapok/0000001");
       } else {
         setError("");
       }

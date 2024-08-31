@@ -57,11 +57,11 @@ export default function Erme() {
                         ]}
                     />
                     <div className="flex flex-col gap-4">
-                        <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" width={500} height={500} className="w-full h-auto cursor-pointer rounded-2xl hover:scale-105 transition-all duration-200"/>
+                        <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" alt="EmlékQR érme termék" width={500} height={500} className="w-full h-auto cursor-pointer rounded-2xl hover:scale-105 transition-all duration-200"/>
                         <div className="grid grid-cols-3 gap-4">
-                            <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" width={500} height={500} className="w-full h-auto cursor-pointer rounded-xl hover:scale-105 transition-all duration-200"/>
-                            <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" width={500} height={500} className="w-full h-auto cursor-pointer rounded-xl hover:scale-105 transition-all duration-200"/>
-                            <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" width={500} height={500} className="w-full h-auto cursor-pointer rounded-xl hover:scale-105 transition-all duration-200"/>
+                            <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" alt="EmlékQR érme termék" width={500} height={500} className="w-full h-auto cursor-pointer rounded-xl hover:scale-105 transition-all duration-200"/>
+                            <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" alt="EmlékQR érme termék" width={500} height={500} className="w-full h-auto cursor-pointer rounded-xl hover:scale-105 transition-all duration-200"/>
+                            <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" alt="EmlékQR érme termék" width={500} height={500} className="w-full h-auto cursor-pointer rounded-xl hover:scale-105 transition-all duration-200"/>
                         </div>
                     </div>
                     

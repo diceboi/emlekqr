@@ -14,7 +14,7 @@ const RegisterForm = () => {
 
   useEffect(() => {
     if (sessionStatus === "authenticated") {
-      router.replace("/emlekadatlapok");
+      router.replace("/emlekadatlapok/0000001");
     }
   }, [sessionStatus, router]);
 

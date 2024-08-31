@@ -7,6 +7,7 @@ export default function BaseLogo() {
         width={200} 
         height={100}
         className="hidden md:block"
+        alt="baselogo"
     />
   )
 }
