@@ -37,7 +37,7 @@ export default function ProfileData({ data }) {
         <div className="flex flex-nowrap gap-4 items-start">
           <TbQuote className="w-8 h-auto text-[--rose]" />
           <p className="label text-center xl:text-left font-thin">
-            "{data.quote}"
+          &quot;{data.quote}&quot;
           </p>
         </div>
       </div>
