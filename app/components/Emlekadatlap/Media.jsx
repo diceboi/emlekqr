@@ -12,8 +12,7 @@ import { BiCameraMovie } from "react-icons/bi";
 import Link from "next/link";
 
 export default function Media({ data }) {
-  const { formData, updateFormData, updateFileNames, selectedImages } =
-    useContext(UpdateEmlekadatlapContext);
+  const { formData, updateFormData, updateFileNames, selectedImages } = useContext(UpdateEmlekadatlapContext);
   const { isEditable } = useContext(Context);
 
   const [images, setImages] = useState(formData.media.images || []);
@@ -35,29 +34,37 @@ export default function Media({ data }) {
   const handleImageChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
 
+    // Map over the selected files to create objects containing the file, URL, ID, and S3 path
     const newFiles = selectedFiles.map((file) => ({
-      file,
-      url: URL.createObjectURL(file),
-      id: Math.random().toString(36).substring(2, 15), // Unique identifier
+        file,
+        url: URL.createObjectURL(file), // Local URL for previewing the image
+        id: Math.random().toString(36).substring(2, 15), // Unique identifier
+        path: `/media/${file.name}` // Construct the path for the file on S3
     }));
 
+    // Update local files state with new files
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
 
+    // Extract the image URLs for display
     const newImageUrls = newFiles.map((newFile) => newFile.url);
 
-    const imageUrls = selectedFiles.map((file) => {
-      // Construct the final URL with .webp extension
-      return `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/media/${file.name}`;
-    });
-
+    // Update the images array with the new image URLs
     const updatedImages = [...images, ...newImageUrls];
     setImages(updatedImages);
 
-    updateFormData(`media.images`, updatedImages);
+    // Update the file names context with the new files and their paths
+    const fileObjects = newFiles.map(({ file, path }) => ({ file, path }));
+    updateFileNames(fileObjects);
 
-    const originalFileNames = selectedFiles.map((file) => file.name);
-    updateFileNames([...selectedImages, ...originalFileNames]);
-  };
+    // Construct full URLs for S3 (optional if needed elsewhere)
+    const allImageUrls = newFiles.map(({ path }) => {
+        return `https://elmekqr-storage.s3.amazonaws.com${path}`;
+    });
+
+    // Update formData with the new image URLs
+    updateFormData(`media.images`, allImageUrls);
+};
+
 
   const handleImageUploadClick = () => {
     fileInputRef.current.click();

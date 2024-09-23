@@ -29,7 +29,7 @@ export default function ProfilePicture({ session, data }) {
   
       // Update the form data with the new image URL
       updateFormData('profileimage', finalImageUrl);
-      updateFileNames(imageUrl);
+      updateFileNames(fileNameWithoutExtension);
     }
   };
 

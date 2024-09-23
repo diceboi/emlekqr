@@ -4,6 +4,9 @@ import ProfilePicture from "../../components/Emlekadatlap/ProfilePicture";
 import ProfileData from "../../components/Emlekadatlap/ProfileData";
 import ProfileInfo from "../../components/Emlekadatlap/ProfileInfo";
 import ProfileEditButton from "../../components/Emlekadatlap/ProfileEditButton";
+import SecretCheckerModal from "../../components/UI/SecretCheckerModal";
+import LoginForm from "../../components/LoginForm";
+import SecretCheckerForm from "../../components/UI/SecretCheckerForm"
 
 export const dynamic = 'force-dynamic'
 
@@ -72,6 +75,19 @@ export default async function Emlekadatlap({ params }) {
 
   return (
     <section className="relative w-full px-2 lg:px-0 py-10 lg:py-20">
+      {currentData === null && (
+        <SecretCheckerModal session={session}>
+        {session && currentData === null  && (
+          <SecretCheckerForm user={currentUser}/>
+        )}
+        {!session && (
+          <>
+          <h2 className="text-center">Jelentkezz be, az űrlap szerkesztéséhez</h2>
+          <LoginForm />
+          </>
+        )}
+        </SecretCheckerModal>
+      )}
       <div className="container-inner flex flex-col m-auto gap-8">
         <CoverPicture session={session} data={currentData} />
         <div

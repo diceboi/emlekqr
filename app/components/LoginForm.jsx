@@ -13,12 +13,6 @@ const LoginForm = () => {
     // const session = useSession();
     const { data: session, status: sessionStatus } = useSession();
   
-    useEffect(() => {
-      if (sessionStatus === "authenticated") {
-        router.replace("/emlekadatlapok");
-      }
-    }, [sessionStatus, router]);
-  
     const isValidEmail = (email) => {
       const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
       return emailRegex.test(email);
@@ -40,14 +34,13 @@ const LoginForm = () => {
       }
   
       const res = await signIn("credentials", {
-        redirect: false,
+        redirect: router.asPath,
         email,
-        password,
+        password, 
       });
   
       if (res?.error) {
         setError("Az email cím vagy jelszó érvénytelen");
-        if (res?.url) router.replace("/emlekadatlapok/0000001");
       } else {
         setError("");
       }
@@ -59,7 +52,6 @@ const LoginForm = () => {
 
   return (
     sessionStatus !== "authenticated" && (
-      <div className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="bg-[#212121] p-8 rounded shadow-md w-96">
           <h1 className="text-4xl text-center text-white font-semibold mb-8">Bejelentkezés</h1>
           <form onSubmit={handleSubmit}>
@@ -92,7 +84,6 @@ const LoginForm = () => {
             Regisztráció
           </Link>
         </div>
-      </div>
     )
   );
 };

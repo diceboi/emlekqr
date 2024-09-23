@@ -2,39 +2,26 @@ import connect from "../../Utils/db";
 import Emlekadatlap from "../../(models)/Emlekadatlap";
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
-
-export async function PUT(req, {params}) {
+export const PUT = async (req) => {
     await connect();
 
-    const { filteredFormData } = await req.json()
-
-    console.log({filteredFormData})
-
-    /*
     try {
-        const emlekadatlap = await Emlekadatlap.findOneAndUpdate({ uri: uri });
-        return NextResponse.json({ data: { Emlekadatlap: emlekadatlap } });
-    } catch (error) {
-        console.log({ message: "Nem sikerült az adatlap frissítése" }, { status: 500 })
-    }
-        */
+        const { formData } = await req.json();
 
-    /*
-    
-    const { id } = params;
-    const { kiszallitva, elkeszult } = await req.json();
+        // Find the existing document by the uri field
+        const existingAdatlap = await Emlekadatlap.findOneAndUpdate(
+            { uri: formData.uri }, // Filter
+            { $set: formData },    // Update with new data
+            { new: true }          // Return the updated document
+        );
 
-    try {
-        console.log(`Updating document with id: ${id}`);
-        console.log(kiszallitva, elkeszult);
-        await Rendelesek.findOneAndUpdate({_id: id}, {kiszallitva, elkeszult} );
-        console.log(`Document with id: ${id} updated successfully.`);
-        return NextResponse.json({ message: "Napimenuarak frissítve" }, { status: 200 });
-    } catch (error) {
-        console.error("Failed to update the document:", error);
-        return NextResponse.json({ message: "Failed to update the document" }, { status: 500 });
+        if (!existingAdatlap) {
+            return NextResponse.json({ message: "Adatlap not found" }, { status: 404 });
+        }
+
+        // Return a JSON response
+        return NextResponse.json({ message: "Data updated successfully", data: existingAdatlap }, { status: 200 });
+    } catch (err) {
+        return NextResponse.json({ error: err.message }, { status: 500 });
     }
-    
-    */
-}
+};

@@ -18,7 +18,7 @@ export default function ProfileEditButton({ session, user, data }) {
         updateFormData('graveyard', data.graveyard || "");
         updateFormData('bio', data.bio || "");
         updateFormData('story', data.story || []); // Ensure to handle this appropriately based on your data structure
-        updateFormData('media', data.media || "");
+        updateFormData('media', data.media || {});
         updateFormData('tributes', data.tributes || "");
         updateFormData('profileimage', data.profileimage || "");
         updateFormData('coverimage', data.coverimage || "");
@@ -31,31 +31,63 @@ export default function ProfileEditButton({ session, user, data }) {
     }, [data])
 
     const handleSubmit = async () => {
-
-        const response = await fetch('/api/updateadatlap', {
+      const response = await fetch('/api/updateadatlap', {
           method: 'PUT',
           headers: {
-            'Content-Type': 'application/json',
+              'Content-Type': 'application/json',
           },
-          body: JSON.stringify({formData}),
-        });
-    
-        if (response.ok) {
-            setEditable(false)
-            console.log("FormData", formData)
-            console.log(selectedImages)
-            console.log('Data submitted successfully');
-        } else {
+          body: JSON.stringify({ formData }),
+      });
+  
+      if (response.ok) {
+          setEditable(false);
+          console.log("FormData", formData);
+          console.log(selectedImages);
+          console.log('Data submitted successfully');
+      } else {
           // Handle error
-          console.log("FormData", formData)
-          console.log(selectedImages)
+          console.log("FormData", formData);
+          console.log(selectedImages);
           console.log('Error submitting data');
-        }
-      };
+      }
+  
+      for (const image of selectedImages) {
+          const fileData = image.file;
+          const filePath = image.path;
+  
+          console.log(fileData);
+          console.log(filePath);
+  
+          // Convert the file to an ArrayBuffer
+          const arrayBuffer = await fileData.arrayBuffer();
+          const fileBuffer = Buffer.from(arrayBuffer).toString('base64'); // Convert to Base64
+  
+          const payload = {
+              fileBuffer, // Base64 encoded file data
+              filePath,
+              fileName: fileData.name,
+          };
+  
+          // Send the image details to the S3 upload API
+          const s3Upload = await fetch('/api/s3-upload', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(payload),
+          });
+  
+          if (s3Upload.ok) {
+              console.log('Image uploaded successfully:', fileData.name);
+          } else {
+              console.log('Error uploading image:', fileData.name);
+          }
+      }
+  };
 
     return(
         <>
-        {session && user && !isEditable && ( 
+        {session && user && !isEditable && data && ( 
 
             <button className="sticky inset-0 m-auto bottom-8 flex flex-row items-center justify-center gap-4 text-white py-4 px-8 bg-[--rose] hover:bg-[--blue] shadow-2xl rounded-full z-50 transition-all" onClick={() => setEditable(true)}><TbEdit className="w-6 h-auto"/><p>Adatlap szerkesztése</p></button>
 

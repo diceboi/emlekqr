@@ -10,15 +10,15 @@ const emlekadatlapSchema = new Schema(
     },
     name: {
       type: String,
-      required: true,
+      required: false,
     },
     age: {
       type: String,
-      required: true,
+      required: false,
     },
     graveyard: {
       type: String,
-      required: true,
+      required: false,
     },
     bio: {
       type: String,
@@ -28,28 +28,34 @@ const emlekadatlapSchema = new Schema(
       {
         year: {
           type: String,
-          required: true,
+          required: false,
         },
         type: {
           type: String,
-          required: true,
+          required: false,
         },
         data: {
           type: String,
-          required: true,
+          required: false,
         },
-        images: [{
-          type: String,
-        }],
-      }
+        images: [
+          {
+            type: String,
+          },
+        ],
+      },
     ],
     media: {
-      images: [{
+      images: [
+        {
           type: String,
-        }],
-      videos: [{
+        },
+      ],
+      videos: [
+        {
           type: String,
-        }]
+        },
+      ],
     },
     tributes: {
       type: String,
@@ -65,7 +71,8 @@ const emlekadatlapSchema = new Schema(
     },
     owner: {
       type: String,
-      required: false,
+      required: true,
+      unique: false,
     },
     coowner: {
       type: String,
@@ -83,12 +90,18 @@ const emlekadatlapSchema = new Schema(
       type: String,
       required: false,
     },
+    secret: {
+      type: String,
+      required: false,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const Emlekadatlap = mongoose.models.Emlekadatlap || mongoose.model("Emlekadatlap", emlekadatlapSchema);
+const Emlekadatlap =
+  mongoose.models.Emlekadatlap ||
+  mongoose.model("Emlekadatlap", emlekadatlapSchema);
 
 export default Emlekadatlap;

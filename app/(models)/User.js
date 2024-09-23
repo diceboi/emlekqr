@@ -25,6 +25,10 @@ const userSchema = new Schema(
       type: String,
       required: false,
     },
+    secret: {
+      type: String,
+      require: false
+    }
   },
   {
     timestamps: true,

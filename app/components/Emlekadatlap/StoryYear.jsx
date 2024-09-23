@@ -14,6 +14,9 @@ import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 
 export default function StoryYear({ data, index }) {
+
+  const pathname = usePathname();
+  const lastDigits = pathname.slice(-7);
   
   const { formData, updateFormData, updateFileNames, selectedImages } = useContext(UpdateEmlekadatlapContext);
   const { isEditable } = useContext(Context);
@@ -24,39 +27,62 @@ export default function StoryYear({ data, index }) {
   const [removeImage, setRemoveImage] = useState([])
   const fileInputRef = useRef(null);
 
-  const pathname = usePathname();
-  const lastDigits = pathname.slice(-7);
-
   const handleFileChange = (e) => {
-    const selectedFiles = Array.from(e.target.files);
 
-    const newFiles = selectedFiles.map((file) => ({
+    // New uploadable files //
+
+    const selectedFiles = Array.from(e.target.files); // +
+
+    const newFiles = selectedFiles.map((file) => ({ // +
       file,
       url: URL.createObjectURL(file),
-      id: Math.random().toString(36).substring(2, 15), // Unique identifier
+      id: Math.random().toString(36).substring(2, 15),
+      path: `${lastDigits}/story/${data.year}/${file.name}`,
+      newUrl: `https://elmekqr-storage.s3.amazonaws.com/story/${data.year}/${file.name}`
     }));
 
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+    setFiles((files) => [...files, ...newFiles]); // +
+
+    // ----- end ------ //
+
+    // Setting images for viewer //
 
     const newImageUrls = newFiles.map((newFile) => newFile.url);
 
-    const imageUrls = selectedFiles.map((file) => {
-      // Construct the final URL with .webp extension
-      return `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/story/${data.year}/${file.name}`;
-    });
-
     const updatedImages = [...images, ...newImageUrls];
+
     setImages(updatedImages);
+    
+    // ----- end ------ //
 
-    updateFormData(`story.${index}.images`, updatedImages);
+  // Update the filenames context with the new file objects
+  updateFileNames((prevSelectedImages) => [...prevSelectedImages, ...newFiles]);
 
-    const originalFileNames = selectedFiles.map((file) => file.name);
-    updateFileNames([...selectedImages, ...originalFileNames]);
+  const updateImagesInStory = () => {
+    const existingImages = formData.story[index].images || [];
+
+    // Map over existing images to form the full URLs
+    const prevImageUrls = existingImages.map((image) => 
+      image.startsWith('http') ? image : `https://elmekqr-storage.s3.amazonaws.com${image}`
+    );
+
+    // Get new image URLs directly from the `newFiles` array
+    const newImageUrls = newFiles.map((newFile) => newFile.newUrl);
+
+    // Combine previous image URLs with new image URLs
+    const allImageUrls = [...prevImageUrls, ...newImageUrls];
+
+    // Update the formData using the context's updateFormData function
+    updateFormData(`story.${index}.images`, allImageUrls);
   };
+  
+  // Execute the update
+  updateImagesInStory();
+}
 
-  const handleUploadClick = () => {
-    fileInputRef.current.click();
-  };
+const handleUploadClick = () => {
+  fileInputRef.current.click();
+};
 
   const handleRemoveImage = (imgIndex) => {
     const imageUrlToRemove = images[imgIndex]; // Get the image URL or ID to remove

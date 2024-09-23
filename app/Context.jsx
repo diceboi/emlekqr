@@ -26,7 +26,10 @@ export const Context = createContext({
   emptyCart: () => {},
 
   isEditable: false,
-  setEditable: () => {}
+  setEditable: () => {},
+
+  openPopup:false,
+  setOpenPopup: () => {},
 });
 
 export default function ContextProvider({ children }) {
@@ -35,6 +38,7 @@ export default function ContextProvider({ children }) {
   const [isCartMenuOpen, setIsCartMenuOpen] = useState(true);
   const [cartItems, setIsCartItems] = useState([]);
   const [isEditable, setEditable] = useState(false);
+  const [openPopup, setOpenPopup] = useState(true)
 
   useEffect(() => {
     const storedCart = typeof window !== 'undefined' ? localStorage.getItem('emlekqrkosar') : null;
@@ -158,6 +162,10 @@ export default function ContextProvider({ children }) {
   function emptyCart() {
     setCartItems([]);
   }
+
+  const togglePopup = () => {
+    setOpenPopup(prevState => !prevState)
+  }
   
 
   return (
@@ -184,7 +192,11 @@ export default function ContextProvider({ children }) {
       emptyCart,
 
       isEditable,
-      setEditable
+      setEditable,
+
+      openPopup,
+      togglePopup,
+      setOpenPopup
 
     }}>
       {children}
