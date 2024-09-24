@@ -38,7 +38,7 @@ export default function StoryYear({ data, index }) {
       url: URL.createObjectURL(file),
       id: Math.random().toString(36).substring(2, 15),
       path: `${lastDigits}/story/${data.year}/${file.name}`,
-      newUrl: `https://elmekqr-storage.s3.amazonaws.com/story/${data.year}/${file.name}`
+      newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/story/${data.year}/${file.name}`
     }));
 
     setFiles((files) => [...files, ...newFiles]); // +

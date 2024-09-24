@@ -3,7 +3,8 @@ import { getServerSession } from "next-auth";
 // Function to get user data
 const getUserData = async (email) => {
   try {
-    const res = await fetch(`/api/getUserData?email=${email}`, { cache: 'no-store' });
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
+    const res = await fetch(`${baseUrl}/api/getUserData?email=${email}`, { cache: 'no-store' });
     if (!res.ok) {
       throw new Error("Az adatok letöltése nem sikerült");
     }
@@ -18,7 +19,8 @@ const getUserData = async (email) => {
 // Function to fetch Stripe customer data based on email
 const getCheckoutSession = async (userEmail) => {
   try {
-    const res = await fetch(`/api/stripe/searchCustomer?email=${userEmail}`, { cache: 'no-store' });
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
+    const res = await fetch(`${baseUrl}/api/stripe/searchCustomer?email=${userEmail}`, { cache: 'no-store' });
     if (!res.ok) {
       throw new Error("A Stripe client secret ");
     }
@@ -33,7 +35,8 @@ const getCheckoutSession = async (userEmail) => {
 // Function to send secret to your API
 const sendSecretToAPI = async (email, secret) => {
   try {
-    const res = await fetch(`/api/auth/secret`, {
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
+    const res = await fetch(`${baseUrl}/api/auth/secret`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
