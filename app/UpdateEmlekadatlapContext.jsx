@@ -6,6 +6,7 @@
     formData: {},
     updateFormData: (path, value) => {},
     addStoryBlock: () => {},
+    removeStoryBlock: (index) => {},
     updateFileNames: () => {},  
   });
 
@@ -82,12 +83,30 @@
       }));
     };
 
+    const removeStoryBlock = (index) => {
+      setFormData((prevData) => {
+        const updatedStory = [...prevData.story];
+        const removedBlock = updatedStory.splice(index, 1); // Remove the specific block
+        
+        // Remove associated images
+        const removedImages = removedBlock[0].images || [];
+        setSelectedImages((prevImages) =>
+          prevImages.filter((image) => !removedImages.includes(image))
+        );
+  
+        return {
+          ...prevData,
+          story: updatedStory, // Update the story array
+        };
+      });
+    };
+
     const updateFileNames = (images) => {
       setSelectedImages(images);
     };
 
     return (
-      <UpdateEmlekadatlapContext.Provider value={{ formData, updateFormData, selectedImages, updateFileNames, addStoryBlock }}>
+      <UpdateEmlekadatlapContext.Provider value={{ formData, updateFormData, selectedImages, updateFileNames, addStoryBlock, removeStoryBlock }}>
         {children}
       </UpdateEmlekadatlapContext.Provider>
     );

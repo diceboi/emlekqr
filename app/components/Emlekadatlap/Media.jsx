@@ -12,10 +12,24 @@ import { BiCameraMovie } from "react-icons/bi";
 import Link from "next/link";
 
 export default function Media({ data }) {
-  const { formData, updateFormData, updateFileNames, selectedImages } = useContext(UpdateEmlekadatlapContext);
+  const pathname = usePathname();
+  const lastDigits = pathname.slice(-7);
+
+  const { formData, updateFormData, updateFileNames, selectedImages } =
+    useContext(UpdateEmlekadatlapContext);
   const { isEditable } = useContext(Context);
 
-  const [images, setImages] = useState(formData.media.images || []);
+  const [images, setImages] = useState(
+    (formData.media && formData.media.images ? formData.media.images : []).map(
+      (imgUrl) => ({
+        url: imgUrl.startsWith("http")
+          ? imgUrl
+          : `https://elmekqr-storage.s3.amazonaws.com${imgUrl}`,
+        newUrl: imgUrl,
+      })
+    )
+  );
+
   const [allVideos, setAllVideos] = useState(formData.media.videos || []);
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
   const [files, setFiles] = useState([]);
@@ -26,59 +40,76 @@ export default function Media({ data }) {
   const fileInputRef = useRef(null);
   const videoInputRef = useRef(null);
 
-  const pathname = usePathname();
-  const lastDigits = pathname.slice(-7);
-
   // Images //////////////////////////////////////
 
   const handleImageChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
 
-    // Map over the selected files to create objects containing the file, URL, ID, and S3 path
+    // New uploadable files
     const newFiles = selectedFiles.map((file) => ({
-        file,
-        url: URL.createObjectURL(file), // Local URL for previewing the image
-        id: Math.random().toString(36).substring(2, 15), // Unique identifier
-        path: `/media/${file.name}` // Construct the path for the file on S3
+      file,
+      url: URL.createObjectURL(file),
+      id: Math.random().toString(36).substring(2, 15),
+      path: `${lastDigits}/media/${file.name}`,
+      newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/media/${file.name}`,
     }));
 
-    // Update local files state with new files
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+    // Setting images for viewer
+    setFiles((files) => [...files, ...newFiles]);
 
     // Extract the image URLs for display
-    const newImageUrls = newFiles.map((newFile) => newFile.url);
-
-    // Update the images array with the new image URLs
-    const updatedImages = [...images, ...newImageUrls];
+    const updatedImages = [...images, ...newFiles];
     setImages(updatedImages);
 
-    // Update the file names context with the new files and their paths
-    const fileObjects = newFiles.map(({ file, path }) => ({ file, path }));
-    updateFileNames(fileObjects);
+    updateFileNames((prevSelectedImages) => [
+      ...prevSelectedImages,
+      ...newFiles,
+    ]);
 
-    // Construct full URLs for S3 (optional if needed elsewhere)
-    const allImageUrls = newFiles.map(({ path }) => {
-        return `https://elmekqr-storage.s3.amazonaws.com${path}`;
-    });
+    const updateImagesInMedia = () => {
+      const existingImages = formData.media.images || [];
 
-    // Update formData with the new image URLs
-    updateFormData(`media.images`, allImageUrls);
-};
+      // Map over existing images to form the full URLs
+      const prevImageUrls = existingImages.map((image) =>
+        image.startsWith("http")
+          ? image
+          : `https://elmekqr-storage.s3.amazonaws.com${image}`
+      );
 
+      // Get new image URLs directly from the `newFiles` array
+      const newImageUrls = newFiles.map((newFile) => newFile.newUrl);
+
+      // Combine previous image URLs with new image URLs
+      const allImageUrls = [...prevImageUrls, ...newImageUrls];
+
+      // Update the formData using the context's updateFormData function
+      updateFormData(`media.images`, allImageUrls);
+    };
+
+    // Execute the update
+    updateImagesInMedia();
+    console.log(formData);
+  };
 
   const handleImageUploadClick = () => {
     fileInputRef.current.click();
   };
 
   const handleRemoveImage = (imgIndex) => {
-    const imageUrlToRemove = images[imgIndex]; // Get the image URL or ID to remove
-    const updatedRemoveImage = [...removeImage, imageUrlToRemove]; // Track removed images by URL or ID
+    const imageToRemove = images[imgIndex]; // Get the image object to remove
+
+    const updatedRemoveImage = [...removeImage, imageToRemove.newUrl]; // Track removed images by newUrl
     setRemoveImage(updatedRemoveImage); // Update the removeImage state
 
+    // Filter out removed images from the state
     const updatedImages = images.filter(
-      (url) => !updatedRemoveImage.includes(url)
-    ); // Filter out removed images by URL or ID
-    updateFormData(`media`, updatedImages); // Update formData with the new images
+      (img) => !updatedRemoveImage.includes(img.newUrl)
+    );
+
+    updateFormData(
+      `media.images`,
+      updatedImages.map((img) => img.newUrl)
+    ); // Update formData with the correct newUrls
     setImages(updatedImages); // Update the local images state
   };
 
@@ -106,7 +137,7 @@ export default function Media({ data }) {
   const handleRemoveVideo = (videoIndex) => {
     // Filter out the video at the specified index
     const updatedVideos = allVideos.filter((_, index) => index !== videoIndex);
-  
+
     // Update the state to remove the video from both allVideos and formData
     setAllVideos(updatedVideos);
     updateFormData(`media.videos`, updatedVideos);
@@ -122,21 +153,19 @@ export default function Media({ data }) {
           slides={images.map((url) => ({ src: url }))}
           index={lightbox.index}
         />
-        {images.map((url, imgIndex) => (
+        {images.map((img, imgIndex) => (
           <div
-            key={`${url}-${imgIndex}`}
-            className={`group relative w-full h-48 shadow-xl rounded-xl overflow-hidden bg-black ${
-              removeImage ? "block" : "hidden"
-            }`}
+            key={`${img.url}-${imgIndex}`}
+            className="group relative w-full h-48 shadow-xl rounded-xl overflow-hidden bg-black"
             onClick={() => setLightbox({ open: true, index: imgIndex })}
           >
             <Image
-              src={url}
+              src={img.url} // Ensure the correct URL (blob or S3) is passed
               alt={`Story image ${imgIndex}`}
               fill
               sizes="(max-width: 768px) 100%, 100%"
               style={{ objectFit: "cover" }}
-              className={`cursor-pointer group-hover:opacity-75 transition-all`}
+              className="cursor-pointer group-hover:opacity-75 transition-all"
             />
             {isEditable && (
               <TbTrash

@@ -4,6 +4,7 @@ import StoryYear from "../Emlekadatlap/StoryYear";
 import { useContext, useEffect, useState } from "react";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import { Context } from "../../Context";
+import { TbPlus } from "react-icons/tb";
 
 export default function Story({ data }) {
   const { addStoryBlock, formData } = useContext(UpdateEmlekadatlapContext);
@@ -34,10 +35,11 @@ export default function Story({ data }) {
 
       {isEditable &&
         <button
-          className="flex flex-col lg:p-8 p-4 lg:gap-8 gap-4 bg-white rounded-2xl shadow-special hover:bg-[--blue-15]"
+          className="flex flex-col items-center justify-center gap-2 border border-neutral-300 w-full h-48 rounded-2xl hover:shadow-xl hover:border-white hover:bg-white transition-all duration-200"
           onClick={handleAddStoryBlock}
         >
-          <h1>+ Új esemény hozzáadása</h1>
+          <TbPlus className="w-6 h-6" />
+          <p className="font-normal">Esemény hozzáadása</p>
         </button>
       }
       
