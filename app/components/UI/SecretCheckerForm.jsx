@@ -1,7 +1,8 @@
 "use client"
 
 import { useForm } from "react-hook-form"
-import { useState, useEffect } from "react";
+import { useState, useEffect, } from "react";
+import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 export default function SecretCheckerForm({user}) {
@@ -9,7 +10,9 @@ export default function SecretCheckerForm({user}) {
   const [submissionResult, setSubmissionResult] = useState(null);
   const [uri, setUri] = useState("");
 
-  const router = useRouter()
+  const router = useRouter();
+  const pathname = usePathname();
+  const lastDigits = pathname.slice(-7);
 
   const {
     register,
@@ -18,13 +21,7 @@ export default function SecretCheckerForm({user}) {
   } = useForm();
 
   useEffect(() => {
-    // Check if the window object is available (client-side)
-    if (typeof window !== "undefined") {
-      const currentUrl = window.location.href;
-      // Extract last 7 digits
-      const last7Digits = currentUrl.slice(-7); // OR use regex to get last 7 digits
-      setUri(last7Digits);
-    }
+    setUri(lastDigits);
   }, []);
 
   const onSubmit = async (writtensecret) => {
@@ -48,7 +45,7 @@ export default function SecretCheckerForm({user}) {
   
         if (response.ok) {
           setSubmissionResult('Sikeres Ellenőrzés!');
-          window.location.reload()
+          router.refresh()
         } else {
           setSubmissionResult('Hiba történt az ellenőrzés közben.');
         }
