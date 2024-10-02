@@ -97,7 +97,7 @@ export default function Emlekerme({ session }) {
                         </input>
                         {session ? (
                            <Link 
-                            href={process.env.STRIPE_PAYMENT_LINK}
+                            href={`${process.env.STRIPE_PAYMENT_LINK}`}
                             className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-1/2">
                                 <PiShoppingCart 
                                     className="w-6 h-6"
