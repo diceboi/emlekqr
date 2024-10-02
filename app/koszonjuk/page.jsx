@@ -61,7 +61,7 @@ const sendSecretToAPI = async (email, secret) => {
 // Main function to render the component
 export default async function Koszonjuk({ searchParams }) {
   const session = await getServerSession();
-  const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+  const stripe = require("session_id")(process.env.STRIPE_SECRET_KEY);
   
   // Get session_id from searchParams
   const session_id = searchParams.session_id;
