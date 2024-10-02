@@ -96,14 +96,14 @@ export default function Emlekerme({ session }) {
                         <input type="number" value="1" className="text-center bg-[--cream] w-1/2 rounded-full">
                         </input>
                         {session ? (
-                           <Link 
+                           <a 
                             href={`${process.env.STRIPE_PAYMENT_LINK}`}
                             className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-1/2">
                                 <PiShoppingCart 
                                     className="w-6 h-6"
                                 />
                                 Kosárba
-                            </Link> 
+                            </a> 
                         ) : (
                             <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-1/2" onClick={togglePopup}>
                                 A vásárláshoz jelentkezz be
