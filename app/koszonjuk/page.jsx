@@ -1,5 +1,4 @@
 import { getServerSession } from "next-auth";
-import Stripe from 'stripe';
 
 // Function to get user data
 const getUserData = async (email) => {
@@ -58,25 +57,10 @@ const sendSecretToAPI = async (email, secret) => {
   }
 };
 
+
 // Main function to render the component
 export default async function Koszonjuk({ searchParams }) {
   const session = await getServerSession();
-  const session_id = searchParams.session_id;
-  
-  // Initialize Stripe with the secret key
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
-  // Retrieve the Stripe checkout session using the session_id
-  const checkoutSession = await stripe.checkout.sessions.retrieve(session_id);
-  
-  // Extract the user email from the checkout session
-  const userEmail = checkoutSession.customer_details?.email;
-
-  // Pass the userEmail to getCheckoutSession instead of session_id
-  if (userEmail) {
-    const customerData = await getCheckoutSession(userEmail); // Pass the userEmail
-    console.log("Customer Data:", customerData); // Log the customer data for debugging
-  }
 
   let currentUser = null;
 
