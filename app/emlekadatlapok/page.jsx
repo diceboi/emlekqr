@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 const getUserData = async (email) => {
   try {
-    const baseUrl = "http://localhost:3000"; // Adjust this as per your environment
+    const baseUrl = process.env.NEXT_PUBLIC_URL; // Adjust this as per your environment
     const res = await fetch(`${baseUrl}/api/getUserData?email=${email}`, { cache: 'no-store' });
     if (!res.ok) {
       throw new Error("Az adatok letöltése nem sikerült");
@@ -21,7 +21,7 @@ const getUserData = async (email) => {
 
 const getPersonalEmlekadatlap = async (owner) => {
   try {
-    const baseUrl = "http://localhost:3000"; // Adjust this as per your environment
+    const baseUrl = process.env.NEXT_PUBLIC_URL; // Adjust this as per your environment
     const res = await fetch(`${baseUrl}/api/emlekadatlapok?owner=${owner}`, { cache: 'no-store' });
     if (!res.ok) {
       throw new Error("Az adatok letöltése nem sikerült");
