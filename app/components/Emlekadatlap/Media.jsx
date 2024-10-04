@@ -148,10 +148,10 @@ export default function Media({ data }) {
       <h4>Képek</h4>
       <div className="grid grid-cols-2 lg:grid-cols-4 justify-start gap-4">
         <Lightbox
-          open={lightbox.open}
-          close={() => setLightbox({ open: false, index: 0 })}
-          slides={images.map((url) => ({ src: url }))}
-          index={lightbox.index}
+        open={lightbox.open}
+        close={() => setLightbox({ open: false, index: 0 })}
+        slides={images.map((img) => ({ src: img.url }))}
+        index={lightbox.index}
         />
         {images.map((img, imgIndex) => (
           <div
