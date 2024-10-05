@@ -11,7 +11,10 @@ const s3Client = new S3Client({
 });
 
 async function uploadFileToS3(fileBuffer, filePath, fileName) {
-    const fileSharpBuffer = await sharp(Buffer.from(fileBuffer, 'base64')).webp({ quality: 75 }).toBuffer();
+    const fileSharpBuffer = await sharp(Buffer.from(fileBuffer, 'base64'))
+    .rotate() // Auto-orient image based on EXIF data
+    .webp({ quality: 75 }) // Convert to WebP with quality 75
+    .toBuffer();
 
     const params = {
         Bucket: process.env.NEXT_AWS_S3_BUCKET_NAME,
