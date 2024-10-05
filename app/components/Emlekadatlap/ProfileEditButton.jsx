@@ -4,6 +4,9 @@ import { TbEdit, TbUserCheck, TbTrash } from "react-icons/tb";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
+import EXIF from "exif-js";
+import { motion } from "framer-motion";
+import Loading from "../UI/Loading";
 
 export default function ProfileEditButton({ session, user, data }) {
   const { isEditable, setEditable } = useContext(Context);
@@ -62,9 +65,11 @@ export default function ProfileEditButton({ session, user, data }) {
         const fileData = image.file;
         const filePath = image.path;
 
+        const fixedImage = await fixImageOrientation(fileData);
+
         // Convert the file to an ArrayBuffer
-        const arrayBuffer = await fileData.arrayBuffer();
-        const fileBuffer = Buffer.from(arrayBuffer).toString("base64"); // Convert to Base64
+        const arrayBuffer = await fixedImage.arrayBuffer();
+        const fileBuffer = Buffer.from(arrayBuffer).toString("base64");
 
         const payload = {
           fileBuffer, // Base64 encoded file data
@@ -101,6 +106,55 @@ export default function ProfileEditButton({ session, user, data }) {
       window.location.reload(); // Reload after all uploads are done
     }
   }, [uploadCount, selectedImages.length, uploading]);
+
+  const fixImageOrientation = async (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const image = new Image();
+        image.src = e.target.result;
+
+        image.onload = () => {
+          EXIF.getData(image, function () {
+            const orientation = EXIF.getTag(this, "Orientation");
+
+            // Create canvas to fix the orientation
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            const width = image.width;
+            const height = image.height;
+
+            if (orientation === 6) { // Rotate 90 degrees
+              canvas.width = height;
+              canvas.height = width;
+              ctx.rotate((90 * Math.PI) / 180);
+              ctx.drawImage(image, 0, -height);
+            } else if (orientation === 3) { // Rotate 180 degrees
+              canvas.width = width;
+              canvas.height = height;
+              ctx.rotate((180 * Math.PI) / 180);
+              ctx.drawImage(image, -width, -height);
+            } else if (orientation === 8) { // Rotate -90 degrees
+              canvas.width = height;
+              canvas.height = width;
+              ctx.rotate((-90 * Math.PI) / 180);
+              ctx.drawImage(image, -width, 0);
+            } else {
+              // No rotation needed
+              canvas.width = width;
+              canvas.height = height;
+              ctx.drawImage(image, 0, 0);
+            }
+
+            // Convert the fixed canvas back to Blob
+            canvas.toBlob((blob) => resolve(blob), file.type);
+          });
+        };
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
 
   return (
     <>
@@ -141,6 +195,19 @@ export default function ProfileEditButton({ session, user, data }) {
           </div>
         </>
       )}
+
+      <motion.section
+      className={`${
+        uploading ? "fixed" : "hidden"
+      } top-0 left-0 w-full h-[100vh] flex flex-col items-center justify-center backdrop-brightness-[100%] z-50`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2, type: "ease-in-out" }}
+    >
+        <div className="fixed top-0 left-0 w-full h-full bg-[--cream-25]"></div>
+        <Loading text={'Feltöltés...'}/>
+      </motion.section>
     </>
   );
 }
