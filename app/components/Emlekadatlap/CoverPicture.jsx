@@ -20,30 +20,24 @@ export default function CoverPicture({ data }) {
   const { updateFormData, updateFileNames } = useContext(UpdateEmlekadatlapContext);
 
   const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0]; // Get the first selected file
+    const selectedFile = e.target.files[0]; // Get the first file selected
 
     if (selectedFile) {
-      // Create a local preview URL
-      const imageUrl = URL.createObjectURL(selectedFile);
-      setSelectedImage(imageUrl);
-
-      // Generate the final S3 URL (with .webp extension)
-      const fileNameWithoutExtension = selectedFile.name.replace(/\.[^/.]+$/, "");
-      const finalImageUrl = `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/coverimage/${fileNameWithoutExtension}.webp`;
-
-      // Update formData with the new S3 URL
-      updateFormData('coverimage', finalImageUrl);
-
-      // Create the new file object to be tracked for upload
       const newFile = {
         file: selectedFile,
-        url: imageUrl, // Blob URL for local preview
+        url: URL.createObjectURL(selectedFile), // Create a preview URL
         id: Math.random().toString(36).substring(2, 15),
-        path: `${lastDigits}/coverimage/${selectedFile.name}`, // S3 path
-        newUrl: finalImageUrl, // The S3 URL after upload
+        path: `${lastDigits}/coverimage/${selectedFile.name}`, // Path for S3 upload
+        newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/coverimage/${selectedFile.name}`, // The final S3 URL
       };
 
-      // Add the file to the selected images for uploading later
+      // Update local preview state
+      setSelectedImage(newFile.url);
+
+      // Update formData with the new image URL (to be saved in the database)
+      updateFormData('coverimage', newFile.newUrl);
+
+      // Update selected images for later processing (e.g., S3 upload)
       updateFileNames((prevFiles) => [...prevFiles, newFile]);
     }
   };
