@@ -124,3 +124,10 @@ p {
   .shadow-special {
     box-shadow: 0px 5px 30px -15px var(--rose-15);
   }
+
+  /*Lightbox orientation fix*/
+
+  .lightbox {
+    image-orientation: from-image;
+    object-fit: cover; /* Ensure it fills the container correctly */
+  }

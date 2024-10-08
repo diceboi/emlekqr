@@ -3,12 +3,16 @@
 import { TbEdit, TbUserCheck, TbTrash } from "react-icons/tb";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../Context";
+import { useRouter } from "next/navigation";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import EXIF from "exif-js";
 import { motion } from "framer-motion";
 import Loading from "../UI/Loading";
 
 export default function ProfileEditButton({ session, user, data }) {
+
+  const router = useRouter()
+
   const { isEditable, setEditable } = useContext(Context);
   const { formData, updateFormData, selectedImages } = useContext(UpdateEmlekadatlapContext);
   const [uploading, setUploading] = useState(false);
@@ -62,28 +66,19 @@ export default function ProfileEditButton({ session, user, data }) {
 
       // Upload each image
       for (const image of selectedImages) {
+
         const fileData = image.file;
-        const filePath = image.path;
 
-        const fixedImage = await fixImageOrientation(fileData);
-
-        // Convert the file to an ArrayBuffer
-        const arrayBuffer = await fixedImage.arrayBuffer();
-        const fileBuffer = Buffer.from(arrayBuffer).toString("base64");
-
-        const payload = {
-          fileBuffer, // Base64 encoded file data
-          filePath,
-          fileName: fileData.name,
-        };
+        // Step 1: Use FormData to preserve EXIF metadata
+        const formData = new FormData();
+        formData.append("file", fileData); // Directly append the file blob to FormData
+        formData.append("filePath", image.path);
+        formData.append("fileName", fileData.name);
 
         // Send the image details to the S3 upload API
         const s3Upload = await fetch("/api/s3-upload", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
+          body: formData, // Send FormData, not JSON
         });
 
         if (s3Upload.ok) {
@@ -95,7 +90,7 @@ export default function ProfileEditButton({ session, user, data }) {
       }
     } else {
       setSaving(false);
-      window.location.reload(); // Reload immediately if no image uploads
+      window.location.reload() // Reload immediately if no image uploads
     }
   };
 
@@ -103,58 +98,9 @@ export default function ProfileEditButton({ session, user, data }) {
     // If all images are uploaded, reload the page
     if (uploading && uploadCount === selectedImages.length) {
       setUploading(false);
-      window.location.reload(); // Reload after all uploads are done
+      window.location.reload() // Reload after all uploads are done
     }
   }, [uploadCount, selectedImages.length, uploading]);
-
-  const fixImageOrientation = async (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const image = new Image();
-        image.src = e.target.result;
-
-        image.onload = () => {
-          EXIF.getData(image, function () {
-            const orientation = EXIF.getTag(this, "Orientation");
-
-            // Create canvas to fix the orientation
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d");
-            const width = image.width;
-            const height = image.height;
-
-            if (orientation === 6) { // Rotate 90 degrees
-              canvas.width = height;
-              canvas.height = width;
-              ctx.rotate((90 * Math.PI) / 180);
-              ctx.drawImage(image, 0, -height);
-            } else if (orientation === 3) { // Rotate 180 degrees
-              canvas.width = width;
-              canvas.height = height;
-              ctx.rotate((180 * Math.PI) / 180);
-              ctx.drawImage(image, -width, -height);
-            } else if (orientation === 8) { // Rotate -90 degrees
-              canvas.width = height;
-              canvas.height = width;
-              ctx.rotate((-90 * Math.PI) / 180);
-              ctx.drawImage(image, -width, 0);
-            } else {
-              // No rotation needed
-              canvas.width = width;
-              canvas.height = height;
-              ctx.drawImage(image, 0, 0);
-            }
-
-            // Convert the fixed canvas back to Blob
-            canvas.toBlob((blob) => resolve(blob), file.type);
-          });
-        };
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
-  };
 
   return (
     <>

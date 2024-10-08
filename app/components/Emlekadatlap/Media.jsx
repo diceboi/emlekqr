@@ -165,7 +165,7 @@ export default function Media({ data }) {
               fill
               sizes="(max-width: 768px) 100%, 100%"
               style={{ objectFit: "cover" }}
-              className="cursor-pointer group-hover:opacity-75 transition-all"
+              className="cursor-pointer group-hover:opacity-75 transition-all lightbox"
             />
             {isEditable && (
               <TbTrash
