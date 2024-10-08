@@ -65,13 +65,21 @@ export default function CoverPicture({ data }) {
       )}
       {data && (
         <Image
-          src={selectedImage || data.coverimage} // Show selected image or the existing cover image
+          src={selectedImage || data.coverimage || '/blank-image.webp'} // Show selected image or the existing cover image
           fill
           style={{ objectFit: "cover", borderRadius: "1rem" }}
           alt="Borítókép"
         />
       )}
-      {!data && <h4>Töltsd fel a borítóképet</h4>}
+      {!data && (
+        <Image
+          src='/blank-image.webp' // Show selected image or the existing cover image
+          fill
+          style={{ objectFit: "cover", borderRadius: "1rem" }}
+          alt="blank image"
+
+        />
+      )}
     </div>
   );
 }

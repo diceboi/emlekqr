@@ -69,14 +69,22 @@ export default function ProfilePicture({ session, data }) {
       )}
       {data && (
         <Image
-          src={selectedImage || data.profileimage} // Use selected image for preview or existing profile image
+          src={selectedImage || data.profileimage || '/blank-profile.webp'} // Use selected image for preview or existing profile image
           fill
           style={{ objectFit: "cover" }}
           className="rounded-full border-8 border-white"
           alt="Profilkép"
         />
       )}
-      {!data && <h4>Töltsd fel a profilképet</h4>}
+      {!data && (
+        <Image
+          src='/blank-profile.webp' // Use selected image for preview or existing profile image
+          fill
+          style={{ objectFit: "cover" }}
+          className="rounded-full border-8 border-white"
+          alt="blank profile"
+        />
+      )}
     </div>
   );
 }

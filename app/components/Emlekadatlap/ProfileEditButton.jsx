@@ -104,7 +104,7 @@ export default function ProfileEditButton({ session, user, data }) {
 
   return (
     <>
-      {session && user && !isEditable && data && (
+      {session && user && !isEditable && data && user.email === data.owner && (
         <div className="fixed bottom-0 flex flex-col justify-center w-full py-4 bg-[--cream-25] bg-opacity-50 backdrop-blur-lg shadow-xl z-50 border-t border-white">
           <button
             className={`m-auto flex flex-row items-center justify-center gap-4 text-white py-4 px-8 bg-[--rose] hover:bg-[--blue] shadow-2xl rounded-full transition-all ${
