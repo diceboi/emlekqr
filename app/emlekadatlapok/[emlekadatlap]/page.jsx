@@ -7,6 +7,7 @@ import ProfileEditButton from "../../components/Emlekadatlap/ProfileEditButton";
 import SecretCheckerModal from "../../components/UI/SecretCheckerModal";
 import LoginForm from "../../components/LoginForm";
 import SecretCheckerForm from "../../components/UI/SecretCheckerForm"
+import BackgroundSwitcher from "../../components/Emlekadatlap/BackgroundSwitcher"
 
 export const dynamic = 'force-dynamic'
 
@@ -74,7 +75,8 @@ export default async function Emlekadatlap({ params }) {
 
 
   return (
-    <section className="relative w-full px-2 lg:px-0 py-10 lg:py-20">
+    <BackgroundSwitcher>
+    <section className="relative w-full px-2 lg:px-0 pt-10 pb-32 lg:pt-20">
       {currentData === null && (
         <SecretCheckerModal session={session}>
         {session && currentData === null  && (
@@ -101,5 +103,6 @@ export default async function Emlekadatlap({ params }) {
       </div>
       <ProfileEditButton session={session} user={currentUser} data={currentData}/>
     </section>
+    </BackgroundSwitcher>
   );
 }
