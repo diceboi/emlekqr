@@ -75,7 +75,8 @@ export default async function Emlekadatlap({ params }) {
 
 
   return (
-    <BackgroundSwitcher>
+    <>
+    {/*<BackgroundSwitcher>*/}
     <section className="relative w-full px-2 lg:px-0 pt-10 pb-32 lg:pt-20">
       {currentData === null && (
         <SecretCheckerModal session={session}>
@@ -103,6 +104,7 @@ export default async function Emlekadatlap({ params }) {
       </div>
       <ProfileEditButton session={session} user={currentUser} data={currentData}/>
     </section>
-    </BackgroundSwitcher>
+    {/*</BackgroundSwitcher>*/}
+    </>
   );
 }

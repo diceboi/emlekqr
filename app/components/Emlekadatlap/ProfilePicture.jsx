@@ -6,6 +6,8 @@ import { useState, useRef, useContext } from "react";
 import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import { usePathname } from "next/navigation";
+import Lightbox from "yet-another-react-lightbox"; // Import lightbox component
+import "yet-another-react-lightbox/styles.css"; // Import lightbox styles
 
 export const dynamic = 'force-dynamic';
 
@@ -13,8 +15,9 @@ export default function ProfilePicture({ session, data }) {
   const pathname = usePathname();
   const lastDigits = pathname.slice(-7); // Extract the last 7 digits for the S3 path
 
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null); // Local state for selected image
   const fileInputRef = useRef(null);
+  const [lightbox, setLightbox] = useState({ open: false, index: 0 }); // State for lightbox
 
   const { isEditable } = useContext(Context);
   const { updateFormData, updateFileNames } = useContext(UpdateEmlekadatlapContext);
@@ -24,12 +27,14 @@ export default function ProfilePicture({ session, data }) {
     const selectedFile = e.target.files[0]; // Get the first file selected
 
     if (selectedFile) {
+      const selectedFileNoExtension = selectedFile.name.replace(/\.[^/.]+$/, ".webp");
+
       const newFile = {
         file: selectedFile,
         url: URL.createObjectURL(selectedFile), // Create a preview URL
         id: Math.random().toString(36).substring(2, 15),
         path: `${lastDigits}/profileimage/${selectedFile.name}`, // Path for S3 upload
-        newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/profileimage/${selectedFile.name}`, // The final S3 URL
+        newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/profileimage/${selectedFileNoExtension}`, // The final S3 URL
       };
 
       // Update local preview state
@@ -47,11 +52,29 @@ export default function ProfilePicture({ session, data }) {
     fileInputRef.current.click(); // Open file input dialog
   };
 
+  const handleImageClick = () => {
+    // Open lightbox when the profile image is clicked
+    setLightbox({ open: true, index: 0 });
+  };
+
   return (
     <div
       id="profile-pic"
       className="relative flex flex-col items-center xl:items-start w-[250px] h-[250px] min-h-[250px] min-w-[250px] max-h-[250px] max-w-[250px] -mt-[100px]"
     >
+      {/* Lightbox component */}
+      <Lightbox
+        open={lightbox.open}
+        close={() => setLightbox({ open: false, index: 0 })}
+        slides={[
+          {
+            src: selectedImage || data.profileimage || '/blank-profile.webp', // The profile image to show in the lightbox
+          }
+        ]}
+        index={lightbox.index}
+      />
+      
+      {/* Profile Picture with editing capability */}
       {isEditable && (
         <>
           <TbEdit
@@ -67,22 +90,28 @@ export default function ProfilePicture({ session, data }) {
           />
         </>
       )}
-      {data && (
+      
+      {/* Profile Image */}
+      {data.profileimage && (
         <Image
           src={selectedImage || data.profileimage || '/blank-profile.webp'} // Use selected image for preview or existing profile image
           fill
           style={{ objectFit: "cover" }}
-          className="rounded-full border-8 border-white"
+          className="rounded-full border-8 border-white cursor-pointer" // Add cursor pointer
           alt="Profilkép"
+          onClick={handleImageClick} // Open lightbox on image click
         />
       )}
-      {!data && (
+      
+      {/* Fallback Image */}
+      {!data.profileimage && (
         <Image
-          src='/blank-profile.webp' // Use selected image for preview or existing profile image
+          src='/blank-profile.webp'
           fill
           style={{ objectFit: "cover" }}
-          className="rounded-full border-8 border-white"
-          alt="blank profile"
+          className="rounded-full border-8 border-white cursor-pointer" // Add cursor pointer
+          alt="Blank Profile"
+          onClick={handleImageClick} // Open lightbox on image click
         />
       )}
     </div>

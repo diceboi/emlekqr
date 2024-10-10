@@ -46,13 +46,16 @@ export default function Media({ data }) {
     const selectedFiles = Array.from(e.target.files);
 
     // New uploadable files
-    const newFiles = selectedFiles.map((file) => ({
+    const newFiles = selectedFiles.map((file) => {
+      const newUrlWebp = file.name.replace(/\.[^/.]+$/, ".webp");
+    return{
       file,
       url: URL.createObjectURL(file),
       id: Math.random().toString(36).substring(2, 15),
       path: `${lastDigits}/media/${file.name}`,
-      newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/media/${file.name}`,
-    }));
+      newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/media/${newUrlWebp}`,
+    };
+  });
 
     // Setting images for viewer
     setFiles((files) => [...files, ...newFiles]);

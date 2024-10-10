@@ -6,6 +6,8 @@ import { useState, useRef, useContext } from "react";
 import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import { usePathname } from "next/navigation";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 export const dynamic = 'force-dynamic';
 
@@ -15,6 +17,7 @@ export default function CoverPicture({ data }) {
 
   const [selectedImage, setSelectedImage] = useState(null); // Local state for the selected image
   const fileInputRef = useRef(null);
+  const [lightbox, setLightbox] = useState({ open: false, index: 0 }); // Lightbox state
 
   const { isEditable } = useContext(Context);
   const { updateFormData, updateFileNames } = useContext(UpdateEmlekadatlapContext);
@@ -23,12 +26,14 @@ export default function CoverPicture({ data }) {
     const selectedFile = e.target.files[0]; // Get the first file selected
 
     if (selectedFile) {
+      const selectedFileNoExtension = selectedFile.name.replace(/\.[^/.]+$/, ".webp");
+
       const newFile = {
         file: selectedFile,
         url: URL.createObjectURL(selectedFile), // Create a preview URL
         id: Math.random().toString(36).substring(2, 15),
         path: `${lastDigits}/coverimage/${selectedFile.name}`, // Path for S3 upload
-        newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/coverimage/${selectedFile.name}`, // The final S3 URL
+        newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/coverimage/${selectedFileNoExtension}`, // The final S3 URL
       };
 
       // Update local preview state
@@ -46,8 +51,23 @@ export default function CoverPicture({ data }) {
     fileInputRef.current.click(); // Open file input dialog
   };
 
+  const handleImageClick = () => {
+    // Open lightbox when the image is clicked
+    setLightbox({ open: true, index: 0 });
+  };
+
   return (
     <div id="cover-picture" className="relative w-full h-[300px] lg:h-[500px] rounded-2xl">
+      <Lightbox
+        open={lightbox.open}
+        close={() => setLightbox({ open: false, index: 0 })}
+        slides={[
+          {
+            src: selectedImage || data.coverimage || '/blank-image.webp', // The image to show in the lightbox
+          }
+        ]}
+        index={lightbox.index}
+      />
       {isEditable && (
         <>
           <TbEdit
@@ -69,6 +89,8 @@ export default function CoverPicture({ data }) {
           fill
           style={{ objectFit: "cover", borderRadius: "1rem" }}
           alt="Borítókép"
+          onClick={handleImageClick} // Open lightbox on click
+          className="cursor-pointer" // Add pointer cursor to indicate it's clickable
         />
       )}
       {!data && (
@@ -77,7 +99,8 @@ export default function CoverPicture({ data }) {
           fill
           style={{ objectFit: "cover", borderRadius: "1rem" }}
           alt="blank image"
-
+          onClick={handleImageClick} // Open lightbox on click
+          className="cursor-pointer" // Add pointer cursor to indicate it's clickable
         />
       )}
     </div>

@@ -38,13 +38,19 @@ export default function StoryYear({ data, index }) {
     // New uploadable files
     const selectedFiles = Array.from(e.target.files);
 
-    const newFiles = selectedFiles.map((file) => ({
-      file,
-      url: URL.createObjectURL(file),
-      id: Math.random().toString(36).substring(2, 15),
-      path: `${lastDigits}/story/${data.year}/${file.name}`,
-      newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/story/${data.year}/${file.name}`,
-    }));
+    const newFiles = selectedFiles.map((file) => {
+      // Create the newUrl with a .webp extension, but keep the original file name and extension for other properties
+      const newUrlWebp = file.name.replace(/\.[^/.]+$/, ".webp");
+  
+      return {
+        file,
+        url: URL.createObjectURL(file), // Original URL for preview
+        id: Math.random().toString(36).substring(2, 15), // Generate random ID
+        path: `${lastDigits}/story/${data.year}/${file.name}`, // Keep the original file name in the path
+        newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/story/${data.year}/${newUrlWebp}`, // Use .webp for the newUrl
+      };
+    });
+  
 
     setFiles((files) => [...files, ...newFiles]);
 
