@@ -7,7 +7,12 @@
     updateFormData: (path, value) => {},
     addStoryBlock: () => {},
     removeStoryBlock: (index) => {},
-    updateFileNames: () => {},  
+    updateFileNames: () => {},
+    blobMediaImages: [],
+    setBlobMediaImages: () => {},
+    blobStoryImages: [],
+    setBlobStoryImages: () => {},
+    updateBlobStoryImages: () => {}   
   });
 
   export default function UpdateEmlekadatlapContextProvider({ children }) {
@@ -41,6 +46,8 @@
 
     const [formData, setFormData] = useState(initialData);
     const [selectedImages, setSelectedImages] = useState([]);
+    const [blobMediaImages, setBlobMediaImages] = useState([]);
+    const [blobStoryImages, setBlobStoryImages] = useState({});
 
     const updateFormData = (path, value) => {
       setFormData((prevData) => {
@@ -105,8 +112,27 @@
       setSelectedImages(images);
     };
 
+    const updateBlobStoryImages = (index, newImages) => {
+      setBlobStoryImages((prev) => ({
+        ...prev,
+        [index]: newImages,
+      }));
+    };
+
     return (
-      <UpdateEmlekadatlapContext.Provider value={{ formData, updateFormData, selectedImages, updateFileNames, addStoryBlock, removeStoryBlock }}>
+      <UpdateEmlekadatlapContext.Provider value={{ 
+        formData,
+        updateFormData,
+        selectedImages,
+        updateFileNames,
+        addStoryBlock,
+        removeStoryBlock,
+        blobMediaImages,
+        setBlobMediaImages,
+        blobStoryImages,
+        setBlobStoryImages,
+        updateBlobStoryImages
+      }}>
         {children}
       </UpdateEmlekadatlapContext.Provider>
     );

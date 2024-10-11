@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { TbUsersGroup, TbCameraPlus, TbTrash } from "react-icons/tb";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -13,26 +13,45 @@ export default function StoryYear({ data, index }) {
   const pathname = usePathname();
   const lastDigits = pathname.slice(-7);
 
-  const { formData, updateFormData, updateFileNames, selectedImages, removeStoryBlock } =
+  const { formData, updateFormData, updateFileNames, selectedImages, removeStoryBlock, blobStoryImages, setBlobStoryImages, updateBlobStoryImages } =
     useContext(UpdateEmlekadatlapContext);
   const { isEditable } = useContext(Context);
 
-  const [images, setImages] = useState(
-    (formData.story && formData.story[index] && formData.story[index].images
-      ? formData.story[index].images
-      : []
-    ).map((imgUrl) => ({
-      url: imgUrl.startsWith("http")
-        ? imgUrl
-        : `https://elmekqr-storage.s3.amazonaws.com${imgUrl}`,
-      newUrl: imgUrl,
-    }))
-  );
+  const [images, setImages] = useState([]);
 
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
   const [files, setFiles] = useState([]);
   const [removeImage, setRemoveImage] = useState([]);
   const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    const initialImages = (formData.story[index].images || []).map((imgUrl) => ({
+      url: imgUrl.startsWith("http")
+        ? imgUrl
+        : `https://elmekqr-storage.s3.amazonaws.com${imgUrl}`,
+      newUrl: imgUrl,
+    }));
+
+    // Get the blob images for this story index
+    const currentBlobImages = blobStoryImages[index] || [];
+
+    // Filter out formData images that are already in blobStoryImages
+    const filteredFormDataImages = initialImages.filter(
+      (formDataImg) =>
+        !currentBlobImages.some((blobImg) => blobImg.newUrl === formDataImg.newUrl)
+    );
+
+    // Combine blobStoryImages with the filtered formData images
+    const combinedImages = [
+      ...filteredFormDataImages, // Use formData images that are not in blobStoryImages
+      ...currentBlobImages.map((blobImg) => ({
+        url: blobImg.url, // Blob URL for display
+        newUrl: blobImg.newUrl, // Blob new URL
+      })),
+    ];
+
+    setImages(combinedImages);
+  }, [formData.story[index].images, blobStoryImages[index]]);
 
   const handleFileChange = (e) => {
     // New uploadable files
@@ -53,6 +72,9 @@ export default function StoryYear({ data, index }) {
   
 
     setFiles((files) => [...files, ...newFiles]);
+
+    // Add the new files to the blobStoryImages for this specific story index
+    updateBlobStoryImages(index, [...(blobStoryImages[index] || []), ...newFiles]);
 
     // Setting images for viewer
     const updatedImages = [...images, ...newFiles];
@@ -99,10 +121,19 @@ export default function StoryYear({ data, index }) {
     const updatedRemoveImage = [...removeImage, imageToRemove.newUrl]; // Track removed images by newUrl
     setRemoveImage(updatedRemoveImage); // Update the removeImage state
 
-    // Filter out removed images from the state
+    // Filter out the removed image from local images state
     const updatedImages = images.filter(
-      (img) => !updatedRemoveImage.includes(img.newUrl)
+      (img) => img.newUrl !== imageToRemove.newUrl
     );
+    setImages(updatedImages); // Update the local images state
+
+    // Remove the image from blobStoryImages for this specific story index
+    updateBlobStoryImages(
+      index,
+      (blobStoryImages[index] || []).filter((blobImg) => blobImg.newUrl !== imageToRemove.newUrl)
+    );
+
+    console.log(blobStoryImages)
 
     updateFormData(
       `story.${index}.images`,

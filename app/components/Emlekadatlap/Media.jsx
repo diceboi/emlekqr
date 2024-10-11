@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { TbUsersGroup, TbCameraPlus, TbTrash } from "react-icons/tb";
-import { useState, useRef, useContext } from "react";
+import { TbCameraPlus, TbTrash } from "react-icons/tb";
+import { useState, useRef, useContext, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -15,20 +15,9 @@ export default function Media({ data }) {
   const pathname = usePathname();
   const lastDigits = pathname.slice(-7);
 
-  const { formData, updateFormData, updateFileNames, selectedImages } =
+  const { formData, updateFormData, updateFileNames, selectedImages, blobMediaImages, setBlobMediaImages } =
     useContext(UpdateEmlekadatlapContext);
   const { isEditable } = useContext(Context);
-
-  const [images, setImages] = useState(
-    (formData.media && formData.media.images ? formData.media.images : []).map(
-      (imgUrl) => ({
-        url: imgUrl.startsWith("http")
-          ? imgUrl
-          : `https://elmekqr-storage.s3.amazonaws.com${imgUrl}`,
-        newUrl: imgUrl,
-      })
-    )
-  );
 
   const [allVideos, setAllVideos] = useState(formData.media.videos || []);
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
@@ -39,6 +28,34 @@ export default function Media({ data }) {
   const [tempVideoLink, setTempVideoLink] = useState("");
   const fileInputRef = useRef(null);
   const videoInputRef = useRef(null);
+  
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const initialImages = (formData.media.images || []).map((imgUrl) => ({
+      url: imgUrl.startsWith("http")
+        ? imgUrl
+        : `https://elmekqr-storage.s3.amazonaws.com${imgUrl}`,
+      newUrl: imgUrl,
+    }));
+
+    // Filter out formData images that are already in blobMediaImages
+    const filteredFormDataImages = initialImages.filter(
+      (formDataImg) =>
+        !blobMediaImages.some((blobImg) => blobImg.newUrl === formDataImg.newUrl)
+    );
+
+    // Combine blobMediaImages with the filtered formData images
+    const combinedImages = [
+      ...filteredFormDataImages, // Use formData images that are not in blobMediaImages
+      ...blobMediaImages.map((blobImg) => ({
+        url: blobImg.url, // Blob URL for display
+        newUrl: blobImg.newUrl, // Blob new URL
+      })),
+    ];
+
+    setImages(combinedImages);
+  }, [formData.media.images, blobMediaImages]);
 
   // Images //////////////////////////////////////
 
@@ -47,7 +64,7 @@ export default function Media({ data }) {
 
     // New uploadable files
     const newFiles = selectedFiles.map((file) => {
-      const newUrlWebp = file.name.replace(/\.[^/.]+$/, ".webp");
+    const newUrlWebp = file.name.replace(/\.[^/.]+$/, ".webp");
     return{
       file,
       url: URL.createObjectURL(file),
@@ -59,6 +76,9 @@ export default function Media({ data }) {
 
     // Setting images for viewer
     setFiles((files) => [...files, ...newFiles]);
+
+    setBlobMediaImages((files) => [...files, ...newFiles])
+    console.log(blobMediaImages);
 
     // Extract the image URLs for display
     const updatedImages = [...images, ...newFiles];
@@ -101,20 +121,32 @@ export default function Media({ data }) {
   const handleRemoveImage = (imgIndex) => {
     const imageToRemove = images[imgIndex]; // Get the image object to remove
 
-    const updatedRemoveImage = [...removeImage, imageToRemove.newUrl]; // Track removed images by newUrl
-    setRemoveImage(updatedRemoveImage); // Update the removeImage state
+    // Update the removeImage state with the new URL
+    const updatedRemoveImage = [...removeImage, imageToRemove.newUrl]; 
+    setRemoveImage(updatedRemoveImage); 
 
-    // Filter out removed images from the state
+    // Filter out the removed image from local images state
     const updatedImages = images.filter(
-      (img) => !updatedRemoveImage.includes(img.newUrl)
+      (img) => img.newUrl !== imageToRemove.newUrl
+    );
+    setImages(updatedImages); // Update the local images state
+
+    // Remove the corresponding image from the blobMediaImages context
+    setBlobMediaImages((prevBlobMediaImages) =>
+      prevBlobMediaImages.filter(
+        (blobImg) => blobImg.newUrl !== imageToRemove.newUrl
+      )
     );
 
+    console.log(blobMediaImages)
+
+    // Update formData with the correct newUrls
     updateFormData(
       `media.images`,
       updatedImages.map((img) => img.newUrl)
-    ); // Update formData with the correct newUrls
-    setImages(updatedImages); // Update the local images state
-  };
+    );
+};
+
 
   // Videos ////////////////////////////////////////
 
