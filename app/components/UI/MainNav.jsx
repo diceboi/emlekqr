@@ -62,7 +62,6 @@ export default function MainNav() {
         <div id="cta-user" className="relative flex flex-row justify-end items-center min-w-fit gap-1 lg:gap-2">
           <div className="flex flex-row ">
             <UserMenu />
-            <Cart />
           </div>
           <Link 
               href="/erme" 

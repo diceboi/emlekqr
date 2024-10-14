@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useContext } from "react";
 import { Context } from "./../../Context"
+import Image from "next/image";
 
 import { TbUser } from "react-icons/tb";
 import { CgClose } from "react-icons/cg";
@@ -36,8 +37,8 @@ export default function UserMenu() {
         }
     </div>
     <button onClick={handleOpenClose} className={`${isUserMenuOpen === false ? 'flex' : 'hidden'} flex-nowrap justify-center items-center gap-2 border border-transparent hover:border-[--cream] hover:shadow-lg rounded-full transition-all duration-150 cursor-pointer py-1 px-2 lg:py-2 lg:px-4 label`}>
+        <Image src={'/blank-profile.webp' || session.user.image} width={50} height={50} className="w-6 h-6 rounded-full" />
         {session? `Szia ${session.user?.name?.split(' ').slice(-1)[0]}` : null}
-        <TbUser className="w-6 h-6" />
     </button>
     <button onClick={handleOpenClose} className={`${isUserMenuOpen === false ? 'hidden' : 'flex flex-nowrap border border-[--cream] shadow-lg'} justify-center items-center gap-2  rounded-full transition-all duration-150 cursor-pointer py-1 px-2 lg:py-2 lg:px-4 label`}>
         {session? `Szia ${session.user?.name?.split(' ').slice(-1)[0]}` : null}
