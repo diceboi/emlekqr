@@ -122,15 +122,15 @@ export default async function Profil() {
                   <h4>Emlékadatlapok</h4>
                 </div>
                 
-                <div className="flex flex-col gap-4">
-                  {currentData.length > 0 ? (
+                {/*<div className="flex flex-col gap-4">
+                  {currentData?.length > 0 ? (
                     currentData.map((currentdata, index) => (
                       <Emlekadatlaptile data={currentdata} key={index}/>
                     ))
                   ) : (
                     <h4>Jelenleg még nincs adatlapod, készítsd el saját érmédet</h4>
                   )}
-                </div>
+                </div>*/}
               </div>
             </div>
           </div>
