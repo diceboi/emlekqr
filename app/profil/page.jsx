@@ -82,7 +82,7 @@ export default async function Profil() {
             <div className="flex flex-col gap-16 bg-white shadow-special rounded-2xl p-8">
               <div className="flex flex-col gap-8">
                 <div className="flex flex-nowrap gap-4 items-center">
-                  <TbBellRingingFilled className="w-8 h-8 text-[--rose] bg-[--cream] rounded-full p-1" />
+                  <TbBellRinging2Filled className="w-8 h-8 text-[--rose] bg-[--cream] rounded-full p-1" />
                   <h4>Legutóbbi értesítések</h4>
                 </div>
                 
