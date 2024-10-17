@@ -28,7 +28,7 @@ export const Context = createContext({
   isEditable: false,
   setEditable: () => {},
 
-  openPopup:false,
+  openPopup: false,
   setOpenPopup: () => {},
 });
 

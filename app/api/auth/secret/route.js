@@ -40,6 +40,7 @@ export const PUT = async (request) => {
     }
 
     existingUser.secret = "";
+    existingUser.stripeSubscription = "";
     await existingUser.save();
 
     // Return a JSON response

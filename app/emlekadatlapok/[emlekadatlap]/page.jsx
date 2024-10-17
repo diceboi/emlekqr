@@ -57,6 +57,7 @@ const getTributes = async (id) => {
 };
 
 export default async function Emlekadatlap({ params }) {
+
   const session = await getServerSession();
 
   let currentUser = null;
@@ -69,10 +70,10 @@ export default async function Emlekadatlap({ params }) {
   const emlekadatlap = await getEmlekadatlap(params.emlekadatlap);
   const currentData = emlekadatlap?.data?.Emlekadatlap || null;
 
+  console.log("Current data: ", currentData)
+
   const tribute = await getTributes(params.emlekadatlap);
   const currentTributes = tribute?.data?.Tribute || null;
-
-
 
   return (
     <>

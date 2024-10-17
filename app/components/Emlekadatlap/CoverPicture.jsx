@@ -63,7 +63,7 @@ export default function CoverPicture({ data }) {
         close={() => setLightbox({ open: false, index: 0 })}
         slides={[
           {
-            src: selectedImage || data.coverimage || '/blank-image.webp', // The image to show in the lightbox
+            src: selectedImage || data?.coverimage || '/blank-image.webp', // The image to show in the lightbox
           }
         ]}
         index={lightbox.index}

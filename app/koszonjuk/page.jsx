@@ -1,90 +1,105 @@
 import { getServerSession } from "next-auth";
+import Stripe from "stripe";
 
-// Function to get user data
-const getUserData = async (email) => {
+// Function to fetch Stripe Checkout Session using session_id
+const getCheckoutSession = async (sessionId) => {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_URL;
-    const res = await fetch(`${baseUrl}/api/getUserData?email=${email}`, { cache: 'no-store' });
-    if (!res.ok) {
-      throw new Error("Az adatok letöltése nem sikerült");
-    }
-    const data = await res.json();
-    return data;
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    return session;
   } catch (error) {
-    console.log("Az adatok betöltése sikertlen", error);
+    console.error("Error fetching Stripe session:", error);
     return null;
   }
 };
 
-// Function to fetch Stripe customer data based on email
-const getCheckoutSession = async (userEmail) => {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_URL;
-    const res = await fetch(`${baseUrl}/api/stripe/searchCustomer?email=${userEmail}`, { cache: 'no-store' });
-    if (!res.ok) {
-      throw new Error("A Stripe client secret ");
-    }
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log("Nem sikerült megtalálni a felhasználót", error);
-    return null;
-  }
-};
+const updateUserData = async (email, checkoutSessionData) => {
+  const { session_id, zip, city, address_line1, address_line2, phone, subscription_id, secret } = checkoutSessionData;
 
-// Function to send secret to your API
-const sendSecretToAPI = async (email, secret) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_URL;
-    const res = await fetch(`${baseUrl}/api/auth/secret`, {
+    const res = await fetch(`${baseUrl}/api/updateUser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, secret }),
+      body: JSON.stringify({
+        email,
+        checkoutSession: session_id,
+        zip,
+        city,
+        address1: address_line1,
+        address2: address_line2,
+        phone,
+        stripeSubscription: subscription_id,
+        secret: secret,
+      }),
     });
 
     if (!res.ok) {
-      throw new Error("Failed to update user secret");
+      throw new Error("Failed to update user data");
     }
 
-    // Parse the JSON response
     const data = await res.json();
-    console.log("Secret successfully added:", data);
     return data;
   } catch (error) {
-    console.error("Error sending secret to API:", error);
+    console.error("Error updating user data:", error);
+    return null;
   }
 };
 
-
-// Main function to render the component
+// Main server-side component
 export default async function Koszonjuk({ searchParams }) {
+  const session_id = searchParams.session_id; // Get session_id from URL
+
+  // Fetch the checkout session details from Stripe
+  const checkoutSession = session_id ? await getCheckoutSession(session_id) : null;
+
+  // Get the current user session from NextAuth
   const session = await getServerSession();
 
   let currentUser = null;
+  let randomNumber = Math.floor(100000 + Math.random() * 900000); // Generate a random number
 
-  if (session) {
-    const userData = await getUserData(session.user.email);
-    currentUser = userData?.data?.User || null;
-  }
-
-  // Generate a random number as the secret
-  const randomNumber = Math.floor(100000 + Math.random() * 900000);
-
-  // Send the session email and the generated secret to the API
   if (session?.user?.email) {
-    await sendSecretToAPI(session.user.email, randomNumber);
+    // Get user data (if needed for other purposes)
+    currentUser = session.user;
+
+    if (checkoutSession && checkoutSession.customer_details?.email) {
+      const customerDetails = checkoutSession.customer_details;
+
+      // Prepare data to update the user
+      const checkoutSessionData = {
+        session_id,
+        zip: customerDetails.address?.postal_code,
+        city: customerDetails.address?.city,
+        address_line1: customerDetails.address?.line1,
+        address_line2: customerDetails.address?.line2 || '',
+        phone: customerDetails.phone || '',
+        subscription_id: checkoutSession.subscription || '',
+        secret: randomNumber,
+      };
+
+      // Update the user data in the database
+      await updateUserData(customerDetails.email, checkoutSessionData);
+    }
   }
+
+  console.log(checkoutSession)
 
   return (
-    <section className='w-full py-20'>
-      <div className='container flex flex-col gap-8 m-auto p-4 bg-[--cream] rounded-2xl'>
+    <section className="w-full py-20">
+      <div className="container flex flex-col gap-8 m-auto p-4 bg-[--cream] rounded-2xl">
         <h2 className="text-[--rose] text-center">Köszönjük a vásárlást</h2>
-
         <p className="text-center">Jelenleg nincs más dolgod, mint megvárni, amíg megérkezik az érme.</p>
         <p className="text-center">Rendelési azonosítód: <strong>{randomNumber}</strong></p>
         {currentUser?.email && <p>{currentUser.email}</p>}
+        {checkoutSession && (
+          <div className="text-center">
+            <p>Customer: {checkoutSession.customer}</p>
+            <p>Total Amount: ${(checkoutSession.amount_total / 100).toFixed(2)}</p>
+          </div>
+        )}
       </div>
     </section>
   );

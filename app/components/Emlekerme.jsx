@@ -20,22 +20,63 @@ import Camel from "./../components/Animations/Camel"
 import Hearth from "./../components/Animations/Hearth"
 
 import SecretCheckerModal from "../components/UI/SecretCheckerModal"
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Context } from "../Context";
 import LoginForm from "./LoginForm";
+import { loadStripe } from '@stripe/stripe-js';
 
-export default function Emlekerme({ session }) {
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
-    const { openPopup, togglePopup, setOpenPopup } = useContext(Context)
+export default function Emlekerme({ session, userdata }) {
 
-    const [open, setOpen] = React.useState(false);
+    const { openPopup, togglePopup, setOpenPopup } = useContext(Context);
+    const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+
+    // Handle the checkout session creation
+    const handleCheckout = async () => {
+        setLoading(true);
+
+        try {
+            const response = await fetch('/api/stripe/createCheckoutSession', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: session.user.email, // User's email
+                    productPriceId: 'price_1PwVEWBp9wE6DgiwPlpzWdne', // Replace with your actual Stripe price ID
+                }),
+            });
+
+            const { sessionId } = await response.json();
+
+            // Get the Stripe.js instance
+            const stripe = await stripePromise;
+
+            // Redirect to the Stripe Checkout page
+            const { error } = await stripe.redirectToCheckout({
+                sessionId,
+            });
+
+            if (error) {
+                console.error('Error redirecting to Stripe:', error);
+            }
+
+        } catch (error) {
+            console.error('Error creating checkout session:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        // Set openPopup to false when the component mounts
         if (openPopup) {
             setOpenPopup(false);
         }
-    }, []); 
+    }, [openPopup, setOpenPopup]);
 
   return (
     <>
@@ -93,24 +134,33 @@ export default function Emlekerme({ session }) {
                         
                     </div>
                     <div className="flex flex-row gap-4">
-                        <input type="number" value="1" className="text-center bg-[--cream] w-1/2 rounded-full">
-                        </input>
-                        {session ? (
-                           <a 
-                            href={`${process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK}`}
-                            className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-1/2">
-                                <PiShoppingCart 
-                                    className="w-6 h-6"
-                                />
-                                Kosárba
-                            </a> 
-                        ) : (
-                            <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-1/2" onClick={togglePopup}>
+                        {session && (!userdata.data.User.secret || userdata.data.User.secret === "") && (
+                            <button
+                            onClick={handleCheckout}
+                            className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-full"
+                            disabled={loading}
+                            >
+                            <PiShoppingCart className="w-6 h-6" />
+                            {loading ? "Átirányítás a pénztárba..." : "Tovább a pénztárba"}
+                            </button>
+                        )}
+                        {!session && (
+                            <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-full" onClick={togglePopup}>
                                 A vásárláshoz jelentkezz be
                             </button>
                         )}
+                        {session && userdata.data.User.secret && userdata.data.User.secret !== "" && (
+                            <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-full cursor-not-allowed">
+                                Aktiváld az adatlapod
+                            </button>
+                        )} 
                         
                     </div>
+                    {session && userdata.data.User.secret && userdata.data.User.secret !== "" && (
+                        <div className="text-[--error] p-4 border border-[--error] rounded-lg bg-red-500 bg-opacity-10">
+                            <p className="text-sm">Jelenleg van egy adatlap előfizetésed amit nem aktiváltál. Egy újabb érme vásárlása előtt kérlek aktiváld az előző adatlapodat. Az aktiváló kódot, és az aktiválás menetét az email fiókodban találod. Ha esetleg eltelt 5 nap a rendelésed óta, és az érme még nem érkezett meg, vedd fel velünk a kapcsolatot a <Link className="underline" href="/kapcsolat">kapcsolat</Link> menüpontban található elérhetőségek egyikén.</p>
+                        </div>
+                    )} 
                     <div className="flex flex-col gap-4">
                         <p className="font-bold">Mit tartalmaz a csomag?</p>
                         <ul className="flex flex-col gap-2 list-disc">

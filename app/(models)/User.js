@@ -28,7 +28,36 @@ const userSchema = new Schema(
     secret: {
       type: String,
       require: false
+    },
+    checkoutSession: {
+      type: String,
+      require: false
+    },
+    zip: {
+      type: String,
+      require: false
+    },
+    city: {
+      type: String,
+      require: false
+    },
+    address1: {
+      type: String,
+      require: false
+    },
+    adress2: {
+      type: String,
+      require: false
+    },
+    phone: {
+      type: String,
+      require: false
+    },
+    stripeSubscription: {
+      type: String,
+      require: false
     }
+
   },
   {
     timestamps: true,

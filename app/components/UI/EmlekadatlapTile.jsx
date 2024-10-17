@@ -1,39 +1,96 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { TbTrash } from "react-icons/tb"
+import LoginModal from "../UI/LoginModal"
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../../Context";
 
 export default function Emlekadatlaptile({ data }) {
+  const { togglePopup } = useContext(Context);
+  const [subscriptionStatus, setSubscriptionStatus] = useState(null);
+
+  useEffect(() => {
+    // Fetch subscription status if there's a subscription ID
+    const fetchSubscriptionStatus = async () => {
+      if (data.subscription) {
+        try {
+          const response = await fetch('/api/stripe/checkPayment', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ subscriptionId: data.subscription }),
+          });
+
+          const result = await response.json();
+          setSubscriptionStatus(result.status); // Save the status (e.g., 'active', 'canceled')
+        } catch (error) {
+          console.error('Error fetching subscription status:', error);
+        }
+      }
+    };
+
+    fetchSubscriptionStatus();
+  }, [data.subscription]);
+
   return (
-    <div className="flex flex-row gap-8 bg-white rounded-xl shadow-special p-4">
-        <div className="flex flex-row gap-8 w-10/12">
-            <div className="relative w-[150px] h-[150px]">
-                {data.profileimage && (
-                    <Image 
-                    src={data.profileimage}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    className="rounded-full"/>  
-                )}
-                {!data.profileimage && (
-                    <Image 
-                    src='/blank-profile.webp'
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    className="rounded-full"/>
-                )}
-                
+    <>
+      <div className="relative flex flex-row gap-8 bg-white hover:bg-[--cream] rounded-xl border border-[--cream] p-4">
+        <div className="flex flex-row gap-4 w-full">
+          <div className="relative w-[75px] h-[75px] self-center">
+            {data.profileimage && (
+              <Image 
+                src={data.profileimage}
+                fill
+                style={{ objectFit: 'cover' }}
+                className="rounded-full"
+                alt="Profile Image"
+              />
+            )}
+            {!data.profileimage && (
+              <Image 
+                src='/blank-profile.webp'
+                fill
+                style={{ objectFit: 'cover' }}
+                className="rounded-full"
+                alt="Blank Profile Image"
+              />
+            )}
+          </div>
+          <div className="flex flex-col justify-center gap-2">
+            <div className="flex flex-row items-center gap-2">
+              <h4 className="text-lg">{data.name}</h4>
+              <p className="text-sm">({data.age})</p>
             </div>
-            <div className="flex flex-col justify-center gap-4">
-                <h4>{data.name}</h4>
-                <p>{data.age}</p>
-                <p>{data.born} - {data.died}</p>
-            </div>
+            <p className="text-sm">{data.born} - {data.died}</p>
+            <p className="text-xs">Azonosító: {data.uri}</p>
+
+            {/* Display subscription status */}
+            {subscriptionStatus ? (
+              <p className={`text-xs ${subscriptionStatus === 'active' ? 'text-green-500' : 'text-red-500'}`}>
+                {subscriptionStatus === 'active' ? 'Fizetett' : 'Nem fizetett'}
+              </p>
+            ) : (
+              <p className="text-xs text-gray-500">Ellenőrzés alatt...</p>
+            )}
+          </div>
         </div>
         
-        <div className="flex flex-col justify-between items-end w-2/12">
-            <p>Azonosító: {data.uri}</p>
-            <Link href={`/emlekadatlapok/${data.uri}`} className="px-2 py-1 bg-[--blue] hover:bg-[--rose] rounded-full transition-all text-white w-fit">Adatlap megtekintése</Link>
+        <div className="flex flex-col justify-end items-end min-w-fit">
+          <TbTrash className="absolute top-4 right-4 w-6 h-6 text-[--error] hover:text-white bg-transparent hover:bg-[--error] p-1 cursor-pointer rounded-full" onClick={togglePopup}/>
+          <Link href={`/emlekadatlapok/${data.uri}`} className="px-2 py-1 bg-[--blue] hover:bg-[--rose] rounded-full transition-all text-white text-xs w-fit">Adatlap megtekintése</Link>
         </div>
-        
-    </div>
-  )
+      </div>
+      <LoginModal>
+        <h4>Biztosan törlöd az adatlapot?</h4>
+        <p>Ez a módosítás visszavonhatatlan.</p>
+        <button className="flex flex-nowrap gap-2 items-center bg-[--error] hover:bg-[--error-hover] rounded-full transition-all text-white w-fit">
+          <TbTrash className="w-4 h-4 rounded-md text-white cursor-pointer" />
+          Véglegesen törlöm
+        </button>
+      </LoginModal>
+    </>
+  );
 }

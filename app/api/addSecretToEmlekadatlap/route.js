@@ -5,14 +5,15 @@ import { NextResponse } from "next/server";
 export async function POST(req) {
     await connect();
 
-    const { writtensecret, uri, email } = await req.json();
+    const { writtensecret, uri, email, subscriptionId } = await req.json();
 
     console.log('Secret received from frontend: ',writtensecret);
     console.log('Uri received from frontend: ',uri);
     console.log('Email received from frontend: ',email);
+    console.log('Subscription ID:', subscriptionId);
 
     try {
-        const emlekadatlap = await Emlekadatlap.create({ uri, secret: writtensecret, owner: email });
+        const emlekadatlap = await Emlekadatlap.create({ uri, secret: writtensecret, owner: email, subscription: subscriptionId });
         console.log('Emlekadatlap created:', emlekadatlap);
         return NextResponse.json({ data: { Emlekadatlap: emlekadatlap } });
     } catch (error) {

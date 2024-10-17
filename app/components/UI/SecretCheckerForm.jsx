@@ -31,16 +31,15 @@ export default function SecretCheckerForm({user}) {
     const email = user.email
 
     const legitSecret = user.secret
-    console.log(uri)
-    console.log(writtensecret)
-    console.log(user.secret)
+
+    const subscriptionId = user.stripeSubscription
 
     if (legitSecret.toString().trim() === writtensecret.writtensecret.toString().trim()) {
       try {
         const response = await fetch('/api/addSecretToEmlekadatlap', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ writtensecret: writtensecret.writtensecret, uri, email }),
+          body: JSON.stringify({ writtensecret: writtensecret.writtensecret, uri, email, subscriptionId }),
         });
   
         if (response.ok) {

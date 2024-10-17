@@ -68,7 +68,7 @@ export default function ProfilePicture({ session, data }) {
         close={() => setLightbox({ open: false, index: 0 })}
         slides={[
           {
-            src: selectedImage || data.profileimage || '/blank-profile.webp', // The profile image to show in the lightbox
+            src: selectedImage || data?.profileimage || '/blank-profile.webp', // The profile image to show in the lightbox
           }
         ]}
         index={lightbox.index}
@@ -92,7 +92,7 @@ export default function ProfilePicture({ session, data }) {
       )}
       
       {/* Profile Image */}
-      {data.profileimage && (
+      {data?.profileimage ? (
         <Image
           src={selectedImage || data.profileimage || '/blank-profile.webp'} // Use selected image for preview or existing profile image
           fill
@@ -101,10 +101,8 @@ export default function ProfilePicture({ session, data }) {
           alt="Profilkép"
           onClick={handleImageClick} // Open lightbox on image click
         />
-      )}
-      
-      {/* Fallback Image */}
-      {!data.profileimage && (
+      ) : (
+        // Fallback Image
         <Image
           src='/blank-profile.webp'
           fill
