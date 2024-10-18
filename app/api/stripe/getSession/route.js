@@ -1,25 +1,22 @@
 import Stripe from 'stripe';
+import { NextResponse } from 'next/server';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(req, res) {
-  if (req.method === 'GET') {
-    const sessionId = req.query.session_id;
+export async function GET(req) {
+  const { searchParams } = new URL(req.url);
+  const sessionId = searchParams.get('session_id');
 
-    if (!sessionId) {
-      return res.status(400).json({ error: 'session_id query parameter is required' });
-    }
+  if (!sessionId) {
+    return NextResponse.json({ error: 'session_id query parameter is required' }, { status: 400 });
+  }
 
-    try {
-      // Fetch the checkout session using the session ID
-      const session = await stripe.checkout.sessions.retrieve(sessionId);
-      return res.status(200).json(session);
-    } catch (error) {
-      console.error('Error retrieving Stripe session:', error);
-      return res.status(500).json({ error: 'Failed to retrieve session' });
-    }
-  } else {
-    res.setHeader('Allow', 'GET');
-    res.status(405).end('Method Not Allowed');
+  try {
+    // Fetch the checkout session using the session ID
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    return NextResponse.json(session, { status: 200 });
+  } catch (error) {
+    console.error('Error retrieving Stripe session:', error);
+    return NextResponse.json({ error: 'Failed to retrieve session' }, { status: 500 });
   }
 }
