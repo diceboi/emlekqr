@@ -5,6 +5,7 @@ import AuthProvider from "./Utils/AuthProvider";
 import { getServerSession } from "next-auth";
 import ContextProvider from "./Context";
 import UpdateEmlekadatlapContextProvider from "./UpdateEmlekadatlapContext";
+import { Toaster } from 'sonner'
 
 const geologica = Geologica({ subsets: ["latin"] });
 
@@ -28,6 +29,10 @@ export default async function RootLayout({ children }) {
           </AuthProvider>
         </UpdateEmlekadatlapContextProvider>
       </ContextProvider>
+      <Toaster 
+      richColors 
+      position="bottom-center"
+      />
     </html>
   );
 }

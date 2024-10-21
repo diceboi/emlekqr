@@ -50,7 +50,7 @@ export default function ProfileInfo({ data, tributes, session }) {
           <Media id="media" data={data?.media || null}/>
         )}
         {visibleSection === "tributes" && (
-          <Tributes id="tributes" data={data?.tributes || null} currenttributes={tributes || null} issession={session}/>
+          <Tributes id="tributes" data={data?.owner || null} currenttributes={tributes || null} issession={session}/>
         )}
       </div>
     </div>

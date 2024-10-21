@@ -97,7 +97,7 @@ const emlekadatlapSchema = new Schema(
     subscription: {
       type: String,
       required: false,
-    }
+    },
   },
   {
     timestamps: true,

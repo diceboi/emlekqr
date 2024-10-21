@@ -7,11 +7,11 @@ export const dynamic = "force-dynamic";
 export async function GET(req) {
     await connect();
     const { searchParams } = new URL(req.url);
-    const uri = searchParams.get('uri');
+    const to = searchParams.get('uri');
 
-    if (uri) {
+    if (to) {
         // Ensure correct filtering by `to` field
-        const tribute = await Tribute.find({ to: uri });
+        const tribute = await Tribute.find({ to: to });
         return NextResponse.json({ data: { Tribute: tribute } });
     }
 

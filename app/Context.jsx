@@ -30,6 +30,9 @@ export const Context = createContext({
 
   openPopup: false,
   setOpenPopup: () => {},
+
+  deletableSubId: {},
+  setDeletableSubId: () => {}
 });
 
 export default function ContextProvider({ children }) {
@@ -38,7 +41,8 @@ export default function ContextProvider({ children }) {
   const [isCartMenuOpen, setIsCartMenuOpen] = useState(true);
   const [cartItems, setIsCartItems] = useState([]);
   const [isEditable, setEditable] = useState(false);
-  const [openPopup, setOpenPopup] = useState(true)
+  const [openPopup, setOpenPopup] = useState(false);
+  const [deletableSubId, setDeletableSubId] = useState()
 
   useEffect(() => {
     const storedCart = typeof window !== 'undefined' ? localStorage.getItem('emlekqrkosar') : null;
@@ -196,7 +200,10 @@ export default function ContextProvider({ children }) {
 
       openPopup,
       togglePopup,
-      setOpenPopup
+      setOpenPopup,
+
+      deletableSubId,
+      setDeletableSubId
 
     }}>
       {children}

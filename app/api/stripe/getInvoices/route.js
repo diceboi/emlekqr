@@ -3,15 +3,18 @@ import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // Ensure this is defined in your .env.local
 
 // Named export for the POST request
-export async function POST(req) {
-  try {
-    const { subscriptionId } = await req.json();
+export async function GET(req) {
 
-    // Fetch the subscription details from Stripe
-    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+try {
 
-    // Return the subscription status
-    return new Response(JSON.stringify({ status: subscription.status }), {
+    const { searchParams } = new URL(req.url);
+    const subscriptionId = searchParams.get('subscriptionid');
+
+    console.log(searchParams.get('subscriptionid'))
+  
+    const invoices = await stripe.invoices.list(subscriptionId);
+    
+    return new Response(JSON.stringify({ invoices }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });

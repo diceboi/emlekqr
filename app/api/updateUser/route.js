@@ -20,11 +20,13 @@ export async function POST(req) {
           address2,
           phone,
           stripeSubscription,
-          secret
+          secret,
         },
       },
       { new: true }
     );
+
+    console.log("Latest sub item id:", subscriptionItem)
 
     if (!updatedUser) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });

@@ -2,12 +2,20 @@
 
 import Emlekadatlaptile from "../UI/EmlekadatlapTile";
 import { TbLibraryPhoto } from "react-icons/tb";
+import LoginModal from "../UI/LoginModal";
+import CancelSubscription from "../UI/CancelSubscription";
+import { Context } from "../../Context";
+import { useContext } from "react";
 
-export default function ProfilEmlekadatlapok({ currentdata, user }) {
+export default function ProfilEmlekadatlapok({ currentdata }) {
 
-  {/*const stripeUser = user.*/}
+  const { deletableSubId } = useContext(Context);
 
   return (
+    <>
+    <LoginModal>
+      <CancelSubscription subscriptionId={deletableSubId}/>
+    </LoginModal>
     <div className="flex flex-col gap-16 bg-white shadow-special rounded-2xl p-8">
         <div className="flex flex-col gap-8">
         <div className="flex flex-nowrap gap-4 items-center">
@@ -26,5 +34,7 @@ export default function ProfilEmlekadatlapok({ currentdata, user }) {
         </div>
         </div>
     </div>
+    </>
+    
   )
 }

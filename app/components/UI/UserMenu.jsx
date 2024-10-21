@@ -27,7 +27,6 @@ export default function UserMenu() {
     <div id="profile-nav" className={`absolute flex ${isUserMenuOpen === false ? 'left-20 pointer-events-none opacity-0' : 'left-0 pointer-events-auto opacity-100'} top-20 sm:right-20 w-full sm:max-w-min py-4 h-auto bg-[#ffffffd3] transition-all rounded-2xl backdrop-blur-md shadow-xl z-0`}>
         {session? <ul className="flex flex-col gap-2 px-4 menuitem">
             <Link href="/profil"><li className=" hover:bg-[--cream] py-1 px-2 rounded-full">Profil</li></Link>
-            <Link href="/emlekadatlapok"><li className=" hover:bg-[--cream] py-1 px-2 rounded-full">Emlékadatlapok</li></Link>
             <li onClick={signOut} className="cursor-pointer hover:bg-[--cream] py-1 px-2 rounded-full">Kijelentkezés</li>
             </ul>
             : 

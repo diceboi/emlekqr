@@ -35,42 +35,52 @@ export default function Emlekerme({ session, userdata }) {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-    // Handle the checkout session creation
     const handleCheckout = async () => {
         setLoading(true);
-
+      
         try {
-            const response = await fetch('/api/stripe/createCheckoutSession', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: session.user.email, // User's email
-                    productPriceId: 'price_1PwVEWBp9wE6DgiwPlpzWdne', // Replace with your actual Stripe price ID
-                }),
-            });
-
-            const { sessionId } = await response.json();
-
-            // Get the Stripe.js instance
-            const stripe = await stripePromise;
-
-            // Redirect to the Stripe Checkout page
-            const { error } = await stripe.redirectToCheckout({
-                sessionId,
-            });
-
-            if (error) {
-                console.error('Error redirecting to Stripe:', error);
-            }
-
+          const response = await fetch('/api/stripe/createCheckoutSession', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: session.user.email, // User's email
+              productPriceId: 'price_1PwVEWBp9wE6DgiwPlpzWdne', // Replace with your actual Stripe price ID
+            }),
+          });
+      
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`API Error: ${errorData.error}`);
+          }
+      
+          const { sessionId } = await response.json();
+      
+          // Check if sessionId is received correctly
+          if (!sessionId) {
+            throw new Error('No session ID returned');
+          }
+      
+          // Get the Stripe.js instance
+          const stripe = await stripePromise;
+      
+          // Redirect to the Stripe Checkout page
+          const { error } = await stripe.redirectToCheckout({
+            sessionId,
+          });
+      
+          if (error) {
+            console.error('Error redirecting to Stripe:', error);
+          }
+      
         } catch (error) {
-            console.error('Error creating checkout session:', error);
+          console.error('Error creating checkout session:', error);
         } finally {
-            setLoading(false);
+          setLoading(false);
         }
-    };
+      };
+      
 
     useEffect(() => {
         if (openPopup) {

@@ -1,12 +1,30 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../../Context";
 import { motion } from "framer-motion";
 import { CgClose } from "react-icons/cg";
 
-export default function SecretCheckerModal({ children }) {
-  const { openPopup, togglePopup } = useContext(Context);
+export default function SecretCheckerModal({ children, openstate }) {
+  const { openPopup, setOpenPopup } = useContext(Context);
+  const [manualClose, setManualClose] = useState(false); // Track manual close
+
+  useEffect(() => {
+    // If openstate is true and the popup isn't manually closed, open the popup
+    if (openstate === true && !manualClose) {
+      setOpenPopup(true);
+    }
+    // If openstate is false, close the popup regardless of manual state
+    else if (openstate === false) {
+      setOpenPopup(false);
+      setManualClose(false); // Reset manual close when state changes
+    }
+  }, [openstate, manualClose, setOpenPopup]);
+
+  const handleClose = () => {
+    setOpenPopup(false);
+    setManualClose(true); // Mark that the user manually closed the popup
+  };
 
   return (
     <motion.section
@@ -25,7 +43,7 @@ export default function SecretCheckerModal({ children }) {
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.8, type: "spring", bounce: 0.4, delay: 0.4 }}
       >
-        <button className="group absolute top-4 right-4" onClick={togglePopup}>
+        <button className="group absolute top-4 right-4" onClick={handleClose}>
           <CgClose className="min-h-6 min-w-6 text-black group-hover:text-[--rose]" />
         </button>
         {children}

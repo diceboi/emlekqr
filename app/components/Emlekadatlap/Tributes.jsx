@@ -1,6 +1,10 @@
-import TributeTile from "../UI/TributeTile";
+"use client"
 
-export default function Tributes({ data, currenttributes, issession }) {
+import TributeTile from "../UI/TributeTile";
+import MainCommentForm from "../UI/MainCommentForm";
+
+export default function Tributes({ data, currenttributes, issession }) {  
+
   const availableTributes = currenttributes.filter(
     (tribute) => tribute.verified === true
   );
@@ -9,13 +13,15 @@ export default function Tributes({ data, currenttributes, issession }) {
     <>
       {!issession &&
         availableTributes.map((tribute, index) => (
-          <TributeTile key={index} tribute={tribute} />
+          <TributeTile key={index} tribute={tribute} owner={data} session={issession}/>
         ))}
 
       {issession &&
         currenttributes.map((tribute, index) => (
-          <TributeTile key={index} tribute={tribute} />
+          <TributeTile key={index} tribute={tribute} owner={data} session={issession} />
         ))}
+
+      <MainCommentForm session={issession}/>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const { Schema } = mongoose;
 
@@ -56,8 +57,7 @@ const userSchema = new Schema(
     stripeSubscription: {
       type: String,
       require: false
-    }
-
+    },
   },
   {
     timestamps: true,

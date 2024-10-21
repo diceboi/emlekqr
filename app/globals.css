@@ -11,9 +11,9 @@
     --cream: #f5efed;
     --cream-25: #f5efed4b;
     --cream-10: #f5efed1f;
-    --success: rgb(0, 255, 0);
+    --success: #22c55e;
     --success-10: rgba(0, 255, 0, 0.100);
-    --error: red;
+    --error: #ef4444;
     --error-hover: rgb(187, 6, 6);
 }
 

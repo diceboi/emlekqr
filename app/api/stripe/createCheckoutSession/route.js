@@ -7,6 +7,7 @@ export async function POST(req) {
     const { email, productPriceId } = await req.json(); // Parse request body
 
     if (!email || !productPriceId) {
+      console.error('Missing email or productPriceId');
       return new Response(JSON.stringify({ error: 'Email and Product Price ID are required' }), {
         status: 400,
       });
@@ -32,6 +33,13 @@ export async function POST(req) {
         },
       ],
       mode: 'subscription',
+      billing_address_collection: 'required',
+      shipping_address_collection: {
+        allowed_countries: ['HU'], // Collect shipping address for specified countries
+      },
+      phone_number_collection: {
+        enabled: true
+      },
       success_url: `${req.headers.get('origin')}/koszonjuk?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get('origin')}/cancel`,
     });
@@ -39,6 +47,7 @@ export async function POST(req) {
     // Return the session ID
     return new Response(JSON.stringify({ sessionId: session.id }), {
       status: 200,
+      headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
     console.error('Error creating checkout session:', error);

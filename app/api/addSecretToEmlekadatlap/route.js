@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(req) {
     await connect();
 
-    const { writtensecret, uri, email, subscriptionId } = await req.json();
+    const { writtensecret, uri, email, subscriptionId, subscriptionItem } = await req.json();
 
     console.log('Secret received from frontend: ',writtensecret);
     console.log('Uri received from frontend: ',uri);

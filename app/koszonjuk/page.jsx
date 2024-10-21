@@ -13,6 +13,18 @@ const getCheckoutSession = async (sessionId) => {
   }
 };
 
+// Function to fetch the subscription details
+const getSubscriptionDetails = async (subscriptionId) => {
+  try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+    return subscription;
+  } catch (error) {
+    console.error("Error fetching Stripe subscription:", error);
+    return null;
+  }
+};
+
 const updateUserData = async (email, checkoutSessionData) => {
   const { session_id, zip, city, address_line1, address_line2, phone, subscription_id, secret } = checkoutSessionData;
 
@@ -32,7 +44,7 @@ const updateUserData = async (email, checkoutSessionData) => {
         address2: address_line2,
         phone,
         stripeSubscription: subscription_id,
-        secret: secret,
+        secret,
       }),
     });
 
@@ -68,6 +80,11 @@ export default async function Koszonjuk({ searchParams }) {
     if (checkoutSession && checkoutSession.customer_details?.email) {
       const customerDetails = checkoutSession.customer_details;
 
+      // Fetch subscription details and get the latest subscription item
+      const subscription = checkoutSession.subscription
+        ? await getSubscriptionDetails(checkoutSession.subscription)
+        : null;
+
       // Prepare data to update the user
       const checkoutSessionData = {
         session_id,
@@ -85,7 +102,7 @@ export default async function Koszonjuk({ searchParams }) {
     }
   }
 
-  console.log(checkoutSession)
+  console.log(checkoutSession);
 
   return (
     <section className="w-full py-20">

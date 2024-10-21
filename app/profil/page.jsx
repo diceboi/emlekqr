@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import ProfilEmlekadatlapok from "../components/Profil/ProfilEmlekadatlapok";
 import ProfilErtesitesek from "../components/Profil/ProfilErtesitesek";
 import ProfilAdatlap from "../components/Profil/ProfilAdatlap";
+import ProfilSzamlak from "../components/Profil/ProfilSzamlak";
 
 const getPersonalEmlekadatlap = async (owner) => {
   try {
@@ -34,6 +35,21 @@ const getUserData = async (email) => {
   }
 };
 
+const getInvoices = async (subscriptionId) => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
+    const res = await fetch(`${baseUrl}/api/stripe/getInvoices?subscriptionid=${subscriptionId}`, { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error("Az adatok letöltése nem sikerült");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("Az adatok betöltése sikertlen", error);
+    return null;
+  }
+};
+
 export default async function Profil() {
   const session = await getServerSession();
 
@@ -44,6 +60,7 @@ export default async function Profil() {
   const sessionUser = session?.user?.email;
   const emlekadatlapok = await getPersonalEmlekadatlap(sessionUser);
   const user = await getUserData(sessionUser);
+  const invoices = await getInvoices(user?.data.User.stripeSubscription);
   const currentData = emlekadatlapok?.data?.Emlekadatlap || [];
   const currentUser = user?.data.User || []
 
@@ -54,7 +71,8 @@ export default async function Profil() {
           <ProfilAdatlap session={session} user={currentUser} />
           <div className="flex flex-col gap-16 w-full">
             <ProfilErtesitesek />
-            <ProfilEmlekadatlapok currentdata={currentData} user={currentUser} />
+            <ProfilEmlekadatlapok currentdata={currentData} />
+            <ProfilSzamlak currentdata={currentData} invoices={invoices}/>
           </div>
         </div>
       </div>

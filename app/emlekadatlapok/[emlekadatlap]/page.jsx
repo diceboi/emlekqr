@@ -70,17 +70,16 @@ export default async function Emlekadatlap({ params }) {
   const emlekadatlap = await getEmlekadatlap(params.emlekadatlap);
   const currentData = emlekadatlap?.data?.Emlekadatlap || null;
 
-  console.log("Current data: ", currentData)
-
   const tribute = await getTributes(params.emlekadatlap);
   const currentTributes = tribute?.data?.Tribute || null;
+
 
   return (
     <>
     {/*<BackgroundSwitcher>*/}
     <section className="relative w-full px-2 lg:px-0 pt-10 pb-32 lg:pt-20">
       {currentData === null && (
-        <SecretCheckerModal session={session}>
+        <SecretCheckerModal session={session} openstate={true}>
         {session && currentData === null  && (
           <SecretCheckerForm user={currentUser}/>
         )}

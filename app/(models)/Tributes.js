@@ -10,7 +10,7 @@ const tributeSchema = new Schema(
     },
     fromprofileid: {
       type: String,
-      required: true,
+      required: false,
     },
     to: {
       type: String,
@@ -25,6 +25,18 @@ const tributeSchema = new Schema(
       required: true,
     },
     deleted: {
+      type: Boolean,
+      required: true,
+    },
+    parent: {
+      type: String,
+      required: false,
+    },
+    main: {
+      type: Boolean,
+      required: true,
+    },
+    byregisteredprofile: {
       type: Boolean,
       required: true,
     },
