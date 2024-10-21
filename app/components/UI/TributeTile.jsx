@@ -74,7 +74,7 @@ export default function TributeTile({ tribute, owner, session }) {
     };
 
     return (
-      <div className={`relative ${session.user.email !== owner && tribute.verified === false || tribute.deleted === true ? "hidden" : "flex"} flex-col lg:p-8 p-4 lg:gap-8 gap-4 bg-white rounded-2xl shadow-special my-4`}>
+      <div className={`relative ${session.user?.email !== owner && tribute.verified === false || tribute.deleted === true ? "hidden" : "flex"} flex-col lg:p-8 p-4 lg:gap-8 gap-4 bg-white rounded-2xl shadow-special my-4`}>
         <div className={`flex flex-col lg:gap-8 gap-4 ${ tribute.verified === false ? "opacity-50" : "opacity-100"}`}>
           <h4>{tribute.from}</h4>
           <p>{tribute.message}</p>
