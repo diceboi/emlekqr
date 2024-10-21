@@ -76,7 +76,7 @@ export default function TributeTile({ tribute, owner, session }) {
 
     return (
       <div className={`relative ${
-          !isOwner || tribute.verified === false || tribute.deleted === true
+          !isOwner && tribute.verified === false || tribute.deleted === true
           ? "hidden"
           : "flex"
         } flex-col lg:p-8 p-4 lg:gap-8 gap-4 bg-white rounded-2xl shadow-special my-4`}

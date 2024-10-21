@@ -2,8 +2,6 @@ import Link from "next/link"
 
 export default function Szamlaktile({ szamla }) {
 
-    console.log(szamla)
-
   return (
     <>
       <div className="relative flex flex-row gap-8 bg-white hover:bg-[--cream] rounded-xl border border-[--cream] p-4">
