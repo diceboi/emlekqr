@@ -2,7 +2,7 @@
 
 import { useContext } from "react";
 import { Context } from "../../Context";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 export default function TributeTile({ tribute, owner, session }) {
@@ -13,7 +13,7 @@ export default function TributeTile({ tribute, owner, session }) {
 
     const handleApprove = async () => {
       const formData = {
-        _id: tribute._id, // Assuming you have an ID for the tribute document
+        _id: tribute._id,
         verified: true,
         deleted: false,
       };
@@ -24,16 +24,15 @@ export default function TributeTile({ tribute, owner, session }) {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ formData }), // Wrap formData inside an object
+          body: JSON.stringify({ formData }),
         });
 
         const result = await response.json();
 
         if (response.ok) {
           console.log('Tribute approved successfully:', result);
-          toast.success('Komment sikeresen megerősítve.')
-          router.refresh()
-          // Optionally, you can trigger a refresh or update the UI state here
+          toast.success('Komment sikeresen megerősítve.');
+          router.refresh();
         } else {
           console.error('Failed to approve tribute:', result.message);
         }
@@ -44,7 +43,7 @@ export default function TributeTile({ tribute, owner, session }) {
 
     const handleDeny = async () => {
       const formData = {
-        _id: tribute._id, // Assuming you have an ID for the tribute document
+        _id: tribute._id,
         verified: false,
         deleted: true,
       };
@@ -55,16 +54,15 @@ export default function TributeTile({ tribute, owner, session }) {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ formData }), // Wrap formData inside an object
+          body: JSON.stringify({ formData }),
         });
 
         const result = await response.json();
 
         if (response.ok) {
           console.log('Tribute deleted successfully:', result);
-          toast.success('Komment sikeresen törölve.')
-          router.refresh()
-          // Optionally, you can trigger a refresh or update the UI state here
+          toast.success('Komment sikeresen törölve.');
+          router.refresh();
         } else {
           console.error('Failed to delete tribute:', result.message);
         }
@@ -73,30 +71,38 @@ export default function TributeTile({ tribute, owner, session }) {
       }
     };
 
+    // Check if session exists and set a default if not
+    const isOwner = session?.user?.email === owner;
+
     return (
-      <div className={`relative ${session.user?.email !== owner && tribute.verified === false || tribute.deleted === true ? "hidden" : "flex"} flex-col lg:p-8 p-4 lg:gap-8 gap-4 bg-white rounded-2xl shadow-special my-4`}>
-        <div className={`flex flex-col lg:gap-8 gap-4 ${ tribute.verified === false ? "opacity-50" : "opacity-100"}`}>
+      <div className={`relative ${
+          !isOwner || tribute.verified === false || tribute.deleted === true
+          ? "hidden"
+          : "flex"
+        } flex-col lg:p-8 p-4 lg:gap-8 gap-4 bg-white rounded-2xl shadow-special my-4`}
+      >
+        <div className={`flex flex-col lg:gap-8 gap-4 ${tribute.verified === false ? "opacity-50" : "opacity-100"}`}>
           <h4>{tribute.from}</h4>
           <p>{tribute.message}</p>
           {tribute.verified === false && (
-          <p className="absolute top-2 right-3 text-sm text-[--blue]">Jóváhagyásra vár</p>
+            <p className="absolute top-2 right-3 text-sm text-[--blue]">Jóváhagyásra vár</p>
           )}
         </div>
         {tribute.verified === false && isEditable && (
-        <div className="flex flex-nowrap gap-2 z-10">
-          <button 
-            className="bg-[--success] px-2 py-1 rounded-full text-white"
-            onClick={handleApprove}
-          >
-            Jóváhagy
-          </button>
-          <button 
-            className="bg-[--error] px-2 py-1 rounded-full text-white"
-            onClick={handleDeny}
+          <div className="flex flex-nowrap gap-2 z-10">
+            <button 
+              className="bg-[--success] px-2 py-1 rounded-full text-white"
+              onClick={handleApprove}
+            >
+              Jóváhagy
+            </button>
+            <button 
+              className="bg-[--error] px-2 py-1 rounded-full text-white"
+              onClick={handleDeny}
             >
               Elvetés
             </button>
-        </div>
+          </div>
         )}
       </div>
     );
