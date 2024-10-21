@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from 'sonner'
 
-export default function MainCommentForm({ session, currenttribute }) {
+export default function MainCommentForm({ session, currenttribute, main, to }) {
 
   const router = useRouter()
   
@@ -25,8 +25,8 @@ export default function MainCommentForm({ session, currenttribute }) {
       to: lastDigits,
       verified: false,
       deleted: false,
-      parent: "",
-      main: true,
+      parent: to,
+      main: main,
       byregisteredprofile: session ? true : false
     };
 
@@ -57,7 +57,11 @@ export default function MainCommentForm({ session, currenttribute }) {
 
   return (
     <form className="flex flex-col gap-4 my-8" onSubmit={handleSubmit(onSubmit)}>
-      <h4>Hozzászólás</h4>
+      {main === true ? (
+        <h4>Hozzászólás</h4>
+      ):(
+        <h4>Válasz</h4>
+      )}
       <div className="flex flex-col gap-4 bg-[--cream] p-4 rounded-xl">
         {!session && (
           <>

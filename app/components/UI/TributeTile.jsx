@@ -1,13 +1,28 @@
 "use client"
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../../Context";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { TbMessage } from "react-icons/tb";
+import MainCommentForm from "./MainCommentForm";
+import SecondaryTributeTile from "../UI/SecondaryTributeTile"
 
-export default function TributeTile({ tribute, owner, session }) {
+export default function TributeTile({ tribute, owner, session, alltributes }) {
 
     const { isEditable } = useContext(Context);
+
+    const [replyOpen, setReplyOpen] = useState(false)
+
+    const secondaryTributes = alltributes.filter(
+      (secondarytribute) => secondarytribute.parent === tribute._id
+    )
+
+    console.log(secondaryTributes)
+
+    const toggleReply = () => {
+      setReplyOpen(prevState => !prevState);
+    };
 
     const router = useRouter()
 
@@ -75,15 +90,20 @@ export default function TributeTile({ tribute, owner, session }) {
     const isOwner = session?.user?.email === owner;
 
     return (
+      <>
       <div className={`relative ${
-          !isOwner && tribute.verified === false || tribute.deleted === true
+          !isOwner && tribute.verified === false || tribute.deleted === true || tribute.main === false
           ? "hidden"
           : "flex"
         } flex-col lg:p-8 p-4 lg:gap-8 gap-4 bg-white rounded-2xl shadow-special my-4`}
       >
-        <div className={`flex flex-col lg:gap-8 gap-4 ${tribute.verified === false ? "opacity-50" : "opacity-100"}`}>
-          <h4>{tribute.from}</h4>
-          <p>{tribute.message}</p>
+        <div className={`flex flex-col lg:gap-4 gap-2 ${tribute.verified === false ? "opacity-50" : "opacity-100"}`}>
+          <h4 className="text-sm">{tribute.from}</h4>
+          <p className="text-sm">{tribute.message}</p>
+          {tribute.verified === true &&(
+            <button className="flex flex-nowrap gap-1 items-center self-start text-xs text-neutral-500 hover:bg-[--cream] px-2 py-1 rounded-full border border-neutral-300" onClick={toggleReply}><TbMessage /> Válasz</button>
+          )}
+          
           {tribute.verified === false && (
             <p className="absolute top-2 right-3 text-sm text-[--blue]">Jóváhagyásra vár</p>
           )}
@@ -91,13 +111,13 @@ export default function TributeTile({ tribute, owner, session }) {
         {tribute.verified === false && isEditable && (
           <div className="flex flex-nowrap gap-2 z-10">
             <button 
-              className="bg-[--success] px-2 py-1 rounded-full text-white"
+              className="bg-[--success] px-2 py-1 rounded-full text-white text-sm"
               onClick={handleApprove}
             >
               Jóváhagy
             </button>
             <button 
-              className="bg-[--error] px-2 py-1 rounded-full text-white"
+              className="bg-[--error] px-2 py-1 rounded-full text-white text-sm"
               onClick={handleDeny}
             >
               Elvetés
@@ -105,5 +125,14 @@ export default function TributeTile({ tribute, owner, session }) {
           </div>
         )}
       </div>
+      {secondaryTributes.map((secondarytribute, index) => (
+        <SecondaryTributeTile key={index} maintributeid={tribute._id} tribute={secondarytribute} issession={session} tributes={alltributes}/>
+      ))}
+      {replyOpen && (
+        <div className="lg:pl-16">
+          <MainCommentForm main={false} to={tribute._id}/>
+        </div>
+      )}
+      </>
     );
 }

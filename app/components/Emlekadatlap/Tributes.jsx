@@ -13,15 +13,15 @@ export default function Tributes({ data, currenttributes, issession }) {
     <>
       {!issession &&
         availableTributes.map((tribute, index) => (
-          <TributeTile key={index} tribute={tribute} owner={data} session={issession}/>
+          <TributeTile key={index} tribute={tribute} owner={data} session={issession} alltributes={currenttributes}/>
         ))}
 
       {issession &&
         currenttributes.map((tribute, index) => (
-          <TributeTile key={index} tribute={tribute} owner={data} session={issession} />
+          <TributeTile key={index} tribute={tribute} owner={data} session={issession} alltributes={currenttributes}/>
         ))}
 
-      <MainCommentForm session={issession}/>
+      <MainCommentForm session={issession} main={true}/>
     </>
   );
 }
