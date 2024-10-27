@@ -2,20 +2,20 @@
 
 import Emlekadatlaptile from "../UI/EmlekadatlapTile";
 import { TbLibraryPhoto } from "react-icons/tb";
-import LoginModal from "../UI/LoginModal";
+import Modal from "../UI/Modal";
 import CancelSubscription from "../UI/CancelSubscription";
 import { Context } from "../../Context";
 import { useContext } from "react";
 
 export default function ProfilEmlekadatlapok({ currentdata }) {
 
-  const { deletableSubId } = useContext(Context);
+  const { deletableSubId, openPopup, togglePopup } = useContext(Context);
 
   return (
     <>
-    <LoginModal>
+    <Modal openstate={openPopup === "deleteAdatlap"} onClose={() => togglePopup(null)}>
       <CancelSubscription subscriptionId={deletableSubId}/>
-    </LoginModal>
+    </Modal>
     <div className="flex flex-col gap-16 bg-white shadow-special rounded-2xl p-8">
         <div className="flex flex-col gap-8">
         <div className="flex flex-nowrap gap-4 items-center">

@@ -18,6 +18,7 @@ export default function ProfileEditButton({ session, user, data }) {
   const [uploading, setUploading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploadCount, setUploadCount] = useState(0); // Track uploaded images
+  const [originalData, setOriginalData] = useState({});
 
   useEffect(() => {
     if (data) {
@@ -36,8 +37,96 @@ export default function ProfileEditButton({ session, user, data }) {
       updateFormData("born", data.born || "");
       updateFormData("died", data.died || "");
       updateFormData("quote", data.quote || "");
+
+      setOriginalData(data);
     }
   }, [data]);
+
+
+
+  // Function to detect changes in the formData and prepare a notification
+  const detectChangesAndNotify = async () => {
+    const changes = [];
+    let updatedImages = [];
+    let updatedVideos = [];
+
+    // Check for changes in specific fields (example: name, bio, etc.)
+    if (formData.name !== originalData.name) {
+      changes.push({ field: "Név", newValue: formData.name });
+    }
+    if (formData.bio !== originalData.bio) {
+      changes.push({ field: "Adatok", newValue: formData.bio });
+    }
+    if (formData.story !== originalData.story) {
+      changes.push({ field: "Story", newValue: formData.story });
+    }
+    if (formData.media !== originalData.media) {
+      changes.push({ field: "Média", newValue: formData.media });
+    }
+    if (formData.tributes !== originalData.tributes) {
+      changes.push({ field: "Tiszteletnyilvánítás", newValue: formData.tributes });
+    }
+    if (formData.profileimage !== originalData.profileimage) {
+      changes.push({ field: "Profilkép", newValue: formData.profileimage });
+    }
+    if (formData.coverimage !== originalData.coverimage) {
+      changes.push({ field: "Borítókép", newValue: formData.coverimage });
+    }
+    if (formData.quote !== originalData.quote) {
+      changes.push({ field: "Idézet", newValue: formData.quote });
+    }
+    
+    // Compare media images
+    if (JSON.stringify(formData.media.images) !== JSON.stringify(originalData.media.images)) {
+      updatedImages = formData.media.images.filter((img) => !originalData.media.images.includes(img));
+      changes.push({ field: "Média > Képek", newValue: updatedImages });
+    }
+
+    // Compare media videos
+    if (JSON.stringify(formData.media.videos) !== JSON.stringify(originalData.media.videos)) {
+      updatedVideos = formData.media.videos.filter((video) => !originalData.media.videos.includes(video));
+      changes.push({ field: "Média > Videók", newValue: updatedVideos });
+    }
+
+    // Compare story images
+    formData.story.forEach((story, index) => {
+      if (JSON.stringify(story.images) !== JSON.stringify(originalData.story[index]?.images || [])) {
+        const updatedStoryImages = story.images.filter((img) => !originalData.story[index]?.images?.includes(img));
+        updatedImages = [...updatedImages, ...updatedStoryImages]; // Add to updated images array
+        changes.push({ field: `Story képek ${story.year}`, newValue: updatedStoryImages });
+      }
+    });
+
+    // If there are changes, send a notification
+    if (changes.length > 0) {
+      const notificationPayload = {
+        personal: false,
+        viewed: false,
+        notificationtype: "adatlap",
+        adatlap: data.uri,
+        from: session.user.name, // The user making the change
+        message: `${changes.map(change => change.field).join(", ")}`, // Summary of changes
+        images: updatedImages, // If any images were changed, you could add their references here
+        videos: updatedVideos, // Same for videos if applicable
+      };
+
+      await fetch("/api/addNotification", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(notificationPayload),
+      }).then((res) => {
+        if (res.ok) {
+          console.log("Notification sent successfully");
+        } else {
+          console.error("Failed to send notification");
+        }
+      });
+    }
+  };
+
+
 
   const handleSubmit = async () => {
     setSaving(true); // Start saving
@@ -51,9 +140,10 @@ export default function ProfileEditButton({ session, user, data }) {
 
     if (response.ok) {
       setEditable(false);
-      console.log("FormData", formData);
+      console.log("FormData NÉZD MEG", formData);
       console.log(selectedImages);
       console.log("Data submitted successfully");
+      await detectChangesAndNotify();
     } else {
       console.log("Error submitting data");
       setSaving(false);

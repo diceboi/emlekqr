@@ -4,7 +4,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
   try {
-    const { email, productPriceId } = await req.json(); // Parse request body
+    const { email, productPriceId } = await req.json(); // Parse request body to include couponCode
 
     if (!email || !productPriceId) {
       console.error('Missing email or productPriceId');
@@ -22,24 +22,25 @@ export async function POST(req) {
       customer = await stripe.customers.create({ email });
     }
 
-    // Create a Checkout Session
+    // Create a Checkout Session with the discount if valid
     const session = await stripe.checkout.sessions.create({
       customer: customer.id,
       payment_method_types: ['card'],
       line_items: [
         {
-          price: productPriceId, // Replace with your actual Stripe price ID
+          price: productPriceId,
           quantity: 1,
         },
       ],
       mode: 'subscription',
       billing_address_collection: 'required',
       shipping_address_collection: {
-        allowed_countries: ['HU'], // Collect shipping address for specified countries
+        allowed_countries: ['HU'],
       },
       phone_number_collection: {
-        enabled: true
+        enabled: true,
       },
+      allow_promotion_codes: true,
       success_url: `${req.headers.get('origin')}/koszonjuk?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get('origin')}/cancel`,
     });

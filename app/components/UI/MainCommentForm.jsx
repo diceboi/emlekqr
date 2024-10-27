@@ -17,7 +17,6 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
-    // Create a formData object to send to the API
     const formData = {
       from: session ? session.user.name : data.Name,
       fromprofileid: "",
@@ -29,8 +28,9 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
       main: main,
       byregisteredprofile: session ? true : false
     };
-
+  
     try {
+      // Submit comment data
       const res = await fetch('/api/addComment', {
         method: 'POST',
         headers: {
@@ -38,22 +38,47 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
         },
         body: JSON.stringify({ formData })
       });
-
+  
       const result = await res.json();
-
+  
       if (res.ok) {
         console.log('Comment submitted:', result);
-        toast.success('Az hozzászólást sikeresen elküldtük. Akkor fog megjelenni ha az adatlap tulajdonos jóváhagyja.')
-        // Reset the form after successful submission
-        reset();
-        router.refresh()
+        toast.success('Az hozzászólást sikeresen elküldtük. Akkor fog megjelenni ha az adatlap tulajdonos jóváhagyja.');
+        reset(); // Reset the form after successful submission
+        router.refresh();
+  
+        // Submit notification data
+        const notificationRes = await fetch('/api/addNotification', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            personal: true,
+            viewed: false,
+            notificationtype: "comment",
+            adatlap: lastDigits,
+            from: session ? session.user.name : data.Name,
+            images: "",
+            videos: "",
+            message: "hozzászólt az adatlapodhoz"
+          })
+        });
+  
+        if (notificationRes.ok) {
+          console.log('Notification sent successfully');
+        } else {
+          console.error('Error sending notification');
+        }
       } else {
         console.error('Error submitting comment:', result);
       }
     } catch (error) {
       console.error('An error occurred:', error);
+      toast.error('Hiba történt a hozzászólás beküldése közben.');
     }
   };
+  
 
   return (
     <form className="flex flex-col gap-4 my-8" onSubmit={handleSubmit(onSubmit)}>

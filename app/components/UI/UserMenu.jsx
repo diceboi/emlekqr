@@ -14,11 +14,10 @@ export default function UserMenu() {
 
   const {data: session} = useSession();
 
-  const { setMobileMenuOpen, setCartMenuOpen, isUserMenuOpen, toggleUserMenu } = useContext(Context);
+  const { setMobileMenuOpen, isUserMenuOpen, toggleUserMenu } = useContext(Context);
 
   const handleOpenClose = () => {
     toggleUserMenu();
-    setCartMenuOpen(false)
     setMobileMenuOpen(false)
   };
 
@@ -35,11 +34,11 @@ export default function UserMenu() {
             </ul> 
         }
     </div>
-    <button onClick={handleOpenClose} className={`${isUserMenuOpen === false ? 'flex' : 'hidden'} flex-nowrap justify-center items-center gap-2 border border-transparent hover:border-[--cream] hover:shadow-lg rounded-full transition-all duration-150 cursor-pointer py-1 px-2 lg:py-2 lg:px-4 label`}>
+    <button onClick={handleOpenClose} className={`${isUserMenuOpen === false ? 'flex' : 'hidden'} flex-nowrap justify-center items-center gap-2 border border-transparent hover:border-neutral-300 rounded-full transition-all duration-150 cursor-pointer py-1 px-2 lg:py-2 lg:px-4 label`}>
         <Image src={'/blank-profile.webp' || session.user.image} width={50} height={50} className="w-6 h-6 rounded-full" />
         {session? `Szia ${session.user?.name?.split(' ').slice(-1)[0]}` : null}
     </button>
-    <button onClick={handleOpenClose} className={`${isUserMenuOpen === false ? 'hidden' : 'flex flex-nowrap border border-[--cream] shadow-lg'} justify-center items-center gap-2  rounded-full transition-all duration-150 cursor-pointer py-1 px-2 lg:py-2 lg:px-4 label`}>
+    <button onClick={handleOpenClose} className={`${isUserMenuOpen === false ? 'hidden' : 'flex flex-nowrap border border-neutral-300'} justify-center items-center gap-2  rounded-full transition-all duration-150 cursor-pointer py-1 px-2 lg:py-2 lg:px-4 label`}>
         {session? `Szia ${session.user?.name?.split(' ').slice(-1)[0]}` : null}
         <CgClose className="w-6 h-6"/>
     </button>

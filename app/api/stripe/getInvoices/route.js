@@ -1,27 +1,38 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // Ensure this is defined in your .env.local
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// Named export for the POST request
 export async function GET(req) {
-
-try {
-
+  try {
     const { searchParams } = new URL(req.url);
-    const subscriptionId = searchParams.get('subscriptionid');
+    const customerId = searchParams.get('customerId');
 
-    console.log(searchParams.get('subscriptionid'))
-  
-    const invoices = await stripe.invoices.list(subscriptionId);
-    
+    if (!customerId) {
+      return new Response(
+        JSON.stringify({ message: 'Subscription ID is required' }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
+    // Retrieve invoices only for the specified subscription
+    const invoices = await stripe.invoices.list({
+      customer: customerId, // Filter by customer ID
+    });
+
     return new Response(JSON.stringify({ invoices }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    return new Response(JSON.stringify({ message: 'Error fetching subscription status', error: error.message }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return new Response(
+      JSON.stringify({ message: 'Error fetching invoices', error: error.message }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 }

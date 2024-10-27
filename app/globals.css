@@ -4,11 +4,12 @@
 
 :root {
     --blue: #2292a4;
-    --blue-hover:rgb(24, 103, 116)4;
+    --blue-hover:#1a6f7c;
     --blue-15: #2293a421;
     --rose: #701633;
     --rose-15: #70163241;
     --cream: #f5efed;
+    --cream-85: #f5efeddf;
     --cream-25: #f5efed4b;
     --cream-10: #f5efed1f;
     --success: #22c55e;

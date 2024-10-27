@@ -36,7 +36,7 @@ export default function Emlekadatlaptile({ data }) {
 
   const handleDeleteClick = () => {
     setDeletableSubId(data.subscription); // Set the current subscription ID as deletable
-    togglePopup(); // Open the modal or trigger popup
+    togglePopup("deleteAdatlap"); // Open the modal or trigger popup
   };
 
   return (

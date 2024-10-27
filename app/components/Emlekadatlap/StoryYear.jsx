@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { TbUsersGroup, TbCameraPlus, TbTrash } from "react-icons/tb";
+import { TbUsersGroup, TbCameraPlus, TbTrash, TbH3 } from "react-icons/tb";
 import { useState, useRef, useContext, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Lightbox from "yet-another-react-lightbox";
@@ -25,22 +25,27 @@ export default function StoryYear({ data, index }) {
   const fileInputRef = useRef(null);
 
   useEffect(() => {
+    // Check if formData.story[index] and blobStoryImages[index] are defined
+    if (!formData.story[index] || !formData.story[index].images) {
+      return; // Exit the effect early if data is not available
+    }
+  
     const initialImages = (formData.story[index].images || []).map((imgUrl) => ({
       url: imgUrl.startsWith("http")
         ? imgUrl
         : `https://elmekqr-storage.s3.amazonaws.com${imgUrl}`,
       newUrl: imgUrl,
     }));
-
+  
     // Get the blob images for this story index
     const currentBlobImages = blobStoryImages[index] || [];
-
+  
     // Filter out formData images that are already in blobStoryImages
     const filteredFormDataImages = initialImages.filter(
       (formDataImg) =>
         !currentBlobImages.some((blobImg) => blobImg.newUrl === formDataImg.newUrl)
     );
-
+  
     // Combine blobStoryImages with the filtered formData images
     const combinedImages = [
       ...filteredFormDataImages, // Use formData images that are not in blobStoryImages
@@ -49,9 +54,10 @@ export default function StoryYear({ data, index }) {
         newUrl: blobImg.newUrl, // Blob new URL
       })),
     ];
-
+  
     setImages(combinedImages);
-  }, [formData.story[index].images, blobStoryImages[index]]);
+  }, [formData.story, index, blobStoryImages]);
+  
 
   const handleFileChange = (e) => {
     // New uploadable files
@@ -157,49 +163,39 @@ export default function StoryYear({ data, index }) {
       />
       <div className="flex flex-col lg:p-8 p-4 lg:gap-8 gap-4 bg-white rounded-2xl shadow-special">
         <div className="flex flex-nowrap justify-between gap-4 ">
-          <h2 className={`text-[--rose] ${isEditable ? "hidden" : ""}`}>
+          <h4 className={`text-[--rose] ${isEditable ? "hidden" : ""}`}>
             {data.year}
-          </h2>
+          </h4>
           {isEditable && (
             <input
               type="text"
-              className="border border-neutral-300 rounded-2xl p-4 text-2xl text-[--rose] font-bold w-1/2"
+              className="border border-neutral-300 rounded-2xl p-4 text-2xl text-[--rose] font-bold w-full"
+              placeholder="Esemény címe"
               defaultValue={formData.story && formData.story[index] ? formData.story[index].year : ''} // Provide fallback
               onChange={(e) =>
                 updateFormData(`story.${index}.year`, e.target.value)
               }
             />
           )}
-          <div
-            className={`flex flex-nowrap items-center gap-2 py-1 px-4 bg-[--blue-15] rounded-full ${
-              isEditable ? "hidden" : ""
-            }`}
-          >
-            <TbUsersGroup className="w-6" />
-            <p className="label">{data.type}</p>
-          </div>
-          {isEditable && (
-            <select
-              className="py-1 lg:py-2 px-2 lg:px-4 rounded-2xl border border-neutral-300 w-1/2"
-              defaultValue={formData.story && formData.story[index] ? formData.story[index].type : ''}
-              onChange={(e) =>
-                updateFormData(`story.${index}.type`, e.target.value)
-              }
-            >
-              <option value="religion">Vallás</option>
-              <option value="challenge">Eredmény</option>
-              <option value="health">Egészség</option>
-              <option value="celebration">Ünnep</option>
-              <option value="award">Díj</option>
-              <option value="milestone">Mérföldkő</option>
-              <option value="housing">Költözés</option>
-              <option value="travel">Utazás</option>
-              <option value="family">Család</option>
-              <option value="education">Tanulmányok</option>
-              <option value="job">Munka</option>
-            </select>
-          )}
         </div>
+        <div
+          dangerouslySetInnerHTML={{ __html: data.data }}
+          className={`pb-4 mb-2 ${isEditable ? "hidden" : ""}`}
+        />
+
+        {isEditable && (
+          <textarea
+            rows="10"
+            name={`${data.year}-text`}
+            id={`${data.year}-text`}
+            defaultValue={formData.story && formData.story[index] ? formData.story[index].data : ''}
+            placeholder="Esemény leírása"
+            className="border border-neutral-300 rounded-2xl p-4"
+            onChange={(e) =>
+              updateFormData(`story.${index}.data`, e.target.value)
+            }
+          />
+        )}
         <div className="grid grid-cols-2 lg:grid-cols-4 justify-start gap-4">
           {images.map((img, imgIndex) => (
             <div
@@ -247,25 +243,6 @@ export default function StoryYear({ data, index }) {
             </button>
           )}
         </div>
-
-        <div
-          dangerouslySetInnerHTML={{ __html: data.data }}
-          className={`pb-4 mb-2 ${isEditable ? "hidden" : ""}`}
-        />
-
-        {isEditable && (
-          <textarea
-            rows="10"
-            name={`${data.year}-text`}
-            id={`${data.year}-text`}
-            defaultValue={formData.story && formData.story[index] ? formData.story[index].data : ''}
-            className="border border-neutral-300 rounded-2xl p-4"
-            onChange={(e) =>
-              updateFormData(`story.${index}.data`, e.target.value)
-            }
-          />
-        )}
-
         {isEditable && (
           <button className="flex flex-nowrap items-center gap-2 rounded-full bg-red-500 hover:bg-red-700 transition-all text-white w-fit px-4 py-2 self-center" onClick={handleRemoveStoryBlock}>
             <TbTrash className="w-6 h-6" />

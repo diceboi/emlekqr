@@ -89,7 +89,7 @@ export default function SecretCheckerForm({user}) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-4 w-full"
+      className="flex flex-col gap-4 pt-4 w-full"
     >
 
       <input
@@ -99,7 +99,7 @@ export default function SecretCheckerForm({user}) {
           required: true,
           pattern: /^\d{6}$/g,
         })}
-        className="p-4 text-lg bg-[--white]"
+        className="p-4 text-lg bg-[--white] border border-neutral-300 rounded-xl text-center"
       />
       {errors.email && (
         <span className="text-red-500 text-sm">
@@ -109,7 +109,7 @@ export default function SecretCheckerForm({user}) {
 
       <input
         type="submit"
-        className="w-fit px-5 py-3 bg-[--aquamarine] hover:bg-[--dukeblue] transition-all text-black hover:text-white cursor-pointer self-center"
+        className="w-fit px-2 py-1 bg-[--blue] hover:bg-[--rose] transition-all text-white cursor-pointer self-center rounded-full"
         disabled={isSubmitting}
         value={isSubmitting ? 'Ellenőrzés...' : 'Ellenőrzés'}
       />

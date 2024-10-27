@@ -4,10 +4,7 @@ import ProfilePicture from "../../components/Emlekadatlap/ProfilePicture";
 import ProfileData from "../../components/Emlekadatlap/ProfileData";
 import ProfileInfo from "../../components/Emlekadatlap/ProfileInfo";
 import ProfileEditButton from "../../components/Emlekadatlap/ProfileEditButton";
-import SecretCheckerModal from "../../components/UI/SecretCheckerModal";
-import LoginForm from "../../components/LoginForm";
-import SecretCheckerForm from "../../components/UI/SecretCheckerForm"
-import BackgroundSwitcher from "../../components/Emlekadatlap/BackgroundSwitcher"
+import SecretChecker from "../../components/UI/SecretChecker"
 
 export const dynamic = 'force-dynamic'
 
@@ -73,26 +70,16 @@ export default async function Emlekadatlap({ params }) {
   const tribute = await getTributes(params.emlekadatlap);
   const currentTributes = tribute?.data?.Tribute || null;
 
+  console.log("Current user in parent: ",currentUser)
+
 
   return (
     <>
     {/*<BackgroundSwitcher>*/}
     <section className="relative w-full px-2 lg:px-0 pt-10 pb-32 lg:pt-20">
-      {currentData === null && (
-        <SecretCheckerModal session={session} openstate={true}>
-        {session && currentData === null  && (
-          <SecretCheckerForm user={currentUser}/>
-        )}
-        {!session && (
-          <>
-          <h2 className="text-center">Jelentkezz be, az űrlap szerkesztéséhez</h2>
-          <LoginForm />
-          </>
-        )}
-        </SecretCheckerModal>
-      )}
+      <SecretChecker currentdata={currentData} session={session} currentuser={currentUser}/>
       <div className="container-inner flex flex-col m-auto gap-8">
-        <CoverPicture session={session} data={currentData} />
+        <CoverPicture session={session} data={currentData} currentuser={currentUser}/>
         <div
           id="profile-data"
           className="flex flex-col xl:flex-row gap-8 xl:gap-20 xlitems-end items-center w-full"

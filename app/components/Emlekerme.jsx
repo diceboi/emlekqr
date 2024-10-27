@@ -46,7 +46,7 @@ export default function Emlekerme({ session, userdata }) {
             },
             body: JSON.stringify({
               email: session.user.email, // User's email
-              productPriceId: 'price_1PwVEWBp9wE6DgiwPlpzWdne', // Replace with your actual Stripe price ID
+              productPriceId: 'price_1QEX5HBp9wE6DgiwQsbXZpbH', // Replace with your actual Stripe price ID
             }),
           });
       

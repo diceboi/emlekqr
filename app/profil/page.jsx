@@ -35,10 +35,25 @@ const getUserData = async (email) => {
   }
 };
 
-const getInvoices = async (subscriptionId) => {
+const getStripeCustomer = async (email) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_URL;
-    const res = await fetch(`${baseUrl}/api/stripe/getInvoices?subscriptionid=${subscriptionId}`, { cache: 'no-store' });
+    const res = await fetch(`${baseUrl}/api/stripe/searchCustomer?email=${email}`, { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error("Az adatok letöltése nem sikerült");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("Az adatok betöltése sikertlen", error);
+    return null;
+  }
+};
+
+const getInvoices = async (customerId) => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
+    const res = await fetch(`${baseUrl}/api/stripe/getInvoices?customerId=${customerId}`, { cache: 'no-store' });
     if (!res.ok) {
       throw new Error("Az adatok letöltése nem sikerült");
     }
@@ -60,9 +75,11 @@ export default async function Profil() {
   const sessionUser = session?.user?.email;
   const emlekadatlapok = await getPersonalEmlekadatlap(sessionUser);
   const user = await getUserData(sessionUser);
-  const invoices = await getInvoices(user?.data.User.stripeSubscription);
+  const customer = await getStripeCustomer(sessionUser);
+  const customerId = customer.id;
+  const invoices = await getInvoices(customerId);
   const currentData = emlekadatlapok?.data?.Emlekadatlap || [];
-  const currentUser = user?.data.User || []
+  const currentUser = user?.data.User || [];
 
   return (
     <section className="relative lg:py-20 py-8 px-2">
@@ -70,7 +87,7 @@ export default async function Profil() {
         <div className=" flex flex-col lg:flex-row gap-16">
           <ProfilAdatlap session={session} user={currentUser} />
           <div className="flex flex-col gap-16 w-full">
-            <ProfilErtesitesek />
+            <ProfilErtesitesek currentuser={currentUser} currentdata={currentData} />
             <ProfilEmlekadatlapok currentdata={currentData} />
             <ProfilSzamlak currentdata={currentData} invoices={invoices}/>
           </div>

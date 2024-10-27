@@ -55,6 +55,7 @@ export default function CancelSubscription({ subscriptionId }) {
 
   return (
     <>
+    <div className="flex flex-col items-center gap-4">
       <h4>Biztosan törlöd az adatlapodat?</h4>
       <p className="text-center">Az adatlap törlése visszavonhatatlan. Ezzel a módosítással az adatlapod havi/évi előfizetése is megszűnik.</p>
       <button 
@@ -65,6 +66,8 @@ export default function CancelSubscription({ subscriptionId }) {
         <TbTrash className="w-4 h-4 rounded-md text-white cursor-pointer" />
         Véglegesen törlöm
       </button>
+    </div>
+      
     </>
   );
 }

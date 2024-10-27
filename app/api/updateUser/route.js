@@ -26,13 +26,13 @@ export async function POST(req) {
       { new: true }
     );
 
-    console.log("Latest sub item id:", subscriptionItem)
-
     if (!updatedUser) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
-
+    
+    console.log(updatedUser)
     return NextResponse.json({ message: 'User updated successfully', updatedUser });
+    
   } catch (error) {
     console.error('Error updating user data:', error);
     return NextResponse.json({ error: 'Failed to update user' }, { status: 500 });
