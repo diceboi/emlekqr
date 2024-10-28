@@ -34,7 +34,7 @@ const LoginForm = () => {
       }
   
       const res = await signIn("credentials", {
-        redirect: router.asPath,
+        redirect: router.push("/profil"),
         email,
         password, 
       });

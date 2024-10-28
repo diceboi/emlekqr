@@ -3,9 +3,9 @@ import RegisterForm from '../components/RegisterForm'
 import { getSession } from "next-auth/react"
 import { redirect } from 'next/navigation'
 
-export default function Regisztracio() {
+export default async function Regisztracio() {
 
-  const session = getSession()
+  const session = await getSession()
 
   if (session) {
     redirect('/profil')

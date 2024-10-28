@@ -2,9 +2,9 @@ import LoginForm from "../components/LoginForm"
 import { getSession } from "next-auth/react"
 import { redirect } from 'next/navigation'
 
-export default function Bejelentkezes() {
+export default async function Bejelentkezes() {
 
-  const session = getSession()
+  const session = await getSession()
 
   if (session) {
     redirect('/profil')
