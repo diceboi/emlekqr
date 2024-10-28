@@ -7,7 +7,11 @@ const nextConfig = {
                 hostname: "elmekqr-storage.s3.amazonaws.com",
             }
         ]
-    }
+    },
+    transpilePackages: [
+        'three'
+    ],
+
 };
 
 export default nextConfig;
