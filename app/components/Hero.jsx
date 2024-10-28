@@ -44,7 +44,7 @@ export default function Hero() {
     <>
       <section className="flex justify-center items-center w-full min-h-[90vh] relative">
       <div className="container flex justify-center items-center m-auto py-2 w-full h-full lg:w-8/12 z-10">
-        <div className="flex flex-col items-center w-full gap-4">
+        <div className="flex flex-col items-center w-full gap-4 pt-40">
           <H1 classname="text-center text-white">A digitális emlékoldal</H1>
           <Paragraph classname="text-center text-white">
             Készítsd el saját emlékérméd, őrizd meg szeretteid legszebb pillanatait!
@@ -57,7 +57,7 @@ export default function Hero() {
       </div>
       <Canvas 
       style={{ position: "absolute" }}
-      className="top-0 left-0 min-h-[90vh] w-full z-[9] opacity-50"
+      className="-top-20 left-0 w-full z-[9]"
       camera={{ fov: 50, position: [0, 0, 45] }}
       shadows
       >
@@ -79,9 +79,10 @@ export default function Hero() {
           <Plane rotation={[-Math.PI / 2, 10, 0]} position={[0, -1, 0]} args={[10, 10]} receiveShadow>
             <shadowMaterial opacity={1} />
           </Plane>
-          <Scene className="w-full min-h-[100vh]"/>
+          <Scene className="w-full "/>
       </Canvas>
       <div className="absolute w-full h-full bg-[--rose]">
+        <Image src="/image-kepek/hero-image.webp" fill style={{objectFit: "cover"}} className="opacity-50" />
         <div className="w-full h-full bg-[--rose]"></div>
       </div>
     </section>
