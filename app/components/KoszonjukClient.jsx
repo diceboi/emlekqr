@@ -8,13 +8,13 @@ export default function KoszonjukClient({ session, checkoutSession, randomNumber
       if (session?.user?.email && checkoutSession?.customer_details?.email) {
         const customerDetails = checkoutSession.customer_details;
         const checkoutSessionData = {
-          session_id: checkoutSession.id,
+          checkoutSession: checkoutSession.id,
           zip: customerDetails.address?.postal_code,
           city: customerDetails.address?.city,
-          address_line1: customerDetails.address?.line1,
-          address_line2: customerDetails.address?.line2 || '',
+          address1: customerDetails.address?.line1,
+          address2: customerDetails.address?.line2 || '',
           phone: customerDetails.phone || '',
-          subscription_id: checkoutSession.subscription || '',
+          stripeSubscription: checkoutSession.subscription || '',
           secret: randomNumber, // Use the server-provided random number
         };
 

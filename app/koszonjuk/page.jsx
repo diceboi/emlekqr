@@ -2,6 +2,12 @@ import { getServerSession } from "next-auth";
 import Stripe from "stripe";
 import KoszonjukClient from "../components/KoszonjukClient" // Import the client component
 
+// Helper functions
+const getCheckoutSession = async (sessionId) => {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  return await stripe.checkout.sessions.retrieve(sessionId);
+};
+
 export default async function Koszonjuk({ searchParams }) {
   const session_id = searchParams.session_id;
   const checkoutSession = session_id ? await getCheckoutSession(session_id) : null;
@@ -33,9 +39,3 @@ export default async function Koszonjuk({ searchParams }) {
     />
   );
 }
-
-// Helper functions
-const getCheckoutSession = async (sessionId) => {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-  return await stripe.checkout.sessions.retrieve(sessionId);
-};
