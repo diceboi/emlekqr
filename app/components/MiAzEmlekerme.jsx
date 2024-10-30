@@ -2,6 +2,7 @@ import Image from "next/image"
 import H1 from "./UI/H1"
 import H2 from "./UI/H2"
 import Paragraph from "./UI/Paragraph"
+import Link from "next/link"
 
 export default function MiAzEmlekerme() {
   return (
@@ -15,6 +16,9 @@ export default function MiAzEmlekerme() {
                 <H2 classname={"text-[--rose]"}>Mi az az emlékérme?</H2>
                 <Paragraph>Az EmlékQR emlékérme egy különleges, modern megoldás arra, hogy örökre <b><b>megőrizzük és megoszthassuk másokkal</b></b> azon szeretteink emlékét, akik már nem lehetnek velünk .<br></br><br></br> Ez az egyedi emléktárgy QR-kóddal van ellátva, amelyet a síremlékre vagy sírkőre rögzítve időtálló tisztelgés lehet akár <b><b>mindenszentek ünnepén</b></b>, <b><b>ajándékként</b></b>, vagy <b><b>megemlékezés alkalmával</b></b>. A QR-kód beolvasásával egy személyre szabott emlékoldal nyílik meg, ahol a családtagok és barátok képeket, történeteket, vagy akár videókat tölthetnek fel az elhunyt életéről.
                 </Paragraph>
+                <Link href="/erme" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white w-fit">
+                    Hogyan működik?
+                </Link>
             </div>
             <div className="absolute -bottom-1/4 -right-40 w-[500px] h-[500px] bg-[--rose] rounded-full blur-[100px] opacity-15"></div>
         </div>
