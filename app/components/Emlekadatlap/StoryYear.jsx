@@ -8,6 +8,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
+import H4 from "../UI/H4";
 
 export default function StoryYear({ data, index }) {
   const pathname = usePathname();
@@ -163,9 +164,9 @@ export default function StoryYear({ data, index }) {
       />
       <div className="flex flex-col lg:p-8 p-4 lg:gap-8 gap-4 bg-white rounded-2xl shadow-special">
         <div className="flex flex-nowrap justify-between gap-4 ">
-          <h4 className={`text-[--rose] ${isEditable ? "hidden" : ""}`}>
+          <H4 classname={`text-[--rose] ${isEditable ? "hidden" : ""}`}>
             {data.year}
-          </h4>
+          </H4>
           {isEditable && (
             <input
               type="text"

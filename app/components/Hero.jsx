@@ -42,7 +42,7 @@ function Scene() {
 export default function Hero() {
   return (
     <>
-      <section className="flex justify-center items-center w-full min-h-[90vh] relative">
+      <section className="flex justify-center items-center w-full min-h-[95vh] relative">
       <div className="container flex justify-center items-center m-auto py-2 w-full h-full lg:w-8/12 z-10">
         <div className="flex flex-col items-center w-full gap-4 pt-40">
           <H1 classname="text-center text-white">A digitális emlékoldal</H1>

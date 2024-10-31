@@ -6,6 +6,7 @@ import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext"
 import { TbGrave, TbQuote } from "react-icons/tb";
 import { LiaDoveSolid } from "react-icons/lia";
+import H4 from "../UI/H4";
 
 export default function ProfileData({ data }) {
   const { isEditable } = useContext(Context);
@@ -16,7 +17,7 @@ export default function ProfileData({ data }) {
       {!isEditable && data && (
       <div className="flex flex-col gap-4 items-center xl:items-start xl:w-2/3 w-full bg-neutral-50 rounded-2xl z-10 lg:p-4">
         <div className="flex lg:flex-row flex-col items-center gap-4">
-          <h4>{data.name}</h4>
+          <H4>{data.name}</H4>
           <p>{data.age}</p>
         </div>
         <div className="flex flex-nowrap gap-4 items-start">
@@ -68,7 +69,7 @@ export default function ProfileData({ data }) {
       {isEditable && (
         <div className="flex flex-col gap-4 w-full">
           <div className="flex flex-row gap-2 justify-start items-center w-full">
-          <label htmlFor="name" className="label">Név</label>
+          <H4 htmlFor="name" className="label">Név</H4>
           <input
             type="text"
             name="name"
