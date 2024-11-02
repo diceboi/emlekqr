@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-16 gap-8">
                 <div className="flex flex-col justify-between gap-4">
                     <Image src="/emlek-qr-logo-white.webp" width={200} height={100} alt="logo"/>
-                    <Paragraph classname={"text-white italic"}>"Emlékbe, hogy emlékezz, mikor emlékem már csak emlék lesz."</Paragraph>
+                    <Paragraph classname={"text-white italic"}>&quot;Emlékbe, hogy emlékezz, mikor emlékem már csak emlék lesz.&quot;</Paragraph>
                     <Label classname={"text-white opacity-40"}>EmlékQR 2024 @ Minden jog fenntartva</Label>
                 </div>
                 <div className="flex flex-col gap-8">
