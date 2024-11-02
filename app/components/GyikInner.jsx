@@ -7,6 +7,7 @@ import { TbMinus } from "react-icons/tb";
 import H3 from '../components/UI/H3'
 import H4 from './UI/H4';
 import Paragraph from '../components/UI/Paragraph'
+import Link from 'next/link';
 
 export default function GyikInner() {
 
@@ -154,17 +155,7 @@ export default function GyikInner() {
       question: 'Védi-e valami a halotti emléket?',
       answer: (
         <>
-          <Paragraph>Igen, a Magyar Törvények védik az elhunyt személyek emlékét, amiről bővebben az<Link>Elhunyt jogainak védelme</Link></Paragraph>
-        </>
-      ),
-    },
-    {
-      question: 'Milyen árakkal dolgozom?',
-      answer: (
-        <>
-          <Paragraph>Egyéni coaching esetén jellemzően eltér a személyes és az online alkalmak díjszabása. Vállalati megkeresés esetén minden esetben egyedi ajánlatot küldök, miután tisztáztuk a célokat és az igényeket.</Paragraph>
-          <Paragraph>Az ún. 0. beszélgetés során, amely nálam minden esetben egy ingyenes, 30 perces online konzultáció, az árazással kapcsolatban is tudunk egyeztetni.</Paragraph>
-          <Paragraph>Ha rátérnél a coaching témád egyeztetésére vagy további kérdéseid vannak, foglalj egy ingyenes, 30 perces konzultációt velem!</Paragraph>
+          <Paragraph>Igen, a Magyar Törvények védik az elhunyt személyek emlékét, amiről bővebben az<Link href={"/elhunyt-jogainkak-vedelme"} className='text-[--blue] underline'>Elhunyt jogainak védelme</Link> oldalon olvashatatsz.</Paragraph>
         </>
       ),
     },
