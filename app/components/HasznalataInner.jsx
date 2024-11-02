@@ -26,7 +26,7 @@ export default function HasznalataInner() {
             Regisztráció
           </H3>
           <Paragraph>
-            Első lépésként hozz létre egy fiókot az oldalon. A jobb felső sarokban található kis fej ikonra kattintás után, a <Link href="/regisztracio" className="underline text-[--blue]">bejelentkezés/regisztráció</Link> gombra kattintva tudsz eljutni a regisztrációig.
+            Első lépésként hozz létre egy fiókot az oldalon. A jobb felső sarokban található kis fej ikonra kattintás után, a <Link href="/regisztracio" className="underline text-[--blue]">&quot;Bejelentkezés/Regisztráció&quot;</Link> gombra kattintva tudsz eljutni a regisztrációig.
           </Paragraph>
         </div>
 
@@ -36,7 +36,7 @@ export default function HasznalataInner() {
             Rendelés
           </H3>
           <Paragraph>
-            Regisztráció után a jobb felső sarokban található <Link href="/erme" className="underline text-[--blue]">"Az érme"</Link> gombra kattintva tudsz eljutni a rendelési felületre. Válaszd ki az érmét, majd a fizetés típusát, és a “Tovább a pénztárba” gombra kattintva juthatsz el a fizetési felületig, ahol a kért információk megadása után meg is rendelheted a kiválasztott érmédet.
+            Regisztráció után a jobb felső sarokban található <Link href="/erme" className="underline text-[--blue]">&quot;Az érme&quot;</Link> gombra kattintva tudsz eljutni a rendelési felületre. Válaszd ki az érmét, majd a fizetés típusát, és a &quot;Tovább a pénztárba&quot; gombra kattintva juthatsz el a fizetési felületig, ahol a kért információk megadása után meg is rendelheted a kiválasztott érmédet.
           </Paragraph>
         </div>
 
