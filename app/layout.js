@@ -1,6 +1,7 @@
 import { Geologica } from "next/font/google";
 import "./globals.css";
 import MainNav from "./components/UI/MainNav";
+import Footer from "./components/UI/Footer"
 import AuthProvider from "./Utils/AuthProvider";
 import { getServerSession } from "next-auth";
 import ContextProvider from "./Context";
@@ -25,6 +26,7 @@ export default async function RootLayout({ children }) {
             <body className={`${geologica.className} mt-[70px] bg-neutral-50`}>
               <MainNav />
               {children}
+              <Footer />
             </body>
           </AuthProvider>
         </UpdateEmlekadatlapContextProvider>

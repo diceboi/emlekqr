@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { TbCameraPlus, TbTrash } from "react-icons/tb";
+import { TbCameraPlus, TbCamera, TbTrash } from "react-icons/tb";
 import { useState, useRef, useContext, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Lightbox from "yet-another-react-lightbox";
@@ -10,6 +10,13 @@ import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import { BiCameraMovie } from "react-icons/bi";
 import Link from "next/link";
+import { LuImage } from "react-icons/lu";
+
+import H1 from "../UI/H1"
+import H2 from "../UI/H2"
+import H3 from "../UI/H3"
+import H4 from "../UI/H4"
+import Paragraph from "../UI/Paragraph"
 
 export default function Media({ data }) {
   const pathname = usePathname();
@@ -179,9 +186,12 @@ export default function Media({ data }) {
   };
 
   return (
-    <div className="flex flex-col gap-20 py-8">
-      <h4>Képek</h4>
-      <div className="grid grid-cols-2 lg:grid-cols-4 justify-start gap-4">
+    <div className="flex flex-col gap-8 py-8">
+      <div className="flex gap-4 items-center">
+        <LuImage className="w-10 h-10 text-[--rose] bg-[--cream] rounded-full p-2" />
+        <H4 classname={"text-[--rose]"}>Képek</H4>
+      </div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 justify-start gap-4 mb-4">
         <Lightbox
         open={lightbox.open}
         close={() => setLightbox({ open: false, index: 0 })}
@@ -232,7 +242,10 @@ export default function Media({ data }) {
           </button>
         )}
       </div>
-      <h4>Videók</h4>
+      <div className="flex gap-4 items-center">
+        <TbCamera className="w-10 h-10 text-[--rose] bg-[--cream] rounded-full p-2" />
+        <H4 classname={"text-[--rose]"}>Videók</H4>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-start gap-4">
         {allVideos.map((id, videoIndex) => (
           <div key={videoIndex} className="flex flex-col relative">

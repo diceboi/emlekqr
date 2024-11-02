@@ -20,7 +20,7 @@ const getUserData = async (email) => {
 export default async function Erme() {
 
     const session = await getServerSession()
-    const userData = await getUserData(session.user.email)
+    const userData = await getUserData(session?.user?.email)
 
   return (
    <Emlekerme session={session} userdata={userData}/>

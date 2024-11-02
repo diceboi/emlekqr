@@ -37,10 +37,9 @@ export default function MainNav() {
             </button>
             <div id="mobile-nav" className={`absolute lg:hidden flex ${isMobileMenuOpen === false ? '-left-full' : 'left-0'} top-[70px] w-full sm:w-[300px] py-4 h-auto bg-[--cream] transition-all`}>
                 <ul className="flex flex-col gap-2 px-4 menuitem">
-                    <li>Használata</li>
+                    <li>Hogy működik?</li>
                     <li>Rólunk</li>
                     <li>GYIK</li>
-                    <li>Felfedezés</li>
                     <li>Kapcsolat</li>
                 </ul>
             </div>
@@ -50,12 +49,11 @@ export default function MainNav() {
             </Link>
           </div>
           <div id="nav" className="flex flex-row justify-center items-center w-full gap-4">
-            <ul className="hidden lg:flex flex-row gap-8 px-4 menuitem">
-              <li>Használata</li>
-              <li>Rólunk</li>
-              <li>GYIK</li>
-              <li>Felfedezés</li>
-              <li>Kapcsolat</li>
+            <ul className="hidden lg:flex flex-row gap-2 px-4 menuitem">
+              <Link href={"/hasznalata"}><li className="px-4 py-2 border border-transparent hover:border-neutral-300 rounded-full transition-all min-w-max">Hogy működik?</li></Link>
+              <Link href={"/rolunk"}><li className="px-4 py-2 border border-transparent hover:border-neutral-300 rounded-full transition-all min-w-max">Rólunk</li></Link>
+              <Link href={"/gyik"}><li className="px-4 py-2 border border-transparent hover:border-neutral-300 rounded-full transition-all min-w-max">GYIK</li></Link>
+              <Link href={"/kapcsolat"}><li className="px-4 py-2 border border-transparent hover:border-neutral-300 rounded-full transition-all min-w-max">Kapcsolat</li></Link>
             </ul>
           </div>
         </div>

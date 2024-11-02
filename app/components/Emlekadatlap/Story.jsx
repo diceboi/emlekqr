@@ -4,7 +4,14 @@ import StoryYear from "../Emlekadatlap/StoryYear";
 import { useContext, useEffect, useState } from "react";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import { Context } from "../../Context";
-import { TbPlus } from "react-icons/tb";
+import { TbPlus, TbWallpaper } from "react-icons/tb";
+
+import H1 from "../UI/H1"
+import H2 from "../UI/H2"
+import H3 from "../UI/H3"
+import H4 from "../UI/H4"
+import Paragraph from "../UI/Paragraph"
+
 
 export default function Story({ data }) {
   const { addStoryBlock, formData } = useContext(UpdateEmlekadatlapContext);
@@ -21,7 +28,12 @@ export default function Story({ data }) {
   };
 
   return (
-    <div className="flex flex-col gap-8 px-1 py-2 rounded-2xl">
+    <div className="flex flex-col gap-8 px-1 py-8 rounded-2xl">
+
+      <div className="flex gap-4 items-center">
+        <TbWallpaper className="w-10 h-10 text-[--rose] bg-[--cream] rounded-full p-2" />
+        <H4 classname={"text-[--rose]"}>Történet</H4>
+      </div>
 
       {data && (
       storyBlocks.map((item, index) => (
@@ -30,7 +42,7 @@ export default function Story({ data }) {
       )}
 
       {!data && (
-        <h4>Hozd létre szeretted idővonalát</h4>
+        <h4>Írj le történeteket szerettedről!</h4>
       )}
 
       {isEditable &&
