@@ -55,14 +55,6 @@ export default function GyikInner() {
       ),
     },
     {
-      question: 'Mi a különbség a coaching és a terápia között?',
-      answer: (
-        <>
-          <Paragraph>A coaching nem terápia, azaz nem foglalkozik a múlttal és a dolgok miértjeinek elemzésével. Jellemzően jövő- és célorientált, azaz a jelenből előretekintve fogalmaz meg célokat, fejlődési lehetőségeket és segíti ezek megvalósulását.</Paragraph>
-        </>
-      ),
-    },
-    {
       question: 'Milyen felületre ragasztható?',
       answer: (
         <>
