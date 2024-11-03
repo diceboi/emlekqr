@@ -18,16 +18,16 @@ import {
       <Preview>Örülök, hogy írtál!</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img src='https://www.emlek-qr.hu/emleqr-logo-base.svg' style={{ width: '150px', height: 'auto', margin: 'auto', paddingTop: '20px' }} />
+          <Img src='https://www.emlek-qr.hu/emleqr-logo-base.webp' style={{ width: '150px', height: 'auto', margin: 'auto', paddingTop: '20px' }} />
           <Heading style={{...h1, textAlign: 'center', marginTop: '16px', marginBottom: '16px'}}>Kedves Gabi, {nev} szeretné felvenni veled a kapcsolatot.</Heading>
           <Text style={{ ...text, marginBottom: '24px'}}>
             Az üzenet a következő volt:
           </Text>
           <Text style={{...text}}>
-            Név: {nev}<br></br>
-            Tárgy: {subject}<br></br>
-            Email cím: {email}<br></br>
-            Üzenet: {message}<br></br>
+            Név: <span className='font-light'>{nev}</span><br></br>
+            Tárgy: <span className='font-light'>{subject}</span><br></br>
+            Email cím: <span className='font-light'>{email}</span><br></br>
+            Üzenet: <span className='font-light'>{message}</span><br></br>
           </Text>
           <Text style={{...text}}>
             Kérlek válaszolj neki amint időd engedi!
