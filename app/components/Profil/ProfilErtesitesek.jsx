@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { TbBellRinging } from "react-icons/tb";
 import ProfilErtesitesekTile from "../Profil/ProfilErtesitesekTile";
+import H4 from "../UI/H4";
 
 export default function ProfilErtesitesek({ currentuser, currentdata }) {
   const ownerEmail = currentuser.email;
@@ -62,7 +63,7 @@ export default function ProfilErtesitesek({ currentuser, currentdata }) {
       <div className="flex flex-col gap-8">
         <div className="flex gap-4 items-center">
           <TbBellRinging className="w-8 h-8 text-[--rose] bg-[--cream] rounded-full p-1" />
-          <h4>Legutóbbi értesítések</h4>
+          <H4 classname={"text-[--rose]"}>Legutóbbi értesítések</H4>
         </div>
 
         <div className="flex flex-col gap-4">

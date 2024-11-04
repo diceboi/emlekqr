@@ -1,5 +1,6 @@
 import { TbAd2 } from "react-icons/tb"
 import Szamlaktile from "../UI/SzamlakTile"
+import H4 from "../UI/H4";
 
 export default function ProfilSzamlak({ invoices }) {
 
@@ -10,7 +11,7 @@ export default function ProfilSzamlak({ invoices }) {
       <div className="flex flex-col gap-8">
         <div className="flex flex-nowrap gap-4 items-center">
           <TbAd2 className="w-8 h-8 text-[--rose] bg-[--cream] rounded-full p-1" />
-          <h4>Számlák</h4>
+          <H4 classname={"text-[--rose]"}>Számlák</H4>
         </div>
 
         <div className="flex flex-col gap-4">

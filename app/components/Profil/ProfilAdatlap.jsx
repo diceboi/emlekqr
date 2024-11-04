@@ -9,6 +9,7 @@ import { useContext, useEffect } from "react";
 import { Context } from "../../Context";
 import ProfilDataForm from "../UI/ProfilDataForm"
 import ResetPasswordProfileForm from "../ResetPasswordProfileForm";
+import H4 from "../UI/H4";
 
 export default function ProfilAdatlap({ session, user }) {
   const { openPopup, togglePopup } = useContext(Context);
@@ -39,7 +40,7 @@ export default function ProfilAdatlap({ session, user }) {
         </div>
 
         <div className="flex flex-col gap-4">
-          <h4 className="self-center">{user?.name || "Anonymous"}</h4>
+        <H4 classname={"text-[--rose] text-center"}>{user?.name || "Anonymous"}</H4>
         </div>
 
         <div className="flex flex-col gap-4">

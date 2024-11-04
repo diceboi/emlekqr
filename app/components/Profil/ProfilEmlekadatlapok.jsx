@@ -6,6 +6,7 @@ import Modal from "../UI/Modal";
 import CancelSubscription from "../UI/CancelSubscription";
 import { Context } from "../../Context";
 import { useContext } from "react";
+import H4 from "../UI/H4";
 
 export default function ProfilEmlekadatlapok({ currentdata }) {
 
@@ -20,7 +21,7 @@ export default function ProfilEmlekadatlapok({ currentdata }) {
         <div className="flex flex-col gap-8">
         <div className="flex flex-nowrap gap-4 items-center">
             <TbLibraryPhoto className="w-8 h-8 text-[--rose] bg-[--cream] rounded-full p-1" />
-            <h4>Emlékadatlapok</h4>
+            <H4 classname={"text-[--rose]"}>Emlékadatlapok</H4>
         </div>
         
         <div className="flex flex-col gap-4">
