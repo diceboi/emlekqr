@@ -19,7 +19,6 @@ export async function GET(req) {
       return NextResponse.json({ error: "Customer not found" }, { status: 404 });
     }
 
-    console.log('Found customer:', customer.data[0]);
     return NextResponse.json(customer.data[0]); // Return the first matching customer
   } catch (error) {
     console.error('Error retrieving customer:', error);

@@ -6,6 +6,7 @@ import { signIn ,useSession } from "next-auth/react";
 import { toast } from "sonner";
 import H3 from "./UI/H3";
 import Paragraph from "./UI/Paragraph";
+import { TbEye, TbEyeClosed } from "react-icons/tb";
 
 import Loading from "../components/UI/Loading"
 
@@ -15,6 +16,7 @@ const ResetPasswordForm = ({token}) => {
     const [error, setError] = useState("");
     const [verified, setVerified] = useState(false);
     const [user, setUser] = useState(null);
+    const [isPasswordVisible, setPasswordVisible] = useState(false);
     // const session = useSession();
     const { data: session, status: sessionStatus } = useSession();
 
@@ -86,19 +88,29 @@ const ResetPasswordForm = ({token}) => {
           <H3 classname={"text-center text-[--rose] font-semibold mb-8"}>Jelszó változtatás</H3>
           <Paragraph classname={"text-center"}>Állíts be új jelszót a felhasználói fiókodhoz.</Paragraph>
           <form className="flex flex-col w-full items-center" onSubmit={handleSubmit}>
-            <input
-              type="password"
-              className="w-full border text-black rounded-3xl px-4 py-2 mb-4 focus:outline-none focus:border-[--rose] focus:text-black"
-              placeholder="Jelszó"
-              required
-            />
-            <button
-              type="submit"
-              disabled={error.length > 0}
-              className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white self-center"
-            >
-              Új jelszó beállítása
-            </button>
+            <div className="relative flex flex-col gap-0 w-full">
+              <input
+                type={isPasswordVisible ? "text" : "password"}
+                className="w-full border text-black rounded-3xl px-4 py-2 mb-4 focus:outline-none focus:border-[--rose] focus:text-black"
+                placeholder="Jelszó"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setPasswordVisible(prevState => (!prevState))}
+                className="absolute right-2 top-3"
+              >
+                {isPasswordVisible ? <TbEye className="min-w-5 min-h-5 text-[--rose]"/> : <TbEyeClosed className="min-w-5 min-h-5 text-[--rose]"/>}
+              </button>
+              </div>
+              <button
+                type="submit"
+                disabled={error.length > 0}
+                className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white self-center"
+              >
+                Új jelszó beállítása
+              </button>
+            
           </form>
         </div>
     )

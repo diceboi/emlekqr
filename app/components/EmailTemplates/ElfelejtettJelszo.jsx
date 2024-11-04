@@ -79,4 +79,5 @@ import {
     paddingRight: '16px',
     paddingTop: '8px',
     paddingBotttom: '8px',
+    margin: 'auto'
   }

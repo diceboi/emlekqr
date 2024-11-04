@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { signIn ,useSession } from "next-auth/react";
 import Label from "../components/UI/Label"
 import { toast } from "sonner";
+import { TbEye, TbEyeClosed } from "react-icons/tb";
 
 import Loading from "../components/UI/Loading"
 import H3 from "./UI/H3";
@@ -13,6 +14,7 @@ import H3 from "./UI/H3";
 const LoginForm = () => {
     const router = useRouter();
     const [error, setError] = useState("");
+    const [isPasswordVisible, setPasswordVisible] = useState(false);
     // const session = useSession();
     const { data: session, status: sessionStatus } = useSession();
   
@@ -63,12 +65,22 @@ const LoginForm = () => {
               placeholder="Email"
               required
             />
-            <input
-              type="password"
-              className="w-full border text-black rounded-3xl px-4 py-2 mb-4 focus:outline-none focus:border-[--rose] focus:text-black"
-              placeholder="Jelszó"
-              required
-            />
+            <div className="relative flex flex-col justify-center gap-0 w-full">
+              <input
+                type={isPasswordVisible ? "text" : "password"}
+                className="w-full border text-black rounded-3xl px-4 py-2 mb-4 focus:outline-none focus:border-[--rose] focus:text-black"
+                placeholder="Jelszó"
+                required
+              />
+              <button
+              type="button"
+              onClick={() => setPasswordVisible(prevState => (!prevState))}
+              className="absolute right-2 top-3 text-gray-500"
+              >
+                {isPasswordVisible ? <TbEye className="min-w-5 min-h-5 text-[--rose]"/> : <TbEyeClosed className="min-w-5 min-h-5 text-[--rose]"/>}
+              </button>
+            </div>
+            
             <button
               type="submit"
               className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white self-center"

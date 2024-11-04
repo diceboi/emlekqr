@@ -1,6 +1,6 @@
 import React from 'react'
 import RegisterForm from '../components/RegisterForm'
-import { AuthOptions } from '../api/auth/[...nextauth]/route'
+import { AuthOptions } from "../utils/authOptions"
 import { getServerSession } from "next-auth/next"
 import { redirect } from 'next/navigation'
 

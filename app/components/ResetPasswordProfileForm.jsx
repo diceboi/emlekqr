@@ -61,15 +61,12 @@ export default function ResetPasswordProfileForm({ session }) {
             </p>
           )}
 
-          {/* Eye Icon Button */}
           <button
             type="button"
-            onMouseDown={() => setPasswordVisible(true)}
-            onMouseUp={() => setPasswordVisible(false)}
-            onMouseLeave={() => setPasswordVisible(false)}
+            onClick={() => setPasswordVisible(prevState => (!prevState))}
             className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500"
           >
-            {isPasswordVisible ? <TbEyeClosed className="min-w-5 min-h-5 text-[--rose]"/> : <TbEye className="min-w-5 min-h-5 text-[--rose]"/>}
+            {isPasswordVisible ? <TbEye className="min-w-5 min-h-5 text-[--rose]"/> : <TbEyeClosed className="min-w-5 min-h-5 text-[--rose]"/>}
           </button>
         </div>
 
