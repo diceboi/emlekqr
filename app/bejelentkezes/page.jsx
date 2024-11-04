@@ -1,6 +1,6 @@
 import LoginForm from "../components/LoginForm"
 import { redirect } from 'next/navigation'
-import { AuthOptions } from "../utils/authOptions"
+import { AuthOptions } from "../utils/AuthOptions"
 import { getServerSession } from "next-auth/next"
 
 export default async function Bejelentkezes() {

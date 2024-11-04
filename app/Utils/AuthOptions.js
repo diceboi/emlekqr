@@ -1,10 +1,9 @@
-import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import User from "../(models)/User";
-import connect from "./db";
+import connect from "./db"
 
-export const AuthOptions = {
+export const AuthOptions = {  
   providers: [
     CredentialsProvider({
       id: "credentials",

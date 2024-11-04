@@ -1,6 +1,6 @@
 import React from 'react'
 import RegisterForm from '../components/RegisterForm'
-import { AuthOptions } from "../utils/authOptions"
+import { AuthOptions } from "../utils/AuthOptions"
 import { getServerSession } from "next-auth/next"
 import { redirect } from 'next/navigation'
 
