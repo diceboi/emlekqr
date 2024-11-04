@@ -12,7 +12,7 @@ export default function RolunkInner() {
         <Image src={"/painting3.webp"} width={1000} height={1000} alt="Painting 1" className="absolute lg:w-[500px] lg:h-[500px] lg:top-1/2 lg:-right-[250px] h-[150px] w-[150px] top-20 -right-[90px] -rotate-6 rounded-3xl border-2 border-white shadow-2xl"/>
         <Image src={"/painting4.webp"} width={1000} height={1000} alt="Painting 1" className="lg:block hidden absolute lg:w-[500px] lg:h-[500px] lg:-top-[100px] lg:-right-[250px] h-[150px] w-[150px] rotate-3 rounded-3xl border-2 border-white shadow-2xl"/>
         <div className="flex flex-col items-center gap-4 z-[1]">
-            <Image src={"/bokrosgabi.webp"} width={500} height={500} alt="Bokros Gabriella" className="rounded-full border-2 border-white shadow-lg lg:w-40 lg:h-40 w-28 h-28"/>
+            <Image src={"/bokrosgabi2.webp"} width={500} height={500} alt="Bokros Gabriella" className="rounded-full border-2 border-white shadow-lg lg:w-40 lg:h-40 w-28 h-28"/>
             <div className="flex flex-col items-center gap-0">
                 <H2>Bokros Gabriella</H2>
                 <H4>vagyok</H4>
