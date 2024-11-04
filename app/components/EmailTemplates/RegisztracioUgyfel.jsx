@@ -12,25 +12,19 @@ import {
   import * as React from 'react';
   
   
-  export const Kapcsolat = ({nev, email, message, subject}) => (
+  export const Kapcsolat = ({nev}) => (
     <Html>
       <Head />
-      <Preview>Örülök, hogy írtál!</Preview>
+      <Preview>Sikeres regisztráció</Preview>
       <Body style={main}>
         <Container style={container}>
           <Img src='https://www.emlek-qr.hu/emleqr-logo-base.png' style={{ width: '150px', height: 'auto', margin: 'auto', paddingTop: '20px' }} />
-          <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Kedves Gabi, {nev} szeretné felvenni veled a kapcsolatot.</Heading>
+          <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Kedves {nev}, sikeresen regisztráltál az EmlékQR oldalra.</Heading>
           <Text style={{ ...text, marginBottom: '24px'}}>
-            Az üzenet a következő volt:
+            A következő lépésként nézd meg a <a href='https://emlek-qr.hu/profil' target='__blank' style={{...link}}>profilod</a> , töltsd fel profilképet, keress rá szeretteid ismerőseid adatlapjára, kommentelj, vagy irány az <a href='https://emlek-qr.hu/erme' target='__blank' style={{...link}}>érme</a> oldal és szerezz magadnak egy emlékérmét.
           </Text>
           <Text style={{...text}}>
-            Név: <span className='font-light'>{nev}</span><br></br>
-            Tárgy: <span className='font-light'>{subject}</span><br></br>
-            Email cím: <span className='font-light'>{email}</span><br></br>
-            Üzenet: <span className='font-light'>{message}</span><br></br>
-          </Text>
-          <Text style={{...text}}>
-            Kérlek válaszolj neki amint időd engedi!
+            Kérdés esetén keress bátran bennünket az <a href='mailto:info@emlek-qr.hu' style={{...link}}>info@emlek-qr.hu</a> email címen, vagy a <a href='https://emlek-qr.hu/kapcsolat' target='__blank' style={{...link}}>kapcsolat</a> oldalon!
           </Text>
         </Container>
       </Body>

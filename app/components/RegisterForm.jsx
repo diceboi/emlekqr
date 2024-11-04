@@ -55,14 +55,14 @@ const RegisterForm = () => {
         }),
       });
       if (res.status === 400) {
-        setError("Ezzel az email címmel már létezik felhasználó");
+        toast.error('Ezzel az email címmel már létezik felhasználó.')
       }
       if (res.status === 200) {
-        setError("");
+        toast.success('Sikeres regisztráció.')
         router.push("/bejelentkezes");
       }
     } catch (error) {
-      setError("Hiba, próbáld újra");
+      toast.error('Valami hiba történt, próbáld újra később.')
       console.log(error);
     }
   };
@@ -111,7 +111,6 @@ const RegisterForm = () => {
               {" "}
               Regisztráció
             </button>
-            <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
           </form>
           <div className="text-center text-gray-500 mt-4">vagy</div>
           <Link

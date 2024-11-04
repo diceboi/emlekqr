@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,11 +28,14 @@ export default function ContactForm() {
 
       if (response.ok) {
         setSubmissionResult('Sikeres üzenetküldés!');
+        toast.success('Sikeres üzenetküldés!')
       } else {
         setSubmissionResult('Hiba történt az üzenet küldése közben.');
+        toast.error('Hiba történt az üzenet küldése közben.')
       }
     } catch (error) {
       setSubmissionResult('Hálózati hiba történt.');
+      toast.error('Úgy tűnik hálózati hibába futottál. Kérlek ellenőrizd az internetkapcsolatod, vagy próbálkozz később.')
     }
 
     setIsSubmitting(false);

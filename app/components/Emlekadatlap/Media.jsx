@@ -11,6 +11,7 @@ import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import { BiCameraMovie } from "react-icons/bi";
 import Link from "next/link";
 import { LuImage } from "react-icons/lu";
+import { toast } from "sonner";
 
 import H1 from "../UI/H1"
 import H2 from "../UI/H2"
@@ -66,11 +67,27 @@ export default function Media({ data }) {
 
   // Images //////////////////////////////////////
 
+  const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
   const handleImageChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
+  
+    // Filter files that exceed the maximum size
+    const validFiles = selectedFiles.filter((file) => {
+      if (file.size > MAX_FILE_SIZE) {
+        toast.error(`"${file.name}" kép túl nagy méretű, a megengedett legnagyobb méret 5 MB.`);
+        return false;
+      }
+      return true;
+    });
+  
+    // If no files pass the validation, exit early
+    if (validFiles.length === 0) {
+      return;
+    }
 
     // New uploadable files
-    const newFiles = selectedFiles.map((file) => {
+    const newFiles = validFiles.map((file) => {
     const newUrlWebp = file.name.replace(/\.[^/.]+$/, ".webp");
     return{
       file,
@@ -231,6 +248,7 @@ export default function Media({ data }) {
           >
             <TbCameraPlus className="w-6 h-6" />
             <p className="font-normal">Kép hozzáadása</p>
+            <p className="font-normal text-xs opacity-50">max. 5 MB</p>
             <input
               type="file"
               accept="image/*"

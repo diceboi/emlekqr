@@ -12,32 +12,21 @@ import {
   import * as React from 'react';
   
   
-  export const Kapcsolat = ({nev, email, message, subject}) => (
+  export const ElfelejtettJelszo = ({resetUrl}) => (
     <Html>
       <Head />
-      <Preview>Örülök, hogy írtál!</Preview>
+      <Preview>Állítsd vissza a jelszavad</Preview>
       <Body style={main}>
         <Container style={container}>
           <Img src='https://www.emlek-qr.hu/emleqr-logo-base.png' style={{ width: '150px', height: 'auto', margin: 'auto', paddingTop: '20px' }} />
-          <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Kedves Gabi, {nev} szeretné felvenni veled a kapcsolatot.</Heading>
-          <Text style={{ ...text, marginBottom: '24px'}}>
-            Az üzenet a következő volt:
-          </Text>
-          <Text style={{...text}}>
-            Név: <span className='font-light'>{nev}</span><br></br>
-            Tárgy: <span className='font-light'>{subject}</span><br></br>
-            Email cím: <span className='font-light'>{email}</span><br></br>
-            Üzenet: <span className='font-light'>{message}</span><br></br>
-          </Text>
-          <Text style={{...text}}>
-            Kérlek válaszolj neki amint időd engedi!
-          </Text>
+          <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Az alábbi linkre kattintva visszaállíthatod a jelszavad.</Heading>
+          <Link href={resetUrl} style={{...button}}>Jelszó visszaállítása</Link>
         </Container>
       </Body>
     </Html>
   );
   
-  export default Kapcsolat;
+  export default ElfelejtettJelszo;
   
   const main = {
     backgroundColor: '#ffffff',
@@ -78,3 +67,16 @@ import {
     fontSize: '18px',
     
   };
+
+  const button = {
+    color: '#ffffff',
+    fontSize: '18px',
+    fontFamily:
+      "Geologica, Poppins, 'Inter', sans-serif",
+    backgroundColor: '#2292a4',
+    borderRadius: '50px',
+    paddingLeft: '16px',
+    paddingRight: '16px',
+    paddingTop: '8px',
+    paddingBotttom: '8px',
+  }

@@ -9,6 +9,7 @@ import "yet-another-react-lightbox/styles.css";
 import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import H4 from "../UI/H4";
+import { toast } from "sonner";
 
 export default function StoryYear({ data, index }) {
   const pathname = usePathname();
@@ -58,14 +59,29 @@ export default function StoryYear({ data, index }) {
   
     setImages(combinedImages);
   }, [formData.story, index, blobStoryImages]);
+
+
+  const MAX_FILE_SIZE = 5 * 1024 * 1024;
   
 
   const handleFileChange = (e) => {
-    // New uploadable files
     const selectedFiles = Array.from(e.target.files);
-
-    const newFiles = selectedFiles.map((file) => {
-      // Create the newUrl with a .webp extension, but keep the original file name and extension for other properties
+  
+    // Filter files that exceed the maximum size
+    const validFiles = selectedFiles.filter((file) => {
+      if (file.size > MAX_FILE_SIZE) {
+        toast.error(`"${file.name}" kép túl nagy méretű, a megengedett legnagyobb méret 5 MB.`);
+        return false;
+      }
+      return true;
+    });
+  
+    // If no files pass the validation, exit early
+    if (validFiles.length === 0) {
+      return;
+    }
+  
+    const newFiles = validFiles.map((file) => {
       const newUrlWebp = file.name.replace(/\.[^/.]+$/, ".webp");
   
       return {
@@ -233,6 +249,7 @@ export default function StoryYear({ data, index }) {
             >
               <TbCameraPlus className="w-6 h-6" />
               <p className="font-normal">Kép hozzáadása</p>
+              <p className="font-normal text-xs opacity-50">max. 5 MB</p>
               <input
                 type="file"
                 accept="image/*"
