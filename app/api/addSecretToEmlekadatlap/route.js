@@ -1,4 +1,4 @@
-import connect from "../../Utils/db";
+import connect from "../../utils/db";
 import Emlekadatlap from "../../(models)/Emlekadatlap";
 import { NextResponse } from "next/server";
 
