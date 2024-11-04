@@ -2,7 +2,7 @@ import { Geologica } from "next/font/google";
 import "./globals.css";
 import MainNav from "./components/UI/MainNav";
 import Footer from "./components/UI/Footer"
-import AuthProvider from "./Utils/AuthProvider";
+import AuthProvider from "./utils/AuthProvider";
 import { getServerSession } from "next-auth";
 import ContextProvider from "./Context";
 import UpdateEmlekadatlapContextProvider from "./UpdateEmlekadatlapContext";
