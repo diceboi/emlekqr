@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import H3 from "./UI/H3";
 
 import Loading from "../components/UI/Loading"
 
@@ -73,40 +74,40 @@ const RegisterForm = () => {
 
   return (
     sessionStatus !== "authenticated" && (
-        <div className="bg-[#212121] p-8 rounded shadow-md w-96">
-          <h1 className="text-4xl text-center text-white font-semibold mb-8">Regisztráció</h1>
-          <form onSubmit={handleSubmit}>
+        <div className="flex flex-col items-center gap-4 bg-[--cream] p-8 rounded-3xl shadow-md lg:w-96">
+          <H3 classname={"text-center text-[--rose] font-semibold mb-8"}>Regisztráció</H3>
+          <form className="flex flex-col w-full items-center" onSubmit={handleSubmit}>
             <input
               type="text"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
+              className="w-full border text-black rounded-3xl px-4 py-2 mb-4 focus:outline-none focus:border-[--rose] focus:text-black"
               placeholder="Vezeteknev"
               name="vezeteknev"
               required
             />
             <input
               type="text"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
+              className="w-full border text-black rounded-3xl px-4 py-2 mb-4 focus:outline-none focus:border-[--rose] focus:text-black"
               placeholder="Keresztnev"
               name="keresztnev"
               required
             />
             <input
               type="text"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
+              className="w-full border text-black rounded-3xl px-4 py-2 mb-4 focus:outline-none focus:border-[--rose] focus:text-black"
               placeholder="Email"
               name="email"
               required
             />
             <input
               type="password"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
+              className="w-full border text-black rounded-3xl px-4 py-2 mb-4 focus:outline-none focus:border-[--rose] focus:text-black"
               placeholder="password"
               name="password"
               required
             />
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+              className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white self-center"
             >
               {" "}
               Regisztráció
@@ -114,7 +115,7 @@ const RegisterForm = () => {
           </form>
           <div className="text-center text-gray-500 mt-4">vagy</div>
           <Link
-            className="block text-center text-blue-500 hover:underline mt-2"
+            className="text-[--blue] underline text-center"
             href="/bejelentkezes"
           >
             Bejelentkezés már meglévő felhasználóval

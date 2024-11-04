@@ -1,17 +1,20 @@
 import LoginForm from "../components/LoginForm"
-import { getSession } from "next-auth/react"
 import { redirect } from 'next/navigation'
+import { AuthOptions } from '../api/auth/[...nextauth]/route'
+import { getServerSession } from "next-auth/next"
 
 export default async function Bejelentkezes() {
 
-  const session = await getSession()
+  const session = await getServerSession(AuthOptions)
+
+  console.log("Session: ", session)
 
   if (session) {
     redirect('/profil')
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div className="flex flex-col items-center justify-center lg:min-h-[93vh] py-8 px-10">
     <LoginForm />
     </div>
   )

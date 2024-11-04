@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn ,useSession } from "next-auth/react";
 import { toast } from "sonner";
+import H3 from "./UI/H3";
+import Paragraph from "./UI/Paragraph";
 
 import Loading from "../components/UI/Loading"
 
@@ -57,26 +59,26 @@ const LostPasswordForm = () => {
 
   return (
     sessionStatus !== "authenticated" && (
-        <div className="bg-[#212121] p-8 rounded shadow-md w-96">
-          <h1 className="text-4xl text-center text-white font-semibold mb-8">Elfelejtett jelszó</h1>
-          <form onSubmit={handleSubmit}>
+        <div className="flex flex-col items-center gap-4 bg-[--cream] p-8 rounded-3xl shadow-md lg:w-96">
+          <H3 classname={"text-center text-[--rose] font-semibold mb-8"}>Elfelejtett jelszó</H3>
+          <Paragraph classname={"text-center"}>Írd be az email címedet amivel regisztráltál, hogy egy jelszó visszaállító linket küldhessünk neked.</Paragraph>
+          <form className="flex flex-col w-full items-center" onSubmit={handleSubmit}>
             <input
               type="email"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
+              className="w-full border text-black rounded-3xl px-4 py-2 mb-4 focus:outline-none focus:border-[--rose] focus:text-black"
               placeholder="Email"
               required
             />
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+              className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white self-center"
             >
-              {" "}
-              Küldés
+              Visszaállító email kérése
             </button>
           </form>
           <div className="text-center text-gray-500 mt-4">vagy</div>
           <Link
-            className="block text-center text-blue-500 hover:underline mt-2"
+            className="text-[--blue] underline"
             href="/bejelentkezes"
           >
             Bejelentkezés

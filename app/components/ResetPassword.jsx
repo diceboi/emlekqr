@@ -4,15 +4,12 @@ import { useEffect, useState } from "react";
 import { useRouter, usePathname} from "next/navigation";
 import { signIn ,useSession } from "next-auth/react";
 import { toast } from "sonner";
+import H3 from "./UI/H3";
+import Paragraph from "./UI/Paragraph";
 
 import Loading from "../components/UI/Loading"
 
-const ResetPasswordForm = () => {
-
-    const pathname = usePathname()
-    const params = pathname.slice(-40)
-
-    console.log("Token from URL: ", params)
+const ResetPasswordForm = ({token}) => {
 
     const router = useRouter();
     const [error, setError] = useState("");
@@ -30,7 +27,7 @@ const ResetPasswordForm = () => {
                     "Content-Type": "application/json",
                   },
                   body: JSON.stringify({
-                    token: params.token,
+                    token: token,
                   }),
                 });
                 if (res.status === 400) {
@@ -49,12 +46,7 @@ const ResetPasswordForm = () => {
               }
             };
         verifyToken();
-    }, [params.token]);
-  
-    const isValidEmail = (email) => {
-      const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-      return emailRegex.test(email);
-    };
+    }, [token]);
   
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -68,13 +60,14 @@ const ResetPasswordForm = () => {
           },
           body: JSON.stringify({
             password,
+            email: user?.email,
           }),
         });
         if (res.status === 400) {
-          toast.error('Ezzel az email címmel nem létezik felhasználó.')
+          toast.error('Az új jelszót nem sikerült beállítani.')
         }
         if (res.status === 200) {
-            toast.success('Elküldünk az email címedre egy jelszó visszaállító linket. Kattints az emailben található "Jelszó visszaállítás" gombra.')
+            toast.success('Az új jelszó sikeresen beállításra került.')
           router.push("/bejelentkezes");
         }
       } catch (error) {
@@ -83,27 +76,27 @@ const ResetPasswordForm = () => {
       }
     };
   
-    if (sessionStatus === "loading") {
+    if (sessionStatus === "loading" || !verified) {
       return <Loading />;
     }
 
   return (
     sessionStatus !== "authenticated" && (
-        <div className="bg-[#212121] p-8 rounded shadow-md w-96">
-          <h1 className="text-4xl text-center text-white font-semibold mb-8">Jelszó visszaállítás</h1>
-          <form onSubmit={handleSubmit}>
+        <div className="flex flex-col items-center gap-4 bg-[--cream] p-8 rounded-3xl shadow-md lg:w-96">
+          <H3 classname={"text-center text-[--rose] font-semibold mb-8"}>Jelszó változtatás</H3>
+          <Paragraph classname={"text-center"}>Állíts be új jelszót a felhasználói fiókodhoz.</Paragraph>
+          <form className="flex flex-col w-full items-center" onSubmit={handleSubmit}>
             <input
               type="password"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
+              className="w-full border text-black rounded-3xl px-4 py-2 mb-4 focus:outline-none focus:border-[--rose] focus:text-black"
               placeholder="Jelszó"
               required
             />
             <button
               type="submit"
               disabled={error.length > 0}
-              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+              className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white self-center"
             >
-              {" "}
               Új jelszó beállítása
             </button>
           </form>

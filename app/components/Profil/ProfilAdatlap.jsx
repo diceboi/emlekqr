@@ -8,6 +8,7 @@ import Modal from "../UI/Modal";
 import { useContext, useEffect } from "react";
 import { Context } from "../../Context";
 import ProfilDataForm from "../UI/ProfilDataForm"
+import ResetPasswordProfileForm from "../ResetPasswordProfileForm";
 
 export default function ProfilAdatlap({ session, user }) {
   const { openPopup, togglePopup } = useContext(Context);
@@ -16,6 +17,10 @@ export default function ProfilAdatlap({ session, user }) {
     <>
       <Modal openstate={openPopup === "modifyData"} onClose={() => togglePopup(null)}>
         <ProfilDataForm email={user.email} name={user.name || []} zip={user.zip || []} city={user.city || []} street={user.address1 || []} floor={user.adress2 || []} phone={user.phone || []} />
+      </Modal>
+
+      <Modal openstate={openPopup === "modifyPassword"} onClose={() => togglePopup(null)}>
+        <ResetPasswordProfileForm session={session} />
       </Modal>
       
       <div className="lg:sticky lg:top-36 flex flex-col gap-8 bg-white rounded-2xl border border-white shadow-special lg:w-1/4 h-fit p-8">
@@ -38,32 +43,22 @@ export default function ProfilAdatlap({ session, user }) {
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-2 border-y border-[--cream] py-4">
-            <p className="font-medium text-sm">Adatok:</p>
-            <div className="flex flex-row items-baseline gap-1">
-              <p className="text-xs w-fit">Ir.szám:</p>
+          <div className="flex flex-col gap-2 border-t border-[--cream] py-2">
+            <div className="flex flex-col items-baseline gap-1 border-b border-[--cream] pb-2">
+              <p className="text-xs w-fit">Cím:</p>
               <p className="text-sm w-fit font-medium">{user?.zip || ""}</p>
+              <p className="text-sm w-fit font-medium">{user.city || ""}</p>
+              <p className="text-sm w-fit font-medium">{user.address1 || ""}</p>
+              <p className="text-sm w-fit font-medium">{user.address2 || ""}</p>
             </div>
-            <div className="flex flex-row items-baseline gap-1">
-            <p className="text-xs w-fit">Település:</p>
-            <p className="text-sm w-fit font-medium">{user.city || ""}</p>
-          </div>
-          <div className="flex flex-row items-baseline gap-1">
-            <p className="text-xs w-fit">Utca, házszám:</p>
-            <p className="text-sm w-fit font-medium">{user.address1 || ""}</p>
-          </div>
-          <div className="flex flex-row items-baseline gap-1">
-            <p className="text-xs w-fit">Emelet, ajtó:</p>
-            <p className="text-sm w-fit font-medium">{user.address2 || ""}</p>
-          </div>
-          <div className="flex flex-row items-baseline gap-1">
-            <p className="text-xs w-fit">Telefonszám:</p>
-            <p className="text-sm w-fit font-medium">{user.phone || ""}</p>
-          </div>
-          <div className="flex flex-col items-baseline gap-1">
-            <p className="text-xs min-w-fit">E-mail cím:</p>
-            <p className="text-sm w-fit font-medium">{user.email}</p>
-          </div>
+            <div className="flex flex-col items-baseline gap-1 border-b border-[--cream] pb-2">
+              <p className="text-xs w-fit">Telefonszám:</p>
+              <p className="text-sm w-fit font-medium">{user.phone || ""}</p>
+            </div>
+            <div className="flex flex-col items-baseline gap-1 border-b border-[--cream] pb-2">
+              <p className="text-xs min-w-fit">E-mail cím:</p>
+              <p className="text-sm w-fit font-medium">{user.email}</p>
+            </div>
             <button
               onClick={() => togglePopup("modifyData")}
               className="flex flex-nowrap items-center gap-1 text-[--blue] underline text-sm"
@@ -71,16 +66,13 @@ export default function ProfilAdatlap({ session, user }) {
               <TbEdit className="w-4 h-4 rounded-md text-[--blue] cursor-pointer" />
               Adatok módosítása
             </button>
-          </div>
-          <div className="flex flex-col items-start gap-1">
-            <p className="font-medium text-sm">Jelszó:</p>
-            <Link
-              href={`/emlekadatlapok`}
+            <button
+              onClick={() => togglePopup("modifyPassword")}
               className="flex flex-nowrap items-center gap-1 text-[--blue] underline text-sm"
             >
               <TbEdit className="w-4 h-4 rounded-md text-[--blue] cursor-pointer" />
               Jelszó módosítása
-            </Link>
+            </button>
             <button
               onClick={signOut}
               className="flex flex-nowrap items-center gap-1 text-[--blue] underline text-sm"

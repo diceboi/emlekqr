@@ -7,18 +7,12 @@ import Media from "../../components/Emlekadatlap/Media"
 import Tributes from "../../components/Emlekadatlap/Tributes"
 
 export default function ProfileInfo({ data, tributes, session }) {
-  const [visibleSection, setVisibleSection] = useState("bio");
+  const [visibleSection, setVisibleSection] = useState("story");
 
   return (
     <div id="profile-info" className="flex flex-col w-full">
       <div className="overflow-x-scroll sm:overflow-hidden w-full py-8">
         <div className="flex flex-row gap-4 justify-between min-w-[640px] ">
-          <button
-            className={`hover:bg-[--cream] py-2 px-4 w-full transition-all duration-200 rounded-2xl ${visibleSection === "bio" ? "bg-[--cream]" : ""}`}
-            onClick={() => setVisibleSection("bio")}
-          >
-            Adatok
-          </button>
           <button
             className={`hover:bg-[--cream] py-2 px-4 w-full transition-all duration-200 rounded-2xl ${visibleSection === "story" ? "bg-[--cream]" : ""}`}
             onClick={() => setVisibleSection("story")}
@@ -40,9 +34,6 @@ export default function ProfileInfo({ data, tributes, session }) {
         </div>
       </div>
       <div className="w-full">
-        {visibleSection === "bio" && (
-          <Bio id="bio" data={data?.bio || null}/>
-        )}
         {visibleSection === "story" && (
           <Story id="story" data={data?.story || null}/>
         )}

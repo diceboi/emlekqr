@@ -8,7 +8,7 @@ export const POST = async (request) => {
 
   await connect();
 
-  const hashedToken = crypto.createHash("sha256").update(token).digeset("hex")
+  const hashedToken = crypto.createHash("sha256").update(token).digest("hex")
 
   const user = await User.findOne({
     resetToken: hashedToken,

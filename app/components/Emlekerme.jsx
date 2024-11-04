@@ -129,6 +129,7 @@ export default function Emlekerme({ session, userdata }) {
                         ]}
                     />
                     <div className="flex flex-col gap-4">
+                        <div className="px-4 py-2 rounded-3xl bg-[--rose] w-fit self-center"><p className="text-xl font-bold text-white">Novemberi kedvezmény </p></div>
                         <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" alt="EmlékQR érme termék" width={500} height={500} className="w-full h-auto cursor-pointer rounded-2xl hover:scale-105 transition-all duration-200"/>
                         <div className="grid grid-cols-3 gap-4">
                             <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" alt="EmlékQR érme termék" width={500} height={500} className="w-full h-auto cursor-pointer rounded-xl hover:scale-105 transition-all duration-200"/>
