@@ -25,6 +25,7 @@ export default async function Koszonjuk({ searchParams }) {
         amount_total: checkoutSession.amount_total,
         customer_details: checkoutSession.customer_details,
         subscription: checkoutSession.subscription,
+        metadata: checkoutSession.metadata
       }
     : null;
 

@@ -4,7 +4,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
   try {
-    const { email, productPriceId } = await req.json(); // Parse request body to include couponCode
+    const { email, productPriceId, type } = await req.json(); // Parse request body to include couponCode
 
     if (!email || !productPriceId) {
       console.error('Missing email or productPriceId');
@@ -43,6 +43,9 @@ export async function POST(req) {
       allow_promotion_codes: true,
       success_url: `${req.headers.get('origin')}/koszonjuk?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get('origin')}/cancel`,
+      metadata: {
+        forma: type,
+      },
     });
 
     // Return the session ID

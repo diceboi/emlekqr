@@ -32,6 +32,12 @@ import H4 from "./UI/H4";
 import Paragraph from "./UI/Paragraph";
 import Label from "./UI/Label";
 
+import EmlekermeSquare from "../components/Emlekerme/EmlekermeSquare";
+import EmlekermeCircle from "../components/Emlekerme/EmlekermeCircle";
+import EmlekermeOval from "../components/Emlekerme/EmlekermeOval";
+
+import { TbSquare, TbCircle, TbOvalVertical } from "react-icons/tb";
+
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 export default function Emlekerme({ session, userdata }) {
@@ -39,6 +45,8 @@ export default function Emlekerme({ session, userdata }) {
     const { openPopup, togglePopup, setOpenPopup } = useContext(Context);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [visibleErme, setVisibleErme] = useState("négyzet")
+    const [payment, setPayment] = useState("price_1QHwPVBp9wE6DgiwSjovJVtG")
     const router = useRouter();
 
     const handleCheckout = async () => {
@@ -52,7 +60,8 @@ export default function Emlekerme({ session, userdata }) {
             },
             body: JSON.stringify({
               email: session.user.email, // User's email
-              productPriceId: 'price_1QEX5HBp9wE6DgiwQsbXZpbH', // Replace with your actual Stripe price ID
+              productPriceId: payment, // Replace with your actual Stripe price ID
+              type: visibleErme
             }),
           });
       
@@ -101,60 +110,97 @@ export default function Emlekerme({ session, userdata }) {
           <LoginForm />
         </SecretCheckerModal>
     )}
-    <section className="flex flex-col gap-8 w-full lg:px-0 py-10 lg:py-20 min-h-[100vh]">
+    <section className="flex flex-col lg:gap-8 w-full lg:px-0 py-10 lg:py-20 min-h-[100vh]">
 
         <div className="relative flex flex-col container w-full m-auto px-4">
 
-            <div className="relative flex flex-col gap-20 p-8 lg:flex-row w-full min-h-[60vh] bg-[--cream] bg-opacity-25 rounded-2xl">
-                <div className="absolute top-0 left-[30vw] w-52 h-52 opacity-25 ">
+            <div className="relative flex flex-col gap-20 lg:p-8 lg:flex-row w-full min-h-[60vh] bg-[--cream] bg-opacity-25 rounded-2xl">
+                <div className="absolute lg:top-0 top-44 lg:left-[30vw] left-0 w-52 h-52 opacity-25 ">
                     <Arrow />
                 </div>
-                <div className="absolute top-2/3 left-[30vw] w-52 h-52 opacity-25">
+                <div className="absolute top-2/3 lg:left-[30vw] left-[40vw] w-52 h-52 opacity-25">
                     <Camel />
                 </div>
-                <div className="absolute top-3/3 right-0 w-52 h-52 opacity-25">
+                <div className="absolute lg:top-3/3 -top-16 lg:right-0 -right-8 w-52 h-52 opacity-25">
                     <Hearth />
                 </div>
-                <div className="flex flex-col justify-center gap-8 p-8 w-1/2">
-                    <H3 classname={"text-[--blue] px-2 p-1 bg-white w-fit rounded-full"}>EmlékQR emlékérme</H3>
+                <div className="flex flex-col justify-center gap-8 p-8 lg:w-1/2">
+                    <Paragraph classname={"text-[--blue] px-2 p-1 bg-white w-fit rounded-full uppercase"}>EmlékQR emlékérme</Paragraph>
                     <H1 classname={"text-[--rose]"}>Az emlékek életre kelnek</H1>
                     <Paragraph className="">A tökéletes, életre szóló ajándékot keresed?-  Lepd meg akár önmagad, vagy családodat - elevenítsétek fel együtt a csodás pillanatokat, meséljetek sosem hallott történeteket…
                     </Paragraph>
                 </div>
             </div>
 
-            <div className="absolute top-20 right-16 flex flex-col w-5/12 h-full">
-                <div className="flex flex-col gap-8 sticky top-32 rounded-2xl m-8 bg-white shadow-2xl p-8">
-                    <Lightbox
-                        open={open}
-                        close={() => setOpen(false)}
-                        slides={[
-                        { src: "/sirko-hero.jpg" },
-                        { src: "/sirko-hero.jpg" },
-                        { src: "/sirko-hero.jpg" },
-                        ]}
-                    />
-                    <div className="flex flex-col gap-4">
-                        <div className="px-4 py-2 rounded-3xl bg-[--rose] w-fit self-center"><p className="text-xl font-bold text-white">Novemberi kedvezmény </p></div>
-                        <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" alt="EmlékQR érme termék" width={500} height={500} className="w-full h-auto cursor-pointer rounded-2xl hover:scale-105 transition-all duration-200"/>
-                        <div className="grid grid-cols-3 gap-4">
-                            <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" alt="EmlékQR érme termék" width={500} height={500} className="w-full h-auto cursor-pointer rounded-xl hover:scale-105 transition-all duration-200"/>
-                            <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" alt="EmlékQR érme termék" width={500} height={500} className="w-full h-auto cursor-pointer rounded-xl hover:scale-105 transition-all duration-200"/>
-                            <Image onClick={() => setOpen(true)} src="/sirko-hero.jpg" alt="EmlékQR érme termék" width={500} height={500} className="w-full h-auto cursor-pointer rounded-xl hover:scale-105 transition-all duration-200"/>
+            <div className="lg:absolute top-20 right-16 flex flex-col w-full lg:w-5/12 h-full">
+                <div className="flex flex-col gap-8 sticky top-32 rounded-2xl lg:m-8 mt-8 bg-white lg:shadow-2xl shadow-md p-8">
+                    <div className="flex flex-col">
+                        <div className="flex flex-col gap-1 justify-center items-center px-4 py-2 rounded-3xl bg-[--error] w-fit self-center h-auto -mb-[75px] -translate-y-full shadow-md">
+                            <Paragraph classname={"text-white"}>Használd a <b><b>NOVQR</b></b> kuponkódot</Paragraph>
+                            <Label classname={"text-white"}>havi 500Ft kedvezményért, 3 hónapig</Label>
                         </div>
-                    </div>
-                    
-                    <div className="flex flex-col lg:flex-row items-center gap-4">
-                        <H4 classname={"text-[--rose]"}>990 Ft/hó</H4>
-                        <p>vagy</p>
-                        <H4 classname={"flex flex-nowrap gap-2 items-center text-[--rose] bg-[--cream] rounded-md p-2"}>9 900 Ft/év <Paragraph classname={"bg-[--rose] text-white p-2 rounded-md"}>-17%</ Paragraph></H4>
+                        { visibleErme === "négyzet" && (
+                            <EmlekermeSquare />
+                        )}
+                        { visibleErme === "kör" && (
+                            <EmlekermeCircle />
+                        )}
+                        { visibleErme === "ovál" && (
+                            <EmlekermeOval />
+                        )}
+                        
+                        <div className="flex flex-col gap-2">
+                            <Label classname={""}>Válassz formát: </Label>
+                            <div className="grid grid-cols-3 bg-[--cream] rounded-3xl shadow-inner">
+                                <button 
+                                    onClick={() => setVisibleErme("négyzet")} 
+                                    className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 h-full rounded-l-3xl ${visibleErme === "négyzet" ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
+                                >
+                                    <TbSquare className={`${visibleErme === "négyzet" ? "text-white" : "text-[--blue]"} min-w-6 min-h-6`}/>
+                                    <Label classname={`cursor-pointer ${visibleErme === "négyzet" ? "text-white" : "text-black"}`}>Négyzet</Label>
+                                </button>
+                                <button 
+                                    onClick={() => setVisibleErme("kör")} 
+                                    className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 ${visibleErme === "kör" ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
+                                >
+                                    <TbCircle  className={`${visibleErme === "kör" ? "text-white" : "text-[--blue]"} min-w-6 min-h-6`}/>
+                                    <Label classname={`cursor-pointer ${visibleErme === "kör" ? "text-white" : "text-black"}`}>Kör</Label>
+                                </button>
+                                <button 
+                                    onClick={() => setVisibleErme("ovál")} 
+                                    className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-r-3xl ${visibleErme === "ovál" ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
+                                >
+                                    <TbOvalVertical  className={`${visibleErme === "ovál" ? "text-white" : "text-[--blue]"} min-w-6 min-h-6`}/>
+                                    <Label classname={`cursor-pointer ${visibleErme === "ovál" ? "text-white" : "text-black"}`}>Ovális</Label>
+                                </button>
+                            </div>
+                        </div>
                         
                     </div>
+                    
+                    <div className="flex flex-col gap-2">
+                        <Label classname={""}>Válassz fizetési módot: </Label>
+                        <div className="grid grid-cols-2 bg-[--cream] rounded-3xl shadow-inner">
+                            <button 
+                                onClick={() => setPayment("price_1QHwPVBp9wE6DgiwSjovJVtG")} 
+                                className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-l-3xl ${payment === "price_1QHwPVBp9wE6DgiwSjovJVtG" ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
+                            >
+                                <Label classname={`cursor-pointer ${payment === "price_1QHwPVBp9wE6DgiwSjovJVtG" ? "text-white" : "text-black"}`}>1 000Ft / hó</Label>
+                            </button>
+                            <button 
+                                onClick={() => setPayment("price_1QHwPqBp9wE6DgiwiHztrtkq")} 
+                                className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-r-3xl ${payment === "price_1QHwPqBp9wE6DgiwiHztrtkq" ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
+                            >
+                                <Label classname={`cursor-pointer ${payment === "price_1QHwPqBp9wE6DgiwiHztrtkq" ? "text-white" : "text-black"}`}>10 000Ft / év</Label>
+                            </button>
+                        </div>
+                    </div>
+
                     <div className="flex flex-row gap-4">
                         {session && (!userdata.data.User.secret || userdata.data.User.secret === "") && (
                             <button
                             onClick={handleCheckout}
-                            className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-full"
+                            className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full"
                             disabled={loading}
                             >
                             <PiShoppingCart className="w-6 h-6" />
@@ -162,12 +208,12 @@ export default function Emlekerme({ session, userdata }) {
                             </button>
                         )}
                         {!session && (
-                            <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-full" onClick={togglePopup}>
+                            <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full" onClick={togglePopup}>
                                 A vásárláshoz jelentkezz be
                             </button>
                         )}
                         {session && userdata.data.User.secret && userdata.data.User.secret !== "" && (
-                            <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--blue] hover:bg-[--rose] hover:scale-105 transition-all text-white w-full cursor-not-allowed">
+                            <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full cursor-not-allowed">
                                 Aktiváld az adatlapod
                             </button>
                         )} 
@@ -179,41 +225,41 @@ export default function Emlekerme({ session, userdata }) {
                         </div>
                     )} 
                     <div className="flex flex-col gap-4">
-                        <Paragraph>Mit tartalmaz a csomag?</Paragraph>
+                        <Label>Mit tartalmaz a csomag?</Label>
                         <ul className="flex flex-col gap-2 list-disc">
                             <li className="flex flex-nowrap gap-4 justify-start items-start">
                                 <div className="flex justify-center items-center min-w-6 h-6">
                                     <AiOutlineQrcode className="text-[--blue] w-full h-auto"/> 
                                 </div>
-                                <Paragraph>
-                                    2 db gravírozott aluminium emlékérmét (1 db tartalék)
-                                </Paragraph>
+                                <Label>
+                                    Szálcsiszolt felületű UV álló bakelit/műgyanta alapanyagú lézergravírozott időjárásálló QR kóddal ellátott érmét, erős kétoldalas ragasztóval ellátva.
+                                </Label>
                             </li>
                             <li className="flex flex-nowrap gap-4 justify-start items-start">
                                 <div className="flex justify-center items-center min-w-6 h-6">
                                     <AiOutlineLayout className="text-[--blue] w-full h-auto"/>
                                 </div>
-                                <Paragraph>
-                                    Egy szerkeszthető online emlékadatlapot ami kapcsolatban áll az érmével.
-                                </Paragraph>
+                                <Label>
+                                    Egy könnyen szerkeszthető bárhonnan, bármilyen okoseszközről elérhető online emlékadatlapot ami kapcsolatban áll az érmével.
+                                </Label>
                             </li>
                             <li className="flex flex-nowrap gap-4 justify-start items-start">
                                 <div className="flex justify-center items-center min-w-6 h-6">
                                     <IoDocumentTextOutline className="text-[--blue] w-auto h-full"/>
                                 </div>
-                                <Paragraph>
-                                    Nyomtatott használati leírást.
-                                </Paragraph>
+                                <Label>
+                                    Köszönőkártyát.
+                                </Label>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div className="flex flex-col justify-center gap-4 pl-16 py-16 w-1/2">
+            <div className="flex flex-col justify-center gap-4 lg:pl-16 lg:py-16 py-8 lg:w-1/2">
                 <div className="relative h-[350px]">
-                    <Image src="/image-kepek/family-trip.webp" width={1000} height={500} className="absolute top-0 left-0 border-8 border-white shadow-xl w-2/3 -rotate-12"/>
-                    <Image src="/image-kepek/family-trip2.webp" width={1000} height={500} className="absolute bottom-0 right-0 border-8 border-white shadow-xl w-2/3 rotate-6"/>
+                    <Image src="/image-kepek/family-trip.webp" width={1000} height={500} className="absolute lg:top-0 top-16 left-0 border-8 border-white shadow-xl w-2/3 -rotate-12"/>
+                    <Image src="/image-kepek/family-trip2.webp" width={1000} height={500} className="absolute lg:bottom-0 bottom-16 right-0 border-8 border-white shadow-xl w-2/3 rotate-6"/>
                 </div>
                 
                 <H2 classname={"text-[--rose]"}>Mesélj el egy különleges történetet</H2>
@@ -221,7 +267,7 @@ export default function Emlekerme({ session, userdata }) {
                 </Paragraph>
             </div>
 
-            <div className="flex flex-col justify-center gap-4 pl-16 py-8 w-1/2">
+            <div className="flex flex-col justify-center gap-4 lg:pl-16 py-8 lg:w-1/2">
                 <H4 classname={"text-[--rose]"}>Az örökkévalóságig, és tovább...</H4>
                 <div className="flex flex-col gap-8 p-8 bg-gradient-to-br from-[--blue-15] to-[--cream] rounded-2xl">
                     
@@ -231,7 +277,7 @@ export default function Emlekerme({ session, userdata }) {
                                     <FaCircleCheck className="text-[--blue] w-auto h-full"/>
                                 </div>
                                 <Paragraph>
-                                    <b>Anodizált</b> aluminium
+                                    <b>Gyönyörű szálcsiszolt</b> felület
                                 </Paragraph>
                             </li>
                             <li className="flex flex-nowrap gap-4 justify-start items-start">
@@ -239,7 +285,7 @@ export default function Emlekerme({ session, userdata }) {
                                     <FaCircleCheck className="text-[--blue] w-auto h-full"/>
                                 </div>
                                 <Paragraph>
-                                    <b>3M ultra erős</b> ragasztóval ellátva
+                                    <b>Erős</b> ragasztóval ellátva
                                 </Paragraph>
                             </li>
                             <li className="flex flex-nowrap gap-4 justify-start items-start">
@@ -247,14 +293,14 @@ export default function Emlekerme({ session, userdata }) {
                                     <FaCircleCheck className="text-[--blue] w-auto h-full"/>
                                 </div>
                                 <Paragraph>
-                                    <b>+1</b> tartalék érme
+                                    <b>UV álló</b> kültéri műgyanta alapanyagú érme
                                 </Paragraph>
                             </li>
                         </ul>
                 </div>
             </div>
 
-            <div className="flex flex-col justify-center gap-4 pl-16 py-16 w-1/2">
+            <div className="flex flex-col justify-center gap-4 lg:pl-16 lg:py-16 py-8 lg:w-1/2">
                 <div className="">
                     <Image src="/image-kepek/fiok-kepek.webp" width={1000} height={500} className="rounded-xl"/>
                 </div>
@@ -264,16 +310,16 @@ export default function Emlekerme({ session, userdata }) {
                 </Paragraph>
             </div>
 
-            <div className="flex flex-col justify-center gap-4 pl-16 py-8 w-1/2">
+            <div className="flex flex-col justify-center gap-4 lg:pl-16 py-8 lg:w-1/2">
                 <div className="flex flex-col gap-8 p-8 bg-gradient-to-br from-[--rose-15] to-[--cream] rounded-2xl">
                     
                             <div className="flex flex-nowrap gap-4 justify-start items-center">
                                 <div className="flex justify-center items-center min-w-6 h-6">
                                     <IoIosInfinite className="text-[--blue] w-auto h-full"/>
                                 </div>
-                                <Paragraph >
+                                <H4 >
                                     Életre szóló garancia
-                                </Paragraph>
+                                </H4>
                             </div>
                             <Paragraph>Ha az idők során megrongálódna vagy elveszne emlékérméd <b>ingyenesen cseréljük</b>!</Paragraph>
 
@@ -282,7 +328,7 @@ export default function Emlekerme({ session, userdata }) {
 
         </div>
 
-        <div className="container m-auto flex flex-col gap-8 py-20">
+        {/*<div className="container m-auto flex flex-col gap-8 py-20">
         <H2 classname={"text-[--rose] ml-20"}>Ezt mondták rólunk</H2>
         <div className="relative flex flex-col gap-20 px-8 lg:flex-row w-full bg-[--cream] rounded-2xl">
 
@@ -333,7 +379,7 @@ export default function Emlekerme({ session, userdata }) {
             </div>
             <div className="absolute top-0 right-8 w-1/4 h-full bg-gradient-to-l from-[--cream] to-transparent rounded-2xl z-50 pointer-events-none"></div>
         </div>
-        </div>
+        </div> */}
         
         
     </section>

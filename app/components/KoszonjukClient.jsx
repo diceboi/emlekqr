@@ -1,8 +1,13 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import H2 from './UI/H2';
+import Paragraph from './UI/Paragraph';
 
 export default function KoszonjukClient({ session, checkoutSession, randomNumber }) {
+
+  const [emailSent, setEmailSent] = useState(false);
+
   useEffect(() => {
     const updateUserData = async () => {
       if (session?.user?.email && checkoutSession?.customer_details?.email) {
@@ -27,25 +32,36 @@ export default function KoszonjukClient({ session, checkoutSession, randomNumber
             ...checkoutSessionData
           }),
         });
+
+        // Send email to both admin and customer
+        await fetch("/api/email/vasarlas", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: customerDetails.email,
+            name: customerDetails.name,
+            address: `${customerDetails.address?.line1}, ${customerDetails.address?.city}, ${customerDetails.address?.postal_code}`,
+            payment: (checkoutSession.amount_total / 100).toFixed(2),
+            type: checkoutSession.metadata.forma, // Assuming 'forma' is in metadata
+            secret: randomNumber,
+            email: customerDetails.email,
+            phone: customerDetails.phone
+          }),
+        });
+
+        setEmailSent(true);
+
       }
     };
 
     updateUserData();
-  }, [session, checkoutSession, randomNumber]);
+  }, [session, checkoutSession, randomNumber, emailSent]);
 
   return (
-    <section className="w-full py-20">
-      <div className="container flex flex-col gap-8 m-auto p-4 bg-[--cream] rounded-2xl">
-        <h2 className="text-[--rose] text-center">Köszönjük a vásárlást</h2>
-        <p className="text-center">Jelenleg nincs más dolgod, mint megvárni, amíg megérkezik az érme.</p>
-        <p className="text-center">Rendelési azonosítód: <strong>{randomNumber}</strong></p>
-        {session?.user?.email && <p>{session.user.email}</p>}
-        {checkoutSession && (
-          <div className="text-center">
-            <p>Customer: {checkoutSession.customer}</p>
-            <p>Total Amount: ${(checkoutSession.amount_total / 100).toFixed(2)}</p>
-          </div>
-        )}
+    <section className="flex flex-col items-center w-full py-20 px-4 min-h-[93vh]">
+      <div className="container flex flex-col items-center gap-8 m-auto p-8 bg-[--cream] rounded-2xl">
+        <H2 classname={"text-[--rose] text-center"}>Köszönjük a vásárlást</H2>
+        <Paragraph classname={"text-center lg:w-1/2"}>Jelenleg nincs más dolgod, mint megvárni, amíg megérkezik az érme, és követni az email-ben leírt lépéseket emlékadatlapod aktiválásához.</Paragraph>
       </div>
     </section>
   );

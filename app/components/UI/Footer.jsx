@@ -4,6 +4,7 @@ import Link from "next/link"
 import Label from "./Label"
 import H4 from "./H4"
 import { TbArrowBigRightLines, TbAnchor, TbPhone, TbMail, TbUsersGroup } from "react-icons/tb";
+import { MdOutlinePayment } from "react-icons/md";
 
 export default function Footer() {
   return (
@@ -57,6 +58,10 @@ export default function Footer() {
                         </div>
                     </div>
 
+                    <div className="flex flex-col gap-2">
+                        <Label classname={"text-white"}>Biztonságos fizetés a <b>Stripe</b> által</Label>
+                        <Link href={"https://stripe.com"} target="__blank"><Image src={"/Powered by Stripe - white.svg"} width={150} height={75}/></Link>
+                    </div>
                 </div>
             </div>
         </div>
