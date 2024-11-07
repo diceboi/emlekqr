@@ -1,4 +1,4 @@
-import connect from "../../utils/db";
+import connect from "../../Utils/db";
 import Notifications from "../../(models)/Notifications";
 import { NextResponse } from "next/server";
 
