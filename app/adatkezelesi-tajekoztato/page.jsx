@@ -50,7 +50,7 @@ export default function AdatkezelesiTajekoztatoPage() {
             továbbiakban: üzemeltető.
           </Paragraph>
           <Paragraph>
-            Jelen Szabályzat az "szolgáltató" adatkezelési tevékenységének belső
+            Jelen Szabályzat az &quot;szolgáltató&quot; adatkezelési tevékenységének belső
             szabályait tartalmazza AZ EURÓPAI PARLAMENT ÉS A TANÁCS (EU)
             2016/679 RENDELETÉNEK - a természetes személyeknek a személyes
             adatok kezelése tekintetében történő védelméről és az ilyen adatok
@@ -91,7 +91,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           <Paragraph>Honlap: http://pieretti.hu/</Paragraph>
           2. Postai szolgáltatások, kézbesítés, csomagküldés
           <Paragraph>
-            Ezen adatfeldolgozó "szolgáltató" tól megkapják a megrendelt termék
+            Ezen adatfeldolgozó &quot;szolgáltató&quot; tól megkapják a megrendelt termék
             kézbesítéséhez szükséges személyes adatokat (érintett neve, címe,
             telefonszáma), és ennek felhasználásával kiszállítja a terméket.
           </Paragraph>
@@ -109,7 +109,7 @@ export default function AdatkezelesiTajekoztatoPage() {
             III. HONLAPHOZ KAPCSOLÓDÓ ADATKEZELÉSEK
           </H4>
           <Paragraph>
-            4. Látogatói adatkezelés az "szolgáltató" honlapján
+            4. Látogatói adatkezelés az &quot;szolgáltató&quot; honlapján
           </Paragraph>
           (1) A Sütik (cookie-k) rövid adatfájlok, melyeket a meglátogatott
           honlap helyez el a felhasználó számítógépén. A cookie célja, hogy az
@@ -143,7 +143,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           a teljes körű tájékoztató elérhetőségére.
           <Paragraph>5. Tájékoztatás sütik (cookie) alkalmazásáról</Paragraph>
           (1) Az általános elterjedt internetes gyakorlatnak megfelelően
-          "szolgáltató" is használ sütiket (cookie) a weboldalán. A cookie egy
+          &quot;szolgáltató&quot; is használ sütiket (cookie) a weboldalán. A cookie egy
           kis fájl, amely egy sor karaktert tartalmaz, és amely akkor kerül a
           látogató számítógépére, amikor az egy webhelyet keres fel. Amikor
           ismét felkeresi az adott webhelyet, a cookie-nak köszönhetően a
@@ -160,7 +160,7 @@ export default function AdatkezelesiTajekoztatoPage() {
             ellenőrzését, visszaélések megakadályozását és a weboldalon nyújtott
             szolgáltatások zavartalan és megfelelő színvonalú biztosítását.
           </Paragraph>
-          (2) "szolgáltató" honlapja a weboldal használata során a látogatóról,
+          (2) &quot;szolgáltató&quot; honlapja a weboldal használata során a látogatóról,
           illetve az általa böngészésre használt eszközről az alábbi adatokat
           rögzíti és kezeli:
           <ul className="list-disc pl-8 marker:text-[--rose]">
@@ -218,7 +218,7 @@ export default function AdatkezelesiTajekoztatoPage() {
             (4) A weboldalon használt sütik önmagukban nem alkalmasak a
             felhasználó személyének beazonosítására.
           </Paragraph>
-          (5) "szolgáltató" honlapján alkalmazott sütik:
+          (5) &quot;szolgáltató&quot; honlapján alkalmazott sütik:
           <Paragraph>
             1. Technikailag elengedhetetlenül szükséges munkamenet (session)
             sütik:
@@ -243,7 +243,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           </Paragraph>
           2. Hozzájárulást igénylő sütik:
           <Paragraph>
-            Ezek lehetőséget biztosítanak, hogy az "szolgáltató" megjegyezhesse
+            Ezek lehetőséget biztosítanak, hogy az &quot;szolgáltató&quot; megjegyezhesse
             a felhasználó honlappal kapcsolatos választásait. A látogató a
             szolgáltatás igénybevételét megelőzően és a szolgáltatás
             igénybevétele során ezen adatkezelést bármikor megtilthatja. Ezek az
@@ -266,7 +266,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           <Paragraph>Google AdWords sütik - erről itt tájékozódhat:</Paragraph>
           https://support.google.com/adwords/answer/2407785?hl=hu
           <Paragraph>
-            6. Regisztráció az "egyéni vállalkozó" honlapján
+            6. Regisztráció az &quot;egyéni vállalkozó&quot; honlapján
           </Paragraph>
           (1) A honlapon a regisztráló természetes személy az erre vonatkozó
           négyzet bejelölésével adhatja meg hozzájárulását személyes adatai
@@ -283,7 +283,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           2. Kapcsolatfelvétel, elektronikus, telefonos, SMS, és postai
           megkereséssel.
           <Paragraph>
-            3. Tájékoztatás az "szolgáltató" termékeiről, szolgáltatásairól,
+            3. Tájékoztatás az &quot;szolgáltató&quot; termékeiről, szolgáltatásairól,
             szerződési feltételeiről, akcióiról.
           </Paragraph>
           4. Reklám-küldemény a tájékoztatás során elektronikusan és postai úton
@@ -291,9 +291,9 @@ export default function AdatkezelesiTajekoztatoPage() {
           (4) Az adatkezelés jogalapja az érintett hozzájárulása.
           <Paragraph>
             (5) A személyes adatok címzettjei, illetve a címzettek kategóriái:
-            az "szolgáltató" ügyfélszolgálattal, marketing tevékenységével
+            az &quot;szolgáltató&quot; ügyfélszolgálattal, marketing tevékenységével
             kapcsolatos feladatokat ellátó munkavállalói, adatfeldolgozóként az
-            "szolgáltató" IT szolgáltatója tárhely szolgáltatást végző
+            &quot;szolgáltató&quot; IT szolgáltatója tárhely szolgáltatást végző
             munkavállalói.
           </Paragraph>
           (6) A személyes adatok tárolásának időtartama: a regisztráció /
@@ -305,7 +305,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           (1) A honlapon a hírlevél szolgáltatásra regisztráló természetes
           személy az erre vonatkozó négyzet bejelölésével adhatja meg
           hozzájárulását személyes adatai kezeléséhez. Tilos a négyzet előre
-          bejelölése. A hírlevéről az érintett a hírlevél "Leiratkozás"
+          bejelölése. A hírlevéről az érintett a hírlevél &quot;Leiratkozás&quot;
           alkalmazásának használatával, vagy írásban vagy e-mailben tett
           nyilatkozattal bármikor leiratkozhat, amely a hozzájárulás
           visszavonását jelenti. Ilyen esetben a leiratkozó minden adatát
@@ -318,7 +318,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           </Paragraph>
           (3) A személyes adatok kezelésének célja:
           <Paragraph>
-            1. Hírlevél küldése az "szolgáltató" termékei, szolgáltatásai
+            1. Hírlevél küldése az &quot;szolgáltató&quot; termékei, szolgáltatásai
             tárgyában
           </Paragraph>
           2. Reklámanyag küldése
@@ -326,42 +326,42 @@ export default function AdatkezelesiTajekoztatoPage() {
             (4) Az adatkezelés jogalapja: az érintett hozzájárulása.
           </Paragraph>
           (5) A személyes adatok címzettjei, illetve a címzettek kategóriái: az
-          "szolgáltató" ügyfélszolgálattal, marketing tevékenységével
+          &quot;szolgáltató&quot; ügyfélszolgálattal, marketing tevékenységével
           kapcsolatos feladatokat ellátó munkavállalói, adatfeldolgozóként az
-          "szolgáltató" IT szolgáltatója munkavállalói a tárhelyszolgáltatás
+          &quot;szolgáltató&quot; IT szolgáltatója munkavállalói a tárhelyszolgáltatás
           teljesítése céljából,
           <Paragraph>
             (6) A személyes adatok tárolásának időtartama: a
             hírlevél-szolgáltatás fennállásáig, vagy az érintett hozzájárulása
             visszavonásáig (törlési kérelméig).
           </Paragraph>
-          8. Közösségi irányelvek / Adatkezelés az "szolgáltató" Facebook
+          8. Közösségi irányelvek / Adatkezelés az &quot;szolgáltató&quot; Facebook
           oldalán
           <Paragraph>
-            (1) Az "szolgáltató" termékei, szolgáltatásai megismertetése,
+            (1) Az &quot;szolgáltató&quot; termékei, szolgáltatásai megismertetése,
             népszerűsítése céljából Facebook/ Instagram / Tik-Tok oldalt tart
             fenn.
           </Paragraph>
-          (2) Az "szolgáltató" Facebook/ Instagram / Tik-Tok oldalon feltett
+          (2) Az &quot;szolgáltató&quot; Facebook/ Instagram / Tik-Tok oldalon feltett
           kérdés nem minősül hivatalosan benyújtott panasznak.
           <Paragraph>
-            (3) ) Az "szolgáltató" Facebook/ Instagram / Tik-Tok oldalán a
-            látogatók által közzétett személyes adatokat az "szolgáltató" nem
+            (3) ) Az &quot;szolgáltató&quot; Facebook/ Instagram / Tik-Tok oldalán a
+            látogatók által közzétett személyes adatokat az &quot;szolgáltató&quot; nem
             kezeli.
           </Paragraph>
           (4) A látogatókra a Facebook/ Instagram / Tik-Tok Adatvédelmi- és
           Szolgáltatási Feltételei irányadók.
           <Paragraph>
             (5) Jogellenes, vagy sértő tartalom publikálása esetén az
-            "szolgáltató" előzetes értesítés nélkül kizárhatja az érintettet a
+            &quot;szolgáltató&quot; előzetes értesítés nélkül kizárhatja az érintettet a
             tagok közül, vagy törölheti hozzászólását.
           </Paragraph>
-          (6) Az "szolgáltató" nem felel a Facebook/ Instagram / Tik-Tok
+          (6) Az &quot;szolgáltató&quot; nem felel a Facebook/ Instagram / Tik-Tok
           felhasználók által közzétett jogszabályt sértő adattartalmakért,
-          hozzászólásokért. Az "szolgáltató" nem felel semmilyen, a Facebook
+          hozzászólásokért. Az &quot;szolgáltató&quot; nem felel semmilyen, a Facebook
           működéséből adódó hibáért, üzemzavarért vagy a rendszer működésének
           megváltoztatásából fakadó problémáért.
-          <Paragraph>9. Adatkezelés az "szolgáltató" webáruházában</Paragraph>A
+          <Paragraph>9. Adatkezelés az &quot;szolgáltató&quot; webáruházában</Paragraph>A
           kezelt személyes adatok köre
           <Paragraph>* név</Paragraph>* telefonszám
           <Paragraph>* e-mail cím</Paragraph>* levelezési cím, székhely
@@ -386,7 +386,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           munkatársai jogosultak megismerni, azonban azokat nem teszik közzé,
           harmadik személyek részére nem adják át.
           <Paragraph>
-            (1) Az "szolgáltató" által működtetett webáruházban történő vásárlás
+            (1) Az &quot;szolgáltató&quot; által működtetett webáruházban történő vásárlás
             szerződésnek minősül, figyelemmel az elektronikus kereskedelmi
             szolgáltatások, valamint az információs társadalommal összefüggő
             szolgáltatások egyes kérdéseiről szóló 2001. évi CVIII. törvény
@@ -395,7 +395,7 @@ export default function AdatkezelesiTajekoztatoPage() {
             Webáruházban történő vásárlás esetén az adatkezelés jogcíme a
             szerződés.
           </Paragraph>
-          (2) Az "szolgáltató" az információs társadalommal összefüggő
+          (2) Az &quot;szolgáltató&quot; az információs társadalommal összefüggő
           szolgáltatás nyújtására irányuló szerződés létrehozása, tartalmának
           meghatározása, módosítása, teljesítésének figyelemmel kísérése, az
           abból származó díjak számlázása, valamint az azzal kapcsolatos
@@ -405,7 +405,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           13/A.§(1) bekezdés jogcímén, továbbá hozzájárulás jogcímén a
           telefonszámát, e-mail címét, bankszámlaszámát, online azonosítóját.
           <Paragraph>
-            (3) Az "szolgáltató" számlázás céljából kezelheti az információs
+            (3) Az &quot;szolgáltató&quot; számlázás céljából kezelheti az információs
             társadalommal összefüggő szolgáltatás igénybevételével kapcsolatos
             természetes személyazonosító adatokat, lakcímet, valamint a
             szolgáltatás igénybevételének időpontjára, időtartamára és helyére
@@ -413,11 +413,11 @@ export default function AdatkezelesiTajekoztatoPage() {
             jogcímén.
           </Paragraph>
           (4) A személyes adatok címzettjei, illetve a címzettek kategóriái: az
-          "szolgáltató" ügyfélszolgálattal, marketing tevékenységével
+          &quot;szolgáltató&quot; ügyfélszolgálattal, marketing tevékenységével
           kapcsolatos feladatokat ellátó munkavállalói, adatfeldolgozóként, az
-          "szolgáltató" adózási, könyvviteli feladatait ellátó vállalkozás
+          &quot;szolgáltató&quot; adózási, könyvviteli feladatait ellátó vállalkozás
           munkavállalói, az adó és számviteli kötelezettségek teljesítése
-          céljából, az "szolgáltató" IT szolgáltatója munkavállalói a
+          céljából, az &quot;szolgáltató&quot; IT szolgáltatója munkavállalói a
           tárhelyszolgáltatás teljesítése céljából, a posta / futárszolgálat
           munkavállalói a szállítási adatok (név, cím, telefonszám)
           vonatkozásában.
@@ -430,7 +430,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           <Paragraph>
             10. Ajándéksorsolás szervezésével kapcsolatos adatkezelés
           </Paragraph>
-          (1) Ha az "szolgáltató" ajándéksorsolást (1991. évi XXXIV. törvény
+          (1) Ha az &quot;szolgáltató&quot; ajándéksorsolást (1991. évi XXXIV. törvény
           23.§) szervez, hozzájárulása alapján kezelheti az érintett természetes
           személy nevét, címét, telefonszámát, e-mail címét, online
           azonosítóját. A játékban való részvétel önkéntes.
@@ -440,8 +440,8 @@ export default function AdatkezelesiTajekoztatoPage() {
             jogalapja: az érintett hozzájárulása.
           </Paragraph>
           (3) A személyes adatok címzettjei, illetve a címzettek kategóriái: az
-          "szolgáltató" ügyfélszolgálattal kapcsolatos feladatokat ellátó
-          munkavállalói, adatfeldolgozóként az "egyéni vállalkozó" IT
+          &quot;szolgáltató&quot; ügyfélszolgálattal kapcsolatos feladatokat ellátó
+          munkavállalói, adatfeldolgozóként az &quot;egyéni vállalkozó&quot; IT
           szolgáltatója szerverszolgáltatást végző munkavállalói, futárszolgálat
           munkavállalói.
           <Paragraph>
@@ -455,7 +455,7 @@ export default function AdatkezelesiTajekoztatoPage() {
             11. Adatkezelés adó- és számviteli kötelezettségek teljesítése
             céljából
           </Paragraph>
-          (1) Az "szolgáltató" jogi kötelezettség teljesítése jogcímén,
+          (1) Az &quot;szolgáltató&quot; jogi kötelezettség teljesítése jogcímén,
           törvényben előírt adó és számviteli kötelezettségek teljesítése
           (könyvelés, adózás) céljából kezeli a vevőként, szállítóként vele
           üzleti kapcsolatba lépő természetes személyek törvényben meghatározott
@@ -473,7 +473,7 @@ export default function AdatkezelesiTajekoztatoPage() {
             (2) A személyes adatok tárolásának időtartama a jogalapot adó
             jogviszony megszűnését követő 8 év.
           </Paragraph>
-          (3) A személyes adatok címzettjei: az "szolgáltató" adózási,
+          (3) A személyes adatok címzettjei: az &quot;szolgáltató&quot; adózási,
           könyvviteli, bérszámfejtési, társadalombiztosítási feladatait ellátó
           munkavállalói és adatfeldolgozói.
           <Paragraph>
@@ -737,7 +737,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           kiegészítő nyilatkozat útján történő - kiegészítését. (Rendelet 16.
           cikk).
           <Paragraph>
-            12.4. A törléshez való jog ("az elfeledtetéshez való jog")
+            12.4. A törléshez való jog (&quot;az elfeledtetéshez való jog&quot;)
           </Paragraph>
           1. Az érintett jogosult arra, hogy kérésére az Adatkezelő indokolatlan
           késedelem nélkül törölje a rá vonatkozó személyes adatokat, az
@@ -1087,7 +1087,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           <Paragraph>AZ ADATKEZELŐ INTÉZKEDÉSEI</Paragraph>
           13. Intézkedések az érintett kérelme alapján
           <Paragraph>
-            (1) Az "szolgáltató", mint adatkezelő indokolatlan késedelem nélkül,
+            (1) Az &quot;szolgáltató&quot;, mint adatkezelő indokolatlan késedelem nélkül,
             de mindenféleképpen a kérelem beérkezésétől számított 30 (harminc)
             napon belül tájékoztatja az érintettet a jogai gyakorlására irányuló
             kérelme nyomán hozott intézkedésekről.
@@ -1109,7 +1109,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           nyújthat be valamely felügyeleti hatóságnál, és élhet bírósági
           jogorvoslati jogával.
           <Paragraph>
-            (5) Az "szolgáltató", mint Adatkezelő a Rendelet 13. és 14. cikk
+            (5) Az &quot;szolgáltató&quot;, mint Adatkezelő a Rendelet 13. és 14. cikk
             szerinti információkat és az érintett jogairól szóló tájékoztatást
             (Rendelt 15-22. és 34. cikk) és intézkedést díjmentesen biztosítja.
             Ha az érintett kérelme egyértelműen megalapozatlan vagy - különösen
@@ -1124,7 +1124,7 @@ export default function AdatkezelesiTajekoztatoPage() {
           A kérelem egyértelműen megalapozatlan vagy túlzó jellegének
           bizonyítása az Adatkezelőt terheli.
           <Paragraph>
-            (6) Ha az "szolgáltató", mint Adatkezelőnek megalapozott kétségei
+            (6) Ha az &quot;szolgáltató&quot;, mint Adatkezelőnek megalapozott kétségei
             vannak a kérelmet benyújtó természetes személy kilétével
             kapcsolatban, további, az érintett személyazonosságának
             megerősítéséhez szükséges információk nyújtását kérheti.
@@ -1136,7 +1136,7 @@ export default function AdatkezelesiTajekoztatoPage() {
             14. Az adatkezeléssel kapcsolatos jogérvényesítési lehetőség
           </Paragraph>
           Az Ön által tapasztalt jogellenes adatkezelés esetén értesítse az
-          "szolgáltató", így lehetőség nyílik arra, hogy rövid időn belül
+          &quot;szolgáltató&quot;, így lehetőség nyílik arra, hogy rövid időn belül
           helyreálljon a jogszerű állapot.
           <Paragraph>
             Amennyiben az Ön megítélése szerint a jogszerű állapot nem állítható

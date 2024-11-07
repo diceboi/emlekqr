@@ -18,7 +18,7 @@ export default function VasarlasiFeltetelekPage() {
           </Paragraph>
           <Paragraph>
             Tájékoztatjuk, hogy amennyiben Ön a honlapon keresztül megrendeli
-            tőlünk az "emlékoldalt", úgy a közöttünk létrejövő szerződés
+            tőlünk az &quot;emlékoldalt&quot;, úgy a közöttünk létrejövő szerződés
             tartalmát - a vonatkozó kötelező érvényű jogszabályok rendelkezései
             mellett - a jelen{" "}
             <Link
@@ -109,8 +109,8 @@ export default function VasarlasiFeltetelekPage() {
             A vásárlónak lehetősége van választani, illetve rendelni az áruház
             termékei közül. A vásárló a kiválasztott termékre kattintva
             megtekintheti annak bővebb ismertetőjét. Vásárlási szándéka esetén a
-            megvásárolni kívánt terméket a "Kosárba" gomb megnyomásával egy
-            virtuális kosárba helyezi. A Kosár "Megtekintés" gombjára kattintva
+            megvásárolni kívánt terméket a &quot;Kosárba&quot; gomb megnyomásával egy
+            virtuális kosárba helyezi. A Kosár &quot;Megtekintés&quot; gombjára kattintva
             megtalálja a vásárlás során kosárba helyezett termékeket, valamint a
             számla végösszegét és a szállítási költséget. Itt leellenőrizhetik
             rendelésük helyességét, különös tekintettel az árakra és a
@@ -121,7 +121,7 @@ export default function VasarlasiFeltetelekPage() {
           <Paragraph>
             Ha megfelelőnek tartja a kosárban elhelyezett terméket,
             leellenőrizte a végösszeget, és úgy döntött, hogy meg szeretné
-            vásárolni őket, akkor egyszerűen kattintson a "Pénztár" gombra.
+            vásárolni őket, akkor egyszerűen kattintson a &quot;Pénztár&quot; gombra.
             Áruházunkban lehetősége van regisztráció nélkül is a vásárlásra,
             ezért három lehetőség közöl választhat:
           </Paragraph>
@@ -160,7 +160,7 @@ export default function VasarlasiFeltetelekPage() {
           </Paragraph>
           <Paragraph>
             Ha egyetért a megrendelés tartalmával, akkor a megrendelés
-            elküldéséhez kattintson a "Megrendelés" gombra.
+            elküldéséhez kattintson a &quot;Megrendelés&quot; gombra.
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>Árak</H4>
           <Paragraph>
@@ -184,7 +184,7 @@ export default function VasarlasiFeltetelekPage() {
             Adatbeviteli hibák javításának lehetősége
           </H4>
           <Paragraph>
-            Az adatbeviteli hibák javítására a "Megrendelés" gomb megnyomása
+            Az adatbeviteli hibák javítására a &quot;Megrendelés&quot; gomb megnyomása
             előtt van lehetősége.
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>Visszaigazolás</H4>
@@ -304,7 +304,7 @@ export default function VasarlasiFeltetelekPage() {
             teljesítésének megkezdésekor a vásárló e-mailben és/vagy telefonon
             értesítést kap a teljesítés várható időtartamáról, és a teljesítés
             megkezdésének tényéről, ezután már csak személyesen vagy a
-            "Vevőszolgálat" vagy "Elérhetőségek" menüpontok alatt található
+            &quot;Vevőszolgálat&quot; vagy &quot;Elérhetőségek&quot; menüpontok alatt található
             elérhetőségek valamelyikén keresztül van lehetőség rendelésének
             visszavonására A megrendelés utólagos módosítására csak írásos
             formában, e-mailben kerülhet sor.
