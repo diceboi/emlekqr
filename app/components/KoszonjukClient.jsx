@@ -48,12 +48,9 @@ export default function KoszonjukClient({ session, checkoutSession, randomNumber
             phone: customerDetails.phone
           }),
         });
-
-        setEmailSent(true);
-
       }
     };
-
+    setEmailSent(true);
     updateUserData();
   }, [session, checkoutSession, randomNumber, emailSent]);
 

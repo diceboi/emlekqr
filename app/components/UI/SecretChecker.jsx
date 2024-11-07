@@ -8,8 +8,6 @@ import { Context } from "../../Context";
 
 export default function SecretChecker({ currentdata, session, currentuser }) {
 
-console.log("Current user: ",currentuser)
-
   const { openPopup, setOpenPopup } = useContext(Context);
   const [modalShown, setModalShown] = useState(false); // Track if modal has been shown
 

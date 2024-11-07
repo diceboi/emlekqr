@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { TbArrowUpRight } from "react-icons/tb";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import { toast } from 'sonner'
 
 export default function MainCommentForm({ session, currenttribute, main, to }) {
@@ -15,6 +16,29 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
   const lastDigits = pathname.slice(-7);
 
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
+  const [ userData, setUserData] = useState(null);
+  const [ currentSession, setCurrentSession ] = useState(null)
+
+  const getUserData = async (email) => {
+    try {
+      const response = await fetch(`/api/getUserData?email=${email}`);
+      const result = await response.json();
+      if (response.ok) {
+        setUserData(result.data.User);
+      } else {
+        console.error("Error fetching user data:", result.error);
+      }
+    } catch (error) {
+      console.error("Failed to fetch user data:", error);
+    }
+  };
+
+  useEffect(() => {
+    // Fetch user data if session exists
+    if (session?.user?.email) {
+      getUserData(session.user.email);
+    }
+  }, [currentSession]);
 
   const onSubmit = async (data) => {
     const formData = {
@@ -106,13 +130,15 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
         {session && (
           <>
             <div className="flex flex-nowrap items-center gap-2">
-              <Image
-                src={"/blank-profile.webp"}
-                width={32}
-                height={32}
-                className="w-8 h-8 rounded-full"
+              <div className="relative w-6 h-6 rounded-full overflow-hidden">
+                <Image
+                src={ userData?.image || "/blank-profile.webp"}
+                fill
+                style={{ objectFit: "cover" }}
                 alt="Profile"
               />
+              </div>
+              
               <input
                 className="bg-transparent p-2 focus:appearance-none outline-0 pointer-events-none"
                 value={session.user.name}

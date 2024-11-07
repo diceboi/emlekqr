@@ -16,10 +16,10 @@ import { TbQrcode } from "react-icons/tb";
 
 function Scene() {
   // Load the materials first
-  const materials = useLoader(MTLLoader, '/3D-CAD-erme.mtl');
+  const materials = useLoader(MTLLoader, '/3D-CAD-erme-negyzet.mtl');
   
   // Load the OBJ file and apply the materials
-  const obj = useLoader(OBJLoader, '/3D-CAD-erme.obj', (loader) => {
+  const obj = useLoader(OBJLoader, '/3D-CAD-erme-negyzet.obj', (loader) => {
     materials.preload(); // Preload materials
     loader.setMaterials(materials); // Attach materials to OBJ loader
   });

@@ -84,9 +84,9 @@ export default async function Profil() {
   return (
     <section className="relative lg:py-20 py-8 px-2">
       <div className="container m-auto">
-        <div className=" flex flex-col lg:flex-row gap-16">
+        <div className=" flex flex-col lg:flex-row lg:gap-16 gap-8">
           <ProfilAdatlap session={session} user={currentUser} />
-          <div className="flex flex-col gap-16 w-full">
+          <div className="flex flex-col lg:gap-16 gap-8 w-full">
             <ProfilErtesitesek currentuser={currentUser} currentdata={currentData} />
             <ProfilEmlekadatlapok currentdata={currentData} />
             <ProfilSzamlak currentdata={currentData} invoices={invoices}/>

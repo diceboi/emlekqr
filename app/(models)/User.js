@@ -65,6 +65,10 @@ const userSchema = new Schema(
     resetTokenExpiry: {
       type: Date,
       require: false,
+    },
+    image: {
+      type: String,
+      require: false,
     }
   },
   {

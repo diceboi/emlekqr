@@ -9,9 +9,6 @@ import MainCommentForm from "./MainCommentForm";
 
 export default function SecondaryTributeTile({ tribute, issession, tributes, maintributeid }) {
 
-    console.log("Issession: ", issession)
-    console.log("Tributes: ", tributes)
-
     const [replyOpen, setReplyOpen] = useState(false)
 
     const secondaryTributes = tributes.filter(

@@ -42,7 +42,7 @@ export default function Emlekadatlaptile({ data }) {
   return (
     <>
       <div className="relative flex flex-row gap-8 bg-white hover:bg-[--cream] rounded-xl border border-[--cream] p-4">
-        <div className="flex flex-row gap-4 w-full">
+        <div className="flex lg:flex-row flex-col gap-4 w-full">
           <div className="relative w-[75px] h-[75px] self-center">
             {data.profileimage && (
               <Image 
@@ -85,7 +85,7 @@ export default function Emlekadatlaptile({ data }) {
         
         <div className="flex flex-col justify-end items-end min-w-fit">
           <TbTrash className="absolute top-4 right-4 w-6 h-6 text-[--error] hover:text-white bg-transparent hover:bg-[--error] p-1 cursor-pointer rounded-full" onClick={handleDeleteClick} />
-          <Link href={`/emlekadatlapok/${data.uri}`} className="px-2 py-1 bg-[--blue] hover:bg-[--rose] rounded-full transition-all text-white text-xs w-fit">Adatlap megtekintése</Link>
+          <Link href={`/emlekadatlapok/${data.uri}`} className="px-2 py-1 bg-[--blue] hover:bg-[--rose] rounded-full transition-all text-white text-xs lg:w-fit">Adatlap megtekintése</Link>
         </div>
       </div>
     </>

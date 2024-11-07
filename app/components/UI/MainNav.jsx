@@ -17,12 +17,10 @@ import { CgClose } from "react-icons/cg";
 
 export default function MainNav() {
 
-  const { isMobileMenuOpen, toggleMobileMenu, setMobileMenuOpen, setUserMenuOpen, setCartMenuOpen, isUserMenuOpen, toggleUserMenu, isCartMenuOpen, toggleCartMenu } = useContext(Context);
+  const { isMobileMenuOpen, toggleMobileMenu, setMobileMenuOpen, setUserMenuOpen, setUserMenuClose, isUserMenuOpen, toggleUserMenu } = useContext(Context);
 
   const handleOpenClose = () => {
     toggleMobileMenu();
-    setUserMenuOpen(false)
-    setCartMenuOpen(false)
   };
 
   return (
@@ -37,10 +35,10 @@ export default function MainNav() {
             </button>
             <div id="mobile-nav" className={`absolute lg:hidden flex ${isMobileMenuOpen === false ? '-left-full' : 'left-0'} top-[70px] w-full sm:w-[300px] py-4 h-auto bg-[--cream] transition-all`}>
                 <ul className="flex flex-col gap-2 px-4 menuitem">
-                    <li>Hogy működik?</li>
-                    <li>Rólunk</li>
-                    <li>GYIK</li>
-                    <li>Kapcsolat</li>
+                  <Link href={"/hasznalata"} onClick={handleOpenClose}><li>Hogy működik?</li></Link>
+                  <Link href={"/rolunk"} onClick={handleOpenClose}><li>Rólunk</li></Link>
+                  <Link href={"/gyik"} onClick={handleOpenClose}><li>GYIK</li></Link>
+                  <Link href={"/kapcsolat"} onClick={handleOpenClose}><li>Kapcsolat</li></Link>
                 </ul>
             </div>
             <Link id="logo" href="/" className="min-w-[40px] md:min-w-[200px]">

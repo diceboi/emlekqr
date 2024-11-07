@@ -18,8 +18,6 @@ export default function TributeTile({ tribute, owner, session, alltributes }) {
       (secondarytribute) => secondarytribute.parent === tribute._id
     )
 
-    console.log(secondaryTributes)
-
     const toggleReply = () => {
       setReplyOpen(prevState => !prevState);
     };

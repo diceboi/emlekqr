@@ -6,7 +6,7 @@ import H3 from './UI/H3'
 
 export default function KapcsolatInner() {
   return (
-    <div className='container m-auto flex flex-col gap-8 py-16'>
+    <div className='container m-auto flex flex-col gap-8 py-16 px-4'>
         <div className='flex flex-col gap-4 max-w-[600px] m-auto text-center'>
             <H3 classname={"text-[--rose]"}>Írj nekünk</H3>
             <Paragraph> Ha bármilyen kérdésed, kérésed, problémád lenne.</Paragraph>
