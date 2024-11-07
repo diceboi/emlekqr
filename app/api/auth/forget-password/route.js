@@ -1,5 +1,5 @@
 import User from "../../../(models)/User";
-import connect from "../../../../utils/db";
+import connect from "*/../../../utils/db";
 import { NextResponse } from "next/server"; 
 import crypto from "crypto";
 import { Resend } from "resend";
