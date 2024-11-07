@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["./*"]
+      },
+      "lib": ["dom", "esnext"],
+      "allowJs": true,
+      "moduleResolution": "node",
+      "jsx": "preserve"
+    },
+    "include": ["**/*.js", "**/*.jsx"],
+    "exclude": ["node_modules"]
+  }
