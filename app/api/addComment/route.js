@@ -1,4 +1,6 @@
-import connect from "../../../utils/db";
+'use server'
+
+import connect from "../../utils/db";
 import Tributes from "../../(models)/Tributes";
 import { NextResponse } from "next/server";
 
