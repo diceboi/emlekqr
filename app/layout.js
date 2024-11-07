@@ -29,7 +29,7 @@ export default async function RootLayout({ children }) {
               {children}
               <Footer />
             </body>
-            <GoogleAnalytics gaId="G-EXTFRH286V" />
+            <GoogleAnalytics gaId="G-8MXRK3GSNX" />
           </AuthProvider>
         </UpdateEmlekadatlapContextProvider>
       </ContextProvider>
