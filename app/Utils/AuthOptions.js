@@ -1,7 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import User from "../(models)/User";
-import connect from "../utils/db"
+import connect from "./db"
 
 export const AuthOptions = {  
   providers: [

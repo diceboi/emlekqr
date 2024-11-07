@@ -1,4 +1,4 @@
-import { AuthOptions } from "../../utils/AuthOptions"
+import { AuthOptions } from "../../utils/authOptions"
 import { getServerSession } from "next-auth/next"
 import { redirect } from 'next/navigation'
 import ResetPassword from "../../components/ResetPassword"
