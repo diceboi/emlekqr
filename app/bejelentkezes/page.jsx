@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import { AuthOptions } from '../api/auth/[...nextauth]/route'
 import { getServerSession } from "next-auth/next"
 
-export default async function Bejelentkezes() {
+export default async function BejelentkezesPage() {
 
   const session = await getServerSession(AuthOptions)
 

@@ -1,4 +1,5 @@
 import { Geologica } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import MainNav from "./components/UI/MainNav";
 import Footer from "./components/UI/Footer"
