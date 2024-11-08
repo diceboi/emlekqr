@@ -1,11 +1,11 @@
-import { authOptions } from '../api/auth/[...nextauth]//route'
+import { AuthOptions } from '../api/auth/[...nextauth]/route'
 import { getServerSession } from "next-auth/next"
 import { redirect } from 'next/navigation'
 import LostPassword from "../components/LostPassword"
 
 export default async function ElfelejtettJelszoPage() {
 
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(AuthOptions)
 
   if (session) {
     redirect('/profil')

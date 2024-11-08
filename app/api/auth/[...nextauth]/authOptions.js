@@ -1,9 +1,9 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
-import User from "../app/(models)/User";
-import connect from "../app/Utils/db"
+import User from "../../../(models)/User";
+import connect from "../../../Utils/db";
 
-export const authOptions = {  
+const AuthOptions = {
   providers: [
     CredentialsProvider({
       id: "credentials",
@@ -30,6 +30,7 @@ export const authOptions = {
         }
       },
     }),
+    // Additional providers if any
   ],
   callbacks: {
     async signIn({ user, account }) {
@@ -44,6 +45,7 @@ export const authOptions = {
             const newUser = new User({
               email: user.email,
             });
+
             await newUser.save();
             return true;
           }
@@ -56,3 +58,5 @@ export const authOptions = {
     },
   },
 };
+
+export default AuthOptions;
