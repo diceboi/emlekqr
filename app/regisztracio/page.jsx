@@ -1,12 +1,12 @@
 import React from 'react'
 import RegisterForm from '../components/RegisterForm'
-import { AuthOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from '../api/auth/[...nextauth]/route'
 import { getServerSession } from "next-auth/next"
 import { redirect } from 'next/navigation'
 
 export default async function Regisztracio() {
 
-  const session = await getServerSession(AuthOptions)
+  const session = await getServerSession(authOptions)
 
   if (session) {
     redirect('/profil')

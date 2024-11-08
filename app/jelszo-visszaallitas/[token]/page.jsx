@@ -1,11 +1,11 @@
-import { AuthOptions } from '../../api/auth/[...nextauth]/route'
+import { authOptions } from '../../api/auth/[...nextauth]//route'
 import { getServerSession } from "next-auth/next"
 import { redirect } from 'next/navigation'
 import ResetPassword from "../../components/ResetPassword"
 
 export default async function JelszoVisszaallitasPage({ params }) {
 
-  const session = await getServerSession(AuthOptions)
+  const session = await getServerSession(authOptions)
 
   if (session) {
     redirect('/profil')
