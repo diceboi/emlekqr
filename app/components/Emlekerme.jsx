@@ -25,6 +25,8 @@ import { useRouter } from "next/navigation";
 import { Context } from "../Context";
 import LoginForm from "./LoginForm";
 import { loadStripe } from '@stripe/stripe-js';
+import Modal from "./UI/Modal";
+import { motion } from "framer-motion";
 import H1 from "./UI/H1";
 import H2 from "./UI/H2";
 import H3 from "./UI/H3";
@@ -95,21 +97,20 @@ export default function Emlekerme({ session, userdata }) {
           setLoading(false);
         }
       };
-      
-
-    useEffect(() => {
-        if (openPopup) {
-            setOpenPopup(false);
-        }
-    }, [openPopup, setOpenPopup]);
 
   return (
     <>
-    {openPopup && !session && (
-        <SecretCheckerModal session={session}>
-          <LoginForm />
-        </SecretCheckerModal>
-    )}
+    <Modal openstate={openPopup === "Login"} onClose={() => togglePopup(null)}>
+        <LoginForm />
+    </Modal>
+
+    <Modal openstate={openPopup === "CouponInfo"} onClose={() => togglePopup(null)}>
+        <div className="flex flex-col gap-4">
+            <Paragraph>NOVQR kupon (havi előfizetéshez): A kupon 3 hónapig biztosít minden hónapban 500Ft kedvezményt, majd a 4. hónaptól kezdve lesz érvényes a teljes 1000Ft-os összeg.</Paragraph>
+            <Paragraph>NOVQR1 kupon (éves előfizetéshez): A kupon 1500Ft kedvezményt nyújt a éves 10 000Ft-os összegből azaz az első évért csak 8 500Ft-ot kell fizetned.</Paragraph>
+        </div>
+    </Modal>
+
     <section className="flex flex-col lg:gap-8 w-full lg:px-0 py-10 lg:py-20 min-h-[100vh]">
 
         <div className="relative flex flex-col container w-full m-auto px-4">
@@ -135,10 +136,27 @@ export default function Emlekerme({ session, userdata }) {
             <div className="lg:absolute top-20 right-16 flex flex-col w-full lg:w-5/12 h-full">
                 <div className="flex flex-col gap-8 sticky top-32 rounded-2xl lg:m-8 mt-8 bg-white lg:shadow-2xl shadow-md p-8">
                     <div className="flex flex-col">
-                        <div className="flex flex-col gap-1 justify-center items-center px-4 py-2 rounded-3xl bg-[--error] w-fit self-center h-auto -mb-[75px] -translate-y-full shadow-md">
+                        { payment === "price_1QHwPVBp9wE6DgiwSjovJVtG" && (
+                            <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+                            className="flex flex-col gap-1 justify-center items-center px-4 py-2 rounded-3xl bg-[--error] w-fit self-center h-auto shadow-md -mt-20">
                             <Paragraph classname={"text-white"}>Használd a <b><b>NOVQR</b></b> kuponkódot</Paragraph>
                             <Label classname={"text-white"}>havi 500Ft kedvezményért, 3 hónapig</Label>
-                        </div>
+                            <button onClick={() => togglePopup("CouponInfo")}><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button>
+                        </motion.div>
+                        )}
+                        { payment === "price_1QHwPqBp9wE6DgiwiHztrtkq" && (
+                            <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+                            className="flex flex-col gap-1 justify-center items-center px-4 py-2 rounded-3xl bg-[--error] w-fit self-center h-auto shadow-md -mt-20">
+                            <Paragraph classname={"text-white"}>Használd a <b><b>NOVQR1</b></b> kuponkódot</Paragraph>
+                            <button onClick={() => togglePopup("CouponInfo")}><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button>
+                        </motion.div>
+                        )}
                         { visibleErme === "négyzet" && (
                             <EmlekermeSquare />
                         )}
@@ -208,7 +226,7 @@ export default function Emlekerme({ session, userdata }) {
                             </button>
                         )}
                         {!session && (
-                            <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full" onClick={togglePopup}>
+                            <button onClick={() => togglePopup("CouponInfo")} className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full">
                                 A vásárláshoz jelentkezz be
                             </button>
                         )}
@@ -326,61 +344,7 @@ export default function Emlekerme({ session, userdata }) {
                 </div>
             </div>
 
-        </div>
-
-        {/*<div className="container m-auto flex flex-col gap-8 py-20">
-        <H2 classname={"text-[--rose] ml-20"}>Ezt mondták rólunk</H2>
-        <div className="relative flex flex-col gap-20 px-8 lg:flex-row w-full bg-[--cream] rounded-2xl">
-
-        <div className="m-auto flex flex-col gap-20 p-8 lg:flex-row w-full bg-[--cream] rounded-2xl overflow-x-scroll z-0">
-             
-            <div className="flex flex-row min-w-max gap-10 p-8">
-
-                <div className="flex flex-nowrap gap-4 max-w-[30vw]">
-                    <div className="w-1/2">
-                        <Image src="/image-kepek/family-trip.webp" width={300} height={300} className="rounded-xl"/>
-                    </div>                 
-                    <div className="flex flex-col w-1/2">
-                        <Paragraph>Nagy Tímea</Paragraph>
-                        <Paragraph>Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja</Paragraph>
-                    </div>
-                </div>
-
-                <div className="flex flex-nowrap gap-4 max-w-[30vw]">
-                    <div className="w-1/2">
-                        <Image src="/image-kepek/family-trip.webp" width={300} height={300} className="rounded-xl"/>
-                    </div>                 
-                    <div className="flex flex-col w-1/2">
-                        <Paragraph>Nagy Tímea</Paragraph>
-                        <Paragraph>Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja</Paragraph>
-                    </div>
-                </div>
-
-                <div className="flex flex-nowrap gap-4 max-w-[30vw]">
-                    <div className="w-1/2">
-                        <Image src="/image-kepek/family-trip.webp" width={300} height={300} className="rounded-xl"/>
-                    </div>                 
-                    <div className="flex flex-col w-1/2">
-                        <Paragraph>Nagy Tímea</Paragraph>
-                        <Paragraph>Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja</Paragraph>
-                    </div>
-                </div>
-
-                <div className="flex flex-nowrap gap-4 max-w-[30vw]">
-                    <div className="w-1/2">
-                        <Image src="/image-kepek/family-trip.webp" width={300} height={300} className="rounded-xl"/>
-                    </div>                 
-                    <div className="flex flex-col w-1/2">
-                        <Paragraph>Nagy Tímea</Paragraph>
-                        <Paragraph>Nagyon meg vagyok elégedve a termékkel. Fél éve ragasztottam fel és még semmi baja</Paragraph>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div className="absolute top-0 right-8 w-1/4 h-full bg-gradient-to-l from-[--cream] to-transparent rounded-2xl z-50 pointer-events-none"></div>
-        </div>
-        </div> */}
-        
+        </div>        
         
     </section>
     </>

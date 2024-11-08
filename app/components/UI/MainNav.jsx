@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useRef, useEffect, useContext } from "react";
 import { Context } from "./../../Context"
 
+import SeachBar from "./SearchBar"
 import BaseLogo from "./BaseLogo"
 import MobileLogo from "./MobileLogo"
 
@@ -33,13 +34,17 @@ export default function MainNav() {
                 <TbMenu2 className={`w-6 h-6 ${isMobileMenuOpen === true ? 'hidden' : 'flex'}`} onClick={handleOpenClose}/>
                 <CgClose className={`w-6 h-6 ${isMobileMenuOpen === false ? 'hidden' : 'flex'}`} onClick={handleOpenClose}/>
             </button>
-            <div id="mobile-nav" className={`absolute lg:hidden flex ${isMobileMenuOpen === false ? '-left-full' : 'left-0'} top-[70px] w-full sm:w-[300px] py-4 h-auto bg-[--cream] transition-all`}>
-                <ul className="flex flex-col gap-2 px-4 menuitem">
+            <div id="mobile-nav" className={`absolute lg:hidden flex ${isMobileMenuOpen === false ? '-left-full' : 'left-0'} flex-col gap-4 px-4 top-[70px] w-full sm:w-[300px] py-4 h-auto bg-[--cream] transition-all`}>
+                <ul className="flex flex-col gap-2 menuitem">
                   <Link href={"/hasznalata"} onClick={handleOpenClose}><li>Hogy működik?</li></Link>
                   <Link href={"/rolunk"} onClick={handleOpenClose}><li>Rólunk</li></Link>
                   <Link href={"/gyik"} onClick={handleOpenClose}><li>GYIK</li></Link>
                   <Link href={"/kapcsolat"} onClick={handleOpenClose}><li>Kapcsolat</li></Link>
+                  
                 </ul>
+                <div className="w-full self-center">
+                    <SeachBar />
+                  </div>
             </div>
             <Link id="logo" href="/" className="min-w-[40px] md:min-w-[200px]">
                 <BaseLogo />
@@ -54,6 +59,10 @@ export default function MainNav() {
               <Link href={"/kapcsolat"}><li className="px-4 py-2 border border-transparent hover:border-neutral-300 rounded-full transition-all min-w-max">Kapcsolat</li></Link>
             </ul>
           </div>
+          
+        </div>
+        <div className="lg:flex hidden w-full self-center">
+          <SeachBar />
         </div>
         <div id="cta-user" className="relative flex flex-row justify-end items-center min-w-fit gap-1 lg:gap-2">
           <div className="flex flex-row ">

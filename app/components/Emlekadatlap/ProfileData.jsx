@@ -7,6 +7,8 @@ import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext"
 import { TbGrave, TbQuote } from "react-icons/tb";
 import { LiaDoveSolid } from "react-icons/lia";
 import H4 from "../UI/H4";
+import Paragraph from "../UI/Paragraph";
+import Label from "../UI/Label";
 
 export default function ProfileData({ data }) {
   const { isEditable } = useContext(Context);
@@ -17,15 +19,15 @@ export default function ProfileData({ data }) {
       {!isEditable && data && (
       <div className="flex flex-col gap-4 items-center xl:items-start xl:w-2/3 w-full bg-neutral-50 rounded-2xl z-10 lg:p-4">
         <div className="flex lg:flex-row flex-col items-center gap-4">
-          <H4>{data.name}</H4>
-          <p>{data.age}</p>
+          <H4 classname={"text-center"}>{data.name}</H4>
+          <Paragraph>{data.age}</Paragraph>
         </div>
         <div className="flex flex-nowrap gap-4 items-start">
           <LiaDoveSolid className="w-6 h-auto text-[--rose]" />
 
-          <p className="label">
+          <Label className="label">
             {data.born} - {data.died}
-          </p>
+          </Label>
         </div>
         <Link
           href={`https://www.google.com/maps/search/?api=1&query=${data.graveyard}`}
@@ -33,13 +35,13 @@ export default function ProfileData({ data }) {
           target="_blank"
         >
           <TbGrave className="w-6 h-auto text-[--rose]" />
-        <p className="label">{data.graveyard}</p>
+        <Paragraph className="label">{data.graveyard}</Paragraph>
         </Link>
         <div className="flex flex-nowrap gap-4 items-start">
           <TbQuote className="w-8 h-auto text-[--rose]" />
-          <p className="label text-center xl:text-left font-thin">
+          <Paragraph className="label text-center xl:text-left font-thin">
           &quot;{data.quote}&quot;
-          </p>
+          </Paragraph>
         </div>
       </div>
       )}

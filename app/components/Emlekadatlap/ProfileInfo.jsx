@@ -12,7 +12,7 @@ export default function ProfileInfo({ data, tributes, session }) {
   return (
     <div id="profile-info" className="flex flex-col w-full">
       <div className="overflow-x-scroll sm:overflow-hidden w-full py-8">
-        <div className="flex flex-row gap-4 justify-between min-w-[640px] ">
+        <div className="flex flex-row gap-4 justify-between">
           <button
             className={`hover:bg-[--cream] py-2 px-4 w-full transition-all duration-200 rounded-2xl ${visibleSection === "story" ? "bg-[--cream]" : ""}`}
             onClick={() => setVisibleSection("story")}

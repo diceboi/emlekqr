@@ -196,8 +196,9 @@ export default function StoryYear({ data, index }) {
           )}
         </div>
         <div
+          className={`pb-4 mb-2 ${isEditable ? "hidden" : ""} max-h-40 overflow-y-auto`}
+          style={{ maxHeight: '200px', overflowY: 'auto' }} // Set a max height for scrolling
           dangerouslySetInnerHTML={{ __html: data.data }}
-          className={`pb-4 mb-2 ${isEditable ? "hidden" : ""}`}
         />
 
         {isEditable && (
