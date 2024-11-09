@@ -83,12 +83,11 @@ export default function AdatkezelesiTajekoztatoPage() {
           Ezen adatfeldolgozó megnevezése a következő:
           <Paragraph>Cégnév: Szász Szabolcs EV.</Paragraph>
           Székhely: 7400 Kaposvár, Egyenesi út 101.
-          <Paragraph>Cégjegyzékszám: 54031919 (Nyilvántartási szám)</Paragraph>
-          Adószám: 55366489-1-34
-          <Paragraph>Képviselő: Pieretti Roland</Paragraph>
-          Telefonszám: 06202498363<Paragraph>Fax: -</Paragraph>
-          E-mail cím: roland@pieretti.hu
-          <Paragraph>Honlap: http://pieretti.hu/</Paragraph>
+          <Paragraph>Cégjegyzékszám: 54600700 (Nyilvántartási szám)</Paragraph>
+          Adószám: 55858865-1-34
+          <Paragraph>Képviselő: Szász Szabolcs</Paragraph>
+          Telefonszám: +36 30 306 8676<Paragraph>Fax: -</Paragraph>
+          E-mail cím: szasz.szabolcs1995@gmail.com
           2. Postai szolgáltatások, kézbesítés, csomagküldés
           <Paragraph>
             Ezen adatfeldolgozó &quot;szolgáltató&quot; tól megkapják a megrendelt termék

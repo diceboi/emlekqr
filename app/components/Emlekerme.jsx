@@ -104,14 +104,6 @@ export default function Emlekerme({ session, userdata }) {
         <LoginForm />
     </Modal>
 
-    <Modal openstate={openPopup === "CouponInfo"} onClose={() => togglePopup(null)}>
-        <div className="flex flex-col gap-4">
-            <Paragraph>NOVQR kupon (havi előfizetéshez): A kupon 3 hónapig biztosít minden hónapban 500Ft kedvezményt, majd a 4. hónaptól kezdve lesz érvényes a teljes 1000Ft-os összeg.</Paragraph>
-            <Paragraph>NOVQR1 kupon (éves előfizetéshez): A kupon 1500Ft kedvezményt nyújt a éves 10 000Ft-os összegből azaz az első évért csak 8 500Ft-ot kell fizetned.</Paragraph>
-            <Paragraph>A két kuponkód november 30 00:00-ig azaz éjfélig érvényes.</Paragraph>
-        </div>
-    </Modal>
-
     <section className="flex flex-col lg:gap-8 w-full lg:px-0 py-10 lg:py-20 min-h-[100vh]">
 
         <div className="relative flex flex-col container w-full m-auto px-4">
@@ -120,10 +112,10 @@ export default function Emlekerme({ session, userdata }) {
                 <div className="absolute lg:top-0 top-44 lg:left-[30vw] left-0 w-52 h-52 opacity-25 ">
                     <Arrow />
                 </div>
-                <div className="absolute top-2/3 lg:left-[30vw] left-[40vw] w-52 h-52 opacity-25">
+                <div className="absolute top-2/3 lg:left-[30vw] left-[30vw] w-52 h-52 opacity-25">
                     <Camel />
                 </div>
-                <div className="absolute lg:top-3/3 -top-16 lg:right-0 -right-8 w-52 h-52 opacity-25">
+                <div className="absolute lg:top-3/3 -top-16 lg:right-0 -right-6 w-52 h-52 opacity-25">
                     <Hearth />
                 </div>
                 <div className="flex flex-col justify-center gap-8 p-8 lg:w-1/2">
@@ -135,7 +127,7 @@ export default function Emlekerme({ session, userdata }) {
             </div>
 
             <div className="lg:absolute top-20 right-16 flex flex-col w-full lg:w-5/12 h-full">
-                <div className="flex flex-col gap-8 sticky top-32 rounded-2xl lg:m-8 mt-8 bg-white lg:shadow-2xl shadow-md p-8">
+                <div className="flex flex-col gap-8 sticky top-40 rounded-2xl lg:m-8 mt-8 bg-white lg:shadow-2xl shadow-md p-8">
                     <div className="flex flex-col">
                         { payment === "price_1QHwPVBp9wE6DgiwSjovJVtG" && (
                             <motion.div
@@ -277,8 +269,8 @@ export default function Emlekerme({ session, userdata }) {
 
             <div className="flex flex-col justify-center gap-4 lg:pl-16 lg:py-16 py-8 lg:w-1/2">
                 <div className="relative h-[350px]">
-                    <Image src="/image-kepek/family-trip.webp" width={1000} height={500} className="absolute lg:top-0 top-16 left-0 border-8 border-white shadow-xl w-2/3 -rotate-12"/>
-                    <Image src="/image-kepek/family-trip2.webp" width={1000} height={500} className="absolute lg:bottom-0 bottom-16 right-0 border-8 border-white shadow-xl w-2/3 rotate-6"/>
+                    <Image src="/image-kepek/family-trip.webp" width={1000} height={500} className="absolute lg:top-0 top-16 left-4 border-8 border-white shadow-xl w-2/3 -rotate-12"/>
+                    <Image src="/image-kepek/family-trip2.webp" width={1000} height={500} className="absolute lg:bottom-0 bottom-16 right-4 border-8 border-white shadow-xl w-2/3 rotate-6"/>
                 </div>
                 
                 <H2 classname={"text-[--rose]"}>Mesélj el egy különleges történetet</H2>

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext, useState } from "react";
 import { Context } from "./../../Context"
 
 import SeachBar from "./SearchBar"
@@ -15,14 +15,23 @@ import MobileMenu from "./MobileMenu"
 import { BsQrCode } from "react-icons/bs";
 import { TbMenu2 } from "react-icons/tb";
 import { CgClose } from "react-icons/cg";
+import H1 from "./H1";
+import H2 from "./H2";
+import H3 from "./H3";
+import H4 from "./H4";
+import Paragraph from "./Paragraph";
+import Label from "./Label";
+import Modal from "./Modal";
 
 export default function MainNav() {
 
-  const { isMobileMenuOpen, toggleMobileMenu, setMobileMenuOpen, setUserMenuOpen, setUserMenuClose, isUserMenuOpen, toggleUserMenu } = useContext(Context);
+  const { isMobileMenuOpen, toggleMobileMenu, setMobileMenuOpen, setUserMenuOpen, setUserMenuClose, isUserMenuOpen, toggleUserMenu, openPopup, togglePopup } = useContext(Context);
 
   const handleOpenClose = () => {
     toggleMobileMenu();
   };
+
+  const [openNotification, setOpenNotification] = useState(true)
 
   return (
 
@@ -85,6 +94,18 @@ export default function MainNav() {
           </Link>
         </div>
       </div>
+      <div className={`${openNotification ? "flex" : "hidden"} flex-nowrap items-center justify-center px-4 gap-2 bg-[--error] w-full min-h-10`}>
+        <Label classname={"text-white leading-tight"}>Használd a <b><b>NOVQR</b></b> vagy <b><b>NOVQR1</b></b> kuponkódot havi vagy éves kedvezményért! <button onClick={() => togglePopup("CouponInfo")} className="lg:self-end"><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button></Label>
+        
+        <button onClick={() => setOpenNotification(prevState => (!prevState))}><CgClose className="w-6 h-6 text-white" /></button>
+      </div>
+      <Modal openstate={openPopup === "CouponInfo"} onClose={() => togglePopup(null)}>
+        <div className="flex flex-col gap-4">
+            <Paragraph>NOVQR kupon (havi előfizetéshez): A kupon 3 hónapig biztosít minden hónapban 500Ft kedvezményt, majd a 4. hónaptól kezdve lesz érvényes a teljes 1000Ft-os összeg.</Paragraph>
+            <Paragraph>NOVQR1 kupon (éves előfizetéshez): A kupon 1500Ft kedvezményt nyújt az éves 10 000Ft-os összegből azaz az első évért csak 8 500Ft-ot kell fizetned.</Paragraph>
+            <Paragraph>A két kuponkód november 30. 23:59-ig érvényes.</Paragraph>
+        </div>
+      </Modal>
     </nav>
   )
 }
