@@ -20,7 +20,7 @@ import {
         <Container style={container}>
           <Img src='https://www.emlek-qr.hu/emleqr-logo-base.png' style={{ width: '150px', height: 'auto', margin: 'auto', paddingTop: '20px' }} />
           <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Az alábbi linkre kattintva visszaállíthatod a jelszavad.</Heading>
-          <Link href={resetUrl} style={{...button}}>Jelszó visszaállítása</Link>
+          <Link href={resetUrl} style={{...button, margin: 'auto', marginBottom: '32px'}}>Jelszó visszaállítása</Link>
         </Container>
       </Body>
     </Html>
