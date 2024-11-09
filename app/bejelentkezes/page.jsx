@@ -6,8 +6,6 @@ import { getServerSession } from "next-auth/next";
 export default async function Bejelentkezes() {
   const session = await getServerSession(AuthOptions);
 
-  console.log("Session: ", session);
-
   if (session) {
     redirect("/profil");
   }

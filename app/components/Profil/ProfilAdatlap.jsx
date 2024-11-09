@@ -35,7 +35,6 @@ export default function ProfilAdatlap({ session, user }) {
       const result = await response.json();
 
       if (response.ok && result.updatedUser) {
-        console.log("User profile image updated successfully:", result.updatedUser);
       } else {
         console.error("Error updating user profile image:", result.error);
       }

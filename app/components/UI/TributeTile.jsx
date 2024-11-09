@@ -48,7 +48,6 @@ export default function TributeTile({ tribute, owner, session, alltributes }) {
         const result = await response.json();
 
         if (response.ok) {
-          console.log('Tribute approved successfully:', result);
           toast.success('Komment sikeresen megerősítve.');
           router.refresh();
         } else {
@@ -65,7 +64,6 @@ export default function TributeTile({ tribute, owner, session, alltributes }) {
         const result = await response.json();
         if (response.ok) {
           setUserData(result.data.User);
-          console.log("Returned UserData:" ,userData)
         } else {
           console.error("Error fetching user data:", result.error);
         }
@@ -100,7 +98,6 @@ export default function TributeTile({ tribute, owner, session, alltributes }) {
         const result = await response.json();
 
         if (response.ok) {
-          console.log('Tribute deleted successfully:', result);
           toast.success('Komment sikeresen törölve.');
           router.refresh();
         } else {

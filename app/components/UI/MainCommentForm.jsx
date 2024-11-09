@@ -66,7 +66,6 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
       const result = await res.json();
   
       if (res.ok) {
-        console.log('Comment submitted:', result);
         toast.success('Az hozzászólást sikeresen elküldtük. Akkor fog megjelenni ha az adatlap tulajdonos jóváhagyja.');
         reset(); // Reset the form after successful submission
         router.refresh();

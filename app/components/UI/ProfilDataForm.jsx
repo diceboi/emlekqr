@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 export default function ProfilDataForm({
   email,
@@ -37,6 +38,11 @@ export default function ProfilDataForm({
 
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Failed to update user");
+
+      if(response) {
+        toast.success('Az adatlap sikeresen frissült')
+        window.location.reload()
+      }
 
     } catch (error) {
       console.error("Error:", error);

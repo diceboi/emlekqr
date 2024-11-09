@@ -104,8 +104,7 @@ export default function Media({ data }) {
     setFiles((files) => [...files, ...newFiles]);
 
     setBlobMediaImages((files) => [...files, ...newFiles])
-    console.log(blobMediaImages);
-
+    
     // Extract the image URLs for display
     const updatedImages = [...images, ...newFiles];
     setImages(updatedImages);
@@ -137,7 +136,6 @@ export default function Media({ data }) {
 
     // Execute the update
     updateImagesInMedia();
-    console.log(formData);
   };
 
   const handleImageUploadClick = () => {

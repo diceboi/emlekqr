@@ -131,7 +131,6 @@ export default function StoryYear({ data, index }) {
 
     // Execute the update
     updateImagesInStory();
-    console.log(formData);
   };
 
   const handleUploadClick = () => {
@@ -155,8 +154,6 @@ export default function StoryYear({ data, index }) {
       index,
       (blobStoryImages[index] || []).filter((blobImg) => blobImg.newUrl !== imageToRemove.newUrl)
     );
-
-    console.log(blobStoryImages)
 
     updateFormData(
       `story.${index}.images`,

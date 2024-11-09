@@ -30,7 +30,6 @@ export default function StoryYearNew({ data, index }) {
 
   const handleFileChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
-    console.log(selectedFiles);
     
     const newFiles = selectedFiles.map((file) => ({
       file,

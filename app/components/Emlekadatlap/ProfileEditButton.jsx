@@ -140,9 +140,6 @@ export default function ProfileEditButton({ session, user, data }) {
 
     if (response.ok) {
       setEditable(false);
-      console.log("FormData NÉZD MEG", formData);
-      console.log(selectedImages);
-      console.log("Data submitted successfully");
       await detectChangesAndNotify();
     } else {
       console.log("Error submitting data");

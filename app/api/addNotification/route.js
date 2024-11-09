@@ -7,8 +7,6 @@ export async function POST(req) {
 
   const { personal, viewed, notificationtype, adatlap, from, images, videos, message } = await req.json(); // Extract formData directly
 
-  console.log("VÁLTOZÁSOK: ", personal, viewed, notificationtype, adatlap, from, images, videos, message)
-
   try {
     const notification = await Notifications.create({personal, viewed, notificationtype, adatlap, from, images, videos, message}); // No need to wrap formData in another object
     console.log('Notification created:', notification);

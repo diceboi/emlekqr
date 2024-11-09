@@ -69,7 +69,6 @@ export default function SecretCheckerForm({user}) {
       
           // Parse the JSON response
           const data = await res.json();
-          console.log("Secret successfully deleted:", data);
           return data;
         } catch (error) {
           console.error("Error sending secret to API:", error);

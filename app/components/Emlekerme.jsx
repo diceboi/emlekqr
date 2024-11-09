@@ -105,8 +105,6 @@ export default function Emlekerme({ session, userdata }) {
         }
       };
 
-      console.log("Payment ID: ", payment)
-
   return (
     <>
     <Modal openstate={openPopup === "Login"} onClose={() => togglePopup(null)}>
@@ -211,7 +209,7 @@ export default function Emlekerme({ session, userdata }) {
                                 onClick={() => setPayment(STRIPE_PRICE_ID_TWO)} 
                                 className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-r-3xl ${payment === "price_1QHwPqBp9wE6DgiwiHztrtkq" ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
                             >
-                                <Label classname={`cursor-pointer ${payment === TWO ? "text-white" : "text-black"}`}>10 000Ft / év</Label>
+                                <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_TWO ? "text-white" : "text-black"}`}>10 000Ft / év</Label>
                             </button>
                         </div>
                     </div>
