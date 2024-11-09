@@ -202,16 +202,16 @@ export default function Emlekerme({ session, userdata }) {
                         <Label classname={""}>Válassz fizetési módot: </Label>
                         <div className="grid grid-cols-2 bg-[--cream] rounded-3xl shadow-inner">
                             <button 
-                                onClick={() => setPayment("price_1QHwPVBp9wE6DgiwSjovJVtG")} 
+                                onClick={() => setPayment(STRIPE_PRICE_ID_ONE)} 
                                 className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-l-3xl ${payment === "price_1QHwPVBp9wE6DgiwSjovJVtG" ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
                             >
-                                <Label classname={`cursor-pointer ${payment === "price_1QHwPVBp9wE6DgiwSjovJVtG" ? "text-white" : "text-black"}`}>1 000Ft / hó</Label>
+                                <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_ONE ? "text-white" : "text-black"}`}>1 000Ft / hó</Label>
                             </button>
                             <button 
-                                onClick={() => setPayment("price_1QHwPqBp9wE6DgiwiHztrtkq")} 
+                                onClick={() => setPayment(STRIPE_PRICE_ID_TWO)} 
                                 className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-r-3xl ${payment === "price_1QHwPqBp9wE6DgiwiHztrtkq" ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
                             >
-                                <Label classname={`cursor-pointer ${payment === "price_1QHwPqBp9wE6DgiwiHztrtkq" ? "text-white" : "text-black"}`}>10 000Ft / év</Label>
+                                <Label classname={`cursor-pointer ${payment === TWO ? "text-white" : "text-black"}`}>10 000Ft / év</Label>
                             </button>
                         </div>
                     </div>
