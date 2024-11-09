@@ -4,7 +4,7 @@ import H4 from "../UI/H4";
 
 export default function ProfilSzamlak({ invoices }) {
 
-    const szamlak = invoices?.invoices.data || []
+    const szamlak = invoices?.invoices?.data || []
 
   return (
     <div className="flex flex-col gap-16 bg-white shadow-special rounded-2xl p-8">
@@ -15,7 +15,7 @@ export default function ProfilSzamlak({ invoices }) {
         </div>
 
         <div className="flex flex-col gap-4">
-            {szamlak.length > 0 ? (
+            {szamlak.length !== null ? (
             szamlak.map((szamla, index) => (
                 <Szamlaktile szamla={szamla} key={index}/>
             ))

@@ -76,7 +76,7 @@ export default async function Profil() {
   const emlekadatlapok = await getPersonalEmlekadatlap(sessionUser);
   const user = await getUserData(sessionUser);
   const customer = await getStripeCustomer(sessionUser);
-  const customerId = customer.id;
+  const customerId = customer?.id;
   const invoices = await getInvoices(customerId);
   const currentData = emlekadatlapok?.data?.Emlekadatlap || [];
   const currentUser = user?.data.User || [];
