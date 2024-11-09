@@ -42,21 +42,14 @@ import { TbSquare, TbCircle, TbOvalVertical } from "react-icons/tb";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
-const STRIPE_PRICE_ID_ONE = process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_ONE;
-const STRIPE_PRICE_ID_TWO = process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_TWO;
-
 export default function Emlekerme({ session, userdata }) {
 
     const { openPopup, togglePopup, setOpenPopup } = useContext(Context);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [visibleErme, setVisibleErme] = useState("négyzet")
-    const [payment, setPayment] = useState('');
+    const [payment, setPayment] = useState("price_1QHwPVBp9wE6DgiwSjovJVtG");
     const router = useRouter();
-
-    useEffect(() => {
-        setPayment(process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_ONE);
-    }, []);
 
     const handleCheckout = async () => {
         setLoading(true);
@@ -138,7 +131,7 @@ export default function Emlekerme({ session, userdata }) {
             <div className="lg:absolute top-20 right-16 flex flex-col w-full lg:w-5/12 h-full">
                 <div className="flex flex-col gap-8 sticky top-40 rounded-2xl lg:m-8 mt-8 bg-white lg:shadow-2xl shadow-md p-8">
                     <div className="flex flex-col">
-                        { payment === STRIPE_PRICE_ID_ONE && (
+                        { payment === "price_1QHwPVBp9wE6DgiwSjovJVtG" && (
                             <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -149,7 +142,7 @@ export default function Emlekerme({ session, userdata }) {
                             <button onClick={() => togglePopup("CouponInfo")}><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button>
                         </motion.div>
                         )}
-                        { payment === STRIPE_PRICE_ID_TWO && (
+                        { payment === "price_1QHwPqBp9wE6DgiwiHztrtkq" && (
                             <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
