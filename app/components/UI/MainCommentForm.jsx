@@ -43,7 +43,7 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
   const onSubmit = async (data) => {
     const formData = {
       from: session ? session.user.name : data.Name,
-      fromprofileid: "",
+      fromprofileid: userData._id,
       message: data.Komment,
       to: lastDigits,
       verified: false,
@@ -130,7 +130,7 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
         {session && (
           <>
             <div className="flex flex-nowrap items-center gap-2">
-              <div className="relative w-6 h-6 rounded-full overflow-hidden">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden">
                 <Image
                 src={ userData?.image || "/blank-profile.webp"}
                 fill

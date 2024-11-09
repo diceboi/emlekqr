@@ -12,12 +12,14 @@ import { BiCameraMovie } from "react-icons/bi";
 import Link from "next/link";
 import { LuImage } from "react-icons/lu";
 import { toast } from "sonner";
+import Modal from "../UI/Modal";
 
 import H1 from "../UI/H1"
 import H2 from "../UI/H2"
 import H3 from "../UI/H3"
 import H4 from "../UI/H4"
 import Paragraph from "../UI/Paragraph"
+import Label from "../UI/Label";
 
 export default function Media({ data }) {
   const pathname = usePathname();
@@ -25,7 +27,7 @@ export default function Media({ data }) {
 
   const { formData, updateFormData, updateFileNames, selectedImages, blobMediaImages, setBlobMediaImages } =
     useContext(UpdateEmlekadatlapContext);
-  const { isEditable } = useContext(Context);
+  const { isEditable, openPopup, togglePopup } = useContext(Context);
 
   const [allVideos, setAllVideos] = useState(formData.media.videos || []);
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
@@ -203,6 +205,15 @@ export default function Media({ data }) {
   };
 
   return (
+    <>
+    <Modal openstate={openPopup === "VideoHelp"} onClose={() => togglePopup(null)}>
+        <div className="flex flex-col items-center gap-4">
+            <Paragraph classname={"text-center"}>Youtube videót úgy tudsz elhelyezni, hogy a kívánt videóra rákattintva kimásolod a hivatkozást a böngésző sávjából. Fontos hogy mindig a v= és az utána következő 11 karakter legyen a hivatkozás vége, az utána következő részeket nem kell kimásolni (ahogy az ábra mutatja).</Paragraph>
+            <Image src={"/youtube-segitseg.png"} width={700} height={400} className="w-full h-auto"/>
+            <Paragraph classname={"text-center"}>Youtube-ra videót egyszerűen fel lehet tölteni, első lépésként (ha nincs) regisztrálj egy gmail fiókot a gmail.com oldalon. Miután ez megvan és beléptél a fiókodba, a jobb felső sarokban a 9 kis kockára kattintva átmehetsz a Youtube-ra ahol a gmail fiókoddal be is tudsz lépni. Miután beléptél, a jobb felső sarokban a kis kamera ikonra kattintva tudsz videót feltölteni. A videó feltöltése után a feltöltött videó hivatkozását az első bekezdésben leírtak szerint kell kimásolni és elhelyezni itt az oldalon.</Paragraph>
+        </div>
+      </Modal>
+    
     <div className="flex flex-col gap-8 py-8">
       <div className="flex gap-4 items-center">
         <LuImage className="w-10 h-10 text-[--rose] bg-[--cream] rounded-full p-2" />
@@ -307,12 +318,13 @@ export default function Media({ data }) {
             >
               Hozzáadás
             </button>
-            <Link href={"/"} className="text-sm underline">
+            <button onClick={() => togglePopup("VideoHelp")} className="text-sm underline">
               Segítség
-            </Link>
+            </button>
           </div>
         )}
       </div>
     </div>
+    </>
   );
 }

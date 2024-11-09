@@ -108,6 +108,7 @@ export default function Emlekerme({ session, userdata }) {
         <div className="flex flex-col gap-4">
             <Paragraph>NOVQR kupon (havi előfizetéshez): A kupon 3 hónapig biztosít minden hónapban 500Ft kedvezményt, majd a 4. hónaptól kezdve lesz érvényes a teljes 1000Ft-os összeg.</Paragraph>
             <Paragraph>NOVQR1 kupon (éves előfizetéshez): A kupon 1500Ft kedvezményt nyújt a éves 10 000Ft-os összegből azaz az első évért csak 8 500Ft-ot kell fizetned.</Paragraph>
+            <Paragraph>A két kuponkód november 30 00:00-ig azaz éjfélig érvényes.</Paragraph>
         </div>
     </Modal>
 
@@ -226,7 +227,7 @@ export default function Emlekerme({ session, userdata }) {
                             </button>
                         )}
                         {!session && (
-                            <button onClick={() => togglePopup("CouponInfo")} className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full">
+                            <button onClick={() => togglePopup("Login")} className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full">
                                 A vásárláshoz jelentkezz be
                             </button>
                         )}
