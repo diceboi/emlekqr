@@ -141,7 +141,7 @@ export default function TributeTile({ tribute, owner, session, alltributes }) {
           {tribute.verified === true &&(
             <>
             <button className="flex flex-nowrap gap-1 items-center self-start text-xs text-neutral-500 hover:bg-[--cream] px-2 py-1 rounded-full border border-neutral-300" onClick={toggleReply}><TbMessage /> Válasz</button>
-            <TbTrash className="absolute top-4 right-4 w-6 h-6 text-[--error] hover:text-white bg-transparent hover:bg-[--error] p-1 cursor-pointer rounded-full" onClick={() => {togglePopup("DeleteComment")}} />
+            {/*<TbTrash className="absolute top-4 right-4 w-6 h-6 text-[--error] hover:text-white bg-transparent hover:bg-[--error] p-1 cursor-pointer rounded-full" onClick={() => {togglePopup("DeleteComment")}} />*/}
             </>
           )}
           
