@@ -125,7 +125,7 @@ export default function TributeTile({ tribute, owner, session, alltributes }) {
           <div className="flex flex-nowrap items-center gap-2">
             <div className="relative w-10 h-10 rounded-full overflow-hidden">
               <Image
-              src={ userData?.image || "/blank-image.webp" }
+              src={ userData?.image || "/blank-profile.webp" }
               fill
               style={{ objectFit: "cover" }}
               alt="Profile"

@@ -13,7 +13,7 @@ export async function POST(request) {
   try {
     // Send admin email
     await resend.emails.send({
-      from: 'EmlékQR <info@emlek-qr.hu>',
+      from: 'info@emlek-qr.hu',
       to: 'hello@emlek-qr.hu',
       subject: `Új érme vásárlás`,
       react: VasarlasAdmin({ nev: name, address, payment, type, phone, email }),

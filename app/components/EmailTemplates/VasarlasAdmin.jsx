@@ -30,7 +30,7 @@ import {
                     Fizetési mód: {payment}
                 </Text>
                 <Text style={{ ...text, }}>
-                    Ügyféladatok:<br><br></br></br>
+                    Ügyféladatok:<br></br><br></br>
                     Név: {nev}<br></br>
                     Szállítási cím: {address}
                     Telefonszám: {phone}

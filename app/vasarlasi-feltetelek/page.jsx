@@ -106,51 +106,18 @@ export default function VasarlasiFeltetelekPage() {
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>A termék kiválasztása</H4>
           <Paragraph>
-            A vásárlónak lehetősége van választani, illetve rendelni az áruház
-            termékei közül. A vásárló a kiválasztott termékre kattintva
-            megtekintheti annak bővebb ismertetőjét. Vásárlási szándéka esetén a
-            megvásárolni kívánt terméket a &quot;Kosárba&quot; gomb megnyomásával egy
-            virtuális kosárba helyezi. A Kosár &quot;Megtekintés&quot; gombjára kattintva
-            megtalálja a vásárlás során kosárba helyezett termékeket, valamint a
-            számla végösszegét és a szállítási költséget. Itt leellenőrizhetik
-            rendelésük helyességét, különös tekintettel az árakra és a
-            mennyiségekre, melyeket igény szerint módosíthatnak, javíthatnak is.
-            A kosár automatikusan kiszámítja a rendelés végösszegét.
+            A vásárlónak az érme oldalon van lehetősége megtekinteni és kiválasztani a kívánt terméket. Itt tájékozódhat a tulajdonságairól, áráról egyéb információkról.
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>A rendelés elküldése</H4>
           <Paragraph>
-            Ha megfelelőnek tartja a kosárban elhelyezett terméket,
+            Ha megfelelőnek tartja az érme oldalon elhelyezett terméket,
             leellenőrizte a végösszeget, és úgy döntött, hogy meg szeretné
-            vásárolni őket, akkor egyszerűen kattintson a &quot;Pénztár&quot; gombra.
-            Áruházunkban lehetősége van regisztráció nélkül is a vásárlásra,
-            ezért három lehetőség közöl választhat:
+            vásárolni őket, akkor egyszerűen kattintson a &quot;Tovább a pénztárba&quot; gombra.
+            Áruházunkban nincs lehetőség regisztráció nélkül is a vásárlásra,
+            mivel a regisztrációval együtt jön létre az adatlap ami a szolgáltatás részét képezi.
           </Paragraph>
           <Paragraph>
-            <ul className="list-disc pl-8 marker:text-[--rose]">
-              <li>már regisztrált vásárlóként szeretne-e belépni</li>
-              <li>új vásárlóként akar regisztrálni</li>
-              <li>esetleg regisztráció nélkül akar vásárolni</li>
-            </ul>
-          </Paragraph>
-          <Paragraph>
-            Ha korábban már vásárolt áruházunkban, úgy adja meg a korábbi
-            regisztráció során megadott e-mail címét és jelszavát. Ha új
-            vásárlóként szeretne regisztrálni, akkor adja meg a vásárláshoz
-            szükséges adatait, amelyeket a rendszer eltárol, és a legközelebbi
-            vásárlás alkalmával már csak be kell jelentkeznie. Regisztráció
-            nélküli vásárlás esetén adja meg számlázási és szállítási címét.
-          </Paragraph>
-          <Paragraph>
-            A következő lépésben válassza ki az Önnek megfelelő szállítási
-            módot:
-          </Paragraph>
-          <Paragraph>
-            <ul className="list-disc pl-8 marker:text-[--rose]">
-              <li>Házhozszállítás postán keresztül</li>
-            </ul>
-          </Paragraph>
-          <Paragraph>
-            Ezt követően egy Önnek megfelelő fizetési módot kell választania:
+            A fizetési mód minden esetben bankkártyás fizetés:
           </Paragraph>
           <Paragraph>
             bankkártyás fizetés- (Stripe rendszerén keresztül. A Stripe
@@ -160,16 +127,14 @@ export default function VasarlasiFeltetelekPage() {
           </Paragraph>
           <Paragraph>
             Ha egyetért a megrendelés tartalmával, akkor a megrendelés
-            elküldéséhez kattintson a &quot;Megrendelés&quot; gombra.
+            elküldéséhez kattintson a &quot;Fizetés és előfizetés&quot; gombra.
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>Árak</H4>
           <Paragraph>
-            Áraink a rendelés időpontjában érvényes listaárak, amelyeket a
-            webáruházban a termékek mellett találnak. Az árak bruttó árak, az
-            ÁFÁ-t tartalmazzák, azonban ezek az árak nem tartalmazzák a
-            szállítási költséget. A szállítási költség a pénztár folyamat során
-            a megrendelés véglegesítése előtt, valamint a Vásárlási feltételek
-            között is megtalálható. Amennyiben a webáruházban hiba vagy
+            Áraink a rendelés időpontjában érvényes listaárak, amelyeket az
+            érme oldalon a termékek alatt találnak. Az árak netto árak, az
+            ÁFÁ-t nem tartalmazzák, ezek az árak tartalmazzák a
+            szállítási költséget. Amennyiben a webáruházban hiba vagy
             hiányosság lép fel a termékeknél vagy az áraknál, fenntartjuk a
             jogot a korrekcióra. Ilyen esetben a hiba felismerése, illetve
             módosítása után azonnal tájékoztatjuk a vevőt az új adatokról. A
@@ -191,24 +156,21 @@ export default function VasarlasiFeltetelekPage() {
           <Paragraph>
             Minden rendelésről e-mailes visszajelzést küldünk. Ez azt jelenti,
             hogy a rendelés feladását követően egy automatikus e-mailt kap a
-            rendelés beérkezéséről és (később) egyet a várható szállítási
-            időpontról. Telefonos egyeztetés esetén hívja az ügyfélszolgálatot
+            rendelés beérkezéséről. Telefonos egyeztetés esetén hívja az ügyfélszolgálatot
             vagy az e-mailben található telefonszámok bármelyikét.
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>Fizetési feltételek</H4>
           <Paragraph>
-            Áruházunkban lehetőség van banki átutalásra, bankkártyás fizetésre,
-            személyes és utánvéttel történő fizetésre. Utóbbi esetén a teljes
-            vételárat szállítási költséggel együtt a küldemény átvételekor kell
-            kifizetni készpénzben a küldemény kézbesítőjének.
+            Áruházunkban lehetőség van bankkártyás fizetésre.
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>Szállítás</H4>
           <Paragraph>
-            A küldemények kézbesítése, szállítása psotán keresztül történik. A
-            termék szállítási idejét a webáruház ismerteti a pénztár folyamat
-            során, valamint a visszaigazoló e-mail is tartalmazza. A szállítás
+            A küldemények kézbesítése, szállítása postán keresztül történik. A
+            termék szállítási idejét a webáruház ismerteti <Link href={"/vasarlasi-feltetelek"}>Vásárlási feltételekben</Link>, valamint a visszaigazoló e-mail is tartalmazza. A szállítás
             időpontjáról lehetősége van egyeztetni a visszaigazoló e-mailben
-            található telefonszámon.
+            található elérhetőségekben.
+
+            A szállítás várható ideje 5-15 munkanap.
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>Szállítási díjak</H4>
           <Paragraph>
@@ -221,7 +183,7 @@ export default function VasarlasiFeltetelekPage() {
             teljesíti, mert a szerződésben meghatározott áru nem áll
             rendelkezésére, illetve a megrendelt szolgáltatást nem áll módjában
             nyújtani, köteles erről a megrendelőt tájékoztatni. A webáruház nem
-            köt szerződést kiskorúakkal. A megrendelő a kereskedelmi feltételek
+            köt szerződést kiskorúakkal. A megrendelő a <Link href={"/vasarlasi-feltetelek"}>vásárlási feltételek</Link>
             elfogadásával nyilatkozik arról, hogy nagykorú.
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>A termék visszaküldése</H4>
@@ -311,39 +273,7 @@ export default function VasarlasiFeltetelekPage() {
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>Jótállás</H4>
           <Paragraph>
-            Az üzemeltető által forgalmazott egyes termékekre az egyes tartós
-            fogyasztási cikkekre vonatkozó kötelező jótállás szabályait
-            tartalmazó 151/2003. Korm. rendelet szerint 1 éves jótállási idő áll
-            a fogyasztó rendelkezésére a termék átadásának napjától. A vásárlót
-            a jótállás joga akkor nem illeti meg, ha a hiba a termék fogyasztó
-            részére való átadását követően keletkezett. A megjelölt rendelet alá
-            nem tartozó termékek tekintetében a gyártó által biztosított
-            jótállási idő a termék mellett feltüntetésre kerül. Ezzel
-            kapcsolatos problémák felmerülése esetén az üzemeltető pontos
-            információt tud adni. Jótállás esetében a fogyasztó a jótállási időn
-            belül a meghibásodott termék díjmentes javítása, vagy cseréje illeti
-            meg. A garanciális javítások a gyártási hibából eredő
-            meghibásodásokra terjednek ki. A garancia feltételek a használati
-            útmutatóban levő feltételek betartásával együtt érvényesek. Termék
-            meghibásodása esetén a készülékhez mellékelt garancia levélen
-            megjelölt címen és telefonszámon kaphat bővebb felvilágosítást a
-            teendőkről, továbbá elérhetőségeink valamelyikén. A termékek
-            garanciális szervizpontjára történő eljuttatásának költsége a
-            vásárlót terheli. A meghibásodott készüléket közvetlenül
-            webáruházunk szervizpontjára is visszaküldheti címre. Portósan
-            küldött csomagokat nem vesz át átvevőpontunk, azt minden esetben
-            visszaküldi a feladónak! A kijavítás során a termékbe csak új
-            alkatrész kerülhet beépítésre. Az üzemeltetőnek törekednie kell
-            arra, hogy a kijavítást, vagy cserét XXX napon belül elvégezze. A
-            jótállás körében végzett tevékenység költségei az üzemeltetőt
-            terhelik. Egyebekben a jótállásra a Ptk.6.171-173.§-ban foglaltak az
-            irányadóak.
-          </Paragraph>
-          <H4 classname={"text-[--rose] pb-4 pt-8"}>Szavatosság</H4>
-          <Paragraph>
-            A szolgáltatott termék hibája esetén az üzemeltetővel szemben
-            kellékszavatossági igény érvényesítésének van helye a Ptk. 6:159-167
-            :§ i szerint.
+            A termékre életre szóló garanciát vállalunk. Ez azt jelenti, hogy ha elveszik megsérül, vagy kár éri a terméket, és ezt a vevő fényképpel tudja igazolni, díjtalanul cseréljük az érmét.
           </Paragraph>
           <H4 classname={"text-[--rose] pb-4 pt-8"}>Panaszok intézése</H4>
           <Paragraph>
