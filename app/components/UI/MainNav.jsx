@@ -35,8 +35,13 @@ export default function MainNav() {
 
   return (
 
-    <nav className="w-full min-w-[330px] lg:w-full h-[70px] fixed top-0 z-50 bg-white border-b border-[--cream]">
-      <div className="relative flex justify-between h-full px-4 w-full z-50">
+    <nav className="w-full min-w-[330px] lg:w-full min-h-[70px] fixed top-0 z-50 bg-white shadow-lg">
+      <div className={`${openNotification ? "flex" : "hidden"} flex-nowrap items-center justify-center px-4 gap-2 bg-[--error] w-full min-h-10`}>
+        <Label classname={"text-white leading-tight"}>Használd a <b><b>NOVQR</b></b> vagy <b><b>NOVQR1</b></b> kuponkódot havi vagy éves kedvezményért! <button onClick={() => togglePopup("CouponInfo")} className="lg:self-end"><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button></Label>
+        
+        <button onClick={() => setOpenNotification(prevState => (!prevState))}><CgClose className="w-6 h-6 text-white" /></button>
+      </div>
+      <div className="relative flex justify-between items-center h-full px-4 py-4 w-full z-50 ">
         <div className="flex flex-nowrap gap-8">
           <div  id="logo" className="flex justify-start w-full items-center gap-4">
             <button id="hamburger" className="flex lg:hidden">
@@ -70,7 +75,7 @@ export default function MainNav() {
           </div>
           
         </div>
-        <div className="lg:flex hidden w-full self-center">
+        <div className="lg:flex flex-col justify-center hidden w-full self-center">
           <SeachBar />
         </div>
         <div id="cta-user" className="relative flex flex-row justify-end items-center min-w-fit gap-1 lg:gap-2">
@@ -94,11 +99,7 @@ export default function MainNav() {
           </Link>
         </div>
       </div>
-      <div className={`${openNotification ? "flex" : "hidden"} flex-nowrap items-center justify-center px-4 gap-2 bg-[--error] w-full min-h-10`}>
-        <Label classname={"text-white leading-tight"}>Használd a <b><b>NOVQR</b></b> vagy <b><b>NOVQR1</b></b> kuponkódot havi vagy éves kedvezményért! <button onClick={() => togglePopup("CouponInfo")} className="lg:self-end"><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button></Label>
-        
-        <button onClick={() => setOpenNotification(prevState => (!prevState))}><CgClose className="w-6 h-6 text-white" /></button>
-      </div>
+      
       <Modal openstate={openPopup === "CouponInfo"} onClose={() => togglePopup(null)}>
         <div className="flex flex-col gap-4">
             <Paragraph>NOVQR kupon (havi előfizetéshez): A kupon 3 hónapig biztosít minden hónapban 500Ft kedvezményt, majd a 4. hónaptól kezdve lesz érvényes a teljes 1000Ft-os összeg.</Paragraph>

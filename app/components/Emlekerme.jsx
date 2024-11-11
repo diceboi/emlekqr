@@ -134,7 +134,7 @@ export default function Emlekerme({ session, userdata }) {
             </div>
 
             <div className="lg:absolute top-20 right-16 flex flex-col w-full lg:w-5/12 h-full">
-                <div className="flex flex-col gap-8 sticky top-40 rounded-2xl lg:m-8 mt-8 bg-white lg:shadow-2xl shadow-md p-8">
+                <div className="flex flex-col gap-8 sticky top-40 rounded-2xl lg:m-8 mt-8 bg-white lg:shadow-2xl shadow-md lg:p-8 p-4">
                     <div className="flex flex-col">
                         { payment === STRIPE_PRICE_ID_ONE && (
                             <motion.div

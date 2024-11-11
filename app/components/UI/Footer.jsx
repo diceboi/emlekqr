@@ -38,7 +38,7 @@ export default function Footer() {
                         <li><Link href={"/vasarlasi-feltetelek"}><Label classname={"hover:underline cursor-pointer"}>Vásárlási feltételek</Label></Link></li>
                         <li><Link href={"/adatkezelesi-tajekoztato"}><Label classname={"hover:underline cursor-pointer"}>Adatkezelési tájékoztató</Label></Link></li>
                         <li><Link href={"/elhunyt-jogainak-vedelme"}><Label classname={"hover:underline cursor-pointer"}>Elhunyt jogainak védelme</Label></Link></li>
-                        <li><Link href={"/szallitas"}><Label classname={"hover:underline cursor-pointer"}>Szálíltási információ</Label></Link></li>
+                        {/*<li><Link href={"/szallitas"}><Label classname={"hover:underline cursor-pointer"}>Szálíltási információ</Label></Link></li>*/}
                         <li><Link href={"/kapcsolat"}><Label classname={"hover:underline cursor-pointer"}>Kapcsolat</Label></Link></li>
                     </ul>
                 </div>

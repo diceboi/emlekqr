@@ -42,6 +42,23 @@ export default async function RootLayout({ children }) {
           fbq('track', 'PageView');`
         }}
       ></Script>
+
+      <Script
+        id="hotjar"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: 
+          `(function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:5202076,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`
+        }}
+      ></Script>
+
       <noscript><img height={"1"} width={"1"} style={{display: "none"}}
       src="https://www.facebook.com/tr?id=1680926859153397&ev=PageView&noscript=1"
       /></noscript>
