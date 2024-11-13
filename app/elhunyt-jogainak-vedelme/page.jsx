@@ -4,6 +4,11 @@ import Paragraph from "../components/UI/Paragraph";
 import Label from "../components/UI/Label";
 import Link from "next/link";
 
+export const metadata = {
+  title: 'Az elhunytak jogainek védelme - EmlékQR',
+}
+
+
 export default function ElhunytJogainakVedelmePage() {
   return (
     <section className="w-full lg:py-16 py-8 px-4">

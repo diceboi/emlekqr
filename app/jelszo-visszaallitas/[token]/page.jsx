@@ -3,6 +3,10 @@ import { getServerSession } from "next-auth/next"
 import { redirect } from 'next/navigation'
 import ResetPassword from "../../components/ResetPassword"
 
+export const metadata = {
+  title: 'Jelszó visszaállítás - EmlékQR',
+}
+
 export default async function JelszoVisszaallitasPage({ params }) {
 
   const session = await getServerSession(AuthOptions)

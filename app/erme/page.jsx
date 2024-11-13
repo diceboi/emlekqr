@@ -1,6 +1,12 @@
 import { getServerSession } from "next-auth";
 
 import Emlekerme from "../components/Emlekerme"
+import { describe } from "node:test";
+
+export const metadata = {
+  title: 'Az emlékérme - EmlékQR',
+  description: 'Válaszd ki emlékérméd, rendeld meg és töltsd fel emlékekkel! Digitalizáld fényképes fiókodat, ne hagyd elveszni az emlékeket.'
+}
 
 const getUserData = async (email) => {
   try {

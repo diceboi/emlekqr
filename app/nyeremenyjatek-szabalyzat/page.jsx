@@ -4,6 +4,10 @@ import Paragraph from "../components/UI/Paragraph";
 import Label from "../components/UI/Label";
 import Link from "next/link";
 
+export const metadata = {
+  title: 'Nyereményjáték szabályzat - EmlékQR',
+}
+
 export default function NyeremenyjatekSzabalyzatPage() {
   return (
     <section className="w-full lg:py-16 py-8 px-4">

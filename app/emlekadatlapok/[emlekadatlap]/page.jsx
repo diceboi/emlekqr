@@ -8,6 +8,7 @@ import SecretChecker from "../../components/UI/SecretChecker"
 
 export const dynamic = 'force-dynamic'
 
+
 const getEmlekadatlap = async (uri) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_URL; // Adjust this as per your environment
@@ -52,6 +53,19 @@ const getTributes = async (id) => {
     return null;
   }
 };
+
+export async function generateMetadata({params}) {
+  
+  const emlekadatlap = await getEmlekadatlap(params.emlekadatlap);
+  const currentData = emlekadatlap?.data?.Emlekadatlap || null;
+ 
+  return {
+    title: `${currentData.name} emlékadatlapja - EmlékQR`,
+    openGraph: {
+      images: [currentData.profileimage],
+    },
+  }
+}
 
 export default async function Emlekadatlap({ params }) {
 

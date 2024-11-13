@@ -9,6 +9,11 @@ import BeforeLeavePopup from "./components/UI/BeforeLeavePopup"
 
 import { getServerSession } from "next-auth";
 
+export const metadata = {
+  title: 'EmlékQR - QR-kódos emlékérmék, modern megemlékezés szeretteinkről.',
+  description: 'Az emlékérmével örökre megőrizhetjük szeretteink emlékét. Időtálló megemlékezés, amely a síremlékre vagy sírkőre rögzíthető, tökéletes választás mindenszentek ünnepén.',
+}
+
 const getUserData = async (email) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_URL;

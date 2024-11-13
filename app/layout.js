@@ -12,11 +12,6 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 
 const geologica = Geologica({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "A digitális emlékmegőrző",
-  description: "Készítsd el saját emlékérméd és oszd meg szeretteiddel",
-};
-
 export default async function RootLayout({ children }) {
   const session = getServerSession();
 

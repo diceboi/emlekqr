@@ -3,6 +3,11 @@ import { redirect } from "next/navigation";
 import AuthOptions from "../api/auth/[...nextauth]/authOptions";
 import { getServerSession } from "next-auth/next";
 
+export const metadata = {
+  title: 'Bejelentkezés - EmlékQR',
+}
+
+
 export default async function Bejelentkezes() {
   const session = await getServerSession(AuthOptions);
 

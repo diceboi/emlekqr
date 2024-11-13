@@ -28,7 +28,7 @@ export default function Elonyei() {
                     <div className="flex flex-col gap-4 lg:w-1/2 w-full">
                         <H3 classname={"text-[--blue]"}>Maradandó meg­emlékezés</H3>
                         <Paragraph>
-                            Az emlékérme hosszú távon megőrzi a szeretteinkkel kapcsolatos életeseményeket. A QR-kód segítségével bármikor hozzáférhető a tartalom, akár évekkel később is. Egy gyönyörű sírkoszorú vagy sírcsokor mellé tökéletes kiegészítő, hiszen nem hervad el, örök darab marad.
+                            A QR-kód segítségével bármikor hozzáférhető a tartalom, akár évekkel később is. Élettörténet, emlékirat, családfa rögzítésére is alkalmas. Egy gyönyörű sírkoszorú vagy sírcsokor mellé tökéletes kiegészítő, hiszen nem hervad el, örök darab marad.
                         </Paragraph>
                     </div>
                 </div>

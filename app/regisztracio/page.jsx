@@ -4,6 +4,10 @@ import { AuthOptions } from '../api/auth/[...nextauth]/route'
 import { getServerSession } from "next-auth/next"
 import { redirect } from 'next/navigation'
 
+export const metadata = {
+  title: 'Regisztráció - EmlékQR',
+}
+
 export default async function Regisztracio() {
 
   const session = await getServerSession(AuthOptions)

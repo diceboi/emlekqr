@@ -2,6 +2,10 @@ import { getServerSession } from "next-auth";
 import Stripe from "stripe";
 import KoszonjukClient from "../components/KoszonjukClient" // Import the client component
 
+export const metadata = {
+  title: 'köszönjük a rendelésed - EmlékQR',
+}
+
 // Helper functions
 const getCheckoutSession = async (sessionId) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);

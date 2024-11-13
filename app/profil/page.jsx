@@ -5,6 +5,10 @@ import ProfilErtesitesek from "../components/Profil/ProfilErtesitesek";
 import ProfilAdatlap from "../components/Profil/ProfilAdatlap";
 import ProfilSzamlak from "../components/Profil/ProfilSzamlak";
 
+export const metadata = {
+  title: 'Profil - EmlékQR',
+}
+
 const getPersonalEmlekadatlap = async (owner) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_URL;

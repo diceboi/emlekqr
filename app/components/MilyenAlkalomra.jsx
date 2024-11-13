@@ -61,7 +61,7 @@ export default function MilyenAlkalomra() {
                         </motion.div>
                         <H4 classname={"text-[--blue] lg:px-8 px-4"}>Emléktárgy, személyes ajándék</H4>
                         <Paragraph classname={"lg:px-8 px-4"}>
-                            Az érme különleges emléktárgyként szolgál, amelyet ajándékozhatunk családtagoknak, hogy közösen őrizzék meg szeretteik emlékét és továbbadhassák a következő generációnak
+                            Emléktárgy, személyes ajándék: Az érme különleges egyedi ajándék, amelyet ajándékozhatunk családtagoknak, hogy közösen őrizzék meg szeretteik emlékét és továbbadhassák a következő generációnak.
                         </Paragraph>
                     </div>
                 </div>
