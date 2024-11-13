@@ -30,11 +30,21 @@ export default function BeforeLeavePopup() {
     };
   
     useEffect(() => {
-      if (window.innerWidth > 768) { // Desktop behavior
+      if (window.innerWidth > 768) { 
+        // Desktop behavior: Show popup when user attempts to leave
         document.addEventListener("mouseleave", handleMouseLeave);
-      } else { // Mobile behavior
-        window.addEventListener("scroll", handleScroll);
+      } else { 
+        // Mobile behavior: Show popup after 5 seconds
+        const timer = setTimeout(() => {
+          togglePopup("BeforeLeavePopup");
+        }, 5000);
+
+        return () => {
+          clearTimeout(timer);
+          window.removeEventListener("scroll", handleScroll);
+        };
       }
+
       return () => {
         document.removeEventListener("mouseleave", handleMouseLeave);
         window.removeEventListener("scroll", handleScroll);
@@ -50,4 +60,3 @@ export default function BeforeLeavePopup() {
         </Modal>
   )
 }
-

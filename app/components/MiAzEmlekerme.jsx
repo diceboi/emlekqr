@@ -110,7 +110,7 @@ export default function MiAzEmlekerme({ session, userdata }) {
         <div className='flex lg:flex-row flex-col items-center justify-center lg:gap-16 gap-8 overflow-hidden px-4 py-8'>
             <div className='relative w-full lg:w-1/3 lg:min-h-[80vh]'>
                 
-            <div className="flex flex-col w-full h-full lg:pt-16">
+            <div className="flex flex-col w-full h-full lg:pt-16 pt-8">
                 <div className="flex flex-col gap-8 rounded-2xl lg:m-8 mt-8 bg-white lg:shadow-2xl shadow-md lg:p-8 p-4">
                     <div className="flex flex-col">
                         { payment === STRIPE_PRICE_ID_ONE && (

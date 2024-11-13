@@ -53,15 +53,15 @@ export default function MilyenAlkalomra() {
                 <div className="relative group lg:w-1/4 bg-neutral-50 pb-8 rounded-3xl transition-all">
                     <div className="flex flex-col w-full justify-end gap-4 z-10 bg-transparent group-hover:bg-gradient-to-b from-transparent via-[--blue-15] to-transparent group-hover:rounded-3xl transition-all duration-500">
                         <motion.div 
-                        className="relative rounded-t-3xl overflow-hidden"
-                        initial={sizes.initialSize}
-                        whileHover={sizes.hoverSize}
+                            className="relative rounded-t-3xl overflow-hidden"
+                            initial={sizes.initialSize}
+                            whileHover={sizes.hoverSize}
                         >
-                            <Image src={"/image-kepek/temetes.webp"} fill style={{ objectFit: "cover", objectPosition: "center" }} alt="temetes"/>
+                            <Image src={"/image-kepek/ajandek.webp"} fill style={{ objectFit: "cover", objectPosition: "center" }} alt="temetes"/>
                         </motion.div>
-                        <H4 classname={"text-[--blue] lg:px-8 px-4"}>Temetés alkalmával</H4>
+                        <H4 classname={"text-[--blue] lg:px-8 px-4"}>Emléktárgy, személyes ajándék</H4>
                         <Paragraph classname={"lg:px-8 px-4"}>
-                            Amikor szeretteink végső búcsúztatására készülünk, az emlékérme egy méltó és maradandó megemlékezési módot nyújt.
+                            Az érme különleges emléktárgyként szolgál, amelyet ajándékozhatunk családtagoknak, hogy közösen őrizzék meg szeretteik emlékét és továbbadhassák a következő generációnak
                         </Paragraph>
                     </div>
                 </div>
@@ -85,19 +85,18 @@ export default function MilyenAlkalomra() {
                 <div className="relative group lg:w-1/4 bg-neutral-50 pb-8 rounded-3xl transition-all">
                     <div className="flex flex-col w-full justify-end gap-4 z-10 bg-transparent group-hover:bg-gradient-to-b from-transparent via-[--blue-15] to-transparent group-hover:rounded-3xl transition-all duration-500">
                         <motion.div 
-                            className="relative rounded-t-3xl overflow-hidden"
-                            initial={sizes.initialSize}
-                            whileHover={sizes.hoverSize}
+                        className="relative rounded-t-3xl overflow-hidden"
+                        initial={sizes.initialSize}
+                        whileHover={sizes.hoverSize}
                         >
-                            <Image src={"/image-kepek/ajandek.webp"} fill style={{ objectFit: "cover", objectPosition: "center" }} alt="temetes"/>
+                            <Image src={"/image-kepek/temetes.webp"} fill style={{ objectFit: "cover", objectPosition: "center" }} alt="temetes"/>
                         </motion.div>
-                        <H4 classname={"text-[--blue] lg:px-8 px-4"}>Emléktárgy, személyes ajándék</H4>
+                        <H4 classname={"text-[--blue] lg:px-8 px-4"}>Temetés alkalmával</H4>
                         <Paragraph classname={"lg:px-8 px-4"}>
-                            Az érme különleges emléktárgyként szolgál, amelyet ajándékozhatunk családtagoknak, hogy közösen őrizzék meg szeretteik emlékét és továbbadhassák a következő generációnak
+                            Amikor szeretteink végső búcsúztatására készülünk, az emlékérme egy méltó és maradandó megemlékezési módot nyújt.
                         </Paragraph>
                     </div>
                 </div>
-                
                 
             </div> 
             <Link href="/erme" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white w-fit self-center">
