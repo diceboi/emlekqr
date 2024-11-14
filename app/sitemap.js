@@ -17,6 +17,11 @@ export default async function sitemap() {
 
   const emlekadatlapok = await getEmlekadatlap();
 
+  if (!emlekadatlapok || !emlekadatlapok.data) {
+    console.log("Emlekadatlap data is unavailable.");
+    return []; // Return an empty array or static URLs only
+  }
+
   const Emlekadatlapok = emlekadatlapok.data.Emlekadatlap.map((emlekadatlap) => ({
     url: `https://www.emlek-qr.hu/emlekadatlapok/${emlekadatlap.uri}`,
   }));
