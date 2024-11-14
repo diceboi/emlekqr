@@ -54,7 +54,7 @@ export default function BeforeLeavePopup() {
   return (
         <Modal openstate={openPopup === "BeforeLeavePopup"} onClose={() => togglePopup(null)} classname={"min-h-[500px] overflow-hidden"}>
             <Image src="/nyeremenyjatek_popup.webp" fill style={{ objectFit: "cover", objectPosition: "center" }} />
-            <Link href="https://fb.watch/vO8pbuEaE5/" target="__blank" className="absolute bottom-4 right-4 bg-[--cream] rounded-full p-2">
+            <Link href="https://fb.watch/vRMcUXLBQx/" target="__blank" className="absolute bottom-4 right-4 bg-[--cream] rounded-full p-2">
                 <TbArrowRight className="text-[--rose] min-w-5 min-h-5"/>
             </Link>
         </Modal>
