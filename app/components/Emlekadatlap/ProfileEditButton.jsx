@@ -8,6 +8,7 @@ import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import EXIF from "exif-js";
 import { motion } from "framer-motion";
 import Loading from "../UI/Loading";
+import { toast } from "sonner";
 
 export default function ProfileEditButton({ session, user, data }) {
 
@@ -171,8 +172,13 @@ export default function ProfileEditButton({ session, user, data }) {
         if (s3Upload.ok) {
           console.log("Image uploaded successfully:", fileData.name);
           setUploadCount((prevCount) => prevCount + 1); // Increment upload count
+          toast.success('Kép(ek) sikeresen feltöltve.')
         } else {
+          setSaving(false);
+          setUploading(false);
           console.log("Error uploading image:", fileData.name);
+          console.log("Error: ", error)
+          toast.error('Hiba történt a kép feltöltése közben.')
         }
       }
     } else {
