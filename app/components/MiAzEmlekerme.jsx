@@ -107,7 +107,7 @@ export default function MiAzEmlekerme({ session, userdata }) {
 
   return (
     <section className='flex flex-col justify-start relative w-full overflow-hidden'>
-        <div className='flex lg:flex-row flex-col items-center justify-center lg:gap-16 gap-8 overflow-hidden px-4 py-8'>
+        <div className='flex lg:flex-row flex-col-reverse items-center justify-center lg:gap-16 gap-8 overflow-hidden px-4 py-8'>
             <div className='relative w-full lg:w-1/3 lg:min-h-[80vh]'>
                 
             <div className="flex flex-col w-full h-full lg:pt-16 pt-8">
