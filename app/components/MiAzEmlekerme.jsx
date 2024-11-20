@@ -203,9 +203,9 @@ export default function MiAzEmlekerme({ session, userdata }) {
                             </button>
                         )}
                         {!session && (
-                            <button onClick={() => togglePopup("Login")} className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full">
+                            <a href="/bejelentkezes" className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full">
                                 A vásárláshoz jelentkezz be
-                            </button>
+                            </a>
                         )}
                         {session && userdata.data.User.secret && userdata.data.User.secret !== "" && (
                             <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full cursor-not-allowed">
