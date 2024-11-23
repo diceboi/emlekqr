@@ -36,7 +36,7 @@ export default async function Home() {
 
   return (
     <>
-    <BeforeLeavePopup />
+    {/*<BeforeLeavePopup />*/}
     <Hero />
     <MiAzEmlekerme session={session} userdata={userData} />
     <MilyenAlkalomra />
