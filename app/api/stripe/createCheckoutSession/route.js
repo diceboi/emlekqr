@@ -4,7 +4,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(req) {
   try {
-    const { email, productPriceId, type } = await req.json(); // Parse request body to include couponCode
+    const { email, productPriceId, type, mode } = await req.json(); // Parse request body to include couponCode
 
     if (!email || !productPriceId) {
       console.error('Missing email or productPriceId');
@@ -32,7 +32,7 @@ export async function POST(req) {
           quantity: 1,
         },
       ],
-      mode: 'subscription',
+      mode: mode,
       billing_address_collection: 'required',
       shipping_address_collection: {
         allowed_countries: ['HU'],

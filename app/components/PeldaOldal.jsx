@@ -18,7 +18,7 @@ const [visibleSection, setVisibleSection] = useState("profil");
   return (
     <section className='w-full py-16 bg-white px-4'>
         <div className='flex flex-col gap-8 container m-auto'>
-            <H2 classname={"text-[--rose]  self-center"}>Hogy fog kinézni az oldal?</H2>
+            <H2 classname={"text-[--rose] text-center self-center"}>Hogy fog kinézni az oldal?</H2>
                
             <div className='flex flex-col items-center lg:p-8 rounded-3xl'>
 

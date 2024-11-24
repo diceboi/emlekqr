@@ -9,8 +9,8 @@ import Paragraph from "./UI/Paragraph";
 export default function Hasznalata() {
   return (
     <section className='flex justify-center items-center w-full min-h-[50vh] px-4 py-28'>
-        <div className="flex flex-col items-center gap-16    container">
-            <H2>Hogy működik?</H2>
+        <div className="flex flex-col items-center gap-16 container">
+            <H2 classname={"text-[--rose]"}>Hogy működik?</H2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-10/12">
                 <div className="relative flex flex-col justify-between items-center bg-[--cream] h-[300px] w-full rounded-2xl p-4">
                     <Image src="/ermek2.webp" fill style={{ objectFit: "cover" }} className="absolute top-6 -right-10 z-0 mix-blend-multiply"/>

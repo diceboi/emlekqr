@@ -1,3 +1,5 @@
+import withVideos from 'next-videos';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
@@ -5,13 +7,10 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname: "elmekqr-storage.s3.amazonaws.com",
-            }
-        ]
+            },
+        ],
     },
-    transpilePackages: [
-        'three'
-    ],
-
+    transpilePackages: ['three'],
 };
 
-export default nextConfig;
+export default withVideos(nextConfig);
