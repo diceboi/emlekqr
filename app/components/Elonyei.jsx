@@ -40,7 +40,7 @@ export default function Elonyei() {
                     <div className="flex flex-col gap-4 lg:w-1/2 w-full">
                         <H3 classname={"text-[--blue]"}>Modern és egyszerű megoldás</H3>
                         <Paragraph>
-                            A technológia segítségével gyorsan és egyszerűen elérhető. A QR-kód beolvasása után az emlékoldal azonnal elérhető bármely eszközről. Nem veszik el, bármikor felidézheted.
+                        Ez az egyedi emléktárgy QR-kóddal van ellátva, amelyet a síremlékre vagy sírkőre rögzítve időtálló tisztelgés lehet akár mindenszentek ünnepén, ajándékként, vagy megemlékezés alkalmával. A QR-kód beolvasásával egy személyre szabott emlékoldal nyílik meg, ahol a családtagok és barátok képeket, történeteket, vagy akár videókat tölthetnek fel az elhunyt életéről.
                         </Paragraph>
                     </div>
                 </div>

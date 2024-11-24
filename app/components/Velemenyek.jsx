@@ -5,7 +5,7 @@ import H3 from "./UI/H3";
 import H4 from "./UI/H4";
 import Image from "next/image";
 
-export default function Velmenyek() {
+export default function Velemenyek() {
   return (
     <div className="container m-auto flex flex-col gap-8 py-20">
         <H2 classname="text-[--rose] lg:text-left text-center lg:self-start self-center">Ezt mondták rólunk</H2>

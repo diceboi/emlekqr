@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import Hasznalata from "./Hasznalata";
 import PeldaOldal from "./PeldaOldal";
 import KaracsonyCTA from "./KaracsonyCTA"
-import Velemenyek from "./Velmenyek"
+import Velemenyek from "./Velemenyek"
 
 export default function KaracsonyInner() {
   return (

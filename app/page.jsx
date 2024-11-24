@@ -6,6 +6,7 @@ import PeldaOldal from "./components/PeldaOldal"
 import HomeCTA from "./components/HomeCTA"
 import Hasznalata from "./components/Hasznalata"
 import BeforeLeavePopup from "./components/UI/BeforeLeavePopup"
+import Velemenyek from "./components/Velemenyek";
 
 import { getServerSession } from "next-auth";
 
@@ -44,6 +45,7 @@ export default async function Home() {
     <PeldaOldal />
     <HomeCTA />
     <Hasznalata />
+    <Velemenyek />
     </>
   );
 }
