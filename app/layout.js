@@ -8,7 +8,7 @@ import { getServerSession } from "next-auth";
 import ContextProvider from "./Context";
 import UpdateEmlekadatlapContextProvider from "./UpdateEmlekadatlapContext";
 import { Toaster } from 'sonner'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 const geologica = Geologica({ subsets: ["latin"] });
 
@@ -68,6 +68,7 @@ export default async function RootLayout({ children }) {
               <Footer />
             </body>
             <GoogleAnalytics gaId="G-8MXRK3GSNX" />
+            <GoogleTagManager gtmId="AW-16786648939" />
           </AuthProvider>
         </UpdateEmlekadatlapContextProvider>
       </ContextProvider>

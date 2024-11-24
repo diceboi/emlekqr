@@ -102,9 +102,10 @@ export default function MainNav() {
       
       <Modal openstate={openPopup === "CouponInfo"} onClose={() => togglePopup(null)}>
         <div className="flex flex-col gap-4">
-            <Paragraph>NOVQR kupon (havi előfizetéshez): A kupon 3 hónapig biztosít minden hónapban 500Ft kedvezményt, majd a 4. hónaptól kezdve lesz érvényes a teljes 1000Ft-os összeg.</Paragraph>
-            <Paragraph>NOVQR1 kupon (éves előfizetéshez): A kupon 1500Ft kedvezményt nyújt az éves 10 000Ft-os összegből azaz az első évért csak 8 500Ft-ot kell fizetned.</Paragraph>
-            <Paragraph>A két kuponkód november 30. 23:59-ig érvényes.</Paragraph>
+            <Paragraph>KARACSONYHO kupon (havi előfizetéshez): A kupon az első hónapot ingyenesen biztosítja.</Paragraph>
+            <Paragraph>KARACSONYEV kupon (éves előfizetéshez): A kupon 1000Ft kedvezményt nyújt az éves 5 000 Ft-os összegből azaz az első évért csak 4000 Ft-ot kell fizetned.</Paragraph>
+            <Paragraph>KARACSONYOROK kupon (örök érvényű vásárláshoz): A kupon 2100 Ft kedvezményt nyújt a teljes 35 000 Ft-os összegből azaz az első évért csak 32 900 Ft-ot kell fizetned.</Paragraph>
+            <Paragraph>A két kuponkód december 31. 23:59-ig érvényes.</Paragraph>
         </div>
       </Modal>
     </nav>

@@ -14,6 +14,7 @@ import { PiShoppingCart } from "react-icons/pi";
 
 import { FaCircleCheck } from "react-icons/fa6";
 import { IoIosInfinite } from "react-icons/io";
+import { LiaShippingFastSolid } from "react-icons/lia";
 
 import Arrow from "./../components/Animations/Arrow"
 import Camel from "./../components/Animations/Camel"
@@ -208,7 +209,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                     transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
                     className="flex flex-col gap-1 justify-center items-center px-4 py-2 rounded-3xl bg-[--error] w-full self-center h-auto shadow-md">
                     <Paragraph classname={"text-white"}>Használd a <b><b>KARACSONYOROK</b></b> kuponkódot</Paragraph>
-                    <Label classname={"text-white"}>2000 Ft kedvezményért a teljes összegből</Label>
+                    <Label classname={"text-white"}>2100 Ft kedvezményért a teljes összegből</Label>
                     <button onClick={() => togglePopup("CouponInfo")}><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button>
                 </motion.div>
                 )}
@@ -243,9 +244,9 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                 </div>
             )} 
             <div className="flex flex-col gap-4">
-                <Label>Mit tartalmaz a csomag?</Label>
+                <Label classname={"font-bold"}>Mit adunk?</Label>
                 <ul className="flex flex-col gap-2 list-disc">
-                    <li className="flex flex-nowrap gap-4 justify-start items-start">
+                    <li className="flex flex-nowrap gap-4 justify-start items-start border-b border-[--cream] pb-2">
                         <div className="flex justify-center items-center min-w-6 h-6">
                             <AiOutlineQrcode className="text-[--blue] w-full h-auto"/> 
                         </div>
@@ -253,12 +254,20 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                             Szálcsiszolt felületű UV álló bakelit/műgyanta alapanyagú lézergravírozott időjárásálló QR kóddal ellátott érmét, erős kétoldalas ragasztóval ellátva.
                         </Label>
                     </li>
-                    <li className="flex flex-nowrap gap-4 justify-start items-start">
+                    <li className="flex flex-nowrap gap-4 justify-start items-start border-b border-[--cream] pb-2">
                         <div className="flex justify-center items-center min-w-6 h-6">
                             <AiOutlineLayout className="text-[--blue] w-full h-auto"/>
                         </div>
                         <Label>
-                            Egy könnyen szerkeszthető bárhonnan, bármilyen okoseszközről elérhető online emlékadatlapot ami kapcsolatban áll az érmével.
+                            Egy könnyen szerkeszthető bárhonnan, bármilyen okoseszközről elérhető online emlékadatlapot ami kapcsolatban áll az érmével, és korlátlan mennyiségű képpel, videóval, szöveggel tölthető fel.
+                        </Label>
+                    </li>
+                    <li className="flex flex-nowrap gap-4 justify-start items-start border-b border-[--cream] pb-2">
+                        <div className="flex justify-center items-center min-w-6 h-6">
+                            <LiaShippingFastSolid className="text-[--blue] w-full h-auto"/> 
+                        </div>
+                        <Label>
+                            Ingyenes szállítást.
                         </Label>
                     </li>
                     <li className="flex flex-nowrap gap-4 justify-start items-start">
