@@ -31,7 +31,7 @@ export default function KaracsonyInner() {
               Személyes ajándék, amely megőrzi a legkedvesebb emlékeket.
             </h2>
             <Link
-              href="/erme"
+              href="#emlekerme"
               className="flex items-center lg:self-start self-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white"
             >
               <TbQrcode className="w-6 h-6" />
@@ -45,7 +45,7 @@ export default function KaracsonyInner() {
           <Image
             src="/image-kepek/karacsony.webp"
             fill
-            style={{ objectFit: "cover", objectPosition: "50% 20%" }}
+            style={{ objectFit: "cover", objectPosition: "40% 20%" }}
             className="opacity-30"
           />
           <div className="w-full h-full bg-[--rose]"></div>
@@ -55,7 +55,7 @@ export default function KaracsonyInner() {
       <section className="lg:py-20 py-8 px-4">
         <div className="container m-auto">
             <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-20 gap-8">
-                <div className="lg:w-2/3 w-full relative lg:min-h-[500px] min-h-[270px]">
+                <div className="lg:w-2/3 w-full relative lg:min-h-[500px] min-h-[250px]">
                   <motion.video 
                     whileInView={{opacity:1}} 
                     initial={{opacity:0}} 

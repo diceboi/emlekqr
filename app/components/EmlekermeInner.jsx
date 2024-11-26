@@ -116,7 +116,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
         <LoginForm />
     </Modal>
 
-        <div className={`flex flex-col gap-8 rounded-2xl bg-white lg:shadow-2xl shadow-md lg:p-8 p-4 ${classname}`}>
+        <div id="emlekerme" className={`flex flex-col gap-8 rounded-2xl bg-white lg:shadow-2xl shadow-md lg:p-8 p-4 ${classname}`}>
             <div className="flex flex-col">
                 { visibleErme === "négyzet" && (
                     <EmlekermeSquare />
@@ -186,7 +186,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
                     className="flex flex-col gap-1 justify-center items-center px-4 py-2 rounded-3xl bg-[--error] w-full self-center h-auto shadow-md">
-                    <Paragraph classname={"text-white"}>Használd a <b><b>KARACSONYHO</b></b> kuponkódot</Paragraph>
+                    <Paragraph classname={"text-white text-center"}>Használd a <b><b>KARACSONYHO</b></b> kuponkódot</Paragraph>
                     <Label classname={"text-white"}>az ingyenes első hónapért</Label>
                     <button onClick={() => togglePopup("CouponInfo")}><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button>
                 </motion.div>
@@ -197,7 +197,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
                     className="flex flex-col gap-1 justify-center items-center px-4 py-2 rounded-3xl bg-[--error] w-full self-center h-auto shadow-md">
-                    <Paragraph classname={"text-white"}>Használd a <b><b>KARACSONYEV</b></b> kuponkódot</Paragraph>
+                    <Paragraph classname={"text-white text-center"}>Használd a <b><b>KARACSONYEV</b></b> kuponkódot</Paragraph>
                     <Label classname={"text-white"}>1000 Ft kedvezményért az éves összegből</Label>
                     <button onClick={() => togglePopup("CouponInfo")}><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button>
                 </motion.div>
@@ -208,7 +208,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
                     className="flex flex-col gap-1 justify-center items-center px-4 py-2 rounded-3xl bg-[--error] w-full self-center h-auto shadow-md">
-                    <Paragraph classname={"text-white"}>Használd a <b><b>KARACSONYOROK</b></b> kuponkódot</Paragraph>
+                    <Paragraph classname={"text-white text-center"}>Használd a <b><b>KARACSONYOROK</b></b> kuponkódot</Paragraph>
                     <Label classname={"text-white"}>2100 Ft kedvezményért a teljes összegből</Label>
                     <button onClick={() => togglePopup("CouponInfo")}><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button>
                 </motion.div>
