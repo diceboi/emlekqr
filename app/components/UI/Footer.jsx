@@ -6,6 +6,8 @@ import H4 from "./H4"
 import { TbArrowBigRightLines, TbAnchor, TbPhone, TbMail, TbUsersGroup } from "react-icons/tb";
 import { MdOutlinePayment } from "react-icons/md";
 
+import { FaFacebookSquare } from "react-icons/fa";
+
 export default function Footer() {
   return (
     <section className="w-full py-16 bg-[--blue]">
@@ -13,6 +15,9 @@ export default function Footer() {
             <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-16 gap-8">
                 <div className="flex flex-col justify-between gap-4">
                     <Image src="/emlek-qr-logo-white.webp" width={200} height={100} alt="logo"/>
+                    <div className="flex flex-nowrap gap-2">
+                        <Link href="https://facebook.com/emlekqr" target="__blank"><FaFacebookSquare className="text-white min-w-6 min-h-6"/></Link>
+                    </div>
                     <Paragraph classname={"text-white italic"}>&quot;Emlékbe, hogy emlékezz, mikor emlékem már csak emlék lesz.&quot;</Paragraph>
                     <Label classname={"text-white opacity-40"}>EmlékQR 2024 @ Minden jog fenntartva</Label>
                 </div>
