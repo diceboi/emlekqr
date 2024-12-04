@@ -216,7 +216,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
             </div>
 
             <div className="flex flex-row gap-4">
-                {session && (!userdata.data.User.secret || userdata.data.User.secret === "") && (
+                {session && (!userdata?.data.User.secret || userdata?.data.User.secret === "") && (
                     <button
                     onClick={handleCheckout}
                     className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full"
@@ -231,14 +231,14 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                         Tovább a pénztárba
                     </button>
                 )}
-                {session && userdata.data.User.secret && userdata.data.User.secret !== "" && (
+                {session && userdata?.data.User.secret && userdata?.data.User.secret !== "" && (
                     <button className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full cursor-not-allowed">
                         Aktiváld az adatlapod
                     </button>
                 )} 
                 
             </div>
-            {session && userdata.data.User.secret && userdata.data.User.secret !== "" && (
+            {session && userdata?.data.User.secret && userdata?.data.User.secret !== "" && (
                 <div className="text-[--error] p-4 border border-[--error] rounded-lg bg-red-500 bg-opacity-10">
                     <Label>Jelenleg van egy adatlap előfizetésed amit nem aktiváltál. Egy újabb érme vásárlása előtt kérlek aktiváld az előző adatlapodat. Az aktiváló kódot, és az aktiválás menetét az email fiókodban találod. Ha esetleg eltelt 5 nap a rendelésed óta, és az érme még nem érkezett meg, vedd fel velünk a kapcsolatot a <Link className="underline" href="/kapcsolat">kapcsolat</Link> menüpontban található elérhetőségek egyikén.</Label>
                 </div>

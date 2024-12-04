@@ -4,6 +4,8 @@ import Image from "next/image"
 
 import * as React from "react";
 import "yet-another-react-lightbox/styles.css";
+import { useContext } from "react";
+import { Context } from "../Context";
 
 import { FaCircleCheck } from "react-icons/fa6";
 import { IoIosInfinite } from "react-icons/io";
@@ -20,12 +22,18 @@ import Paragraph from "./UI/Paragraph";
 import Label from "./UI/Label";
 
 import EmlekermeInner from "./EmlekermeInner"
+import Modal from "./UI/Modal";
+import LoginForm from "./LoginForm";
 
 export default function Emlekerme({ session, userdata }) {
 
+    const { openPopup, togglePopup, setOpenPopup } = useContext(Context);
+
   return (
     <>
-
+    <Modal openstate={openPopup === "Login"} onClose={() => togglePopup(null)}>
+        <LoginForm />
+    </Modal>
     <section className="flex flex-col lg:gap-8 w-full lg:px-0 py-10 lg:py-20 min-h-[100vh]">
 
         <div className="relative flex flex-col container w-full m-auto px-4">
@@ -49,14 +57,14 @@ export default function Emlekerme({ session, userdata }) {
             </div>
             
             <div className="flex w-full lg:-mt-[550px] mt-20 justify-end lg:sticky top-40 right-0">
-                <EmlekermeInner session={session} userdata={userdata} classname={"lg:w-5/12 w-full lg:m-8"}/>
+                <EmlekermeInner session={session} userdata={userdata} classname={"lg:w-5/12 w-full lg:m-8 z-50"}/>
             </div>
             
 
             <div className="flex flex-col justify-center gap-4 lg:pl-16 lg:py-16 py-8 lg:w-1/2 lg:-mt-[400px]">
                 <div className="relative h-[350px]">
-                    <Image src="/image-kepek/family-trip.webp" width={1000} height={500} className="absolute lg:top-0 top-16 left-4 border-8 border-white shadow-xl w-2/3 max-w-[400px] -rotate-12"/>
-                    <Image src="/image-kepek/family-trip2.webp" width={1000} height={500} className="absolute lg:bottom-0 bottom-16 right-4 border-8 border-white shadow-xl w-2/3 max-w-[400px] rotate-6"/>
+                    <Image src="/image-kepek/family-trip.webp" width={1000} height={500} className="absolute lg:top-0 top-16 left-4 border-8 border-white shadow-xl w-2/3 max-w-[400px] -rotate-12 z-0"/>
+                    <Image src="/image-kepek/family-trip2.webp" width={1000} height={500} className="absolute lg:bottom-0 bottom-16 right-4 border-8 border-white shadow-xl w-2/3 max-w-[400px] rotate-6 z-0"/>
                 </div>
                 
                 <H2 classname={"text-[--rose]"}>Mesélj el egy különleges történetet</H2>
