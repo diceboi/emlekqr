@@ -12,7 +12,7 @@ export default async function Bejelentkezes() {
   const session = await getServerSession(AuthOptions);
 
   if (session) {
-    redirect("/profil");
+    redirect("/erme");
   }
 
   return (

@@ -16,7 +16,7 @@ const RegisterForm = () => {
 
   useEffect(() => {
     if (sessionStatus === "authenticated") {
-      router.replace("/emlekadatlapok/0000001");
+      router.replace("/erme");
     }
   }, [sessionStatus, router]);
 
@@ -33,12 +33,12 @@ const RegisterForm = () => {
     const password = e.target[3].value;
 
     if (!isValidEmail(email)) {
-      setError("Az email cím érvénytelen");
+      toast.error('Az email cím érvénytelen.')
       return;
     }
 
     if (!password || password.length < 8) {
-      setError("A jelszó érvénytelen");
+      toast.error('A jelszónak legalább 8 karakter hosszúnak kell lennie.')
       return;
     }
 
