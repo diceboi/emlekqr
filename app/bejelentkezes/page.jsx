@@ -17,7 +17,7 @@ export default async function Bejelentkezes() {
 
   return (
     <div className="flex flex-col items-center justify-center lg:min-h-[93vh] py-8 px-10">
-      <LoginForm />
+      <LoginForm title={"Bejelentkezés"} bgcolor={"bg-[--cream]"} shadow={"shadow-md"}/>
     </div>
   );
 }

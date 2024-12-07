@@ -18,7 +18,7 @@ export default async function Regisztracio() {
 
   return (
     <div className="flex flex-col items-center justify-center lg:min-h-[93vh] py-8 px-10">
-    <RegisterForm/>
+    <RegisterForm title={"Regisztráció"} bgcolor={"bg-[--cream]"} shadow={"shadow-md"}/>
     </div>
   )
 }

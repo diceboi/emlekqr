@@ -15,7 +15,7 @@ const RegisterForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode
   const [error, setError] = useState("");
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
-  const {form, setForm, togglePopup} = useContext(Context)
+  const {form, setForm, togglePopup, openPopup} = useContext(Context)
 
   useEffect(() => {
     if (sessionStatus === "authenticated") {
@@ -127,12 +127,22 @@ const RegisterForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode
             </button>
           </form>
           <div className="text-center text-gray-500 mt-4">vagy</div>
-          <button
-            className="text-[--blue] underline"
-            onClick={() => setForm('login')}
-          >
-            Bejelentkezés már meglévő felhasználóval 
-          </button>
+
+          {openPopup ? (
+            <button
+              className="text-[--blue] text-center w-fit border border-[--blue] rounded-full py-1 px-4 lg:py-2 lg:px-6 hover:bg-[--blue] hover:text-white transition-all"
+              onClick={() => setForm('login')}
+            >
+              Bejelentkezés már meglévő felhasználóval  
+            </button>
+          ):(
+            <Link
+              className="text-[--blue] text-center w-fit border border-[--blue] rounded-full py-1 px-4 lg:py-2 lg:px-6 hover:bg-[--blue] hover:text-white transition-all"
+              href="/bejelentkezes"
+            >
+              Bejelentkezés már meglévő felhasználóval  
+            </Link>
+          )}
         </div>
     )
   );

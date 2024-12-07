@@ -17,7 +17,7 @@ const LoginForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode, t
     const [isPasswordVisible, setPasswordVisible] = useState(false);
     // const session = useSession();
     const { data: session, status: sessionStatus } = useSession();
-    const {form, setForm, togglePopup} = useContext(Context)
+    const {form, setForm, togglePopup, openPopup} = useContext(Context)
   
     console.log(params)
 
@@ -99,12 +99,23 @@ const LoginForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode, t
             <Label>Elfelejtetted a jelszót? <Link href={"/elfelejtett-jelszo"} className="text-[--blue] underline">Kattints ide</Link></Label>
           </div>
           <div className="text-center text-gray-500">vagy</div>
-          <button
-            className="text-[--blue] underline"
-            onClick={() => setForm('register')}
-          >
-            Regisztráció  
-          </button>
+
+          {openPopup ? (
+            <button
+              className="text-[--blue] text-center w-fit border border-[--blue] rounded-full py-1 px-4 lg:py-2 lg:px-6 hover:bg-[--blue] hover:text-white transition-all"
+              onClick={() => setForm('register')}
+            >
+              Regisztráció  
+            </button>
+          ):(
+            <Link
+              className="text-[--blue] text-center w-fit border border-[--blue] rounded-full py-1 px-4 lg:py-2 lg:px-6 hover:bg-[--blue] hover:text-white transition-all"
+              href="/regisztracio"
+            >
+              Regisztráció  
+            </Link>
+          )}
+          
         </div>
     )
   );
