@@ -2,6 +2,7 @@ import User from "../../../(models)/User";
 import connect from "../../../Utils/db";
 import bcrypt from "bcrypt"
 import { NextResponse } from "next/server";
+import { sign } from "jsonwebtoken";
 
 export const POST = async (request) => {
   const { name, vezeteknev, keresztnev, email, password } = await request.json();
@@ -25,7 +26,14 @@ export const POST = async (request) => {
 
   try {
     await newUser.save();
-    return new NextResponse("user is registered", { status: 200 });
+    // JWT generálása NextAuth számára
+    const token = sign(
+      { email, name, id: newUser._id },
+      process.env.NEXTAUTH_SECRET, // A NextAuth `NEXTAUTH_SECRET` változóját használjuk
+      { expiresIn: "1h" }
+    );
+
+    return new NextResponse(JSON.stringify({ token }), { status: 200 });
   } catch (err) {
     return new NextResponse(err, {
       status: 500,

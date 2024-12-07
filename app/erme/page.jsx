@@ -1,7 +1,6 @@
 import { getServerSession } from "next-auth";
 
 import Emlekerme from "../components/Emlekerme"
-import { describe } from "node:test";
 
 export const metadata = {
   title: 'Az emlékérme - EmlékQR',

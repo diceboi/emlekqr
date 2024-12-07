@@ -7,8 +7,6 @@ import "yet-another-react-lightbox/styles.css";
 
 import { useContext } from "react";
 import { Context } from "../Context";
-import LoginForm from "./LoginForm";
-import Modal from "./UI/Modal";
 import H1 from "./UI/H1";
 import H2 from "./UI/H2";
 import H3 from "./UI/H3";
@@ -24,9 +22,6 @@ export default function MiAzEmlekerme({ session, userdata }) {
 
   return (
     <section className='flex flex-col justify-start relative w-full overflow-hidden'>
-        <Modal openstate={openPopup === "Login"} onClose={() => togglePopup(null)}>
-            <LoginForm />
-        </Modal>
         <div className='flex container m-auto lg:flex-row flex-col-reverse items-center justify-center lg:gap-16 gap-8 overflow-hidden px-4 py-8'>
             <div className='relative w-full lg:w-1/2 lg:min-h-[80vh]'>
                 

@@ -13,6 +13,9 @@ export const Context = createContext({
   setUserMenuOpen: () => {},
   setUserMenuClose: () => {},
 
+  form: 'login',
+  setForm: () => {},
+
   isEditable: false,
   setEditable: () => {},
 
@@ -30,6 +33,7 @@ export default function ContextProvider({ children }) {
   const [isEditable, setEditable] = useState(false);
   const [openPopup, setOpenPopup] = useState(null); // Default to null
   const [deletableSubId, setDeletableSubId] = useState(null);
+  const [form, setForm] = useState('')
 
   /* Mobile menu */
   const toggleMobileMenu = () => {
@@ -72,7 +76,10 @@ export default function ContextProvider({ children }) {
       setOpenPopup,
 
       deletableSubId,
-      setDeletableSubId
+      setDeletableSubId,
+
+      form,
+      setForm
     }}>
       {children}
     </Context.Provider>

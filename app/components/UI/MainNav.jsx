@@ -102,9 +102,9 @@ export default function MainNav() {
       
       <Modal openstate={openPopup === "CouponInfo"} onClose={() => togglePopup(null)}>
         <div className="flex flex-col gap-4">
-            <Paragraph>KARACSONYHO kupon (havi előfizetéshez): A kupon az első hónapot ingyenesen biztosítja.</Paragraph>
-            <Paragraph>KARACSONYEV kupon (éves előfizetéshez): A kupon 1000Ft kedvezményt nyújt az éves 5 000 Ft-os összegből azaz az első évért csak 4000 Ft-ot kell fizetned.</Paragraph>
-            <Paragraph>KARACSONYOROK kupon (örök érvényű vásárláshoz): A kupon 2100 Ft kedvezményt nyújt a teljes 35 000 Ft-os összegből azaz az első évért csak 32 900 Ft-ot kell fizetned.</Paragraph>
+            <Paragraph><span className="font-bold text-[--rose]">KARACSONYHO</span> kupon (havi előfizetéshez): A kupon az első hónapot ingyenesen biztosítja.</Paragraph>
+            <Paragraph><span className="font-bold text-[--rose]">KARACSONYEV</span> kupon (éves előfizetéshez): A kupon 1000Ft kedvezményt nyújt az éves 5 000 Ft-os összegből azaz az első évért csak 4000 Ft-ot kell fizetned.</Paragraph>
+            <Paragraph><span className="font-bold text-[--rose]">KARACSONYOROK</span> kupon (örök érvényű vásárláshoz): A kupon 2100 Ft kedvezményt nyújt a teljes 35 000 Ft-os összegből azaz az első évért csak 32 900 Ft-ot kell fizetned.</Paragraph>
             <Paragraph>A három kuponkód december 31. 23:59-ig érvényes.</Paragraph>
         </div>
       </Modal>

@@ -1,23 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn ,useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Label from "../components/UI/Label"
 import { toast } from "sonner";
 import { TbEye, TbEyeClosed } from "react-icons/tb";
+import { Context } from "../Context";
 
 import Loading from "../components/UI/Loading"
 import H3 from "./UI/H3";
 
-const LoginForm = () => {
+const LoginForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode, title, params }) => {
     const router = useRouter();
-    const [error, setError] = useState("");
     const [isPasswordVisible, setPasswordVisible] = useState(false);
     // const session = useSession();
     const { data: session, status: sessionStatus } = useSession();
+    const {form, setForm, togglePopup} = useContext(Context)
   
+    console.log(params)
+
     const isValidEmail = (email) => {
       const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
       return emailRegex.test(email);
@@ -41,12 +44,16 @@ const LoginForm = () => {
       const res = await signIn("credentials", {
         email,
         password, 
+        redirect: false,
       });
   
       if (res?.error) {
-        toast.success('Az email cím, vagy jelszó érvénytelen.')
+        toast.error('Az email cím, vagy jelszó érvénytelen.')
       } else {
-        setError("");
+        togglePopup()
+        toast.success('Sikeres bejelentkezés.')
+        window.location.reload()
+        router.replace("#emlekerme");
       }
     };
   
@@ -56,8 +63,8 @@ const LoginForm = () => {
 
   return (
     sessionStatus !== "authenticated" && (
-        <div className="flex flex-col items-center gap-4 bg-[--cream] p-8 rounded-3xl shadow-md lg:w-96">
-          <H3 classname={"text-center text-[--rose] font-semibold mb-8"}>Bejelentkezés</H3>
+        <div className={`flex flex-col items-center gap-4 ${bgcolor} p-4 rounded-3xl ${shadow} lg:w-96`}>
+          <H3 classname={"text-center text-[--rose] font-semibold mb-8"}>{title}</H3>
           <form className="flex flex-col w-full items-center" onSubmit={handleSubmit}>
             <input
               type="text"
@@ -92,12 +99,12 @@ const LoginForm = () => {
             <Label>Elfelejtetted a jelszót? <Link href={"/elfelejtett-jelszo"} className="text-[--blue] underline">Kattints ide</Link></Label>
           </div>
           <div className="text-center text-gray-500">vagy</div>
-          <Link
+          <button
             className="text-[--blue] underline"
-            href="/regisztracio"
+            onClick={() => setForm('register')}
           >
             Regisztráció  
-          </Link>
+          </button>
         </div>
     )
   );

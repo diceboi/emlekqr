@@ -25,7 +25,7 @@ export default function Modal({ children, openstate, onClose, classname }) {
       onClick={handleBackgroundClick}
     >
       <motion.div
-        className={`relative bg-white rounded-2xl shadow-2xl w-[90%] max-w-lg p-8 ${classname}`}
+        className={`relative flex flex-col items-center bg-white bg-opacity-75 backdrop-blur-md rounded-2xl shadow-2xl w-[90%] max-w-lg p-8 ${classname}`}
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 50, opacity: 0 }}

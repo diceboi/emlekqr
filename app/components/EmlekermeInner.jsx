@@ -25,6 +25,7 @@ import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Context } from "../Context";
 import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 import { loadStripe } from '@stripe/stripe-js';
 import Modal from "./UI/Modal";
 import { motion } from "framer-motion";
@@ -51,6 +52,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
 
     const { openPopup, togglePopup, setOpenPopup } = useContext(Context);
     const [open, setOpen] = useState(false);
+    const {form, setForm} = useContext(Context)
     const [loading, setLoading] = useState(false);
     const [visibleErme, setVisibleErme] = useState("négyzet")
     const [payment, setPayment] = useState('');
@@ -113,7 +115,14 @@ export default function EmlekermeInner({ session, userdata, classname }) {
   return (
     <>
     <Modal openstate={openPopup === "Login"} onClose={() => togglePopup(null)}>
-        <LoginForm />
+        <>
+        {form === 'register' && (
+            <RegisterForm from={"erme"} email={session?.user.email} productPriceId={payment} type={visibleErme} mode={mode} title={"A vásárlás folytatásához regisztrálj"}/>
+        )}
+        {form === 'login' && (
+            <LoginForm from={"erme"} email={session?.user.email} productPriceId={payment} type={visibleErme} mode={mode} title={"A vásárlás folytatásához jelentkezz be"}/>
+        )}
+        </>  
     </Modal>
 
         <div id="emlekerme" className={`flex flex-col gap-8 rounded-2xl bg-white lg:shadow-2xl shadow-md lg:p-8 p-4 ${classname}`}>
@@ -227,7 +236,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                     </button>
                 )}
                 {!session && (
-                    <button onClick={() => togglePopup("Login")} className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full">
+                    <button onClick={() => {setForm('login'), togglePopup("Login")}} className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full">
                         Tovább a pénztárba
                     </button>
                 )}

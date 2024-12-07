@@ -42,7 +42,7 @@ export async function POST(req) {
       },
       allow_promotion_codes: true,
       success_url: `${req.headers.get('origin')}/koszonjuk?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.get('origin')}/cancel`,
+      cancel_url: `${req.headers.get('origin')}/erme`,
       metadata: {
         forma: type,
       },

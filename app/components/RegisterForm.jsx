@@ -1,18 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import H3 from "./UI/H3";
 import { toast } from "sonner";
+import { Context } from "../Context";
+import { signIn } from "next-auth/react";
 
 import Loading from "../components/UI/Loading"
 
-const RegisterForm = () => {
+const RegisterForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode, title }) => {
   const [error, setError] = useState("");
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
+  const {form, setForm, togglePopup} = useContext(Context)
 
   useEffect(() => {
     if (sessionStatus === "authenticated") {
@@ -24,6 +27,7 @@ const RegisterForm = () => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return emailRegex.test(email);
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = `${e.target[0].value} ${e.target[1].value}`;
@@ -31,40 +35,48 @@ const RegisterForm = () => {
     const keresztnev = e.target[1].value;
     const email = e.target[2].value;
     const password = e.target[3].value;
-
+  
     if (!isValidEmail(email)) {
-      toast.error('Az email cím érvénytelen.')
+      toast.error('Az email cím érvénytelen.');
       return;
     }
-
+  
     if (!password || password.length < 8) {
-      toast.error('A jelszónak legalább 8 karakter hosszúnak kell lennie.')
+      toast.error('A jelszónak legalább 8 karakter hosszúnak kell lennie.');
       return;
     }
-
+  
     try {
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name,
-          keresztnev,
-          vezeteknev,
+        body: JSON.stringify({ name, vezeteknev, keresztnev, email, password }),
+      });
+  
+      if (res.status === 400) {
+        toast.error('Ezzel az email címmel már létezik felhasználó.');
+      } else if (res.status === 200) {
+        const { token } = await res.json();
+  
+        // Automatikus bejelentkeztetés NextAuth segítségével
+        const signInRes = await signIn("credentials", {
+          redirect: false,
           email,
           password,
-        }),
-      });
-      if (res.status === 400) {
-        toast.error('Ezzel az email címmel már létezik felhasználó.')
-      }
-      if (res.status === 200) {
-        toast.success('Sikeres regisztráció.')
-        router.push("/bejelentkezes");
+        });
+  
+        if (signInRes?.ok) {
+          toast.success("Sikeres regisztráció és bejelentkezés.");
+          router.push("/erme");
+          togglePopup()
+        } else {
+          toast.error("Bejelentkezési hiba történt.");
+        }
       }
     } catch (error) {
-      toast.error('Valami hiba történt, próbáld újra később.')
+      toast.error('Valami hiba történt, próbáld újra később.');
       console.log(error);
     }
   };
@@ -75,8 +87,8 @@ const RegisterForm = () => {
 
   return (
     sessionStatus !== "authenticated" && (
-        <div className="flex flex-col items-center gap-4 bg-[--cream] p-8 rounded-3xl shadow-md lg:w-96">
-          <H3 classname={"text-center text-[--rose] font-semibold mb-8"}>Regisztráció</H3>
+        <div className={`flex flex-col items-center gap-4 ${bgcolor} p-4 rounded-3xl ${shadow} lg:w-96`}>
+          <H3 classname={"text-center text-[--rose] font-semibold mb-8"}>{title}</H3>
           <form className="flex flex-col w-full items-center" onSubmit={handleSubmit}>
             <input
               type="text"
@@ -115,12 +127,12 @@ const RegisterForm = () => {
             </button>
           </form>
           <div className="text-center text-gray-500 mt-4">vagy</div>
-          <Link
-            className="text-[--blue] underline text-center"
-            href="/bejelentkezes"
+          <button
+            className="text-[--blue] underline"
+            onClick={() => setForm('login')}
           >
-            Bejelentkezés már meglévő felhasználóval
-          </Link>
+            Bejelentkezés már meglévő felhasználóval 
+          </button>
         </div>
     )
   );

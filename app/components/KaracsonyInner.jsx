@@ -16,7 +16,7 @@ import PeldaOldal from "./PeldaOldal";
 import KaracsonyCTA from "./KaracsonyCTA"
 import Velemenyek from "./Velemenyek"
 
-export default function KaracsonyInner() {
+export default function KaracsonyInner({ session, userdata }) {
   return (
     <>
       <section className="flex justify-center items-center w-full min-h-[95vh] relative overflow-hidden">
@@ -116,7 +116,7 @@ export default function KaracsonyInner() {
                       </li>
                     </ul>
                 </div>
-                <EmlekermeInner classname={"lg:w-1/2 lg:mt-0 mt-20"}/>
+                <EmlekermeInner classname={"lg:w-1/2 lg:mt-0 mt-20"} session={session} userdata={userdata}/>
             </div>
         </div>
       </section>

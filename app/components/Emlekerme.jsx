@@ -4,8 +4,6 @@ import Image from "next/image"
 
 import * as React from "react";
 import "yet-another-react-lightbox/styles.css";
-import { useContext } from "react";
-import { Context } from "../Context";
 
 import { FaCircleCheck } from "react-icons/fa6";
 import { IoIosInfinite } from "react-icons/io";
@@ -22,18 +20,11 @@ import Paragraph from "./UI/Paragraph";
 import Label from "./UI/Label";
 
 import EmlekermeInner from "./EmlekermeInner"
-import Modal from "./UI/Modal";
-import LoginForm from "./LoginForm";
 
 export default function Emlekerme({ session, userdata }) {
 
-    const { openPopup, togglePopup, setOpenPopup } = useContext(Context);
-
   return (
     <>
-    <Modal openstate={openPopup === "Login"} onClose={() => togglePopup(null)}>
-        <LoginForm />
-    </Modal>
     <section className="flex flex-col lg:gap-8 w-full lg:px-0 py-10 lg:py-20 min-h-[100vh]">
 
         <div className="relative flex flex-col container w-full m-auto px-4">
