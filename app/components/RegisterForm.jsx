@@ -69,8 +69,10 @@ const RegisterForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode
   
         if (signInRes?.ok) {
           toast.success("Sikeres regisztráció és bejelentkezés.");
-          router.push("/erme");
           togglePopup()
+          window.location.reload()
+          router.replace("#emlekerme");
+          
         } else {
           toast.error("Bejelentkezési hiba történt.");
         }

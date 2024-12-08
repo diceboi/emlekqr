@@ -71,7 +71,7 @@ export default function GyikInner() {
       ),
     },
     {
-      question: 'Mennyi képet, videót, linket tölthető fel?',
+      question: 'Mennyi képet, videót, linket lehet feltölteni?',
       answer: (
         <>
           <Paragraph>A létrehozott személyes profilba bármennyi kép, videó és link feltölthető.</Paragraph>
