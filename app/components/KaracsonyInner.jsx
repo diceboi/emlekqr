@@ -61,7 +61,7 @@ export default function KaracsonyInner({ session, userdata }) {
                     initial={{opacity:0}} 
                     exit={{opacity:0.5}} 
                     transition={{ duration: 0.4}} 
-                    src="videok/bemutatkozo.emlekqr.16.9.mp4" 
+                    src="videok/bemutatkozo.emlekqr.jav.mp4" 
                     autoPlay 
                     muted 
                     loop 
