@@ -189,6 +189,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                         <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_THREE ? "text-white" : "text-black"}`}>35 000 Ft örök érvényű</Label>
                     </button>
                 </div>
+                {/*
                 { payment === STRIPE_PRICE_ID_ONE && (
                     <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
@@ -222,6 +223,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                     <button onClick={() => togglePopup("CouponInfo")}><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button>
                 </motion.div>
                 )}
+                */}
             </div>
 
             <div className="flex flex-row gap-4">
