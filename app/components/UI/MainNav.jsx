@@ -36,11 +36,11 @@ export default function MainNav() {
   return (
 
     <nav className="w-full min-w-[330px] lg:w-full min-h-[70px] fixed top-0 z-50 bg-white shadow-lg">
-      <div className={`${openNotification ? "flex" : "hidden"} flex-nowrap items-center justify-center px-4 gap-2 bg-[--error] w-full min-h-10`}>
+      {/*<div className={`${openNotification ? "flex" : "hidden"} flex-nowrap items-center justify-center px-4 gap-2 bg-[--error] w-full min-h-10`}>
         <Label classname={"text-white leading-tight"}>Használd a <b><b>KARACSONYHO</b></b> vagy <b><b>KARACSONYEV</b></b> vagy <b><b>KARACSONYOROK</b></b> kuponkódot havi vagy éves kedvezményért! <button onClick={() => togglePopup("CouponInfo")} className="lg:self-end"><Label classname={"text-white underline cursor-pointer"}>Részletek</Label></button></Label>
         
         <button onClick={() => setOpenNotification(prevState => (!prevState))}><CgClose className="w-6 h-6 text-white" /></button>
-      </div>
+      </div>*/}
       <div className="relative flex justify-between items-center h-full px-4 py-4 w-full z-50 ">
         <div className="flex flex-nowrap gap-8">
           <div  id="logo" className="flex justify-start w-full items-center gap-4">
