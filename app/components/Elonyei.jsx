@@ -35,7 +35,7 @@ export default function Elonyei() {
 
                 <div className="flex lg:flex-row flex-col items-center lg:gap-16 gap-4">
                     <div className="relative lg:min-h-[500px] min-h-[250px] lg:w-1/2 w-full bg-gradient-to-t from-[--cream] to-transparent rounded-3xl">
-                        <Image src="/image-kepek/modern.webp" alt="Modern és egyszerű" fill style={{ objectFit: "contain" }} />
+                        <Image src="/image-kepek/modern-egyszeru.webp" alt="Modern és egyszerű" fill style={{ objectFit: "contain" }} />
                     </div>
                     <div className="flex flex-col gap-4 lg:w-1/2 w-full">
                         <H3 classname={"text-[--blue]"}>Modern és egyszerű megoldás</H3>
