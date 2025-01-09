@@ -33,7 +33,7 @@ export default function MiAzEmlekerme({ session, userdata }) {
                 <Paragraph classname={""}>Az EmlékQR emlékérme egy különleges, modern megoldás arra, hogy örökre <b><b>megőrizzük és megoszthassuk másokkal</b></b> azon szeretteink emlékét, akik már nem lehetnek velünk .<br></br><br></br>Az emlékoldallal életre keltheted szeretteid <b><b>élettörténetét, fotóit, vagy akár videókat is megoszthatsz.</b></b> Oszd meg az emlékeket ismerőseiddel, szeretteiddel, ezáltal ők is hozzászólhatnak és együtt őrizhetitek meg a közös emlékeket.<br></br><br></br>Az emlékoldalhoz tartozó érmét elhelyezheted az emlékhelyen, melyet mobiltelefonnal egyszerűen beolvasva szintén elérhető az emlékoldal.
 
                 </Paragraph>
-                <Link href="/hasznalata" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white w-fit">
+                <Link href="#hasznalata" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white w-fit">
                     Hogyan működik?
                 </Link>
             </div>

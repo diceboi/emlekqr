@@ -48,7 +48,7 @@ export default function Hasznalata() {
   }, [activeDiv]);
 
   return (
-    <section className="flex justify-center items-center w-full min-h-[50vh] px-4 py-28">
+    <section id="hasznalata" className="flex justify-center items-center w-full min-h-[50vh] px-4 py-28">
       <div className="flex flex-col gap-16 container ">
         <div
           ref={parentRef}
@@ -268,7 +268,7 @@ export default function Hasznalata() {
                   alt="Mesélj el egy történetet"
                   className=""
                 />
-                <div className="grid grid-cols-3 grid-rows-2 gap-2">
+                <div className="grid grid-cols-3 grid-rows-1 gap-2">
                   <motion.img
                     initial={{ opacity: "0%", y: -10 }}
                     animate={{ opacity: "100%", y: 0 }}
@@ -333,7 +333,7 @@ export default function Hasznalata() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="flex w-full h-full overflow-hidden relative"
+                className="flex items-center justify-center w-full h-full overflow-hidden relative"
               >
                 <motion.img
                   initial={{ opacity: "0%", y: -10 }}
@@ -342,7 +342,7 @@ export default function Hasznalata() {
                   transition={{ duration: 0.4, bounce: "spring" }}
                   src="/image-kepek/helyezd-el-2.webp"
                   alt="Kör érme"
-                  className="w-full h-full rounded-3xl"
+                  className="rounded-3xl"
                 />
               </motion.div>
             )}
