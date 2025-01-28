@@ -11,7 +11,7 @@ export async function POST(request) {
 
     const adminEmail = await resend.emails.send({
       from: 'EmlékQR <hello@emlek-qr.hu>',
-      to: 'szasz.szabolcs1995@gmail.com',
+      to: 'info@emlek-qr.hu',
       subject: `Új kapcsolatfelvétel: ${subject}`,
       react: Kapcsolat({ nev: name, email: email, subject: subject, message: message }),
     });
