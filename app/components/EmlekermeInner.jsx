@@ -189,6 +189,13 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                         <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_THREE ? "text-white" : "text-black"}`}>35 000 Ft örök érvényű</Label>
                     </button>
                 </div>
+                <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+                    className="flex flex-col gap-1 justify-center items-center px-4 py-2 rounded-3xl bg-[--error] w-full self-center h-auto shadow-md">
+                    <Paragraph classname={"text-white text-center"}>Utoljára tavalyi áron 2025.02.28-ig</Paragraph>
+                </motion.div>
                 {/*
                 { payment === STRIPE_PRICE_ID_ONE && (
                     <motion.div
