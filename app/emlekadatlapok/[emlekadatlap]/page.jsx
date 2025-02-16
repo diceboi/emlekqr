@@ -60,9 +60,9 @@ export async function generateMetadata({params}) {
   const currentData = emlekadatlap?.data?.Emlekadatlap || null;
  
   return {
-    title: `${currentData.name} emlékadatlapja - EmlékQR`,
+    title: `${currentData?.name} emlékadatlapja - EmlékQR`,
     openGraph: {
-      images: [currentData.profileimage],
+      images: [currentData?.profileimage],
     },
   }
 }
