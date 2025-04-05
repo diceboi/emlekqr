@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { TbEdit } from "react-icons/tb";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import { usePathname } from "next/navigation";
@@ -11,9 +11,13 @@ import "yet-another-react-lightbox/styles.css";
 
 export const dynamic = 'force-dynamic';
 
-export default function CoverPicture({ data }) {
+export default function CoverPicture({ data, cursor, free }) {
   const pathname = usePathname();
-  const lastDigits = pathname.slice(-7); // Extract the last 7 digits for the S3 path
+  let lastDigits = pathname.slice(-7); // Extract the last 7 digits for the S3 path
+
+  if (free === true) {
+    lastDigits = "free";
+  }
 
   const [selectedImage, setSelectedImage] = useState(null); // Local state for the selected image
   const fileInputRef = useRef(null);
@@ -57,7 +61,7 @@ export default function CoverPicture({ data }) {
   };
 
   return (
-    <div id="cover-picture" className="relative w-full h-[300px] lg:h-[500px] rounded-2xl">
+    <div id="cover-picture" className={`relative w-full h-[300px] lg:h-[500px] rounded-3xl ${cursor === false ? 'pointer-events-none' : 'pointer-events-auto'}`}>
       <Lightbox
         open={lightbox.open}
         close={() => setLightbox({ open: false, index: 0 })}
@@ -83,21 +87,21 @@ export default function CoverPicture({ data }) {
           />
         </>
       )}
-      {data && (
+      {data?.coverimage || free ? (
         <Image
-          src={selectedImage || data.coverimage || '/blank-image.webp'} // Show selected image or the existing cover image
+          src={selectedImage || data?.coverimage || '/blank-image.webp'} // Show selected image or the existing cover image
           fill
-          style={{ objectFit: "cover", borderRadius: "1rem" }}
+          style={{ objectFit: "cover", borderRadius: "1.5rem" }}
           alt="Borítókép"
           onClick={handleImageClick} // Open lightbox on click
           className="cursor-pointer" // Add pointer cursor to indicate it's clickable
         />
-      )}
-      {!data && (
+      ):(
+        // Fallback Image
         <Image
           src='/blank-image.webp' // Show selected image or the existing cover image
           fill
-          style={{ objectFit: "cover", borderRadius: "1rem" }}
+          style={{ objectFit: "cover", borderRadius: "1.5rem" }}
           alt="blank image"
           onClick={handleImageClick} // Open lightbox on click
           className="cursor-pointer" // Add pointer cursor to indicate it's clickable

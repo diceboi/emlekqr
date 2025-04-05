@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { TbEdit } from "react-icons/tb";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import { usePathname } from "next/navigation";
@@ -11,9 +11,13 @@ import "yet-another-react-lightbox/styles.css"; // Import lightbox styles
 
 export const dynamic = 'force-dynamic';
 
-export default function ProfilePicture({ session, data }) {
+export default function ProfilePicture({ session, data, cursor, free }) {
   const pathname = usePathname();
-  const lastDigits = pathname.slice(-7); // Extract the last 7 digits for the S3 path
+  let lastDigits = pathname.slice(-7); // Extract the last 7 digits for the S3 path
+
+  if (free === true) {
+    lastDigits = "free";
+  }
 
   const [selectedImage, setSelectedImage] = useState(null); // Local state for selected image
   const fileInputRef = useRef(null);
@@ -60,7 +64,7 @@ export default function ProfilePicture({ session, data }) {
   return (
     <div
       id="profile-pic"
-      className="relative flex flex-col items-center xl:items-start w-[250px] h-[250px] min-h-[250px] min-w-[250px] max-h-[250px] max-w-[250px] -mt-[100px]"
+      className={`relative flex flex-col items-center xl:items-start w-[250px] h-[250px] min-h-[250px] min-w-[250px] max-h-[250px] max-w-[250px] lg:-mt-[250px] -mt-[150px] ${cursor === false ? 'pointer-events-none' : 'pointer-events-auto'}`}
     >
       {/* Lightbox component */}
       <Lightbox
@@ -92,9 +96,9 @@ export default function ProfilePicture({ session, data }) {
       )}
       
       {/* Profile Image */}
-      {data?.profileimage ? (
+      {data?.profileimage || free ? (
         <Image
-          src={selectedImage || data.profileimage || '/blank-profile.webp'} // Use selected image for preview or existing profile image
+          src={selectedImage || data?.profileimage || '/blank-profile.webp'} // Use selected image for preview or existing profile image
           fill
           style={{ objectFit: "cover" }}
           className="rounded-full border-8 border-white cursor-pointer" // Add cursor pointer

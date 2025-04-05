@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 import { sign } from "jsonwebtoken";
 
 export const POST = async (request) => {
-  const { name, vezeteknev, keresztnev, email, password } = await request.json();
+  const { name, vezeteknev, keresztnev, email, password, aszf, marketing } = await request.json();
 
   await connect();
 
@@ -22,6 +22,8 @@ export const POST = async (request) => {
     keresztnev,
     email,
     password: hashedPassword,
+    aszf,
+    marketing
   });
 
   try {

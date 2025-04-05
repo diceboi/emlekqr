@@ -12,13 +12,13 @@ import H3 from "../UI/H3"
 import H4 from "../UI/H4"
 import Paragraph from "../UI/Paragraph"
 
-export default function Tributes({ data, currenttributes, issession }) {  
+export default function Tributes({ data, currenttributes, issession, free }) {  
 
   const { isEditable, openPopup, togglePopup } = useContext(Context);
 
-  const availableTributes = currenttributes.filter(
-    (tribute) => tribute.verified === true
-  );
+    const availableTributes = currenttributes?.filter(
+      (tribute) => tribute.verified === true
+    );
 
   const handleDelete = async () => {
     const formData = {
@@ -69,7 +69,7 @@ export default function Tributes({ data, currenttributes, issession }) {
         <TbMessage className="w-10 h-10 text-[--rose] bg-[--cream] rounded-full p-2" />
         <H4 classname={"text-[--rose]"}>Hozzászólások</H4>
       </div>
-      {!issession &&
+      {!issession && !free &&
         availableTributes.map((tribute, index) => (
           <TributeTile key={index} tribute={tribute} owner={data} session={issession} alltributes={currenttributes}/>
         ))}

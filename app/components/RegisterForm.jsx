@@ -35,6 +35,8 @@ const RegisterForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode
     const keresztnev = e.target[1].value;
     const email = e.target[2].value;
     const password = e.target[3].value;
+    const aszf = e.target[4].checked;
+    const marketing = e.target[5].checked;
   
     if (!isValidEmail(email)) {
       toast.error('Az email cím érvénytelen.');
@@ -52,7 +54,7 @@ const RegisterForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, vezeteknev, keresztnev, email, password }),
+        body: JSON.stringify({ name, vezeteknev, keresztnev, email, password, aszf, marketing }),
       });
   
       if (res.status === 400) {
@@ -120,6 +122,36 @@ const RegisterForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode
               name="password"
               required
             />
+
+            <div className="flex items-start gap-2 mb-4 text-sm text-gray-700">
+              <input
+                type="checkbox"
+                id="aszf"
+                name="aszf"
+                required
+                className="mt-1"
+              />
+              <label htmlFor="aszf">
+                Elolvastam, megértettem és elfogadom az{" "}
+                <Link href="/altalanos-szerzodesi-feltetelek" className="text-[--blue] underline" target="_blank">
+                  Általános Szerződési Feltételek
+                </Link>
+                -ben foglaltakat.
+              </label>
+            </div>
+
+            <div className="flex items-start gap-2 mb-4 text-sm text-gray-700">
+              <input
+                type="checkbox"
+                id="marketing"
+                name="marketing"
+                className="mt-1"
+              />
+              <label htmlFor="marketing">
+                Szeretnék tájékoztatást kapni új funkciókról, érdekességekről, illetve egyéb marketing célú üzenetekről e-mail formájában.
+              </label>
+            </div>
+
             <button
               type="submit"
               className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white self-center"
@@ -139,7 +171,7 @@ const RegisterForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode
             </button>
           ):(
             <Link
-              className="text-[--blue] text-center w-fit border border-[--blue] rounded-full py-1 px-4 lg:py-2 lg:px-6 hover:bg-[--blue] hover:text-white transition-all"
+              className="text-[--blue] text-center w-fit hover:underline transition-all"
               href="/bejelentkezes"
             >
               Bejelentkezés már meglévő felhasználóval  

@@ -1,29 +1,32 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import H1 from "../components/UI/H1"
-import Paragraph from "../components/UI/Paragraph"
-import { Canvas, extend } from '@react-three/fiber'
-import { Plane } from '@react-three/drei';
-import { useLoader, useFrame } from '@react-three/fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
+import Image from "next/image";
+import Link from "next/link";
+import H1 from "../components/UI/H1";
+import Paragraph from "../components/UI/Paragraph";
+import Label from "../components/UI/Label";
+import { TbBrowserPlus } from "react-icons/tb";
+import { Canvas, extend } from "@react-three/fiber";
+import { Plane } from "@react-three/drei";
+import { useLoader, useFrame } from "@react-three/fiber";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
-import { useRef } from "react"
+import { useRef } from "react";
+import { motion } from "framer-motion";
 
 import { TbQrcode } from "react-icons/tb";
 
 function Scene() {
   // Load the materials first
-  const materials = useLoader(MTLLoader, '/3D-CAD-erme-negyzet.mtl');
-  
+  const materials = useLoader(MTLLoader, "/3D-CAD-erme-negyzet.mtl");
+
   // Load the OBJ file and apply the materials
-  const obj = useLoader(OBJLoader, '/3D-CAD-erme-negyzet.obj', (loader) => {
+  const obj = useLoader(OBJLoader, "/3D-CAD-erme-negyzet.obj", (loader) => {
     materials.preload(); // Preload materials
     loader.setMaterials(materials); // Attach materials to OBJ loader
   });
-  
+
   const objRef = useRef();
 
   // Rotate the object on each frame
@@ -32,30 +35,59 @@ function Scene() {
       objRef.current.rotation.z += 0.005;
       objRef.current.rotation.y += 0.005;
       objRef.current.rotation.x += 0.005;
-       // Adjust rotation as desired
+      // Adjust rotation as desired
     }
   });
 
-  return <primitive ref={objRef} object={obj} scale={1} castShadow receiveShadow />
+  return (
+    <primitive ref={objRef} object={obj} scale={1} castShadow receiveShadow />
+  );
 }
 
 export default function Hero() {
   return (
     <>
-      <section className="flex justify-center items-center w-full min-h-[95vh] relative">
-      <div className="container flex justify-center items-center m-auto py-2 w-full h-full lg:w-8/12 z-10">
-        <div className="flex flex-col items-center w-full gap-4 pt-40">
-          <H1 classname="text-center text-white">A digitális emlékoldal</H1>
-          <Paragraph classname="text-center text-white">
-            Készítsd el saját emlékérméd, őrizd meg szeretteid legszebb pillanatait!
-          </Paragraph>
-          <Link href="/erme" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white">
-            <TbQrcode className="w-6 h-6" />
-            Elkészítem
-          </Link>
+      <section className="flex lg:flex-row flex-col items-end w-full min-h-[90vh] relative z-20">
+        <div className="flex items-end lg:pl-16 pl-8 lg:pb-16 pb-8 pt-20 pr-20 z-10 relative overflow-hidden rounded-bl-3xl lg:w-1/2 h-[90vh]">
+          <motion.div
+            animate={{ y: ["-20px", "0px", "-20px"] }} // Start at the viewport's left edge
+            transition={{
+              duration: 2, // Time for a single loop
+              ease: "easeInOut", // Smooth linear motion
+              repeat: Infinity, // Infinite looping
+              repeatType: "loop", // Restarts the animation
+            }}
+            className="absolute lg:-bottom-[750px] -bottom-[30vh] lg:-left-[750px] -left-[25vw] lg:w-[1200px] w-[130vw] lg:h-[1200px] h-[60vh] blur-[120px] rounded-full bg-[--rose] lg:opacity-85 opacity-100"
+          ></motion.div>
+          <div className="flex flex-col items-start w-full gap-4 z-10">
+            <H1 classname="text-white">
+              A digitális<br></br> emlékoldal
+            </H1>
+            <Paragraph classname="text-white">
+              Ne hagyd hogy szeretteid emléke feledésbe merüljön,<br></br>őrizd
+              meg minden pillanatát az utókornak.
+            </Paragraph>
+            <div
+              className="relative flex lg:flex-row flex-col min-w-fit gap-2"
+            >
+              <Link
+                href="/erme"
+                className="flex flex-nowrap items-center justify-center gap-3 py-1 px-4 lg:py-2 lg:px-4 rounded-full bg-gradient-to-br from-[--rose] to-[--blue] hover:bg-gradient-to-r hover:from-[--rose] hover:to-[--blue] transition-all text-white h-fit"
+              >
+                <Image src="/emlekqr-plus-white.svg" alt="EmlékQR Plusz" title="Válts EmlékQR Plusz-ra" width={50} height={50} className="w-6 h-auto" />
+                <Label classname={"cursor-pointer"}>Érme rendelés</Label>
+              </Link>
+              <Link
+                href="/emlekadatlap-keszites"
+                className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-4 rounded-full bg-[--cream-10] hover:bg-[--blue] transition-all text-white h-fit"
+              >
+                <TbBrowserPlus className="w-6 h-6" />
+                <Label classname={"cursor-pointer"}>Emlékoldal készítés</Label>
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
-      <Canvas 
+        {/*<Canvas 
       style={{ position: "absolute" }}
       className="-top-20 left-0 w-full z-[9]"
       camera={{ fov: 50, position: [0, 0, 45] }}
@@ -80,13 +112,16 @@ export default function Hero() {
             <shadowMaterial opacity={1} />
           </Plane>
           <Scene className="w-full "/>
-      </Canvas>
-      <div className="absolute w-full h-full bg-[--rose]">
-        <Image src="/image-kepek/hero-image.webp" fill style={{objectFit: "cover"}} className="opacity-50" />
-        <div className="w-full h-full bg-[--rose]"></div>
-      </div>
-    </section>
+      </Canvas>*/}
+        <motion.video
+          src="videok/Hero-video.mp4"
+          autoPlay
+          muted
+          loop
+          className="absolute w-full h-full top-0 left-0 object-cover lg:object-cover rounded-b-3xl"
+          prioroty="true"
+        />
+      </section>
     </>
-    
   );
 }

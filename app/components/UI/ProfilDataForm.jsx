@@ -5,7 +5,8 @@ import { toast } from "sonner";
 
 export default function ProfilDataForm({
   email,
-  name,
+  vezeteknev,
+  keresztnev,
   zip,
   city,
   street,
@@ -27,6 +28,9 @@ export default function ProfilDataForm({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          name: data.vezeteknev + " " + data.keresztnev,
+          vezeteknev: data.vezeteknev,
+          keresztnev: data.keresztnev,
           email: email,
           zip: data.zip,
           city: data.city,
@@ -57,17 +61,33 @@ export default function ProfilDataForm({
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col gap-0">
-          <p className="text-sm font-semibold">Név</p>
+          <p className="text-sm font-semibold">Vezetéknév</p>
           <input
-            {...register("name", { required: true })}
-            aria-invalid={errors.firstName ? "true" : "false"}
+            {...register("vezeteknev", { required: true })}
+            aria-invalid={errors.vezeteknev ? "true" : "false"}
             className="p-2 bg-white rounded-lg border border-neutral-300"
-            placeholder="Név"
-            defaultValue={name}
+            placeholder="Vezeteknev"
+            defaultValue={vezeteknev}
           />
-          {errors.name?.type === "required" && (
+          {errors.vezeteknev?.type === "required" && (
             <p className="text-[--alert] text-sm" role="alert">
-              Név megadása kötelező
+              Vezetéknév megadása kötelező
+            </p>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-0">
+          <p className="text-sm font-semibold">Keresztnév</p>
+          <input
+            {...register("keresztnev", { required: true })}
+            aria-invalid={errors.keresztnev ? "true" : "false"}
+            className="p-2 bg-white rounded-lg border border-neutral-300"
+            placeholder="Keresztnév"
+            defaultValue={keresztnev}
+          />
+          {errors.keresztnev?.type === "required" && (
+            <p className="text-[--alert] text-sm" role="alert">
+              Keresztnév megadása kötelező
             </p>
           )}
         </div>

@@ -140,7 +140,7 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
               
               <input
                 className="bg-transparent p-2 focus:appearance-none outline-0 pointer-events-none"
-                value={session.user.name}
+                value={session?.user?.name || ""}
                 {...register("Name", { required: true })}
                 aria-invalid={errors.Name ? "true" : "false"}
                 readOnly

@@ -6,7 +6,9 @@ import PeldaOldal from "./components/PeldaOldal"
 import HomeCTA from "./components/HomeCTA"
 import Hasznalata from "./components/Hasznalata"
 import BeforeLeavePopup from "./components/UI/BeforeLeavePopup"
+import Fotomontazs from "./components/Fotomontazs"
 import Velemenyek from "./components/Velemenyek";
+import Osszehasonlitas from "./components/Osszehasonlitas";
 
 import { getServerSession } from "next-auth";
 
@@ -39,11 +41,14 @@ export default async function Home() {
     <>
     {/*<BeforeLeavePopup />*/}
     <Hero />
-    <MiAzEmlekerme session={session} userdata={userData} />
-    <MilyenAlkalomra />
+    <Fotomontazs />
     <Elonyei />
+    <Osszehasonlitas />
+    {/*<MiAzEmlekerme session={session} userdata={userData} />*/}
     <PeldaOldal />
     <HomeCTA />
+    {/*<MilyenAlkalomra />*/}
+    
     <Hasznalata />
     <Velemenyek />
     </>

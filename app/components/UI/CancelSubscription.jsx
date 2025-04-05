@@ -1,6 +1,7 @@
 import { TbTrash } from "react-icons/tb";
+import { toast } from "sonner";
 
-export default function CancelSubscription({ subscriptionId }) {
+export default function CancelSubscription({ subscriptionId, adatlapId }) {
 
   const cancelSubscription = async (subscriptionId) => {
     try {
@@ -16,30 +17,31 @@ export default function CancelSubscription({ subscriptionId }) {
 
       if (response.ok) {
         console.log('Subscription canceled successfully:', result);
-        window.location.reload(); // Reload the page to reflect the canceled subscription
       } else {
         console.error('Failed to cancel subscription:', result.error);
+        toast.warning('Előfizetés nem tartozott az adatlaphoz.')
       }
     } catch (error) {
       console.error('Error canceling subscription:', error);
     }
   };
 
-  const deleteAdatlap = async (subscriptionId) => {
+  const deleteAdatlap = async (adatlapId) => {
     try {
-      const response = await fetch('/api/deleteAdatlap', {
+      const response = await fetch('/api/deleteAdatlapId', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ subscriptionId }),
+        body: JSON.stringify({ adatlapId }),
       });
 
-      const data = await data.json();
+      const data = await response.json();
 
       if (response.ok) {
         console.log('Adatlap deleted successfully:', data);
-        window.location.reload(); // Reload the page to reflect the canceled subscription
+        toast.success('Adatlap sikeresen törölve.')
+        window.location.reload();
       } else {
         console.error('Failed to delete adatlap:', data.error);
       }
@@ -50,7 +52,7 @@ export default function CancelSubscription({ subscriptionId }) {
 
   const removeAdatlap = () => {
     cancelSubscription(subscriptionId);
-    deleteAdatlap(subscriptionId)
+    deleteAdatlap(adatlapId)
   }
 
   return (

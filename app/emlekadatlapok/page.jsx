@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import Emlekadatlaptile from "../components/UI/EmlekadatlapTile";
+import EmlekadatlapTile from "../components/UI/EmlekadatlapTile";
 import { redirect } from "next/navigation";
 
 export const dynamic = 'force-dynamic';
@@ -51,7 +51,7 @@ export default async function emlekadatlapok() {
       <div className="container mx-auto flex flex-col gap-8">
         {currentData.length > 0 ? (
           currentData.map((currentdata, index) => (
-            <Emlekadatlaptile data={currentdata} key={index}/>
+            <EmlekadatlapTile data={currentdata} key={index}/>
           ))
         ) : (
           <h4>Jelenleg még nincs adatlapod, készítsd el saját érmédet</h4>

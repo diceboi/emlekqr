@@ -98,6 +98,14 @@ const emlekadatlapSchema = new Schema(
       type: String,
       required: false,
     },
+    paymentMethod: {
+      type: String,
+      required: false,
+    },
+    paymentStatus: {
+      type: String,
+      required: false,
+    },
   },
   {
     timestamps: true,

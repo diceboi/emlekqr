@@ -74,7 +74,7 @@ export default async function RootLayout({ children }) {
       </ContextProvider>
       <Toaster 
       richColors 
-      position="bottom-center"
+      position="top-center"
       />
     </html>
   );

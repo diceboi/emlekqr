@@ -29,12 +29,16 @@ export default async function Koszonjuk({ searchParams }) {
         amount_total: checkoutSession.amount_total,
         customer_details: checkoutSession.customer_details,
         subscription: checkoutSession.subscription,
+        payment_mode: checkoutSession.mode,
+        payment_status: checkoutSession.payment_status,
         metadata: checkoutSession.metadata
       }
     : null;
 
   // Generate the random number once on the server
   const randomNumber = Math.floor(100000 + Math.random() * 900000);
+
+  console.log("Checkout Session:", checkoutSession)
 
   return (
     <KoszonjukClient

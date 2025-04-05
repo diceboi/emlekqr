@@ -16,6 +16,16 @@ export default function Velemenyek() {
             <div className="flex flex-row min-w-max gap-10 lg:p-8">
 
                 <div className="flex flex-col gap-4 lg:max-w-[30vw] w-[80vw]">
+                    {/*<div className="relative w-full h-[200px]">
+                        <video 
+                            src="videok/video-1.mp4" 
+                            autoPlay 
+                            muted 
+                            loop 
+                            className='absolute w-full h-full top-0 left-0 object-cover lg:object-cover rounded-b-3xl' 
+                            prioroty="true"
+                        />
+                    </div>*/}
                     <div className="flex flex-nowrap items-center gap-4">
                         <Image src="/velemenyek/veronika-soproni.jpg" alt="Veronika Soproni" width={75} height={75} className="rounded-full"/>
                         <H4 classname="text-[--rose]">Veronika Soproni</H4>

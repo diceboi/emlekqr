@@ -59,15 +59,15 @@ export default function Hasznalata() {
             <div className="flex flex-col justify-center gap-8 min-h-[80vh] scroll-section">
               <H3 classname="text-[--blue]">Válassz érmét</H3>
               <Paragraph>
-                Válassz egy érmét ami az emlékoldaladra fog vezetni és amit
-                elpostázunk neked.
+                Válassz egy <Link href="/erme" className="text-[--blue] underline">érmét</Link> ami az emlékoldaladra fog vezetni és amit
+                elpostázunk neked, vagy készíts egy <Link href="/emlekadatlap-keszites" className="text-[--blue] underline">ingyenes emlékoldalt</Link>, és vásárolj érmét később.
               </Paragraph>
             </div>
             <div className="flex flex-col justify-center gap-8 min-h-[80vh] scroll-section">
               <H3 classname="text-[--blue]">Olvasd be</H3>
               <Paragraph>
                 Ha kézhez kaptad az emlékérmét, a QR-kódot beolvasva
-                létrehozhatod a hozzá tartozó egyedi emlékoldalt.
+                aktiválhatod a hozzá tartozó emlékoldalt az emailben kapott kóddal. Ha volt ingyenes emlékoldalad akkor össze is kötheted rögtön az ellenőrzés után.
               </Paragraph>
             </div>
             <div className="flex flex-col justify-center gap-8 min-h-[80vh] scroll-section">
@@ -107,7 +107,7 @@ export default function Hasznalata() {
             <div className="flex flex-col justify-center gap-8 min-h-[80vh] scroll-section">
               <H3 classname="text-[--blue]">Keress rá</H3>
               <Paragraph>
-                Az emlékoldal elérhető az emlek-qr.hu weboldalunkon keresztül is
+                Az emlékoldal elérhető az emlek-qr.hu weboldalunkon keresztül is,
                 a kereső segítségével - írd be annak a nevét vagy születési
                 idejét, akinek az emlékoldalát keresed és tekintsd meg online
                 bárhol, bármikor.

@@ -37,7 +37,7 @@ export default function ProfilErtesitesekTile({ notificationdata }) {
         onClick={handleViewNotification}
         className={`flex flex-auto border rounded-lg p-2 gap-2 transition-all ${
           notificationdata.viewed === false
-            ? "bg-[--blue] border-[--blue] hover:border-[--blue-hover] text-white hover:bg-[--blue-hover]"
+            ? "bg-[--blue-15] border-[--blue-15] hover:border-[--blue-15] hover:bg-[--blue-50]"
             : "border-[--cream] hover:bg-[--cream]"
         }`}
       >

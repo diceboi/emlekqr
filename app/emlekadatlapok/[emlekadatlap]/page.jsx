@@ -5,6 +5,7 @@ import ProfileData from "../../components/Emlekadatlap/ProfileData";
 import ProfileInfo from "../../components/Emlekadatlap/ProfileInfo";
 import ProfileEditButton from "../../components/Emlekadatlap/ProfileEditButton";
 import SecretChecker from "../../components/UI/SecretChecker"
+import ErmeChecker from "../../components/UI/ErmeChecker"
 
 export const dynamic = 'force-dynamic'
 
@@ -21,6 +22,21 @@ const getEmlekadatlap = async (uri) => {
   } catch (error) {
     console.log("Az adatok betöltése sikertlen", error);
     return null;
+  }
+};
+
+const findFreeEmlekadatlaps = async (email) => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
+    const res = await fetch(`${baseUrl}/api/findFreeEmlekadatlaps?email=${email}`, { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error("Az adatok letöltése nem sikerült");
+    }
+    const data = await res.json();
+    return data?.data || [];
+  } catch (error) {
+    console.log("Az adatok betöltése sikertelen", error);
+    return [];
   }
 };
 
@@ -67,15 +83,18 @@ export async function generateMetadata({params}) {
   }
 }
 
-export default async function Emlekadatlap({ params }) {
+export default async function Emlekadatlap({ params, searchParams  }) {
 
   const session = await getServerSession();
 
   let currentUser = null;
+  let existingAdatlapok = [];
 
   if (session) {
     const userData = await getUserData(session.user.email);
     currentUser = userData?.data?.User || null;
+
+    existingAdatlapok = await findFreeEmlekadatlaps(session.user.email);
   }
   
   const emlekadatlap = await getEmlekadatlap(params.emlekadatlap);
@@ -84,12 +103,19 @@ export default async function Emlekadatlap({ params }) {
   const tribute = await getTributes(params.emlekadatlap);
   const currentTributes = tribute?.data?.Tribute || null;
 
-
   return (
     <>
     {/*<BackgroundSwitcher>*/}
     <section className="relative w-full px-2 lg:px-0 pt-10 pb-32 lg:pt-20">
-      <SecretChecker currentdata={currentData} session={session} currentuser={currentUser}/>
+      
+      {!currentData && (
+        <SecretChecker currentdata={currentData} session={session} currentuser={currentUser}/>   
+      )}
+
+      {currentData?.secret && session && (
+        <ErmeChecker currentdata={currentData} session={session} currentuser={currentUser} existingadatlapok={existingAdatlapok}/>
+      )}  
+
       <div className="container-inner flex flex-col m-auto gap-8">
         <CoverPicture session={session} data={currentData} currentuser={currentUser}/>
         <div
@@ -99,9 +125,9 @@ export default async function Emlekadatlap({ params }) {
           <ProfilePicture session={session} data={currentData} />
           <ProfileData session={session} data={currentData} />
         </div>
-        <ProfileInfo session={session} data={currentData} tributes={currentTributes}/>
+        <ProfileInfo session={session} data={currentData} tributes={currentTributes} free={currentData?.paymentStatus === 'free' ? true : false} />
       </div>
-      <ProfileEditButton session={session} user={currentUser} data={currentData}/>
+      <ProfileEditButton session={session} user={currentUser} data={currentData} existingadatlapok={existingAdatlapok}/>
     </section>
     {/*</BackgroundSwitcher>*/}
     </>

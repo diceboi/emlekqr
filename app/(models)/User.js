@@ -69,6 +69,14 @@ const userSchema = new Schema(
     image: {
       type: String,
       require: false,
+    },
+    aszf: {
+      type: Boolean,
+      require: false,
+    },
+    marketing: {
+      type: Boolean,
+      require: false,
     }
   },
   {

@@ -97,7 +97,7 @@ export default function ProfilAdatlap({ session, user }) {
   return (
     <>
       <Modal openstate={openPopup === "modifyData"} onClose={() => togglePopup(null)}>
-        <ProfilDataForm email={user.email} name={user.name || []} zip={user.zip || []} city={user.city || []} street={user.address1 || []} floor={user.adress2 || []} phone={user.phone || []} />
+        <ProfilDataForm email={user.email} vezeteknev={user.vezeteknev || []} keresztnev={user.keresztnev || []} zip={user.zip || []} city={user.city || []} street={user.address1 || []} floor={user.adress2 || []} phone={user.phone || []} />
       </Modal>
 
       <Modal openstate={openPopup === "modifyPassword"} onClose={() => togglePopup(null)}>
@@ -159,7 +159,7 @@ export default function ProfilAdatlap({ session, user }) {
       </div>
 
         <div className="flex flex-col gap-4">
-        <H4 classname={"text-[--rose] text-center"}>{user?.name || "Anonymous"}</H4>
+        <H4 classname={"text-[--rose] text-center"}>{user?.vezeteknev + " " + user?.keresztnev || "Anonymous"}</H4>
         </div>
 
         <div className="flex flex-col gap-4">
@@ -167,17 +167,17 @@ export default function ProfilAdatlap({ session, user }) {
             <div className="flex flex-col items-baseline gap-1 border-b border-[--cream] pb-2">
               <p className="text-xs w-fit">Cím:</p>
               <p className="text-sm w-fit font-medium">{user?.zip || ""}</p>
-              <p className="text-sm w-fit font-medium">{user.city || ""}</p>
-              <p className="text-sm w-fit font-medium">{user.address1 || ""}</p>
-              <p className="text-sm w-fit font-medium">{user.address2 || ""}</p>
+              <p className="text-sm w-fit font-medium">{user?.city || ""}</p>
+              <p className="text-sm w-fit font-medium">{user?.address1 || ""}</p>
+              <p className="text-sm w-fit font-medium">{user?.address2 || ""}</p>
             </div>
             <div className="flex flex-col items-baseline gap-1 border-b border-[--cream] pb-2">
               <p className="text-xs w-fit">Telefonszám:</p>
-              <p className="text-sm w-fit font-medium">{user.phone || ""}</p>
+              <p className="text-sm w-fit font-medium">{user?.phone || ""}</p>
             </div>
             <div className="flex flex-col items-baseline gap-1 border-b border-[--cream] pb-2">
               <p className="text-xs min-w-fit">E-mail cím:</p>
-              <p className="text-sm w-fit font-medium">{user.email}</p>
+              <p className="text-sm w-fit font-medium">{user?.email}</p>
             </div>
             <button
               onClick={() => togglePopup("modifyData")}

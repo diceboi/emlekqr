@@ -15,11 +15,8 @@ import H3 from "./UI/H3";
 const LoginForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode, title, params }) => {
     const router = useRouter();
     const [isPasswordVisible, setPasswordVisible] = useState(false);
-    // const session = useSession();
     const { data: session, status: sessionStatus } = useSession();
     const {form, setForm, togglePopup, openPopup} = useContext(Context)
-  
-    console.log(params)
 
     const isValidEmail = (email) => {
       const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -109,8 +106,8 @@ const LoginForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode, t
             </button>
           ):(
             <Link
-              className="text-[--blue] text-center w-fit border border-[--blue] rounded-full py-1 px-4 lg:py-2 lg:px-6 hover:bg-[--blue] hover:text-white transition-all"
-              href="/regisztracio"
+              className="text-[--blue] text-center w-fit hover:underline transition-all"
+              href={"/regisztracio"}
             >
               Regisztráció  
             </Link>

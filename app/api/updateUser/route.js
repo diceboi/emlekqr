@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req) {
   try {
-    const { email, checkoutSession, zip, city, address1, address2, phone, stripeSubscription, secret } = await req.json();
+    const { email, name, vezeteknev, keresztnev, checkoutSession, zip, city, address1, address2, phone, stripeSubscription, secret } = await req.json();
 
     if (!email) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
@@ -13,6 +13,9 @@ export async function POST(req) {
       { email },
       {
         $set: {
+          name,
+          vezeteknev,
+          keresztnev,
           checkoutSession,
           zip,
           city,

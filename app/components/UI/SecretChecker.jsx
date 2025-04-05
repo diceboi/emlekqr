@@ -13,16 +13,17 @@ export default function SecretChecker({ currentdata, session, currentuser }) {
 
   // Open the modal if `currentdata` is null and it hasn't been shown yet
   useEffect(() => {
-    if (currentdata === null && openPopup !== "secretChecker" && !modalShown) {
+    if (currentdata === null) {
       setOpenPopup("secretChecker");
-      setModalShown(true); // Mark modal as shown
     }
   }, [currentdata, openPopup, setOpenPopup, modalShown]);
 
+  console.log(currentdata)
+
   return (
     <>
-      {currentdata === null && (
-        <Modal openstate={openPopup === "secretChecker"} onClose={() => setOpenPopup(null)}>
+      {modalShown === false && (
+        <Modal openstate={openPopup === "secretChecker"} onClose={() => {setOpenPopup(null); setModalShown(true);}}>
           {session ? (
             <SecretCheckerForm user={currentuser} />
           ) : (

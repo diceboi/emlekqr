@@ -1,5 +1,4 @@
-"use client"
-
+import { getServerSession } from "next-auth";
 import H1 from "./UI/H1"
 import H2 from "./UI/H2"
 import H3 from "./UI/H3"
@@ -8,102 +7,121 @@ import Paragraph from "./UI/Paragraph"
 import Image from "next/image"
 import { LiaDoveSolid } from "react-icons/lia"
 import { TbGrave, TbQuote } from "react-icons/tb"
-import { useState } from "react"
-import { motion } from "framer-motion"
+import CoverPicture from "./Emlekadatlap/CoverPicture"
+import ProfilePicture from "./Emlekadatlap/ProfilePicture"
+import ProfileData from "./Emlekadatlap/ProfileData"
+import ProfileInfo from "./Emlekadatlap/ProfileInfo"
+import { TbHandClick } from "react-icons/tb";
 
-export default function PeldaOldal() {
+const getEmlekadatlap = async () => {
+    try {
+        const baseUrl = process.env.NEXT_PUBLIC_URL; // Adjust this as per your environment
+        const res = await fetch(`${baseUrl}/api/emlekadatlap?uri=0000017`, { cache: 'no-store' });
+        if (!res.ok) {
+        throw new Error("Az adatok letöltése nem sikerült");
+        }
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log("Az adatok betöltése sikertlen", error);
+        return null;
+    }
+};
 
-const [visibleSection, setVisibleSection] = useState("profil");
+const getTributes = async (uri) => {
+    try {
+      const baseUrl = process.env.NEXT_PUBLIC_URL; // Adjust this as per your environment
+      const res = await fetch(`${baseUrl}/api/tributes?uri=${uri}`, { cache: 'no-store' });
+      if (!res.ok) {
+        throw new Error("Az adatok letöltése nem sikerült");
+      }
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      console.log("Az adatok betöltése sikertlen", error);
+      return null;
+    }
+};
+
+export default async function PeldaOldal() {
+
+    const session = {
+        Session: {
+            user: {
+                name: 'Bokros Gabriella',
+                email: 'gabibokros70@gmail.com',
+                image: undefined
+            }
+        }
+    }
+    
+    let currentUser = {
+        _id: '663e4ac41d3c4c611480c791',
+        name: 'Bokros Gabriella',
+        vezeteknev: 'Bokros',
+        keresztnev: 'Gabriella',
+        email: 'gabibokros70@gmail.com',
+        password: '$2b$05$78ln3FiIjOyjzT5gXaccI.uY09ozpZ5myNyrvMdOE3bbANK2Xt6N6',
+        createdAt: '2024-05-10T16:26:44.764Z',
+        updatedAt: '2024-11-11T20:29:55.459Z',
+        __v: 0,
+        city: 'Kaposvár',
+        phone: '+36302732236',
+        secret: '',
+        zip: '7400',
+        stripeSubscription: '',
+        address1: 'Zárda utca 23. fsz. 2.',
+        checkoutSession: 'cs_test_b1egfKlO7SnIAak1aMvbP4HnVET71By63OLKQUNOpZRBXIEWj3LPEchos6',
+        address2: 'teszt'
+      }
+    
+    const emlekadatlap = await getEmlekadatlap("0000017");
+    const currentData = emlekadatlap?.data?.Emlekadatlap || null;
+
+    const tribute = await getTributes("663e4ac41d3c4c611480c791");
+    const currentTributes = tribute?.data?.Tribute || null;
 
   return (
-    <section className='w-full py-16 bg-white px-4'>
-        <div className='flex flex-col gap-8 container m-auto'>
-            <H2 classname={"text-[--rose] text-center self-center"}>Hogy fog kinézni az oldal?</H2>
-               
-            <div className='flex flex-col items-center lg:p-8 rounded-3xl'>
-
-                <div className="overflow-x-scroll sm:overflow-hidden w-full py-8">
-                    <div className="flex flex-row gap-4 justify-between lg:justify-center">
-                    <button
-                        className={`hover:bg-[--cream] py-2 px-4 w-fit transition-all duration-200 rounded-2xl ${visibleSection === "profil" ? "bg-[--cream]" : ""}`}
-                        onClick={() => setVisibleSection("profil")}
-                    >
-                        <H4>Profil</H4>
-                    </button>
-                    <button
-                        className={`hover:bg-[--cream] py-2 px-4 w-fit transition-all duration-200 rounded-2xl ${visibleSection === "story" ? "bg-[--cream]" : ""}`}
-                        onClick={() => setVisibleSection("story")}
-                    >
-                        <H4>Történet</H4>
-                    </button>
-                    <button
-                        className={`hover:bg-[--cream] py-2 px-4 w-fit transition-all duration-200 rounded-2xl ${visibleSection === "media" ? "bg-[--cream]" : ""}`}
-                        onClick={() => setVisibleSection("media")}
-                    >
-                        <H4>Média</H4>
-                    </button>
-                    <button
-                        className={`hover:bg-[--cream] py-2 px-4 w-fit transition-all duration-200 rounded-2xl ${visibleSection === "tributes" ? "bg-[--cream]" : ""}`}
-                        onClick={() => setVisibleSection("tributes")}
-                    >
-                        <H4>Tiszteletnyilvánítás</H4>
-                    </button>
-                    </div>
-                </div>
-
-                <div className="flex flex-col bg-neutral-50 rounded-3xl p-4">
-                    {visibleSection === "profil" && (
-                    <motion.div 
-                    className="relative"
-                    initial={{ y: -20, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
-                    >
-                        <Paragraph classname={"animate-pulse px-4 py-2 bg-[--blue] text-white absolute lg:top-[15%] top-16 lg:right-[15%] right-2 rounded-full"}>Borítókép</Paragraph>
-                        <Paragraph classname={"animate-pulse px-4 py-2 bg-[--blue] text-white absolute lg:bottom-[15%] bottom-4 lg:left-[10%] left-0 rounded-full"}>Profilkép</Paragraph>
-                        <Paragraph classname={"animate-pulse px-4 py-2 bg-[--blue] text-white absolute lg:bottom-[10%] bottom-2 lg:right-[15%] right-2 rounded-full"}>Adatok</Paragraph>
-                        <Image src="/profil.webp" width={1280} height={1000} alt="Story" />
-                    </motion.div>
-                    )}
-                    {visibleSection === "story" && (
-                    <motion.div 
-                    className="relative"
-                    initial={{ y: -20, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
-                    >
-                        <Paragraph classname={"animate-pulse px-4 py-2 bg-[--blue] text-white absolute lg:top-[20%] top-16 lg:right-[15%] right-2 rounded-full"}>Leírás</Paragraph>
-                        <Paragraph classname={"animate-pulse px-4 py-2 bg-[--blue] text-white absolute lg:bottom-[15%] bottom-4 lg:left-[15%] left-0 rounded-full"}>Képek</Paragraph>
-                        <Paragraph classname={"animate-pulse px-4 py-2 bg-[--blue] text-white absolute lg:top-[12%] top-2 lg:left-[30%] left-16 rounded-full"}>Cím</Paragraph>
-                        <Image src="/story.webp" width={1280} height={1000} alt="Story" />
-                    </motion.div>
-                    )}
-                    {visibleSection === "media" && (
-                    <motion.div className="relative"
-                    initial={{ y: -20, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
-                    >
-                        <Paragraph classname={"animate-pulse px-4 py-2 bg-[--blue] text-white absolute lg:top-[15%] top-16 lg:right-[15%] right-2 rounded-full"}>Képek</Paragraph>
-                        <Paragraph classname={"animate-pulse px-4 py-2 bg-[--blue] text-white absolute lg:bottom-[15%] bottom-4 lg:left-[15%] left-0 rounded-full"}>Videók</Paragraph>
-                        <Image src="/media.webp" width={1280} height={1000} alt="Story" />
-                    </motion.div>
-                    )}
-                    {visibleSection === "tributes" && (
-                    <motion.div 
-                    className="relative"
-                    initial={{ y: -20, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
-                    >
-                        <Paragraph classname={"animate-pulse px-4 py-2 bg-[--blue] text-white absolute lg:top-[18%] top-8 lg:right-[15%] right-2 rounded-full"}>Hozzászólások</Paragraph>
-                        <Paragraph classname={"animate-pulse px-4 py-2 bg-[--blue] text-white absolute lg:top-[38%] top-20 lg:right-[15%] right-2 rounded-full"}>Válaszok</Paragraph>
-                        <Image src="/tributes.webp" width={1280} height={1000} alt="Story" />
-                    </motion.div>
-                    )}
-                </div>
-            </div>
+    <section className="relative w-full bg-white px-4 pb-20">
+        <div className="relative flex flex-col gap-4 py-20">
+          <H2 classname={'text-center self-center text-[--rose]'}>Hogy fog kinézni az Emlékoldal?</H2>
         </div>
+
+        <div className="flex flex-nowrap">
+          <div className="container flex flex-col m-auto gap-8">
+            <div className="relative group group-hover:p-4">
+              <CoverPicture session={session} data={currentData} currentuser={currentUser} cursor={false}/>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40">
+                <H3 classname={'px-4 py-2 bg-[--blue] text-white text-center group-hover:block hidden rounded-3xl'}>Borítókép</H3>
+                <TbHandClick className="group-hover:hidden block min-w-16 h-auto text-white animate-bounce z-40"/>
+              </div>
+              <div className="absolute top-0 left-0 w-full h-full pointer-events-none group-hover:border-2 border-[--blue] border-dashed bg-transparent group-hover:bg-[--blue-15] z-30 rounded-3xl"></div>
+            </div>
+            
+            <div
+                id="profile-data"
+                className="relative group flex flex-col xl:flex-row gap-8 xl:gap-20 items-center w-full"
+            >
+                <ProfilePicture session={session} data={currentData} cursor={false}/>
+                <ProfileData session={session} data={currentData} cursor={false}/>
+                <div className="absolute bottom-8 left-8 z-40">
+                  <H3 classname={'px-4 py-2 bg-[--blue] text-white text-center group-hover:block hidden rounded-3xl'}>Profilkép,<br></br>Információk</H3>
+                  <TbHandClick className="group-hover:hidden block min-w-16 h-auto text-[--blue] animate-bounce z-40"/>
+                </div>
+                <div className="absolute top-0 left-0 w-full h-full pointer-events-none group-hover:border-2 border-[--blue] border-dashed bg-transparent group-hover:bg-[--blue-15] z-30 rounded-3xl"></div>
+            </div>
+            <div className="relative group">
+              <ProfileInfo session={session} data={currentData} tributes={currentTributes} cursor={false}/>
+              <div className="absolute top-20 left-1/2 -translate-x-1/2 z-40">
+                <H3 classname={'px-4 py-2 bg-[--blue] text-white text-center group-hover:block hidden rounded-3xl'}>Történetek,<br></br>Médiatartalmak,<br></br>Hozzászólások</H3>
+                <TbHandClick className="group-hover:hidden block min-w-16 h-auto text-[--blue] animate-bounce z-40"/>
+              </div>
+              <div className="absolute top-0 left-0 w-full h-full pointer-events-none group-hover:border-2 border-[--blue] border-dashed bg-transparent group-hover:bg-[--blue-15] z-30 rounded-3xl"></div>
+            </div>
+            
+          </div>
+        </div>
+        
     </section>
   )
 }

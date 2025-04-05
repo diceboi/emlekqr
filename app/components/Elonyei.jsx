@@ -7,16 +7,16 @@ export default function Elonyei() {
   return (
     <section className='relative w-full py-20'>
         <div className="flex flex-col lg:gap-20 gap-16 container m-auto">
-            <H2 classname={"text-[--rose] self-center"}>Az emlékérme előnyei</H2>
+            <h2 className="font-bold xl:text-7xl md:text-5xl text-4xl tracking-tighter text-center text-[--rose]">Digitalizált emlékek egy helyen</h2>
             <div className="flex flex-col gap-16 px-4">
                 <div className="flex lg:flex-row flex-col items-center lg:gap-16 gap-4">
-                    <div className="relative lg:min-h-[500px] min-h-[250px] lg:w-1/2 w-full bg-gradient-to-t from-[--cream] to-transparent rounded-3xl">
+                    <div className="relative lg:min-h-[500px] min-h-[250px] lg:w-1/2 w-full">
                         <Image src="/image-kepek/szemelyre-szabhato.webp" alt="Személyre szabható" fill style={{ objectFit: "contain" }} />
                     </div>
                     <div className="flex flex-col gap-4 lg:w-1/2 w-full">
-                        <H3 classname={"text-[--blue]"}>Személyre szabható, egyedi</H3>
+                        <H3 classname={"text-[--blue]"}>Mi az az Emlékoldal?</H3>
                         <Paragraph>
-                            Minden QR-kód egyedi emlékoldalra vezet, ahol a hozzátartozók képeket és történeteket oszthatnak meg. Az oldal szerkesztése könnyű, és bármikor frissíthető.
+                        Az EmlékQR Emlékoldal egy különleges, modern megoldás arra, hogy örökre megőrizzük és digitálisan megoszthassuk másokkal azon szeretteink emlékét, akik már nem lehetnek velünk. Az emlékoldallal életre keltheted szeretteid élettörténetét, fotóit, vagy akár videókat is megoszthatsz.
                         </Paragraph>
                     </div>
                 </div>
@@ -26,33 +26,9 @@ export default function Elonyei() {
                         <Image src="/image-kepek/maradando-megemlekezes.webp" alt="Maradandó megemlékezés" fill style={{ objectFit: "contain" }} />
                     </div>
                     <div className="flex flex-col gap-4 lg:w-1/2 w-full">
-                        <H3 classname={"text-[--blue]"}>Maradandó meg­emlékezés</H3>
+                        <H3 classname={"text-[--blue]"}>EmlékQR+ szolgáltatás</H3>
                         <Paragraph>
-                            A QR-kód segítségével bármikor hozzáférhető a tartalom, akár évekkel később is. Élettörténet, emlékirat, családfa rögzítésére is alkalmas. Egy gyönyörű sírkoszorú vagy sírcsokor mellé tökéletes kiegészítő, hiszen nem hervad el, örök darab marad.
-                        </Paragraph>
-                    </div>
-                </div>
-
-                <div className="flex lg:flex-row flex-col items-center lg:gap-16 gap-4">
-                    <div className="relative lg:min-h-[500px] min-h-[250px] lg:w-1/2 w-full bg-gradient-to-t from-[--cream] to-transparent rounded-3xl">
-                        <Image src="/image-kepek/modern-egyszeru.webp" alt="Modern és egyszerű" fill style={{ objectFit: "cover" }} className="rounded-3xl" />
-                    </div>
-                    <div className="flex flex-col gap-4 lg:w-1/2 w-full">
-                        <H3 classname={"text-[--blue]"}>Modern és egyszerű megoldás</H3>
-                        <Paragraph>
-                        Ez az egyedi emléktárgy QR-kóddal van ellátva, amelyet a síremlékre vagy sírkőre rögzítve időtálló tisztelgés lehet akár mindenszentek ünnepén, ajándékként, vagy megemlékezés alkalmával. A QR-kód beolvasásával egy személyre szabott emlékoldal nyílik meg, ahol a családtagok és barátok képeket, történeteket, vagy akár videókat tölthetnek fel az elhunyt életéről.
-                        </Paragraph>
-                    </div>
-                </div>
-
-                <div className="flex lg:flex-row-reverse flex-col items-center lg:gap-16 gap-4">
-                    <div className="relative lg:min-h-[500px] min-h-[250px] lg:w-1/2 w-full bg-gradient-to-t from-[--cream] to-transparent rounded-3xl">
-                        <Image src="/image-kepek/megoszthato.webp" alt="Megosztható, korlátlan tartalom" fill style={{ objectFit: "contain" }} />
-                    </div>
-                    <div className="flex flex-col gap-4 lg:w-1/2 w-full">
-                        <H3 classname={"text-[--blue]"}>Megosztható, korlátlan tartalom</H3>
-                        <Paragraph>
-                            Az emlékoldal megosztható a család és barátok között, így lehetőséget nyújt arra is, hogy a akik távol vannak, szintén részesei legyenek a meg­emlékezésnek. Gyűjtsetek minél több fotót, történetet, őrizzétek meg a lehető legtöbb szép emléket!
+                            Emlékoldalaidhoz vásárolhatsz QR kóddal ellátott minőségi Emlékérmét is amely amellett, hogy a nyughelynél egy digitális emlékoldalként is szolgál, feloldja az ingyenes emlékoldaladon a korlátozásokat, ezáltal szabadon tölthetsz fel annyi képet, történetet, videót amennyit akarsz. A hozzászólásokat is engedélyezi így akár olyanok is leróhatják tiszteletüket akikről még nem is hallottál (persze a te engedélyeddel).
                         </Paragraph>
                     </div>
                 </div>

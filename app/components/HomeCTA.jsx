@@ -8,14 +8,14 @@ import Image from "next/image"
 
 export default function HomeCTA() {
   return (
-    <section className='w-full py-16 bg-[--rose] px-4'>
+    <section className='w-full py-16 bg-gradient-to-br from-[--rose] to-[--blue] px-4'>
         <div className='flex flex-col gap-8 container m-auto'>
             <div className="flex flex-col-reverse lg:flex-row lg:gap-16 items-center">
                 <div className="flex flex-col lg:justify-start justify-center lg:gap-8 gap-4 lg:w-1/2 w-full">
-                    <H2 classname={"text-white lg:text-start text-center"}>A tökéletes, életre szóló ajándékot keresed?</H2>
-                    <Paragraph classname={"text-white  lg:text-start text-center"}>Lepd meg akár önmagad, vagy családodat - elevenítsétek fel együtt a csodás pillanatokat, meséljetek sosem hallott történeteket!</Paragraph>
-                    <Link href="/erme" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white w-fit lg:self-start self-center">
-                        Az érméhez
+                    <H2 classname={"text-white lg:text-start text-center"}>Próbáld ki ingyen!</H2>
+                    <Paragraph classname={"text-white  lg:text-start text-center"}>Kipróbálnád milyen az emlékadatlap? Most akár bejelentkezés nélkül is megteheted. Ha pedig megtetszett az élmény, egy gyors regisztráció után el is mentheted, sőt emlékérmével is bármikor összekötheted!</Paragraph>
+                    <Link href="/emlekadatlap-keszites" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white w-fit lg:self-start self-center">
+                        Kipróbálom az adatlapot
                     </Link>
                 </div>
                 <div className="lg:w-1/2 w-full">

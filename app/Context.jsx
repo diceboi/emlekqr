@@ -1,6 +1,8 @@
 'use client'
 
-import { createContext, useState } from "react";
+import { set } from "mongoose";
+import { createContext, useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export const Context = createContext({
   isMobileMenuOpen: false,
@@ -22,9 +24,13 @@ export const Context = createContext({
   openPopup: null, // Set null as default for popup state
   togglePopup: () => {},
   setOpenPopup: () => {},
+  popupUri: '',
+  setPopupUri: () => {},
 
   deletableSubId: null,
-  setDeletableSubId: () => {}
+  setDeletableSubId: () => {},
+  deletableAdatlapId: null,
+  setDeletableAdatlapId: () => {},
 });
 
 export default function ContextProvider({ children }) {
@@ -33,7 +39,15 @@ export default function ContextProvider({ children }) {
   const [isEditable, setEditable] = useState(false);
   const [openPopup, setOpenPopup] = useState(null); // Default to null
   const [deletableSubId, setDeletableSubId] = useState(null);
+  const [deletableAdatlapId, setDeletableAdatlapId] = useState(null);
   const [form, setForm] = useState('')
+  const [popupUri, setPopupUri] = useState(null);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setEditable(false);
+  }, [pathname]);
 
   /* Mobile menu */
   const toggleMobileMenu = () => {
@@ -74,9 +88,13 @@ export default function ContextProvider({ children }) {
       openPopup,
       togglePopup,
       setOpenPopup,
+      popupUri,
+      setPopupUri,
 
       deletableSubId,
       setDeletableSubId,
+      deletableAdatlapId,
+      setDeletableAdatlapId,
 
       form,
       setForm

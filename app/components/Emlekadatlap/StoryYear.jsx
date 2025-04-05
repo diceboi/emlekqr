@@ -9,30 +9,43 @@ import "yet-another-react-lightbox/styles.css";
 import { Context } from "../../Context";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import H4 from "../UI/H4";
+import Paragraph from "../UI/Paragraph";
+import Label from "../UI/Paragraph";
+import Link from "next/link";
 import { toast } from "sonner";
 
-export default function StoryYear({ data, index }) {
+export default function StoryYear({ data, index, free }) {
   const pathname = usePathname();
-  const lastDigits = pathname.slice(-7);
+  let lastDigits = pathname.slice(-7);
+
+  if (free === true) {
+    lastDigits = "free";
+  }
 
   const { formData, updateFormData, updateFileNames, selectedImages, removeStoryBlock, blobStoryImages, setBlobStoryImages, updateBlobStoryImages } =
     useContext(UpdateEmlekadatlapContext);
   const { isEditable } = useContext(Context);
 
   const [images, setImages] = useState([]);
-
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
   const [files, setFiles] = useState([]);
   const [removeImage, setRemoveImage] = useState([]);
   const fileInputRef = useRef(null);
 
+  // Ensure we have valid data to work with
+  const storyData = formData.story && formData.story[index] ? formData.story[index] : data || { year: '', data: '', images: [] };
+
   useEffect(() => {
-    // Check if formData.story[index] and blobStoryImages[index] are defined
-    if (!formData.story[index] || !formData.story[index].images) {
-      return; // Exit the effect early if data is not available
+    // Safety check - make sure we have valid story data and the index exists
+    if (!formData.story || !formData.story[index]) {
+      return;
     }
   
-    const initialImages = (formData.story[index].images || []).map((imgUrl) => ({
+    // Get the current story block's images
+    const storyImages = formData.story[index].images || [];
+    
+    // Format the images for display
+    const initialImages = storyImages.map((imgUrl) => ({
       url: imgUrl.startsWith("http")
         ? imgUrl
         : `https://elmekqr-storage.s3.amazonaws.com${imgUrl}`,
@@ -50,10 +63,10 @@ export default function StoryYear({ data, index }) {
   
     // Combine blobStoryImages with the filtered formData images
     const combinedImages = [
-      ...filteredFormDataImages, // Use formData images that are not in blobStoryImages
+      ...filteredFormDataImages,
       ...currentBlobImages.map((blobImg) => ({
-        url: blobImg.url, // Blob URL for display
-        newUrl: blobImg.newUrl, // Blob new URL
+        url: blobImg.url,
+        newUrl: blobImg.newUrl,
       })),
     ];
   
@@ -63,10 +76,14 @@ export default function StoryYear({ data, index }) {
 
   const MAX_FILE_SIZE = 5 * 1024 * 1024;
   
-
   const handleFileChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
-  
+
+    if (free && images.length >= 0) {
+      toast.error("Az ingyenes verzióban csak profilképet, és borítóképet adhatsz hozzá az emlékoldalhoz.");
+      return;
+    }
+
     // Filter files that exceed the maximum size
     const validFiles = selectedFiles.filter((file) => {
       if (file.size > MAX_FILE_SIZE) {
@@ -80,6 +97,14 @@ export default function StoryYear({ data, index }) {
     if (validFiles.length === 0) {
       return;
     }
+    
+    // Make sure the year field has a value (use a default if empty)
+    const yearValue = storyData.year || `Történet ${index + 1}`;
+    
+    // Update the year field if it was empty
+    if (!storyData.year) {
+      updateFormData(`story.${index}.year`, yearValue);
+    }
   
     const newFiles = validFiles.map((file) => {
       const newUrlWebp = file.name.replace(/\.[^/.]+$/, ".webp");
@@ -88,12 +113,11 @@ export default function StoryYear({ data, index }) {
         file,
         url: URL.createObjectURL(file), // Original URL for preview
         id: Math.random().toString(36).substring(2, 15), // Generate random ID
-        path: `${lastDigits}/story/${data.year}/${file.name}`, // Keep the original file name in the path
-        newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/story/${data.year}/${newUrlWebp}`, // Use .webp for the newUrl
+        path: `${lastDigits}/story/${yearValue}/${file.name}`, // Keep the original file name in the path
+        newUrl: `https://elmekqr-storage.s3.amazonaws.com/${lastDigits}/story/${yearValue}/${newUrlWebp}`, // Use .webp for the newUrl
       };
     });
   
-
     setFiles((files) => [...files, ...newFiles]);
 
     // Add the new files to the blobStoryImages for this specific story index
@@ -110,7 +134,17 @@ export default function StoryYear({ data, index }) {
     ]);
 
     const updateImagesInStory = () => {
-      const existingImages = formData.story[index].images || [];
+      // Safety check to make sure formData.story[index] is defined
+      if (!formData.story || !formData.story[index]) {
+        updateFormData(`story.${index}`, {
+          year: yearValue,
+          type: '',
+          data: '',
+          images: []
+        });
+      }
+      
+      const existingImages = formData.story[index]?.images || [];
 
       // Map over existing images to form the full URLs
       const prevImageUrls = existingImages.map((image) =>
@@ -155,11 +189,13 @@ export default function StoryYear({ data, index }) {
       (blobStoryImages[index] || []).filter((blobImg) => blobImg.newUrl !== imageToRemove.newUrl)
     );
 
-    updateFormData(
-      `story.${index}.images`,
-      updatedImages.map((img) => img.newUrl)
-    ); // Update formData with the correct newUrls
-    setImages(updatedImages); // Update the local images state
+    // Safety check to ensure formData.story[index] exists
+    if (formData.story && formData.story[index]) {
+      updateFormData(
+        `story.${index}.images`,
+        updatedImages.map((img) => img.newUrl)
+      ); // Update formData with the correct newUrls
+    }
   };
 
   const handleRemoveStoryBlock = () => {
@@ -178,14 +214,14 @@ export default function StoryYear({ data, index }) {
       <div className="flex flex-col lg:p-8 p-4 lg:gap-8 gap-4 bg-white rounded-2xl shadow-special">
         <div className="flex flex-nowrap justify-between gap-4 ">
           <H4 classname={`text-[--rose] ${isEditable ? "hidden" : ""}`}>
-            {data.year}
+            {storyData.year || `Történet ${index + 1}`}
           </H4>
           {isEditable && (
             <input
               type="text"
               className="border border-neutral-300 rounded-2xl p-4 text-2xl text-[--rose] font-bold w-full"
               placeholder="Esemény címe"
-              defaultValue={formData.story && formData.story[index] ? formData.story[index].year : ''} // Provide fallback
+              value={storyData.year || ''}
               onChange={(e) =>
                 updateFormData(`story.${index}.year`, e.target.value)
               }
@@ -194,16 +230,16 @@ export default function StoryYear({ data, index }) {
         </div>
         <div
           className={`pb-4 mb-2 ${isEditable ? "hidden" : ""} max-h-40 overflow-y-auto`}
-          style={{ maxHeight: '200px', overflowY: 'auto' }} // Set a max height for scrolling
-          dangerouslySetInnerHTML={{ __html: data.data }}
+          style={{ maxHeight: '200px', overflowY: 'auto' }}
+          dangerouslySetInnerHTML={{ __html: storyData.data || '' }}
         />
 
         {isEditable && (
           <textarea
             rows="10"
-            name={`${data.year}-text`}
-            id={`${data.year}-text`}
-            defaultValue={formData.story && formData.story[index] ? formData.story[index].data : ''}
+            name={`${storyData.year || index}-text`}
+            id={`${storyData.year || index}-text`}
+            value={storyData.data || ''}
             placeholder="Esemény leírása"
             className="border border-neutral-300 rounded-2xl p-4"
             onChange={(e) =>
@@ -212,12 +248,10 @@ export default function StoryYear({ data, index }) {
           />
         )}
         <div className="grid grid-cols-2 lg:grid-cols-4 justify-start gap-4">
-          {images.map((img, imgIndex) => (
+          {images.length > 0 && images.map((img, imgIndex) => (
             <div
-              key={`${img.newUrl}-${imgIndex}`}
-              className={`group relative w-full h-48 shadow-xl rounded-xl overflow-hidden bg-black ${
-                removeImage ? "block" : "hidden"
-              }`}
+              key={`${img.newUrl || imgIndex}-${imgIndex}`}
+              className="group relative w-full h-48 shadow-xl rounded-xl overflow-hidden bg-black"
               onClick={() => setLightbox({ open: true, index: imgIndex })}
             >
               <Image
@@ -226,7 +260,7 @@ export default function StoryYear({ data, index }) {
                 fill
                 sizes="(max-width: 768px) 100%, 100%"
                 style={{ objectFit: "cover" }}
-                className={`cursor-pointer group-hover:opacity-75 transition-all`}
+                className="cursor-pointer group-hover:opacity-75 transition-all"
               />
               {isEditable && (
                 <TbTrash
@@ -241,23 +275,40 @@ export default function StoryYear({ data, index }) {
           ))}
 
           {isEditable && (
-            <button
-              className="flex flex-col items-center justify-center gap-2 border border-neutral-300 w-full h-48 rounded-2xl hover:shadow-xl hover:border-white transition-all duration-200"
-              onClick={handleUploadClick}
-            >
-              <TbCameraPlus className="w-6 h-6" />
-              <p className="font-normal">Kép hozzáadása</p>
-              <p className="font-normal text-xs opacity-50">max. 5 MB</p>
-              <input
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={handleFileChange}
-                ref={fileInputRef}
-                className="hidden"
-              />
-            </button>
+            <>
+              {free && images.length >= 0 ? (
+                <div className="flex lg:col-span-4 col-span-2 flex-col items-center justify-center gap-4 border border-dashed border-[--rose] text-[--rose] w-full h-48 rounded-2xl text-center p-4">
+                  <p className="font-bold text-[--rose] text-sm">Az ingyenes verzióban cím, és leírás adható hozzá az történethez.</p>
+                  <p className="font-regular text-black text-sm">Vásárolj emlékérmét a korlátlan számú kép hozzáadásához.</p>
+                  <Link
+                    href="/erme"
+                    className="flex flex-nowrap items-center justify-center gap-4 py-1 px-4 lg:py-2 lg:px-4 rounded-full bg-gradient-to-br from-[--rose] to-[--blue] hover:bg-gradient-to-r hover:from-[--rose] hover:to-[--blue] transition-all text-white h-fit self-center"
+                  >
+                    <Image src="/emlekqr-plus-white.svg" alt="EmlékQR Plusz" title="Válts EmlékQR Plusz-ra" width={50} height={50} className="w-6 h-auto" />
+                    <Label classname={"cursor-pointer"}>Érme rendelés</Label>
+                  </Link>
+                </div>
+              ) : (
+                <button
+                  className="flex flex-col items-center justify-center gap-2 border border-neutral-300 w-full h-48 rounded-2xl hover:shadow-xl hover:border-white transition-all duration-200"
+                  onClick={handleUploadClick}
+                >
+                  <TbCameraPlus className="w-6 h-6" />
+                  <p className="font-normal">Kép hozzáadása</p>
+                  <p className="font-normal text-xs opacity-50">max. 5 MB</p>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleFileChange}
+                    ref={fileInputRef}
+                    className="hidden"
+                  />
+                </button>
+              )}
+            </>
           )}
+
         </div>
         {isEditable && (
           <button className="flex flex-nowrap items-center gap-2 rounded-full bg-red-500 hover:bg-red-700 transition-all text-white w-fit px-4 py-2 self-center" onClick={handleRemoveStoryBlock}>

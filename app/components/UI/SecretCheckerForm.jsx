@@ -44,7 +44,7 @@ export default function SecretCheckerForm({user}) {
   
         if (response.ok) {
           setSubmissionResult('Sikeres Ellenőrzés!');
-          router.refresh()
+          window.location.reload();
         } else {
           setSubmissionResult('Hiba történt az ellenőrzés közben.');
         }
