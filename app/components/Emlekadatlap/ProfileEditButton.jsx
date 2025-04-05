@@ -330,7 +330,7 @@ export default function ProfileEditButton({ session, user, data, free, existinga
             <div className="flex flex-col gap-4">
               <Label><b>1. lépés:</b> Vásárolj egy érmét!</Label>
               <Label><b>2. lépés:</b> A telefonod kamerájával olvasd be a QR kódot. (Ha régebbi telefonod van, akkor tölts le egy QR kód olvasó alkalmazást.)</Label>
-              <Label><b>3. lépés:</b> Miután megnyitottad a QR kódon található oldalt, írd be a 6 számjegyű kódot amit email-ben kaptál vásárlás után. Ha az ellenőrzés sikeres, kattints at "összekapcsolás érmével" gombra, majd válaszd ki melyik ingyenes adatlapodat szeretnéd összekötni az érmével, vagy kezdj el szerkeszteni egy teljesen új adatlapot.</Label>
+              <Label><b>3. lépés:</b> Miután megnyitottad a QR kódon található oldalt, írd be a 6 számjegyű kódot amit email-ben kaptál vásárlás után. Ha az ellenőrzés sikeres, kattints at &apos;összekapcsolás érmével&apos; gombra, majd válaszd ki melyik ingyenes adatlapodat szeretnéd összekötni az érmével, vagy kezdj el szerkeszteni egy teljesen új adatlapot.</Label>
               <div className="flex lg:flex-row flex-col gap-4 self-center">
               <Link 
                   href="/erme" 
