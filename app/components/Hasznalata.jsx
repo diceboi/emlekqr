@@ -103,6 +103,9 @@ export default function Hasznalata() {
                 hozzáfűzni akár ünnepekkor, mindenszentekkor, vagy az év bármely
                 napján.
               </Paragraph>
+              <Paragraph>
+                Az Itt jártam gombbal pedig tudathatod, hogy meglátogattad az emlékhelyet vagy az emlékoldalt.
+              </Paragraph>
             </div>
             <div className="flex flex-col justify-center gap-8 min-h-[80vh] scroll-section">
               <H3 classname="text-[--blue]">Keress rá</H3>

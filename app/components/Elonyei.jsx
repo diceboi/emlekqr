@@ -30,7 +30,7 @@ export default function Elonyei() {
                     <div className="flex flex-col gap-4 lg:w-1/2 w-full">
                         <H3 classname={"text-[--blue]"}>EmlékQR+ csomag</H3>
                         <Paragraph>
-                            Tedd teljesség az emlékoldalt az EmlékQR+ szolgáltatással. Szerezd be a QR kóddal ellátott emlékérmét és kapcsold össze az emlékoldaladat a nyughellyel.
+                            Tedd teljesség az emlékoldalt az EmlékQR+ szolgáltatással. Szerezd be a QR kóddal ellátott emlékérmét és kapcsold össze az emlékoldalt a nyughellyel.
                         </Paragraph>
                         <div>
                             <Paragraph classname={''}>Korlátlan mennyiségű <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Kép</span> <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Videó</span> <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Történet</span> <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Hozzászólás</span> egy helyen</Paragraph>
@@ -40,7 +40,7 @@ export default function Elonyei() {
 
                 <InfoBlock bgcolor={'bg-[--blue-15]'} bordercolor={'border-[--blue]'} infocolor={'text-[--blue]'}>
                     <Paragraph>
-                        Az <b><b>Emlékérme</b></b> egy egyedi QR kóddal ellátott műgyanta-aluminium plakett amely elhelyezhető az emlékhelyen. Az EmlékQR+ szolgáltatás része, ami biztosítja, hogy a nyughely összeköttetésbe legyen az emlékoldallal.
+                        Az <b><b>Emlékérme</b></b> egy egyedi QR kóddal ellátott lézergravírozott érme, amely elhelyezhető az emlékhelyen. Az EmlékQR+ szolgáltatás része, ami biztosítja, hogy a nyughely összeköttetésben legyen az emlékoldallal.
                     </Paragraph>
                 </InfoBlock>
 

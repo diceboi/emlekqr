@@ -25,10 +25,10 @@ export default function HomeCTA() {
 
             <div className="flex flex-col-reverse bg-gradient-to-br from-[--rose] to-[--blue] gap-8 items-center rounded-3xl">
                 <div className="flex flex-col justify-center items-center lg:gap-8 gap-4 w-full p-8">
-                    <H2 classname={"text-white text-center"}>Oldj fel minden korlátozást!</H2>
+                    <H2 classname={"text-white text-center"}>Tedd teljessé!</H2>
                     <Paragraph classname={"text-white text-center"}>Ha szeretnéd fizikailag is összekötni az nyughelyet az emlékoldallal, korlátlanul fotókat, videókat, történeteket, megosztani szerettedről, akkor nincs más dolgod mint vásárolni egy Emlékérmét.</Paragraph>
                     <Link href="/erme" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] text-center transition-all text-white w-fit self-center">
-                        Kipróbálom az EmlékQR+ emlékoldalt
+                        Az összes funkciót szeretném
                     </Link>
                 </div>
                 <div className="lg:w-1/2 w-full">
