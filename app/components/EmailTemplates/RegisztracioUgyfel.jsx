@@ -21,7 +21,7 @@ import {
           <Img src='https://www.emlek-qr.hu/emleqr-logo-base.png' style={{ width: '150px', height: 'auto', margin: 'auto', paddingTop: '20px' }} />
           <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Kedves {nev}, sikeresen regisztráltál az EmlékQR oldalra.</Heading>
           <Text style={{ ...text, marginBottom: '24px'}}>
-            A következő lépésként nézd meg a <a href='https://emlek-qr.hu/profil' target='__blank' style={{...link}}>profilod</a> , töltsd fel profilképet, keress rá szeretteid ismerőseid adatlapjára, kommentelj, vagy irány az <a href='https://emlek-qr.hu/erme' target='__blank' style={{...link}}>érme</a> oldal és szerezz magadnak egy emlékérmét.
+            A következő lépésként nézd meg a <a href='https://emlek-qr.hu/profil' target='__blank' style={{...link}}>profilod</a> , töltsd fel profilképet, keress rá szeretteid ismerőseid emlékoldalára, kommentelj, vagy irány az <a href='https://emlek-qr.hu/erme' target='__blank' style={{...link}}>érme</a> oldal és szerezz magadnak egy emlékérmét.
           </Text>
           <Text style={{...text}}>
             Kérdés esetén keress bátran bennünket az <a href='mailto:info@emlek-qr.hu' style={{...link}}>info@emlek-qr.hu</a> email címen, vagy a <a href='https://emlek-qr.hu/kapcsolat' target='__blank' style={{...link}}>kapcsolat</a> oldalon!

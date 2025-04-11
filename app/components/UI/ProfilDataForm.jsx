@@ -44,7 +44,7 @@ export default function ProfilDataForm({
       if (!response.ok) throw new Error(result.error || "Failed to update user");
 
       if(response) {
-        toast.success('Az adatlap sikeresen frissült')
+        toast.success('Az emlékoldal sikeresen frissült')
         window.location.reload()
       }
 

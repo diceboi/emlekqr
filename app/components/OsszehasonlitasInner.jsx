@@ -24,10 +24,6 @@ export default function OsszehasonlitasInner() {
       <div className="flex flex-nowrap lg:min-w-max">
         <div className="flex flex-col lg:w-auto min-w-fit gap-4 rounded-3xl p-4 pr-10 mr-4">
           <div className="flex flex-col">
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbQrcode className="w-6 h-6 text-[--blue]" />
-              <Label>Minőségi QR kódos emlékérme</Label>
-            </div>
 
             <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
               <TbBrowserPlus className="w-6 h-6 text-[--blue]" />
@@ -47,6 +43,11 @@ export default function OsszehasonlitasInner() {
             <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
               <TbClipboardList className="w-6 h-6 text-[--blue]" />
               <Label>Személyes adatok hozzáadása</Label>
+            </div>
+
+            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
+              <TbQrcode className="w-6 h-6 text-[--blue]" />
+              <Label>Minőségi QR kódos emlékérme</Label>
             </div>
 
             <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
@@ -86,10 +87,6 @@ export default function OsszehasonlitasInner() {
           </H3>
           <div className="flex flex-col">
             <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2">
-              <TbX className="w-6 h-6 text-[--error]" />
-            </div>
-
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2">
               <TbCheck className="w-6 h-6 text-[--success]" />
             </div>
 
@@ -109,16 +106,20 @@ export default function OsszehasonlitasInner() {
               <TbX className="w-6 h-6 text-[--error]" />
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
-              <Label classname={"text-[--error]"}>Max. 5 db</Label>
-            </div>
-
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2">
               <TbX className="w-6 h-6 text-[--error]" />
             </div>
 
             <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
-              <Label classname={"text-[--error]"}>Max. 6 db kép</Label>
+              <Label classname={"text-[--error]"}>Max. 1 db</Label>
+            </div>
+
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
+            <Label classname={"text-[--error]"}>Max. 2 db</Label>
+            </div>
+
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
+            <Label classname={"text-[--error]"}>Max. 2 db</Label>
             </div>
 
             <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
@@ -130,7 +131,7 @@ export default function OsszehasonlitasInner() {
             </div>
 
             <Link
-              href="/emlekadatlap-keszites"
+              href="/ingyenes-emlekoldal-keszites"
               className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 mt-4 rounded-full bg-white hover:bg-opacity-75 transition-all text-[--rose] font-semibold w-fit self-center"
             >
               Emlékoldal készítés

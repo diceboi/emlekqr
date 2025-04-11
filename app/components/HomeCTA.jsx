@@ -8,18 +8,31 @@ import Image from "next/image"
 
 export default function HomeCTA() {
   return (
-    <section className='w-full py-16 bg-gradient-to-br from-[--rose] to-[--blue] px-4'>
-        <div className='flex flex-col gap-8 container m-auto'>
-            <div className="flex flex-col-reverse lg:flex-row lg:gap-16 items-center">
-                <div className="flex flex-col lg:justify-start justify-center lg:gap-8 gap-4 lg:w-1/2 w-full">
-                    <H2 classname={"text-white lg:text-start text-center"}>Próbáld ki ingyen!</H2>
-                    <Paragraph classname={"text-white  lg:text-start text-center"}>Kipróbálnád milyen az emlékadatlap? Most akár bejelentkezés nélkül is megteheted. Ha pedig megtetszett az élmény, egy gyors regisztráció után el is mentheted, sőt emlékérmével is bármikor összekötheted!</Paragraph>
-                    <Link href="/emlekadatlap-keszites" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white w-fit lg:self-start self-center">
-                        Kipróbálom az adatlapot
+    <section className='w-full pb-16 px-4 bg-white'>
+        <div className='flex lg:flex-row flex-col gap-8 container m-auto '>
+            <div className="flex flex-col-reverse bg-[--cream] gap-8 items-center rounded-3xl">
+                <div className="flex flex-col justify-center items-center lg:gap-8 gap-4 w-full p-8 ">
+                    <H2 classname={"text-[--rose] text-center"}>Próbáld ki ingyen!</H2>
+                    <Paragraph classname={"text-center"}>Kipróbálnád milyen az emlékoldal? Most akár bejelentkezés nélkül is megteheted. Ha pedig megtetszett az élmény, egy gyors regisztráció után el is mentheted, sőt emlékérmével is bármikor összekötheted!</Paragraph>
+                    <Link href="/ingyenes-emlekoldal-keszites" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] text-center transition-all text-white w-fit self-center">
+                        Kipróbálom az ingyenes emlékoldalt
                     </Link>
                 </div>
                 <div className="lg:w-1/2 w-full">
                     <Image src="/miazemlekerme.webp" width={500} height={800} alt="Tökélete ajándék" />
+                </div>
+            </div>
+
+            <div className="flex flex-col-reverse bg-gradient-to-br from-[--rose] to-[--blue] gap-8 items-center rounded-3xl">
+                <div className="flex flex-col justify-center items-center lg:gap-8 gap-4 w-full p-8">
+                    <H2 classname={"text-white text-center"}>Oldj fel minden korlátozást!</H2>
+                    <Paragraph classname={"text-white text-center"}>Ha szeretnéd fizikailag is összekötni az nyughelyet az emlékoldallal, korlátlanul fotókat, videókat, történeteket, megosztani szerettedről, akkor nincs más dolgod mint vásárolni egy Emlékérmét.</Paragraph>
+                    <Link href="/erme" className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] text-center transition-all text-white w-fit self-center">
+                        Kipróbálom az EmlékQR+ emlékoldalt
+                    </Link>
+                </div>
+                <div className="lg:w-1/2 w-full">
+                    <Image src="/ermek/negyzet-erme.webp" width={500} height={800} alt="Tökélete ajándék" />
                 </div>
             </div>
         </div>

@@ -45,7 +45,7 @@ export default function Cart() {
               <Image src="/emlekqr-loading.gif" width={50} height={50}/>
           </div>
           <div className="flex flex-col gap-2">
-              <p className="label">EmlékQR Emlékérme + digitális adatlap szolgáltatás</p>
+              <p className="label">EmlékQR Emlékérme + digitális emlékoldal szolgáltatás</p>
               <div className="flex flex-nowrap justify-start items-center gap-2">
               <input id="qty" type="number" className="bg-[--cream] w-16 rounded-full text-center"/>
               <p className="label">db</p>
@@ -60,7 +60,7 @@ export default function Cart() {
               <Image src="/emlekqr-loading.gif" width={50} height={50}/>
           </div>
           <div className="flex flex-col gap-2">
-              <p className="label">EmlékQR Emlékérme + digitális adatlap szolgáltatás</p>
+              <p className="label">EmlékQR Emlékérme + digitális emlékoldal szolgáltatás</p>
               <div className="flex flex-nowrap justify-start items-center gap-2">
               <input id="qty" type="number" className="bg-[--cream] w-16 rounded-full text-center"/>
               <p className="label">db</p>

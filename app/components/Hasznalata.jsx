@@ -60,7 +60,7 @@ export default function Hasznalata() {
               <H3 classname="text-[--blue]">Válassz érmét</H3>
               <Paragraph>
                 Válassz egy <Link href="/erme" className="text-[--blue] underline">érmét</Link> ami az emlékoldaladra fog vezetni és amit
-                elpostázunk neked, vagy készíts egy <Link href="/emlekadatlap-keszites" className="text-[--blue] underline">ingyenes emlékoldalt</Link>, és vásárolj érmét később.
+                elpostázunk neked, vagy készíts egy <Link href="/ingyenes-emlekoldal-keszites" className="text-[--blue] underline">ingyenes emlékoldalt</Link>, és vásárolj érmét később.
               </Paragraph>
             </div>
             <div className="flex flex-col justify-center gap-8 min-h-[80vh] scroll-section">
@@ -80,7 +80,7 @@ export default function Hasznalata() {
             <div className="flex flex-col justify-center gap-8 min-h-[80vh] scroll-section">
               <H3 classname="text-[--blue]">Mesélj el egy történetet</H3>
               <Paragraph>
-                Meséld el szeretted élettörténetét, töltsd meg az adatlapot
+                Meséld el szeretted élettörténetét, töltsd meg az emlékoldalt
                 korlátlan mennyiségű fotóval és videóval.
               </Paragraph>
             </div>
@@ -728,7 +728,7 @@ export default function Hasznalata() {
               </motion.div>
               <H3 classname="text-[--blue]">Mesélj el egy történetet</H3>
               <Paragraph>
-                Meséld el szeretted élettörténetét, töltsd meg az adatlapot
+                Meséld el szeretted élettörténetét, töltsd meg az emlékoldalt
                 korlátlan mennyiségű fotóval és videóval.
               </Paragraph>
             </div>

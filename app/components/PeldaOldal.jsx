@@ -13,10 +13,10 @@ import ProfileData from "./Emlekadatlap/ProfileData"
 import ProfileInfo from "./Emlekadatlap/ProfileInfo"
 import { TbHandClick } from "react-icons/tb";
 
-const getEmlekadatlap = async () => {
+const getEmlekadatlap = async (uri) => {
     try {
         const baseUrl = process.env.NEXT_PUBLIC_URL; // Adjust this as per your environment
-        const res = await fetch(`${baseUrl}/api/emlekadatlap?uri=0000017`, { cache: 'no-store' });
+        const res = await fetch(`${baseUrl}/api/emlekadatlap?uri=${uri}`, { cache: 'no-store' });
         if (!res.ok) {
         throw new Error("Az adatok letöltése nem sikerült");
         }
@@ -45,7 +45,7 @@ const getTributes = async (uri) => {
 
 export default async function PeldaOldal() {
 
-    const session = {
+    const fixedSession = {
         Session: {
             user: {
                 name: 'Bokros Gabriella',
@@ -55,7 +55,7 @@ export default async function PeldaOldal() {
         }
     }
     
-    let currentUser = {
+    let fixedCurrentUser = {
         _id: '663e4ac41d3c4c611480c791',
         name: 'Bokros Gabriella',
         vezeteknev: 'Bokros',
@@ -75,11 +75,11 @@ export default async function PeldaOldal() {
         address2: 'teszt'
       }
     
-    const emlekadatlap = await getEmlekadatlap("0000017");
-    const currentData = emlekadatlap?.data?.Emlekadatlap || null;
+    const emlekadatlap = await getEmlekadatlap("0001001");
+    const fixedCurrentData = emlekadatlap?.data?.Emlekadatlap || null;
 
-    const tribute = await getTributes("663e4ac41d3c4c611480c791");
-    const currentTributes = tribute?.data?.Tribute || null;
+    const tribute = await getTributes("0001001");
+    const fixedCurrentTributes = tribute?.data?.Tribute || null;
 
   return (
     <section className="relative w-full bg-white px-4 pb-20">
@@ -90,7 +90,7 @@ export default async function PeldaOldal() {
         <div className="flex flex-nowrap">
           <div className="container flex flex-col m-auto gap-8">
             <div className="relative group group-hover:p-4">
-              <CoverPicture session={session} data={currentData} currentuser={currentUser} cursor={false}/>
+              <CoverPicture data={fixedCurrentData} currentuser={fixedCurrentUser} cursor={false} free={false}/>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40">
                 <H3 classname={'px-4 py-2 bg-[--blue] text-white text-center group-hover:block hidden rounded-3xl'}>Borítókép</H3>
                 <TbHandClick className="group-hover:hidden block min-w-16 h-auto text-white animate-bounce z-40"/>
@@ -102,8 +102,8 @@ export default async function PeldaOldal() {
                 id="profile-data"
                 className="relative group flex flex-col xl:flex-row gap-8 xl:gap-20 items-center w-full"
             >
-                <ProfilePicture session={session} data={currentData} cursor={false}/>
-                <ProfileData session={session} data={currentData} cursor={false}/>
+                <ProfilePicture session={fixedSession} data={fixedCurrentData} cursor={false} free={false}/>
+                <ProfileData session={fixedSession} data={fixedCurrentData} cursor={false}/>
                 <div className="absolute bottom-8 left-8 z-40">
                   <H3 classname={'px-4 py-2 bg-[--blue] text-white text-center group-hover:block hidden rounded-3xl'}>Profilkép,<br></br>Információk</H3>
                   <TbHandClick className="group-hover:hidden block min-w-16 h-auto text-[--blue] animate-bounce z-40"/>
@@ -111,7 +111,7 @@ export default async function PeldaOldal() {
                 <div className="absolute top-0 left-0 w-full h-full pointer-events-none group-hover:border-2 border-[--blue] border-dashed bg-transparent group-hover:bg-[--blue-15] z-30 rounded-3xl"></div>
             </div>
             <div className="relative group">
-              <ProfileInfo session={session} data={currentData} tributes={currentTributes} cursor={false}/>
+              <ProfileInfo session={fixedSession} data={fixedCurrentData} tributes={fixedCurrentTributes} cursor={false}/>
               <div className="absolute top-20 left-1/2 -translate-x-1/2 z-40">
                 <H3 classname={'px-4 py-2 bg-[--blue] text-white text-center group-hover:block hidden rounded-3xl'}>Történetek,<br></br>Médiatartalmak,<br></br>Hozzászólások</H3>
                 <TbHandClick className="group-hover:hidden block min-w-16 h-auto text-[--blue] animate-bounce z-40"/>

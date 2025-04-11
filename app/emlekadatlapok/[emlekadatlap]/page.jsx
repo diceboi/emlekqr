@@ -25,6 +25,21 @@ const getEmlekadatlap = async (uri) => {
   }
 };
 
+const getAllIttjartam = async (uri) => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
+    const res = await fetch(`${baseUrl}/api/getIttjartam?adatlap=${uri}`, { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error("Az adatok letöltése nem sikerült");
+    }
+    const data = await res.json();
+    return data?.data?.ittjartam || []; // ✅ helyes kulcsnév
+  } catch (error) {
+    console.log("Az Ittjartam adatok betöltése sikertelen", error);
+    return [];
+  }
+};
+
 const findFreeEmlekadatlaps = async (email) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_URL;
@@ -76,7 +91,7 @@ export async function generateMetadata({params}) {
   const currentData = emlekadatlap?.data?.Emlekadatlap || null;
  
   return {
-    title: `${currentData?.name} emlékadatlapja - EmlékQR`,
+    title: `${currentData?.name} emlékoldala - EmlékQR`,
     openGraph: {
       images: [currentData?.profileimage],
     },
@@ -103,6 +118,8 @@ export default async function Emlekadatlap({ params, searchParams  }) {
   const tribute = await getTributes(params.emlekadatlap);
   const currentTributes = tribute?.data?.Tribute || null;
 
+  const allittjartam = await getAllIttjartam(params.emlekadatlap);
+
   return (
     <>
     {/*<BackgroundSwitcher>*/}
@@ -120,9 +137,9 @@ export default async function Emlekadatlap({ params, searchParams  }) {
         <CoverPicture session={session} data={currentData} currentuser={currentUser}/>
         <div
           id="profile-data"
-          className="flex flex-col xl:flex-row gap-8 xl:gap-20 xlitems-end items-center w-full"
+          className="flex flex-col xl:flex-row gap-8 xl:gap-20 xl:items-start items-center w-full"
         >
-          <ProfilePicture session={session} data={currentData} />
+          <ProfilePicture session={session} data={currentData} free={currentData?.paymentStatus === 'free' ? true : false} currentuser={currentUser} allittjartam={allittjartam}/>
           <ProfileData session={session} data={currentData} />
         </div>
         <ProfileInfo session={session} data={currentData} tributes={currentTributes} free={currentData?.paymentStatus === 'free' ? true : false} />

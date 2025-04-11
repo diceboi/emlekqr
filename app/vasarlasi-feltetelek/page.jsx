@@ -118,7 +118,7 @@ export default function VasarlasiFeltetelekPage() {
             leellenőrizte a végösszeget, és úgy döntött, hogy meg szeretné
             vásárolni őket, akkor egyszerűen kattintson a &quot;Tovább a pénztárba&quot; gombra.
             Áruházunkban nincs lehetőség regisztráció nélkül is a vásárlásra,
-            mivel a regisztrációval együtt jön létre az adatlap ami a szolgáltatás részét képezi.
+            mivel a regisztrációval együtt jön létre az emlékoldal ami a szolgáltatás részét képezi.
           </Paragraph>
           <Paragraph>
             A fizetési mód minden esetben bankkártyás fizetés:

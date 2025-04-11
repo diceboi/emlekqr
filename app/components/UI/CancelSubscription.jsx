@@ -19,7 +19,7 @@ export default function CancelSubscription({ subscriptionId, adatlapId }) {
         console.log('Subscription canceled successfully:', result);
       } else {
         console.error('Failed to cancel subscription:', result.error);
-        toast.warning('Előfizetés nem tartozott az adatlaphoz.')
+        toast.warning('Előfizetés nem tartozott az emlékoldalhoz.')
       }
     } catch (error) {
       console.error('Error canceling subscription:', error);
@@ -40,7 +40,7 @@ export default function CancelSubscription({ subscriptionId, adatlapId }) {
 
       if (response.ok) {
         console.log('Adatlap deleted successfully:', data);
-        toast.success('Adatlap sikeresen törölve.')
+        toast.success('Emlékoldal sikeresen törölve.')
         window.location.reload();
       } else {
         console.error('Failed to delete adatlap:', data.error);
@@ -58,8 +58,8 @@ export default function CancelSubscription({ subscriptionId, adatlapId }) {
   return (
     <>
     <div className="flex flex-col items-center gap-4">
-      <h4>Biztosan törlöd az adatlapodat?</h4>
-      <p className="text-center">Az adatlap törlése visszavonhatatlan. Ezzel a módosítással az adatlapod havi/évi előfizetése is megszűnik.</p>
+      <h4>Biztosan törlöd az emlékoldalt?</h4>
+      <p className="text-center">Az emlékoldal törlése visszavonhatatlan. Ezzel a módosítással az emlékoldalad havi/évi előfizetése is megszűnik.</p>
       <button 
         className="flex flex-nowrap gap-2 items-center bg-[--error] hover:bg-[--error-hover] rounded-full transition-all text-white w-fit py-2 px-4"
         // Correctly use the onClick handler as a function reference

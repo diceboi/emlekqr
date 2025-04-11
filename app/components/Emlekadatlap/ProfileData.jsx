@@ -16,6 +16,7 @@ import Modal from "../UI/Modal";
 import { toast } from "sonner";
 import GraveyardMap from "../GraveyardMap";
 import PremiumPopup from "./PremiumPopup";
+import Ittjartam from "../../components/Emlekadatlap/Ittjartam";
 
 export default function ProfileData({ data, cursor, free }) {
   const { isEditable, openPopup, setOpenPopup } = useContext(Context);
@@ -29,7 +30,7 @@ export default function ProfileData({ data, cursor, free }) {
       await navigator.clipboard.writeText(currentUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-      toast.info("Az emlékadatlap linkje vágólapra másolva.");
+      toast.info("Az emlékoldal linkje vágólapra másolva.");
     } catch (err) {
       console.error("Hiba másoláskor:", err);
     }
@@ -118,14 +119,16 @@ export default function ProfileData({ data, cursor, free }) {
               </Paragraph>
             </div>
             {data.graveyard && (
-              <Link
-              href={data.graveyard}
-              className="flex flex-nowrap items-center gap-4 hover:text-[--blue] border-b border-white py-2"
-              target="_blank"
-            >
-              <TbGrave className="min-w-10 h-auto text-[--rose] bg-white rounded-full p-2" />
-              <Paragraph className="label">Nyughely megtekintése térképen</Paragraph>
-            </Link>
+              <div className="flex lg:flex-nowrap gap-4 items-center">
+                <Link
+                href={data.graveyard}
+                className="flex flex-nowrap items-center gap-4 hover:text-[--blue] border-b border-white py-2"
+                target="_blank"
+                >
+                <TbGrave className="min-w-10 h-auto text-[--rose] bg-white rounded-full p-2" />
+                <Paragraph classname="underline text-[--blue]">Nyughely megtekintése térképen</Paragraph>
+                </Link>
+              </div>
             )}
             
             <div className="flex flex-nowrap gap-4 items-start pt-2">

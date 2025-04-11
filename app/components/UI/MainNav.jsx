@@ -100,13 +100,13 @@ export default function MainNav() {
             <UserMenu />
           </div>
           <Link 
-              href="/emlekadatlap-keszites" 
+              href="/ingyenes-emlekoldal-keszites" 
               className="hidden sm:flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-4 rounded-2xl bg-[--cream] hover:border-[--blue] hover:bg-[--blue] transition-all text-[--rose] hover:text-white h-fit self-center mr-2">
                   <TbBrowserPlus 
                       className="w-8 h-8"
                   />
                   <label className='text-sm leading-4 cursor-pointer font-semibold'>
-                    Emlékoldal<br></br>készítés
+                    Ingyenes<br></br>emlékoldal
                   </label>
           </Link>
           <Link 
@@ -114,11 +114,11 @@ export default function MainNav() {
               className="hidden sm:flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-4 rounded-2xl bg-gradient-to-br from-[--rose] to-[--blue] hover:bg-gradient-to-r hover:from-[--rose] hover:to-[--blue] transition-all text-white h-fit self-center">
                   <Image src="/emlekqr-plus-white.svg" alt="EmlékQR Plusz" title="Válts EmlékQR Plusz-ra" width={30} height={30} />
                   <label className='text-sm leading-4 cursor-pointer font-semibold'>
-                    Érme<br></br>rendelés
+                    EmlékQR+<br></br>emlékoldal
                   </label>
           </Link>
           <Link 
-              href="/erme" 
+              href="/ingyenes-emlekoldal-keszites" 
               className="sm:hidden flex flex-nowrap items-center justify-center py-1 px-2 rounded-xl text-[--blue] h-fit self-center mr-2 bg-[--cream]">
                   <TbBrowserPlus 
                       className="w-6 h-6"

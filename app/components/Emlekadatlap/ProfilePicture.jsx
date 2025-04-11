@@ -8,10 +8,11 @@ import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import { usePathname } from "next/navigation";
 import Lightbox from "yet-another-react-lightbox"; // Import lightbox component
 import "yet-another-react-lightbox/styles.css"; // Import lightbox styles
+import Ittjartam from "../../components/Emlekadatlap/Ittjartam"
 
 export const dynamic = 'force-dynamic';
 
-export default function ProfilePicture({ session, data, cursor, free }) {
+export default function ProfilePicture({ session, data, cursor, free, currentuser, allittjartam }) {
   const pathname = usePathname();
   let lastDigits = pathname.slice(-7); // Extract the last 7 digits for the S3 path
 
@@ -64,8 +65,9 @@ export default function ProfilePicture({ session, data, cursor, free }) {
   return (
     <div
       id="profile-pic"
-      className={`relative flex flex-col items-center xl:items-start w-[250px] h-[250px] min-h-[250px] min-w-[250px] max-h-[250px] max-w-[250px] lg:-mt-[250px] -mt-[150px] ${cursor === false ? 'pointer-events-none' : 'pointer-events-auto'}`}
+      className={`relative flex flex-col items-center xl:items-start w-[250px] h-[250px] min-h-[250px] min-w-[250px] max-h-[250px] max-w-[250px] lg:-mt-[150px] -mt-[150px] xl:mb-0 mb-32 ${cursor === false ? 'pointer-events-none' : 'pointer-events-auto'}`}
     >
+      <Ittjartam classname={'absolute flex flex-col items-center -bottom-32 left-1/2 -translate-x-1/2 w-full bg-[--cream] rounded-3xl p-2 gap-2'} free={free} session={session} data={data} currentuser={currentuser} allittjartam={allittjartam}/>
       {/* Lightbox component */}
       <Lightbox
         open={lightbox.open}

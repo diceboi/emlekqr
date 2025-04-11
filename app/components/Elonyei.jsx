@@ -2,6 +2,8 @@ import H2 from "../components/UI/H2"
 import Image from "next/image"
 import H3 from "./UI/H3"
 import Paragraph from "./UI/Paragraph"
+import InfoBlock from "./UI/InfoBlock"
+import Link from "next/link"
 
 export default function Elonyei() {
   return (
@@ -23,15 +25,24 @@ export default function Elonyei() {
 
                 <div className="flex lg:flex-row-reverse flex-col items-center lg:gap-16 gap-4">
                     <div className="relative lg:min-h-[500px] min-h-[250px] lg:w-1/2 w-full bg-gradient-to-t from-[--cream] to-transparent rounded-3xl">
-                        <Image src="/image-kepek/maradando-megemlekezes.webp" alt="Maradandó megemlékezés" fill style={{ objectFit: "contain" }} />
+                        <Image src="/image-kepek/emlekqr-plusz.webp" alt="Maradandó megemlékezés" fill style={{ objectFit: "contain" }} />
                     </div>
                     <div className="flex flex-col gap-4 lg:w-1/2 w-full">
-                        <H3 classname={"text-[--blue]"}>EmlékQR+ szolgáltatás</H3>
+                        <H3 classname={"text-[--blue]"}>EmlékQR+ csomag</H3>
                         <Paragraph>
-                            Emlékoldalaidhoz vásárolhatsz QR kóddal ellátott minőségi Emlékérmét is amely amellett, hogy a nyughelynél egy digitális emlékoldalként is szolgál, feloldja az ingyenes emlékoldaladon a korlátozásokat, ezáltal szabadon tölthetsz fel annyi képet, történetet, videót amennyit akarsz. A hozzászólásokat is engedélyezi így akár olyanok is leróhatják tiszteletüket akikről még nem is hallottál (persze a te engedélyeddel).
+                            Tedd teljesség az emlékoldalt az EmlékQR+ szolgáltatással. Szerezd be a QR kóddal ellátott emlékérmét és kapcsold össze az emlékoldaladat a nyughellyel.
                         </Paragraph>
+                        <div>
+                            <Paragraph classname={''}>Korlátlan mennyiségű <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Kép</span> <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Videó</span> <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Történet</span> <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Hozzászólás</span> egy helyen</Paragraph>
+                        </div>
                     </div>
                 </div>
+
+                <InfoBlock bgcolor={'bg-[--blue-15]'} bordercolor={'border-[--blue]'} infocolor={'text-[--blue]'}>
+                    <Paragraph>
+                        Az <b><b>Emlékérme</b></b> egy egyedi QR kóddal ellátott műgyanta-aluminium plakett amely elhelyezhető az emlékhelyen. Az EmlékQR+ szolgáltatás része, ami biztosítja, hogy a nyughely összeköttetésbe legyen az emlékoldallal.
+                    </Paragraph>
+                </InfoBlock>
 
             </div>
         </div>

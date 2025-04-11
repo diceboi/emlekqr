@@ -81,7 +81,7 @@ export default function Media({ data, free }) {
 
   // Images //////////////////////////////////////
 
-  const MAX_FILE_SIZE = 5 * 1024 * 1024;
+  const MAX_FILE_SIZE = 2 * 1024 * 1024;
 
   const handleImageChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
@@ -288,9 +288,9 @@ export default function Media({ data, free }) {
 
           {isEditable && (
             <>
-            {free && images.length >= 6 ? (
+            {free && images.length >= 2 ? (
                 <div className="flex col-span-2 flex-col items-center justify-center gap-4 border border-dashed border-[--rose] text-[--rose] w-full h-48 rounded-2xl text-center p-4">
-                  <p className="font-bold text-[--rose] text-sm">Az ingyenes verzióban maximum 5db kép tölthetők fel a médiába.</p>
+                  <p className="font-bold text-[--rose] text-sm">Az ingyenes verzióban maximum 2db kép tölthetők fel a médiába.</p>
                   <p className="font-regular text-black text-sm">Vásárolj emlékérmét a korlátlan számú kép hozzáadásához.</p>
                   <Link
                     href="/erme"

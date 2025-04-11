@@ -82,7 +82,7 @@ export default function GyikInner() {
       question: 'Az emlékirat tulajdonosának mik a jogai?',
       answer: (
         <>
-          <Paragraph>A fióktulajdonos teljes körű adatvédelmi felügyelettel rendelkezik minden megosztott tartalomra vonatkozóan. Az emlékadatlaphoz való hozzászólás, vagy az emlékirat bárki általi módosítása is csak az ő jóváhagyásával valósítható meg.</Paragraph>
+          <Paragraph>A fióktulajdonos teljes körű adatvédelmi felügyelettel rendelkezik minden megosztott tartalomra vonatkozóan. Az emlékoldalhoz való hozzászólás, vagy az emlékirat bárki általi módosítása is csak az ő jóváhagyásával valósítható meg.</Paragraph>
         </>
       ),
     },

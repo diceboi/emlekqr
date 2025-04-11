@@ -40,7 +40,7 @@ export default function Emlekerme({ session, userdata }) {
                     <Hearth />
                 </div>
                 <div className="flex flex-col justify-center gap-8 p-8 lg:w-1/2">
-                    <Paragraph classname={"text-[--blue] px-2 p-1 bg-white w-fit rounded-full uppercase"}>EmlékQR emlékérme</Paragraph>
+                    <Paragraph classname={"text-white px-4 py-2 bg-gradient-to-br from-[--rose] to-[--blue] w-fit rounded-full uppercase"}>EmlékQR+ szolgáltatás</Paragraph>
                     <H1 classname={"text-[--rose]"}>Az emlékek életre kelnek</H1>
                     <Paragraph className="">A tökéletes, életre szóló ajándékot keresed?-  Lepd meg akár önmagad, vagy családodat - elevenítsétek fel együtt a csodás pillanatokat, meséljetek sosem hallott történeteket…
                     </Paragraph>

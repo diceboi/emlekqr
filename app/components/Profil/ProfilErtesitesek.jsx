@@ -70,7 +70,7 @@ export default function ProfilErtesitesek({ currentuser, currentdata }) {
           {loading ? (
             <p>Értesítések betöltése...</p>
           ) : error ? (
-            <p className="">Jelenleg nincsenek értesítéseid. Itt fognak megjelenni a kommentek, az adatlap módosítások stb.</p>
+            <p className="">Jelenleg nincsenek értesítéseid. Itt fognak megjelenni a kommentek, az emlékoldal módosítások stb.</p>
           ) : (
             notifications
               .slice()

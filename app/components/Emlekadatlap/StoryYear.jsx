@@ -74,13 +74,13 @@ export default function StoryYear({ data, index, free }) {
   }, [formData.story, index, blobStoryImages]);
 
 
-  const MAX_FILE_SIZE = 5 * 1024 * 1024;
+  const MAX_FILE_SIZE = 2 * 1024 * 1024;
   
   const handleFileChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
 
-    if (free && images.length >= 0) {
-      toast.error("Az ingyenes verzióban csak profilképet, és borítóképet adhatsz hozzá az emlékoldalhoz.");
+    if (free && images.length >= 2) {
+      toast.error("Az ingyenes verzióban csak 2 képet adhatsz hozzá a történethez.");
       return;
     }
 
@@ -276,9 +276,9 @@ export default function StoryYear({ data, index, free }) {
 
           {isEditable && (
             <>
-              {free && images.length >= 0 ? (
-                <div className="flex lg:col-span-4 col-span-2 flex-col items-center justify-center gap-4 border border-dashed border-[--rose] text-[--rose] w-full h-48 rounded-2xl text-center p-4">
-                  <p className="font-bold text-[--rose] text-sm">Az ingyenes verzióban cím, és leírás adható hozzá az történethez.</p>
+              {free && images.length >= 2 ? (
+                <div className="flex col-span-2 flex-col items-center justify-center gap-4 border border-dashed border-[--rose] text-[--rose] w-full h-48 rounded-2xl text-center p-4">
+                  <p className="font-bold text-[--rose] text-sm">Az ingyenes verzióban csak 2 db kép adható hozzá a történethez.</p>
                   <p className="font-regular text-black text-sm">Vásárolj emlékérmét a korlátlan számú kép hozzáadásához.</p>
                   <Link
                     href="/erme"

@@ -50,10 +50,10 @@ export default function Story({ data, free }) {
 
       {isEditable && (
         <>
-          {free && storyBlocks.length >= 5 ? (
+          {free && storyBlocks.length >= 1 ? (
             <div className="flex flex-col items-center justify-center gap-4 border border-dashed border-[--rose] text-[--rose] w-full h-48 rounded-2xl text-center p-4">
               
-              <Paragraph classname={"font-semibold text-[--rose]"}>Az ingyenes verzióban legfeljebb 5 történetet hozhatsz létre.</Paragraph>
+              <Paragraph classname={"font-semibold text-[--rose]"}>Az ingyenes verzióban legfeljebb 1 történetet hozhatsz létre.</Paragraph>
               <Label classname={"text-black"}>Vásárolj emlékérmét a korlátlan számú történet hozzáadásához.</Label>
               <Link
                 href="/erme"

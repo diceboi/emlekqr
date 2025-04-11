@@ -5,6 +5,7 @@ import ProfileData from "../components/Emlekadatlap/ProfileData";
 import ProfileInfo from "../components/Emlekadatlap/ProfileInfo";
 import ProfileEditButton from "../components/Emlekadatlap/ProfileEditButton";
 import PremiumPopup from "../components/Emlekadatlap/PremiumPopup";
+
 export const dynamic = 'force-dynamic'
 
 
@@ -19,6 +20,21 @@ const findFreeEmlekadatlaps = async (email) => {
     return data?.data || [];
   } catch (error) {
     console.log("Az adatok betöltése sikertelen", error);
+    return [];
+  }
+};
+
+const getAllIttjartam = async (uri) => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
+    const res = await fetch(`${baseUrl}/api/getIttjartam?adatlap=${uri}`, { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error("Az adatok letöltése nem sikerült");
+    }
+    const data = await res.json();
+    return data?.data?.ittjartam || []; // ✅ helyes kulcsnév
+  } catch (error) {
+    console.log("Az Ittjartam adatok betöltése sikertelen", error);
     return [];
   }
 };
@@ -41,7 +57,7 @@ const getUserData = async (email) => {
 export async function generateMetadata({params}) {
  
   return {
-    title: `Készítsd el Emlékadatlapod - MOST 15 Napig INGYEN - EmlékQR`,
+    title: `Készítsd el INGYENES emlékoldalad - EmlékQR`,
     //openGraph: {
     //  images: [currentData?.profileimage],
     //},
@@ -63,17 +79,19 @@ export default async function EmlekadatlapKeszites({ params }) {
 
   const hasReachedLimit = existingAdatlapok.length >= 3;
 
+  const allittjartam = await getAllIttjartam(params.emlekadatlap);
+
   return (
     <>
       <section className="relative w-full px-2 lg:px-0 pt-10 pb-32 lg:pt-20">
-        <PremiumPopup hasReachedLimit={hasReachedLimit} popup={'reached-limit'} innertext={'3-nál több ingyenes adatlap csak érme vásárlása után hozható létre.'} />
+        <PremiumPopup hasReachedLimit={hasReachedLimit} popup={'reached-limit'} innertext={'3-nál több ingyenes emlékoldal csak érme vásárlása után hozható létre.'} />
         <div className="container-inner flex flex-col m-auto gap-8">
             <CoverPicture session={session} currentuser={currentUser} free={true} />
             <div
               id="profile-data"
-              className="flex flex-col xl:flex-row gap-8 xl:gap-20 xlitems-end items-center w-full"
+              className="flex flex-col xl:flex-row gap-8 xl:gap-20 xl:items-start items-center w-full"
             >
-              <ProfilePicture session={session} free={true} />
+              <ProfilePicture session={session} free={true} currentuser={currentUser} allittjartam={allittjartam} />
               <ProfileData session={session} free={true} />
             </div>
             <ProfileInfo session={session} free={true} />  

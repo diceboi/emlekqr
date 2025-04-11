@@ -83,14 +83,12 @@ export default function EmlekadatlapTile({ data }) {
             <div className="flex flex-col gap-4">
               <Label><b>1. lépés:</b> Vásárolj egy érmét!</Label>
               <Label><b>2. lépés:</b> A telefonod kamerájával olvasd be a QR kódot. (Ha régebbi telefonod van, akkor tölts le egy QR kód olvasó alkalmazást.)</Label>
-              <Label><b>3. lépés:</b> Miután megnyitottad a QR kódon található oldalt, írd be a 6 számjegyű kódot amit email-ben kaptál vásárlás után. Ha az ellenőrzés sikeres, válaszd ki melyik ingyenes adatlapodat szeretnéd összekötni az érmével, vagy kezdj el szerkeszteni egy teljesen új adatlapot.</Label>
+              <Label><b>3. lépés:</b> Miután megnyitottad a QR kódon található oldalt, írd be a 6 számjegyű kódot amit email-ben kaptál vásárlás után. Ha az ellenőrzés sikeres, válaszd ki melyik ingyenes emlékoldaladat szeretnéd összekötni az érmével, vagy kezdj el szerkeszteni egy teljesen új emlékoldalt.</Label>
               <div className="flex lg:flex-row flex-col gap-4 self-center">
               <Link 
                   href="/erme" 
-                  className="flex flex-nowrap items-center justify-center gap-2 px-4 py-2 rounded-full bg-gradient-to-br from-[--rose] to-[--blue] hover:bg-gradient-to-r hover:from-[--rose] hover:to-[--blue] transition-all text-white">
-                      <TbQrcode 
-                          className="w-6 h-6"
-                      />
+                  className="flex flex-nowrap items-center justify-center gap-4 px-4 py-2 rounded-full bg-gradient-to-br from-[--rose] to-[--blue] hover:bg-gradient-to-r hover:from-[--rose] hover:to-[--blue] transition-all text-white">
+                      <Image src='/emlekqr-plus-white.svg' width={25} height={25} title="EmlékQR Plus (az emlékoldalhoz érme is tartozik)" className="" alt="EmlékQR Plusz" />
                       <span >
                         Érme rendelés
                       </span>
@@ -102,7 +100,14 @@ export default function EmlekadatlapTile({ data }) {
       </Modal>
       <div className={`relative flex lg:flex-row flex-col gap-8 ${data.paymentStatus === 'free' ? 'bg-white  hover:bg-[--cream]' : 'bg-[--blue-15]  hover:bg-[--blue-50]'} rounded-xl border border-[--blue-15] hover:border-[--cream] p-4 min-h-[125px]`}>
         <div className="flex lg:flex-row flex-col gap-4 w-full">
+          {data.paymentStatus === 'free' && (
+            <button onClick={() => {togglePopup("Connect"); setPopupUri(data.uri)}} className="flex lg:flex-col flex-row lg:p-4 p-2 gap-4 items-center justify-center rounded-lg lg:w-[75px] w-full h-full bg-gradient-to-br from-[--rose] to-[--blue] text-xs text-white">
+              <Image src='/emlekqr-plus-white.svg' width={25} height={25} title="EmlékQR Plus (az emlékoldalhoz érme is tartozik)" className="" alt="EmlékQR Plusz" />Váltás EmlékQR Plusz-ra.
+
+            </button>
+          )}
           <div className={`flex flex-col items-center justify-center lg:w-[75px] lg:h-[75px] w-[50px] h-[50px] self-start ${data.paymentStatus === 'free' ? 'bg-gradient-to-br from-[--white] to-[--white]' : 'bg-gradient-to-br from-[--rose] to-[--blue]'} rounded-full p-1`}>
+            
             <div className={`relative lg:w-[65px] lg:h-[65px] w-[40px] h-[40px] rounded-full ${data.paymentStatus === 'free' ? 'border border-gray-300' : 'border border-transparent'}`}>
               {data.profileimage && (
                 <Image 
@@ -131,7 +136,7 @@ export default function EmlekadatlapTile({ data }) {
               {data.paymentStatus === 'free' ? (
                 null
               ):(
-                <Image src='/emlekqr-plus-color.svg' width={20} height={20} title="EmlékQR Plus (az adatlaphoz érme is tartozik)" className="" alt="EmlékQR Plus" />
+                <Image src='/emlekqr-plus-color.svg' width={20} height={20} title="EmlékQR Plus (az emlékoldalhoz érme is tartozik)" className="" alt="EmlékQR Plus" />
               )}
             </div>
 
@@ -152,7 +157,7 @@ export default function EmlekadatlapTile({ data }) {
                 </div>
               ) : data?.paymentStatus === 'free' ? (
                 <div className="text-xs text-[--blue]">
-                  <p>Ingyenes adatlap</p>
+                  <p>Ingyenes emlékoldal</p>
                   {data?.paymentMethod && (
                     <p className="text-gray-500">Fizetési mód: {data.paymentMode}</p>
                   )}
@@ -166,11 +171,8 @@ export default function EmlekadatlapTile({ data }) {
         </div>
         
         <div className="flex flex-col justify-end lg:items-end items-start gap-2 min-w-fit">
-          <TbTrash className="absolute top-4 right-4 w-6 h-6 text-[--error] hover:text-white bg-transparent hover:bg-[--error] p-1 cursor-pointer rounded-full" onClick={handleDeleteClick} />
-          <Link href={`/emlekadatlapok/${data.uri}`} className="px-2 py-1 bg-[--blue] hover:bg-[--blue-hover] rounded-full transition-all text-white text-xs lg:w-fit">Adatlap megtekintése</Link>
-          {data.paymentStatus === 'free' && (
-            <button onClick={() => {togglePopup("Connect"); setPopupUri(data.uri)}} className="px-2 py-1 bg-gradient-to-br from-[--rose] to-[--blue] hover:bg-gradient-to-r hover:from-[--rose] hover:to-[--blue] rounded-full transition-all text-white text-xs lg:w-fit">Összekapcsolás érmével</button>
-          )}
+          <TbTrash className="absolute lg:top-4 bottom-4 right-4 w-6 h-6 text-[--error] hover:text-white bg-transparent hover:bg-[--error] p-1 cursor-pointer rounded-full" onClick={handleDeleteClick} />
+          <Link href={`/emlekadatlapok/${data.uri}`} className="px-2 py-1 bg-[--blue] hover:bg-[--blue-hover] rounded-full transition-all text-white text-xs lg:w-fit">Emlékoldal megtekintése</Link>
         </div>
       </div>
     </>

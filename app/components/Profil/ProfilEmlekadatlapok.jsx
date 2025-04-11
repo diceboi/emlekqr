@@ -24,7 +24,7 @@ export default function ProfilEmlekadatlapok({ currentdata }) {
         <div className="flex flex-col gap-8">
         <div className="flex flex-nowrap gap-4 items-center">
             <TbLibraryPhoto className="w-8 h-8 text-[--rose] bg-[--cream] rounded-full p-1" />
-            <H4 classname={"text-[--rose]"}>Emlékadatlapok</H4>
+            <H4 classname={"text-[--rose]"}>Emlékoldalak</H4>
         </div>
         
         <div className="flex flex-col gap-4">
@@ -33,7 +33,7 @@ export default function ProfilEmlekadatlapok({ currentdata }) {
                 <EmlekadatlapTile data={data} key={index}/>
             ))
             ) : (
-            <h4>Jelenleg még nincs adatlapod, készítsd el saját érmédet</h4>
+            <h4>Jelenleg még nincs emlékoldalad, készítsd el saját érmédet</h4>
             )}
         </div>
         </div>

@@ -54,7 +54,7 @@ export default async function emlekadatlapok() {
             <EmlekadatlapTile data={currentdata} key={index}/>
           ))
         ) : (
-          <h4>Jelenleg még nincs adatlapod, készítsd el saját érmédet</h4>
+          <h4>Jelenleg még nincs emlékoldalad, készítsd el saját érmédet</h4>
         )}
       </div>
     </section>

@@ -58,7 +58,7 @@ export default function ProfilErtesitesekTile({ notificationdata }) {
           >
             {notificationdata.adatlap}
           </Link>{" "}
-          azonosítójú adatlapon.
+          azonosítójú emlékoldalon.
         </p>
       </Link>
     )}
@@ -90,7 +90,7 @@ export default function ProfilErtesitesekTile({ notificationdata }) {
           >
             {notificationdata.adatlap}
           </Link>{" "}
-          azonosítójú adatlapodhoz.
+          azonosítójú emlékoldalhoz.
         </p>
       </Link>
     )}

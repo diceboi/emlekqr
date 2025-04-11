@@ -13,12 +13,16 @@ import H3 from "./UI/H3";
 import Link from "next/link";
 import OsszehasonlitasInner from "./OsszehasonlitasInner";
 import Image from "next/image";
+import InfoBlock from "../components/UI/InfoBlock";
 
 export default function HasznalataInner() {
   return (
     <>
-      <div className="relative lex flex-col gap-4 bg-[--blue-15] border border-[--blue] p-8 rounded-3xl">
-        <TbInfoCircleFilled className="absolute -top-5 left-8 text-[--blue] min-w-10 min-h-10 bg-neutral-50 rounded-full" />
+      <InfoBlock
+        bgcolor={"bg-[--blue-15]"}
+        bordercolor={"border-[--blue]"}
+        infocolor={"text-[--blue]"}
+      >
         <Paragraph>
           Az EmlékQR emlékoldal egy modern, személyre szabható megoldás, amely
           lehetővé teszi, hogy szeretteink emlékét örökre megőrizzük és bárki
@@ -37,7 +41,18 @@ export default function HasznalataInner() {
           Az emlékoldal használata rendkívül egyszerű, és pár lépésben teljesen
           személyre szabható a tartalma.
         </Paragraph>
+      </InfoBlock>
+
+      <div className="relative flex flex-col gap-4 w-full bg-[--cream] p-8 rounded-3xl my-16">
+        <H3 classname={"text-[--rose]"}>Miért válaszd az EmlékQR érmét?</H3>
+        <Paragraph>
+          Az emlékérme segítségével méltó módon emlékezhetsz meg szeretteidről.
+          Legyen szó mindenszentek napjáról, egy különleges alkalomról, vagy
+          mindennapi emlékezésről, az érme biztosítja, hogy az elhunytak emléke
+          tovább éljen.
+        </Paragraph>
       </div>
+
       <div className="flex flex-col gap-8 py-16">
         <H2 classname={"pt-16 text-[--rose] lg:text-left text-center"}>
           Összehasonlítás
@@ -105,7 +120,7 @@ export default function HasznalataInner() {
               Vagy akár próbáld ki regisztráció nélkül is!
             </Paragraph>
             <Link
-              href="/emlekadatlap-keszites"
+              href="/ingyenes-emlekoldal-keszites"
               className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 mt-4 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white font-semibold w-fit self-center"
             >
               Emlékoldal készítés
@@ -148,18 +163,6 @@ export default function HasznalataInner() {
                 Az érme elhelyezése előtt a felületet tisztítsuk meg a portól
                 lehetőleg nedves törlőkendővel, és várjuk meg amíg megszárad. A
                 tiszta felületen képes a kétoldalú ragasztó a legerősebb lenni.
-              </Paragraph>
-            </div>
-
-            <div className="relative flex flex-col gap-4 w-full bg-[--cream] p-8 rounded-3xl">
-              <H3 classname={"text-[--rose]"}>
-                Miért válaszd az EmlékQR érmét?
-              </H3>
-              <Paragraph>
-                Az emlékérme segítségével méltó módon emlékezhetsz meg
-                szeretteidről. Legyen szó mindenszentek napjáról, egy különleges
-                alkalomról, vagy mindennapi emlékezésről, az érme biztosítja,
-                hogy az elhunytak emléke tovább éljen.
               </Paragraph>
             </div>
 

@@ -36,10 +36,10 @@ import {
             </div>
           </div>
           <Text style={{ ...text, marginBottom: '24px'}}>
-            Miután az érméd megérkezett, telefonod kamerájának (vagy ha régebbi a telefon, egy QR kód olvasó alkalmazás) segítségével olvasd be a kódot, majd navigálj a felugró oldalra. Ez lesz a te emlékadatlapod.
+            Miután az érméd megérkezett, telefonod kamerájának (vagy ha régebbi a telefon, egy QR kód olvasó alkalmazás) segítségével olvasd be a kódot, majd navigálj a felugró oldalra. Ez lesz a te emlékoldalad.
           </Text>
           <Text style={{ ...text, marginBottom: '24px'}}>
-            Az oldal itt kérni fog tőled egy 6 számjegyű ellenőrző kódot, hogy véglegesen a te profilodhoz kapcsolja az adott adatlapod.
+            Az oldal itt kérni fog tőled egy 6 számjegyű ellenőrző kódot, hogy véglegesen a te profilodhoz kapcsolja az adott emlékoldalt.
           </Text>
           <Text style={{ ...text, marginBottom: '24px', paddingLeft: '16px', paddingRight: '16px', paddingBottom: '8px', paddingTop: '8px', backgroundColor: '#701633', borderRadius: '32px', color: '#ffffff'}}>
             A te ellenőrző kódod a következő: <b><b>{secret}</b></b>
@@ -48,7 +48,7 @@ import {
             Miután beírtad ezt a kódot, kattints az ellenőrzés gombra, és sikeres ellenőrzés után, már szerkesztheted is az emlékoldalt. Ezt az emlékoldalt a QR kódon kívül a weboldalon a profilodra kattintva is elérheted.
           </Text>
           <Text style={{ ...text, marginBottom: '24px', paddingLeft: '16px', paddingRight: '16px', paddingBottom: '8px', paddingTop: '8px', backgroundColor: '#2293a421', borderRadius: '32px', border: '1px solid #2292a4'}}>
-            Tipp: Az egyszerű szerkesztési élmény miatt nem kell minden változtatás után rámenteni az adatlapra. Változtass meg mindent amit szeretnél, navigálj a lapok között és ha úgy érzed rendben van, akkor mentsd el. Így lényegesen egyszerűbb és élvezhetőbb a szerkesztés.
+            Tipp: Az egyszerű szerkesztési élmény miatt nem kell minden változtatás után rámenteni az emlékoldalra. Változtass meg mindent amit szeretnél, navigálj a lapok között és ha úgy érzed rendben van, akkor mentsd el. Így lényegesen egyszerűbb és élvezhetőbb a szerkesztés.
           </Text>
           <Text style={{...text}}>
             Kérdés esetén keress bátran bennünket az <a href='mailto:info@emlek-qr.hu' style={{...link}}>info@emlek-qr.hu</a> email címen, vagy a <a href='https://emlek-qr.hu/kapcsolat' target='__blank' style={{...link}}>kapcsolat</a> oldalon!

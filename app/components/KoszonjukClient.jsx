@@ -58,7 +58,7 @@ export default function KoszonjukClient({ session, checkoutSession, randomNumber
     <section className="flex flex-col items-center w-full py-20 px-4 min-h-[93vh]">
       <div className="container flex flex-col items-center gap-8 m-auto p-8 bg-[--cream] rounded-2xl">
         <H2 classname={"text-[--rose] text-center"}>Köszönjük a vásárlást</H2>
-        <Paragraph classname={"text-center lg:w-1/2"}>Jelenleg nincs más dolgod, mint megvárni, amíg megérkezik az érme, és követni az email-ben leírt lépéseket emlékadatlapod aktiválásához.</Paragraph>
+        <Paragraph classname={"text-center lg:w-1/2"}>Jelenleg nincs más dolgod, mint megvárni, amíg megérkezik az érme, és követni az email-ben leírt lépéseket emlékoldalad aktiválásához.</Paragraph>
       </div>
     </section>
   );

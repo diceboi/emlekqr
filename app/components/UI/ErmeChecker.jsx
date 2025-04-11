@@ -84,7 +84,7 @@ export default function ErmeChecker({
 
       if (!mergeData.success) {
         throw new Error(
-          `Hiba az emlékadatlap frissítésekor: ${mergeData.error}`
+          `Hiba az emlékoldal frissítésekor: ${mergeData.error}`
         );
       }
 
@@ -114,7 +114,7 @@ export default function ErmeChecker({
       >
         <div className="flex flex-col gap-4">
           <h3 className="text-xl text-center font-semibold tracking-tight text-[--rose]">
-            Szeretnéd összekötni az emlékérméd egy ingyenes emlékadatlapoddal? Válassz egyet.
+            Szeretnéd összekötni az emlékérméd egy ingyenes emlékoldaladdal? Válassz egyet.
           </h3>
           {existingadatlapok.map((data) => {
             const isSelected = freedata?.uri === data.uri;

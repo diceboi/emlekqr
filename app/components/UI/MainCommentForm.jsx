@@ -84,7 +84,7 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
             from: session ? session.user.name : data.Name,
             images: "",
             videos: "",
-            message: "hozzászólt az adatlapodhoz"
+            message: "hozzászólt az emlékoldaladhoz"
           })
         });
   

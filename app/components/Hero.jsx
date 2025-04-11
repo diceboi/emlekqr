@@ -78,7 +78,7 @@ export default function Hero() {
                 <Label classname={"cursor-pointer"}>Érme rendelés</Label>
               </Link>
               <Link
-                href="/emlekadatlap-keszites"
+                href="/ingyenes-emlekoldal-keszites"
                 className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-4 rounded-full bg-[--cream-10] hover:bg-[--blue] transition-all text-white h-fit"
               >
                 <TbBrowserPlus className="w-6 h-6" />
