@@ -81,6 +81,8 @@ export default async function PeldaOldal() {
     const tribute = await getTributes("0001001");
     const fixedCurrentTributes = tribute?.data?.Tribute || null;
 
+    console.log(fixedCurrentData)
+
   return (
     <section className="relative w-full bg-white px-4 pb-20">
         <div className="relative flex flex-col gap-4 py-20">
@@ -111,7 +113,7 @@ export default async function PeldaOldal() {
                 <div className="absolute top-0 left-0 w-full h-full pointer-events-none group-hover:border-2 border-[--blue] border-dashed bg-transparent group-hover:bg-[--blue-15] z-30 rounded-3xl"></div>
             </div>
             <div className="relative group">
-              <ProfileInfo session={fixedSession} data={fixedCurrentData} tributes={fixedCurrentTributes} cursor={false}/>
+              <ProfileInfo session={fixedSession} data={fixedCurrentData} tributes={fixedCurrentTributes} cursor={false} free={false}/>
               <div className="absolute top-20 left-1/2 -translate-x-1/2 z-40">
                 <H3 classname={'px-4 py-2 bg-[--blue] text-white text-center group-hover:block hidden rounded-3xl'}>Történetek,<br></br>Médiatartalmak,<br></br>Hozzászólások</H3>
                 <TbHandClick className="group-hover:hidden block min-w-16 h-auto text-[--blue] animate-bounce z-40"/>

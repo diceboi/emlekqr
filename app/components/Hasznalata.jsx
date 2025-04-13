@@ -195,23 +195,15 @@ export default function Hasznalata() {
             )}
 
             {activeDiv === 1 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="relative w-full h-full overflow-hidden"
-              >
                 <motion.img
                   initial={{ opacity: "0%", y: -10 }}
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/scan.webp"
+                  src="/image-kepek/erme-kamera.webp"
                   alt="Kör érme"
-                  className="absolute bottom-0 left-0 w-full h-auto"
+                  className="w-full h-full object-cover rounded-3xl"
                 />
-              </motion.div>
             )}
 
             {activeDiv === 2 && (
@@ -277,7 +269,7 @@ export default function Hasznalata() {
                     animate={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.1 }}
-                    src="/image-kepek/meselj-el-2.webp"
+                    src="/image-kepek/csaladi-haz-1.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -286,7 +278,7 @@ export default function Hasznalata() {
                     whileInView={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.2 }}
-                    src="/image-kepek/meselj-el-3.webp"
+                    src="/image-kepek/csaladi-haz-2.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -295,34 +287,7 @@ export default function Hasznalata() {
                     whileInView={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.3 }}
-                    src="/image-kepek/meselj-el-4.webp"
-                    alt="Kutyus kép"
-                    className=""
-                  />
-                  <motion.img
-                    initial={{ opacity: "0%", y: -10 }}
-                    animate={{ opacity: "100%", y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4, bounce: "spring", delay: 0.4 }}
-                    src="/image-kepek/meselj-el-5.webp"
-                    alt="Kutyus kép"
-                    className=""
-                  />
-                  <motion.img
-                    initial={{ opacity: "0%", y: -10 }}
-                    whileInView={{ opacity: "100%", y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4, bounce: "spring", delay: 0.5 }}
-                    src="/image-kepek/meselj-el-6.webp"
-                    alt="Kutyus kép"
-                    className=""
-                  />
-                  <motion.img
-                    initial={{ opacity: "0%", y: -10 }}
-                    whileInView={{ opacity: "100%", y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4, bounce: "spring", delay: 0.6 }}
-                    src="/image-kepek/meselj-el-7.webp"
+                    src="/image-kepek/csaladi-haz-3.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -343,7 +308,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/helyezd-el-2.webp"
+                  src="/image-kepek/helyezd-el-3.webp"
                   alt="Kör érme"
                   className="rounded-3xl"
                 />
@@ -588,23 +553,15 @@ export default function Hasznalata() {
               </Paragraph>
             </div>
             <div className="flex flex-col justify-center gap-4 min-h-[60vh] scroll-section">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="relative w-full h-full overflow-hidden bg-[--cream] rounded-3xl"
-              >
                 <motion.img
                   initial={{ opacity: "0%", y: -10 }}
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/scan.webp"
+                  src="/image-kepek/erme-kamera.webp"
                   alt="Kör érme"
-                  className="absolute bottom-0 left-0 w-full h-auto"
+                  className="w-full h-full object-cover rounded-3xl"
                 />
-              </motion.div>
               <H3 classname="text-[--blue]">Olvasd be</H3>
               <Paragraph>
                 Ha kézhez kaptad az emlékérmét, a QR-kódot beolvasva
@@ -678,7 +635,7 @@ export default function Hasznalata() {
                     animate={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.1 }}
-                    src="/image-kepek/meselj-el-2.webp"
+                    src="/image-kepek/csaladi-haz-1.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -687,7 +644,7 @@ export default function Hasznalata() {
                     whileInView={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.2 }}
-                    src="/image-kepek/meselj-el-3.webp"
+                    src="/image-kepek/csaladi-haz-2.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -696,34 +653,7 @@ export default function Hasznalata() {
                     whileInView={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.3 }}
-                    src="/image-kepek/meselj-el-4.webp"
-                    alt="Kutyus kép"
-                    className=""
-                  />
-                  <motion.img
-                    initial={{ opacity: "0%", y: -10 }}
-                    animate={{ opacity: "100%", y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4, bounce: "spring", delay: 0.4 }}
-                    src="/image-kepek/meselj-el-5.webp"
-                    alt="Kutyus kép"
-                    className=""
-                  />
-                  <motion.img
-                    initial={{ opacity: "0%", y: -10 }}
-                    whileInView={{ opacity: "100%", y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4, bounce: "spring", delay: 0.5 }}
-                    src="/image-kepek/meselj-el-6.webp"
-                    alt="Kutyus kép"
-                    className=""
-                  />
-                  <motion.img
-                    initial={{ opacity: "0%", y: -10 }}
-                    whileInView={{ opacity: "100%", y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4, bounce: "spring", delay: 0.6 }}
-                    src="/image-kepek/meselj-el-7.webp"
+                    src="/image-kepek/csaladi-haz-3.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -748,7 +678,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/helyezd-el-2.webp"
+                  src="/image-kepek/helyezd-el-3.webp"
                   alt="Kör érme"
                   className="w-full h-auto rounded-3xl"
                 />

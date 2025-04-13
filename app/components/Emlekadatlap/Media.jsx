@@ -81,7 +81,7 @@ export default function Media({ data, free }) {
 
   // Images //////////////////////////////////////
 
-  const MAX_FILE_SIZE = 2 * 1024 * 1024;
+  const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
   const handleImageChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
