@@ -119,7 +119,7 @@ export default function OsszehasonlitasInner() {
             </div>
 
             <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
-            <Label classname={"text-[--error]"}>Max. 2 db</Label>
+            <Label classname={"text-[--error]"}>Max. 2 db kép</Label>
             </div>
 
             <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">

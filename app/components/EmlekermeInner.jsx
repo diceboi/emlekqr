@@ -169,33 +169,27 @@ export default function EmlekermeInner({ session, userdata, classname }) {
             <div className="flex flex-col gap-2">
                 <Label classname={""}>Válassz fizetési módot: </Label>
                 
-                <div className="grid grid-cols-3 bg-[--cream] rounded-3xl shadow-inner">
+                <div className="grid grid-cols-2 bg-[--cream] rounded-3xl shadow-inner">
                     <button 
                         onClick={() => setPayment(STRIPE_PRICE_ID_ONE, setMode('subscription'))} 
                         className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-l-3xl ${payment === STRIPE_PRICE_ID_ONE ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
                     >
-                        <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_ONE ? "text-white" : "text-black"}`}>500 Ft / hó</Label>
+                        <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_ONE ? "text-white" : "text-black"}`}>7000 Ft / év</Label>
                     </button>
                     <button 
                         onClick={() => setPayment(STRIPE_PRICE_ID_TWO, setMode('subscription'))} 
-                        className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 ${payment === STRIPE_PRICE_ID_TWO ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
+                        className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-r-3xl ${payment === STRIPE_PRICE_ID_TWO ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
                     >
-                        <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_TWO ? "text-white" : "text-black"}`}>5 000 Ft / év</Label>
-                    </button>
-                    <button 
-                        onClick={() => setPayment(STRIPE_PRICE_ID_THREE, setMode('payment'))} 
-                        className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-r-3xl ${payment === STRIPE_PRICE_ID_THREE ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
-                    >
-                        <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_THREE ? "text-white" : "text-black"}`}>35 000 Ft örök érvényű</Label>
+                        <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_TWO ? "text-white" : "text-black"}`}>40 000 Ft örök érvényű</Label>
                     </button>
                 </div>
-                <motion.div
+                {/*<motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
                     className="flex flex-col gap-1 justify-center items-center px-4 py-2 rounded-3xl bg-[--error] w-full self-center h-auto shadow-md">
                     <Paragraph classname={"text-white text-center"}>Utoljára tavalyi áron 2025.02.28-ig</Paragraph>
-                </motion.div>
+                </motion.div>*/}
                 {/*
                 { payment === STRIPE_PRICE_ID_ONE && (
                     <motion.div
@@ -233,11 +227,11 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                 */}
             </div>
 
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-row items-center justify-center gap-4">
                 {session && (!userdata?.data.User.secret || userdata?.data.User.secret === "") && (
                     <button
                     onClick={handleCheckout}
-                    className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full"
+                    className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-gradient-to-br from-[--rose] to-[--blue] hover:bg-gradient-to-r hover:scale-105 transition-all text-white w-fit"
                     disabled={loading}
                     >
                     <PiShoppingCart className="w-6 h-6" />
@@ -245,7 +239,8 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                     </button>
                 )}
                 {!session && (
-                    <button onClick={() => {setForm('login'), togglePopup("Login")}} className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-[--rose] hover:bg-[--rose-hover] hover:scale-105 transition-all text-white w-full">
+                    <button onClick={() => {setForm('login'), togglePopup("Login")}} className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-gradient-to-br from-[--rose] to-[--blue] hover:bg-gradient-to-r hover:scale-105 transition-all text-white w-fit">
+                        <PiShoppingCart className="w-6 h-6" />
                         Tovább a pénztárba
                     </button>
                 )}

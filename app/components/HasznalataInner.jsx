@@ -18,6 +18,7 @@ import InfoBlock from "../components/UI/InfoBlock";
 export default function HasznalataInner() {
   return (
     <>
+    
       <InfoBlock
         bgcolor={"bg-[--blue-15]"}
         bordercolor={"border-[--blue]"}

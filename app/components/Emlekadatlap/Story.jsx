@@ -1,6 +1,7 @@
 "use client";
 
 import StoryYear from "../Emlekadatlap/StoryYear";
+import StoryYearPeldaOldal from "../Emlekadatlap/StoryYearPeldaOldal";
 import { useContext, useEffect, useState } from "react";
 import { UpdateEmlekadatlapContext } from "../../UpdateEmlekadatlapContext";
 import { Context } from "../../Context";
@@ -16,22 +17,24 @@ import H3 from "../UI/H3"
 import H4 from "../UI/H4"
 import Paragraph from "../UI/Paragraph"
 
-export default function Story({ data, free }) {
+export default function Story({ data, free, peldaoldal }) {
 
   const storydata = data?.story
 
   const { addStoryBlock, formData } = useContext(UpdateEmlekadatlapContext);
-  const [storyBlocks, setStoryBlocks] = useState(free ? formData.story : storydata);
+  const [storyBlocks, setStoryBlocks] = useState(storydata);
   const { isEditable } = useContext(Context);
 
   useEffect(() => {
     // Always update from formData in free mode, or if we're editing an existing record
-    setStoryBlocks(free ? formData.story : (formData.story || storydata));
-  }, [formData, storydata, free]);
+    setStoryBlocks(storydata);
+  }, [storydata]);
 
   const handleAddStoryBlock = () => {
     addStoryBlock();
   };
+
+  console.log("Story: ", storyBlocks)
 
   return (
     <div className="flex flex-col gap-8 px-1 py-8 rounded-2xl">
@@ -40,12 +43,16 @@ export default function Story({ data, free }) {
         <H4 classname={"text-[--rose]"}>Történet</H4>
       </div>
 
-      {storyBlocks && storyBlocks.length > 0 ? (
-        storyBlocks.map((item, index) => (
-          <StoryYear data={item} key={index} index={index} free={free} />
-        ))
-      ) : (
-        <h4>Írj le történeteket szerettedről!</h4>
+      {peldaoldal ? (
+        <StoryYearPeldaOldal data={storyBlocks[0]} />
+      ):(
+        storyBlocks && storyBlocks.length > 0 ? (
+          storyBlocks.map((item, index) => (
+            <StoryYear data={item} key={index} index={index} free={free} />
+          ))
+        ) : (
+          <h4>Írj le történeteket szerettedről!</h4>
+        )
       )}
 
       {isEditable && (

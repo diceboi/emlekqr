@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Paragraph from "./Paragraph";
@@ -11,6 +12,7 @@ export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (query.length > 2) {
@@ -34,6 +36,11 @@ export default function SearchBar() {
       setResults([]); // Clear results if query is less than 3 chars
     }
   }, [query]);
+
+  useEffect(() => {
+    setQuery("");
+    setResults([]);
+  }, [pathname]);
 
   return (
     <div className="relative w-full self-stretch">

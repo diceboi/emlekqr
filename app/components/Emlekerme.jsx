@@ -91,7 +91,7 @@ export default function Emlekerme({ session, userdata }) {
 
               <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
                 <TbBrowserPlus className="w-6 h-6 text-[--blue]" />
-                <Label>Nyilvános emlékoldal</Label>
+                <Label>Emlékoldal minden extra funkcióval</Label>
               </div>
 
               <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">

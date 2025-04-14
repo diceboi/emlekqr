@@ -4,11 +4,12 @@ import { useState, useContext } from "react";
 import Bio from "../../components/Emlekadatlap/Bio"
 import Story from "../../components/Emlekadatlap/Story"
 import Media from "../../components/Emlekadatlap/Media"
+import MediaPeldaOldal from "../../components/Emlekadatlap/MediaPeldaOldal"
 import Tributes from "../../components/Emlekadatlap/Tributes"
 import { Context } from "../../Context";
 import PremiumPopup from "../../components/Emlekadatlap/PremiumPopup";
 
-export default function ProfileInfo({ data, tributes, session, cursor, free }) {
+export default function ProfileInfo({ data, tributes, session, cursor, free, peldaoldal }) {
   const [visibleSection, setVisibleSection] = useState("story");
 
   const { openPopup, setOpenPopup } = useContext(Context);
@@ -49,10 +50,14 @@ export default function ProfileInfo({ data, tributes, session, cursor, free }) {
       </div>
       <div className={`w-full ${cursor === false ? 'pointer-events-none' : 'pointer-events-auto'}`}>
         {visibleSection === "story" && (
-          <Story id="story" data={data || null} free={free} />
+          <Story id="story" data={data || null} free={free} peldaoldal={peldaoldal} />
         )}
         {visibleSection === "media" && (
-          <Media id="media" data={data?.media || null} free={free} />
+          peldaoldal ? (
+            <MediaPeldaOldal data={data} />
+          ) : (
+            <Media id="media" data={data?.media || null} free={free} peldaoldal={peldaoldal} />
+          )
         )}
         {visibleSection === "tributes" && (
           <Tributes id="tributes" data={data?.owner || null} currenttributes={tributes || null} issession={session} free={free} />

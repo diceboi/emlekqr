@@ -119,7 +119,7 @@ export default function Hero() {
           muted
           loop
           className="absolute w-full h-full top-0 left-0 object-cover lg:object-cover rounded-b-3xl"
-          prioroty="true"
+          preload="auto"
         />
       </section>
     </>
