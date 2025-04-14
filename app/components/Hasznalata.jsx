@@ -103,9 +103,19 @@ export default function Hasznalata() {
                 hozzáfűzni akár ünnepekkor, mindenszentekkor, vagy az év bármely
                 napján.
               </Paragraph>
+              <motion.img
+                  initial={{ opacity: "0%", y: -10 }}
+                  whileInView={{ opacity: "100%", y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, bounce: "spring", delay: 0.3 }}
+                  src="/image-kepek/ittjartam.webp"
+                  alt="Kör érme"
+                  className="w-60 shadow-lg rounded-3xl"
+                />
               <Paragraph>
                 Az Itt jártam gombbal pedig tudathatod, hogy meglátogattad az emlékhelyet vagy az emlékoldalt.
               </Paragraph>
+              
             </div>
             <div className="flex flex-col justify-center gap-8 min-h-[80vh] scroll-section">
               <H3 classname="text-[--blue]">Keress rá</H3>
@@ -735,6 +745,18 @@ export default function Hasznalata() {
                 akik távol vannak, vagy egyszerűen egy kedves emléket szeretne
                 hozzáfűzni akár ünnepekkor, mindenszentekkor, vagy az év bármely
                 napján.
+              </Paragraph>
+              <motion.img
+                  initial={{ opacity: "0%", y: -10 }}
+                  whileInView={{ opacity: "100%", y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, bounce: "spring", delay: 0.3 }}
+                  src="/image-kepek/ittjartam.webp"
+                  alt="Kör érme"
+                  className="w-60 shadow-lg rounded-3xl"
+                />
+              <Paragraph>
+                Az Itt jártam gombbal pedig tudathatod, hogy meglátogattad az emlékhelyet vagy az emlékoldalt.
               </Paragraph>
             </div>
             <div className="flex flex-col justify-center gap-4 min-h-[60vh] scroll-section">

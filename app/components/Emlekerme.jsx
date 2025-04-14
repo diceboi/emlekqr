@@ -90,6 +90,11 @@ export default function Emlekerme({ session, userdata }) {
             <div className="flex flex-col">
 
               <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
+                <TbBrowserPlus className="w-6 h-6 text-[--blue]" />
+                <Label>Nyilvános emlékoldal</Label>
+              </div>
+
+              <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
                 <TbQrcode className="w-6 h-6 text-[--blue]" />
                 <Label>Minőségi QR kódos emlékérme</Label>
               </div>
@@ -127,23 +132,17 @@ export default function Emlekerme({ session, userdata }) {
           </div>
 
           <div className="flex flex-col justify-center gap-4 lg:pl-16 lg:py-16 py-8 lg:w-1/2 ">
-            <div className="relative h-[350px]">
+            <div className="">
               <Image
-                src="/image-kepek/family-trip.webp"
+                src="/image-kepek/szemelyre-szabhato.webp"
                 width={1000}
                 height={500}
-                className="absolute lg:top-0 top-16 left-4 border-8 border-white shadow-xl w-2/3 max-w-[400px] -rotate-12 z-0"
-              />
-              <Image
-                src="/image-kepek/family-trip2.webp"
-                width={1000}
-                height={500}
-                className="absolute lg:bottom-0 bottom-16 right-4 border-8 border-white shadow-xl w-2/3 max-w-[400px] rotate-6 z-0"
+                className="rounded-xl"
               />
             </div>
 
             <H2 classname={"text-[--rose]"}>
-              Mesélj el egy különleges történetet
+              Meséld el az emlékoldallal
             </H2>
             <Paragraph>
               Egy kirándulás, az első picúr a családban, egy életre szóló
@@ -152,7 +151,7 @@ export default function Emlekerme({ session, userdata }) {
             </Paragraph>
           </div>
 
-          <div className="flex flex-col justify-center gap-4 lg:pl-16 py-8 lg:w-1/2">
+          {/*<div className="flex flex-col justify-center gap-4 lg:pl-16 py-8 lg:w-1/2">
             <H4 classname={"text-[--rose]"}>
               Az örökkévalóságig, és tovább...
             </H4>
@@ -184,7 +183,7 @@ export default function Emlekerme({ session, userdata }) {
                 </li>
               </ul>
             </div>
-          </div>
+          </div>*/}
 
           <div className="flex flex-col justify-center gap-4 lg:pl-16 lg:py-16 py-8 lg:w-1/2">
             <div className="">

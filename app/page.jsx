@@ -48,7 +48,6 @@ export default async function Home() {
     <PeldaOldal />
     <HomeCTA />
     {/*<MilyenAlkalomra />*/}
-    
     <Hasznalata />
     <Velemenyek />
     </>
