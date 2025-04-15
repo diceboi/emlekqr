@@ -114,7 +114,7 @@ export default function Hero() {
           <Scene className="w-full "/>
       </Canvas>*/}
         <motion.video
-          src="videok/Hero-video.mp4"
+          src="/videok/Hero-video.mp4"
           autoPlay
           muted
           loop
