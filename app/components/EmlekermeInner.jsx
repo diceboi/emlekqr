@@ -177,7 +177,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                         <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_ONE ? "text-white" : "text-black"}`}>7000 Ft / év</Label>
                     </button>
                     <button 
-                        onClick={() => setPayment(STRIPE_PRICE_ID_TWO, setMode('subscription'))} 
+                        onClick={() => setPayment(STRIPE_PRICE_ID_TWO, setMode('payment'))} 
                         className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-r-3xl ${payment === STRIPE_PRICE_ID_TWO ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all`}
                     >
                         <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_TWO ? "text-white" : "text-black"}`}>40 000 Ft örök érvényű</Label>
