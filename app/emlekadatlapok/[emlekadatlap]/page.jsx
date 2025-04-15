@@ -129,7 +129,7 @@ export default async function Emlekadatlap({ params, searchParams  }) {
         <SecretChecker currentdata={currentData} session={session} currentuser={currentUser}/>   
       )}
 
-      {currentData?.secret && session && (
+      {currentData?.secret && session && session?.user?.email === currentData?.owner && (
         <ErmeChecker currentdata={currentData} session={session} currentuser={currentUser} existingadatlapok={existingAdatlapok}/>
       )}  
 
