@@ -54,6 +54,25 @@ export default async function RootLayout({ children }) {
         }}
       ></Script>
 
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-16786648939"
+        strategy="afterInteractive"
+      />
+
+      <Script
+        id="google-ads"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-16786648939');
+          `,
+        }}
+      />
+
       <noscript><img height={"1"} width={"1"} style={{display: "none"}}
       src="https://www.facebook.com/tr?id=1680926859153397&ev=PageView&noscript=1"
       /></noscript>
