@@ -57,7 +57,7 @@ export default function Story({ data, free, peldaoldal }) {
 
       {isEditable && (
         <>
-          {free && storyBlocks.length >= 1 ? (
+          {free && storyBlocks?.length >= 1 ? (
             <div className="flex flex-col items-center justify-center gap-4 border border-dashed border-[--rose] text-[--rose] w-full h-48 rounded-2xl text-center p-4">
               
               <Paragraph classname={"font-semibold text-[--rose]"}>Az ingyenes verzióban legfeljebb 1 történetet hozhatsz létre.</Paragraph>
