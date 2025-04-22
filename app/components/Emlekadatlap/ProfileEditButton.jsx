@@ -285,6 +285,21 @@ export default function ProfileEditButton({ session, user, data, free, existinga
 
       // Most már biztosan a frissített selectedImages-t használja!
       await uploadImages(updatedSelectedImages);
+
+      if (free && session?.user?.email) {
+        await fetch("/api/email/ingyenesAdatlap", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: updatedData.name,
+            email: session.user.email,
+            uri: updatedData.uri,
+            date: new Date().toLocaleString('hu-HU'),
+            isFree: true,
+          }),
+        });
+      }
+
     } catch (error) {
       console.error("Submission error:", error);
       toast.error("Hiba történt az adatok mentése közben.");

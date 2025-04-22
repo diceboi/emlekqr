@@ -558,8 +558,8 @@ export default function Hasznalata() {
               </motion.div>
               <H3 classname="text-[--blue]">Válassz érmét</H3>
               <Paragraph>
-                Válassz egy érmét ami az emlékoldaladra fog vezetni és amit
-                elpostázunk neked.
+                Válassz egy <Link href="/erme" className="text-[--blue] underline">érmét</Link> ami az emlékoldaladra fog vezetni és amit
+                elpostázunk neked, vagy készíts egy <Link href="/ingyenes-emlekoldal-keszites" className="text-[--blue] underline">ingyenes emlékoldalt</Link>, és vásárolj érmét később.
               </Paragraph>
             </div>
             <div className="flex flex-col justify-center gap-4 min-h-[60vh] scroll-section">

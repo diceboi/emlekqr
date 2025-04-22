@@ -12,32 +12,29 @@ import {
   import * as React from 'react';
   
   
-  export const IngyenesAdatlapAdmin = ({nev, email, message, subject}) => (
+  export const IngyenesAdatlapAdmin = ({name, email, url, date}) => (
     <Html>
       <Head />
-      <Preview>Új ingyenes adatlap: {nev}</Preview>
+      <Preview>Új ingyenes adatlap készült:</Preview>
       <Body style={main}>
         <Container style={container}>
           <Img src='https://www.emlek-qr.hu/emleqr-logo-base.png' style={{ width: '150px', height: 'auto', margin: 'auto', paddingTop: '20px' }} />
-          <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Kedves Gabi, {nev} regisztrált az oldalon.</Heading>
+          <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Kedves Gabi, {name} névvel új ingyenes emlékadatlap készült.</Heading>
           <Text style={{ ...text, marginBottom: '24px'}}>
-            Az üzenet a következő volt:
+            Az adatlap adatai:
           </Text>
           <Text style={{...text}}>
-            Név: <span className='font-light'>{nev}</span><br></br>
-            Tárgy: <span className='font-light'>{subject}</span><br></br>
-            Email cím: <span className='font-light'>{email}</span><br></br>
-            Üzenet: <span className='font-light'>{message}</span><br></br>
-          </Text>
-          <Text style={{...text}}>
-            Kérlek válaszolj neki amint időd engedi!
+            Név: <span className='font-light'>{name}</span><br></br>
+            Készítő email címe: <span className='font-light'>{email}</span><br></br>
+            Elérési út: <span className='font-light'>{url}</span><br></br>
+            Elkészítési dátum: <span className='font-light'>{date}</span><br></br>
           </Text>
         </Container>
       </Body>
     </Html>
   );
   
-  export default Kapcsolat;
+  export default IngyenesAdatlapAdmin;
   
   const main = {
     backgroundColor: '#ffffff',
