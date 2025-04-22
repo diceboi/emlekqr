@@ -22,13 +22,10 @@ export default function Story({ data, free, peldaoldal }) {
   const storydata = data?.story
 
   const { addStoryBlock, formData } = useContext(UpdateEmlekadatlapContext);
-  const [storyBlocks, setStoryBlocks] = useState(storydata);
   const { isEditable } = useContext(Context);
 
-  useEffect(() => {
-    // Always update from formData in free mode, or if we're editing an existing record
-    setStoryBlocks(storydata);
-  }, [storydata]);
+  const storyBlocks = peldaoldal || !isEditable ? data?.story : formData.story;
+
 
   const handleAddStoryBlock = () => {
     addStoryBlock();
@@ -45,15 +42,14 @@ export default function Story({ data, free, peldaoldal }) {
 
       {peldaoldal ? (
         <StoryYearPeldaOldal data={storyBlocks[0]} />
-      ):(
-        storyBlocks && storyBlocks.length > 0 ? (
-          storyBlocks.map((item, index) => (
-            <StoryYear data={item} key={index} index={index} free={free} />
-          ))
-        ) : (
-          <h4>Írj le történeteket szerettedről!</h4>
-        )
+      ) : storyBlocks && storyBlocks.length > 0 ? (
+        storyBlocks.map((item, index) => (
+          <StoryYear data={item} key={index} index={index} free={free} />
+        ))
+      ) : (
+        <h4>Írj le történeteket szerettedről!</h4>
       )}
+
 
       {isEditable && (
         <>

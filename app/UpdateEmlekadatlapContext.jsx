@@ -96,7 +96,7 @@
         const removedBlock = updatedStory.splice(index, 1); // Remove the specific block
         
         // Remove associated images
-        const removedImages = removedBlock[0].images || [];
+        const removedImages = removedBlock[0]?.images || [];
         setSelectedImages((prevImages) =>
           prevImages.filter((image) => !removedImages.includes(image))
         );
