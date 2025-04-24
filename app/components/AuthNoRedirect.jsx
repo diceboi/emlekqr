@@ -15,9 +15,9 @@ export default function AuthNoRedirect({ setAuthenticated }) {
     return (
       <>
         {form === "login" ? (
-          <LoginFormNoRedirect setAuthenticated={setAuthenticated} />
+          <LoginFormNoRedirect setAuthenticated={setAuthenticated} title={"A mentéshez előrször jelentkezz be, vagy regisztrálj"} />
         ) : (
-          <RegisterFormNoRedirect setAuthenticated={setAuthenticated} />
+          <RegisterFormNoRedirect setAuthenticated={setAuthenticated} title={"A mentéshez előrször jelentkezz be, vagy regisztrálj"} />
         )}
       </>
     );
