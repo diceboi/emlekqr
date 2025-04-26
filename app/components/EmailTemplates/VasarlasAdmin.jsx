@@ -12,7 +12,7 @@ import {
   import * as React from 'react';
   
   
-  export const VasarlasAdmin = ({nev, address, payment, type, phone, email}) => (
+  export const VasarlasAdmin = ({nev, address, payment, type, phone, email, couponCode, partnerName}) => (
     <Html>
       <Head />
       <Preview>Új érme vásárlás</Preview>
@@ -27,19 +27,30 @@ import {
             <div>
                 <Text style={{ ...text, marginBottom: '16px',}}>
                     Forma: {type}<br></br>
-                    Fizetési mód: {payment}
+                    Fizetési mód: {payment}<br></br>
+                    {couponCode && (
+                      <>
+                        Kuponkód: {couponCode}<br></br>
+                      </>
+                    )}
+                    {partnerName && (
+                      <>
+                        Partner akitől a kupon származik: {partnerName}<br></br>
+                      </>
+                    )}
+                    
                 </Text>
                 <Text style={{ ...text, }}>
                     Ügyféladatok:<br></br><br></br>
                     Név: {nev}<br></br>
-                    Szállítási cím: {address}
-                    Telefonszám: {phone}
-                    Email: {email}
+                    Szállítási cím: {address}<br></br>
+                    Telefonszám: {phone}<br></br>
+                    Email: {email}<br></br>
                 </Text>
             </div>
           </div>
           <Text style={{ ...text, marginBottom: '24px'}}>
-            Kérlek válassz ki egy érmét a kért formából és add fel postán amint időd engedi.
+            Kérlek válassz ki egy érmét a kért formából és add fel postán amint időd engedi.<br></br><br></br> Illetve amennyiben partneres kuponkóddal érkezett a vásárlás, utald el a partnernek a megfelelő összeget.
           </Text>
         </Container>
       </Body>

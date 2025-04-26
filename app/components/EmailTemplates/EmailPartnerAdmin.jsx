@@ -12,21 +12,27 @@ import {
   import * as React from 'react';
   
   
-  export const ElfelejtettJelszo = ({resetUrl}) => (
+  export const EmailPartnerAdmin = ({email}) => (
     <Html>
       <Head />
-      <Preview>Állítsd vissza a jelszavad</Preview>
+      <Preview>Új Partner regisztrációs kérelem érkezett:</Preview>
       <Body style={main}>
         <Container style={container}>
           <Img src='https://www.emlek-qr.hu/emleqr-logo-base.png' style={{ width: '150px', height: 'auto', margin: 'auto', paddingTop: '20px' }} />
-          <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Az alábbi linkre kattintva visszaállíthatod a jelszavad.</Heading>
-          <Link href={resetUrl} style={{...button, margin: 'auto', marginBottom: '32px'}}>Jelszó visszaállítása</Link>
+          <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Kedves Gabi, új partner szeretne regisztrálni.</Heading>
+          <Text style={{ ...text, marginBottom: '24px'}}>
+            Az partner email címe: <span className='font-light'>{email}</span><br></br>
+          </Text>
+          <Text style={{...text}}>
+            Amennyiben szeretnél a partnernek kiküldeni egy regisztrációs űrlapot kattints erre a gombra:
+          </Text>
+          <Link href={`https://emlek-qr.hu/api/email/partner-urlap-kikuldes?email=${email}`} style={{...button, margin: 'auto', marginBottom: '32px'}}>Regisztrációs űrlap kiküldése</Link>
         </Container>
       </Body>
     </Html>
   );
   
-  export default ElfelejtettJelszo;
+  export default EmailPartnerAdmin;
   
   const main = {
     backgroundColor: '#ffffff',
@@ -67,6 +73,7 @@ import {
     fontSize: '18px',
     
   };
+
 
   const button = {
     color: '#ffffff',

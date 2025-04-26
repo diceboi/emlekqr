@@ -77,7 +77,24 @@ const userSchema = new Schema(
     marketing: {
       type: Boolean,
       require: false,
-    }
+    },
+    type: {
+      type: String,
+      require: false,
+      default: 'user'
+    },
+    couponcode: {
+      type: String,
+      require: false,
+    },
+    uzletnev: {
+      type: String,
+      require: false,
+    },
+    bankszamlaszam: {
+      type: String,
+      require: false,
+    },
   },
   {
     timestamps: true,

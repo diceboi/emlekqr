@@ -23,7 +23,7 @@ export const POST = async (request) => {
     email,
     password: hashedPassword,
     aszf,
-    marketing
+    marketing,
   });
 
   try {

@@ -9,6 +9,8 @@ import { Context } from "../../Context";
 import ProfilDataForm from "../UI/ProfilDataForm"
 import ResetPasswordProfileForm from "../ResetPasswordProfileForm";
 import H4 from "../UI/H4";
+import Paragraph from "../UI/Paragraph";
+import Label from "../UI/Label";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { useRouter } from "next/navigation";
@@ -161,6 +163,12 @@ export default function ProfilAdatlap({ session, user }) {
         <div className="flex flex-col gap-4">
         <H4 classname={"text-[--rose] text-center"}>{user?.vezeteknev + " " + user?.keresztnev || "Anonymous"}</H4>
         </div>
+        {user?.type === 'partner' && (
+          <div className="flex flex-col gap-2">
+            <Label>Kuponkódod:</Label>
+            <H4 classname={"text-white p-4 bg-[--rose] rounded-lg text-center"}>{user?.couponcode}</H4>
+          </div>
+         )}
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2 border-t border-[--cream] py-2">

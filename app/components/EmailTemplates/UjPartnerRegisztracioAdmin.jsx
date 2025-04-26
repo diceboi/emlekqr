@@ -12,21 +12,27 @@ import {
   import * as React from 'react';
   
   
-  export const ElfelejtettJelszo = ({resetUrl}) => (
+  export const UjPartnerRegisztracioAdmin = ({email, name, couponcode, uzletnev, bankszamlaszam}) => (
     <Html>
       <Head />
-      <Preview>Állítsd vissza a jelszavad</Preview>
+      <Preview>Egy új partner regisztrált:</Preview>
       <Body style={main}>
         <Container style={container}>
           <Img src='https://www.emlek-qr.hu/emleqr-logo-base.png' style={{ width: '150px', height: 'auto', margin: 'auto', paddingTop: '20px' }} />
-          <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Az alábbi linkre kattintva visszaállíthatod a jelszavad.</Heading>
-          <Link href={resetUrl} style={{...button, margin: 'auto', marginBottom: '32px'}}>Jelszó visszaállítása</Link>
+          <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Kedves Gabi, egy új partner regisztrált az oldalra.</Heading>
+          <Text style={{ ...text, marginBottom: '24px'}}>
+            Email címe: <span className='font-light'>{email}</span><br></br>
+            Neve: <span className='font-light'>{name}</span><br></br>
+            Üzletének neve: <span className='font-light'>{uzletnev}</span><br></br>
+            Kupon kódja: <span className='font-light'>{couponcode}</span><br></br>
+            Bankszámlaszáma: <span className='font-light'>{bankszamlaszam}</span><br></br>
+          </Text>
         </Container>
       </Body>
     </Html>
   );
   
-  export default ElfelejtettJelszo;
+  export default UjPartnerRegisztracioAdmin;
   
   const main = {
     backgroundColor: '#ffffff',
@@ -67,6 +73,7 @@ import {
     fontSize: '18px',
     
   };
+
 
   const button = {
     color: '#ffffff',

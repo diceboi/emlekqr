@@ -4,6 +4,7 @@ import ProfilEmlekadatlapok from "../components/Profil/ProfilEmlekadatlapok";
 import ProfilErtesitesek from "../components/Profil/ProfilErtesitesek";
 import ProfilAdatlap from "../components/Profil/ProfilAdatlap";
 import ProfilSzamlak from "../components/Profil/ProfilSzamlak";
+import ProfilVasarlasok from "../components/Profil/ProfilVasarlasok";
 
 export const metadata = {
   title: 'Profil - EmlékQR',
@@ -91,6 +92,9 @@ export default async function Profil() {
         <div className=" flex flex-col lg:flex-row lg:gap-16 gap-8">
           <ProfilAdatlap session={session} user={currentUser} />
           <div className="flex flex-col lg:gap-16 gap-8 w-full">
+            {currentUser.type === 'partner' && (
+              <ProfilVasarlasok currentuser={currentUser} />
+            )}
             <ProfilErtesitesek currentuser={currentUser} currentdata={currentData} />
             <ProfilEmlekadatlapok currentdata={currentData} />
             <ProfilSzamlak currentdata={currentData} invoices={invoices}/>
