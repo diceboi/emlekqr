@@ -35,6 +35,12 @@ export default function Elonyei() {
                         <div>
                             <Paragraph classname={''}>Korlátlan mennyiségű <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Kép</span> <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Videó</span> <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Történet</span> <span className="bg-gradient-to-br from-[--rose] to-[--blue] px-2 py-1 text-white rounded-full w-fit h-auto">Hozzászólás</span> egy helyen</Paragraph>
                         </div>
+                        <Link
+                            href="/erme"
+                            className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white w-fit"
+                            >
+                            Érme rendelés
+                        </Link>
                     </div>
                 </div>
 

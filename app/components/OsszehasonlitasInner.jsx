@@ -20,114 +20,54 @@ import Link from "next/link";
 
 export default function OsszehasonlitasInner() {
   return (
-    <div className="lg:overflow-hidden overflow-x-scroll pt-20">
-      <div className="flex flex-nowrap lg:min-w-max">
-        <div className="flex flex-col lg:w-auto min-w-fit gap-4 rounded-3xl p-4 pr-10 mr-4">
-          <div className="flex flex-col">
-
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbBrowserPlus className="w-6 h-6 text-[--blue]" />
-              <Label>Nyilvános emlékoldal létrehozása</Label>
-            </div>
-
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbUserScan className="w-6 h-6 text-[--blue]" />
-              <Label>Profilkép hozzáadása</Label>
-            </div>
-
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbImageInPicture className="w-6 h-6 text-[--blue]" />
-              <Label>Borítókép hozzáadása</Label>
-            </div>
-
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbClipboardList className="w-6 h-6 text-[--blue]" />
-              <Label>Személyes adatok hozzáadása</Label>
-            </div>
-
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbQrcode className="w-6 h-6 text-[--blue]" />
-              <Label>Minőségi QR kódos emlékérme</Label>
-            </div>
-
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbGrave className="w-6 h-6 text-[--blue]" />
-              <Label>Nyughely megjelölése térképen</Label>
-            </div>
-
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbWallpaper className="w-6 h-6 text-[--blue]" />
-              <Label>Történetek hozzáadása</Label>
-            </div>
-
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbPhoto className="w-6 h-6 text-[--blue]" />
-              <Label>Képek hozzáadása történetekhez</Label>
-            </div>
-
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbVideo className="w-6 h-6 text-[--blue]" />
-              <Label>Média hozzáadása (képek, videók)</Label>
-            </div>
-
-            <div className="flex flex-nowrap gap-2 items-center border-b border-[--cream] py-2">
-              <TbMessage className="w-6 h-6 text-[--blue]" />
-              <Label>Hozzászólások engedélyezése</Label>
-            </div>
-
-            <div className="flex flex-nowrap gap-2 items-center py-2">
-              <TbDevicesUp className="w-6 h-6 text-[--blue]" />
-              <Label>Új funkciók</Label>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col gap-4 lg:w-1/2 min-w-[300px] bg-[--cream] rounded-3xl py-4 -ml-10 -mt-14 lg:mr-0 mr-4">
-          <H3 classname={"text-[--rose] text-center h-10"}>
+    <div className="flex lg:flex-row flex-col lg:gap-16 gap-8">
+        <div className="flex flex-col gap-4 lg:w-1/2 min-w-[300px] bg-[--cream] rounded-3xl pb-4">
+          <H3 classname={"text-[--rose] text-center border-b-2 border-[--rose] p-4 rounded-t-3xl"}>
             Ingyenes emlékoldal
           </H3>
           <div className="flex flex-col">
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2 mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /> <Label>Nyilvános emlékoldal</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2 mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /> <Label>Nyilvános emlékoldal</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2 mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /> <Label>Borítókép</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2 mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /> <Label>Személyes adatok</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2">
-              <TbX className="w-6 h-6 text-[--error]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2 mx-4">
+              <TbX className="w-6 h-6 text-[--error]" /> <Label classname={"text-[--error]"}>Minőségi QR kódos emlékérme</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2">
-              <TbX className="w-6 h-6 text-[--error]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2 mx-4">
+              <TbX className="w-6 h-6 text-[--error]" /> <Label classname={"text-[--error]"}>Nyughely megjelölése térképen</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
-              <Label classname={"text-[--error]"}>Max. 1 db</Label>
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px] mx-4">
+              <Label classname={"text-[--error]"}>Max. 1 db történet</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
-            <Label classname={"text-[--error]"}>Max. 2 db</Label>
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px] mx-4">
+            <Label classname={"text-[--error]"}>Max. 2 db kép/történet</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
-            <Label classname={"text-[--error]"}>Max. 2 db kép</Label>
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px] mx-4">
+            <Label classname={"text-[--error]"}>Max. 2 db kép a médiába</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px]">
-              <TbX className="w-6 h-6 text-[--error]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white min-h-[41px] mx-4">
+              <TbX className="w-6 h-6 text-[--error]" /> <Label classname={"text-[--error]"}>Hozzászólások</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center py-2">
-              <Label classname={"text-[--error]"}>Korlátozottan</Label>
+            <div className="flex flex-nowrap justify-center gap-2 items-center py-2 mx-4">
+              <Label classname={"text-[--error]"}>Új funkciók korlátozottan</Label>
             </div>
 
             <Link
@@ -139,8 +79,8 @@ export default function OsszehasonlitasInner() {
           </div>
         </div>
 
-        <div className="flex flex-col lg:w-1/2 min-w-[300px] gap-4 bg-gradient-to-br from-[--rose] to-[--blue] shadow-2xl rounded-3xl py-4 -ml-10 -mt-14">
-          <div className="flex flex-nowrap gap-2 items-center justify-center">
+        <div className="flex flex-col lg:w-1/2 min-w-[300px] gap-4 bg-gradient-to-br from-[--rose] to-[--blue] shadow-2xl rounded-3xl pb-4 ">
+          <div className="flex flex-nowrap gap-2 items-center justify-center border-b-2 border-white p-4 rounded-t-3xl">
             <Image
               src="/emlekqr-plus-white.svg"
               alt="EmlékQR Plusz"
@@ -151,50 +91,48 @@ export default function OsszehasonlitasInner() {
           </div>
 
           <div className="flex flex-col">
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2 mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Nyilvános emlékoldal</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2 mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Nyilvános emlékoldal</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2 mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Borítókép</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2 mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Személyes adatok</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2 mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /> <Label classname={"text-white"}>Minőségi QR kódos emlékérme</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2 mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Nyughely megjelölése térképen</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 min-h-[41px]">
-              <Label classname={"text-[--success]"}>Korlátlan mennyiség</Label>
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 min-h-[41px] mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Korlátlan történet</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 min-h-[41px]">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 min-h-[41px] mx-4">
+            <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Korlátlan kép/történet</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 min-h-[41px]">
-              <Label classname={"text-[--success] text-center"}>
-                Képek, videók korlátlan mennyiségben
-              </Label>
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 min-h-[41px] mx-4">
+              <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Képek videók korlátlanul a médiában</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 min-h-[41px]">
-              <TbCheck className="w-6 h-6 text-[--success]" />
+            <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 min-h-[41px] mx-4">
+            <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Hozzászólások</Label>
             </div>
 
-            <div className="flex flex-nowrap justify-center gap-2 items-center py-2">
-              <Label classname={"text-[--success]"}>Minden funkció</Label>
+            <div className="flex flex-nowrap justify-center gap-2 items-center py-2 mx-4">
+            <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Minden funkció</Label>
             </div>
 
             <Link
@@ -213,7 +151,6 @@ export default function OsszehasonlitasInner() {
             </Link>
           </div>
         </div>
-      </div>
     </div>
   );
 }
