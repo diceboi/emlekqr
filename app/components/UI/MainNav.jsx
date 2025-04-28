@@ -71,6 +71,20 @@ export default function MainNav() {
                   <Link href={"/rolunk"} onClick={handleOpenClose}><li>Rólunk</li></Link>
                   <Link href={"/gyik"} onClick={handleOpenClose}><li>GYIK</li></Link>
                   <Link href={"/kapcsolat"} onClick={handleOpenClose}><li>Kapcsolat</li></Link>
+                  <Link 
+                      href="/ingyenes-emlekoldal-keszites" 
+                      className="sm:hidden flex flex-nowrap gap-2 items-center justify-center py-1 px-2 rounded-full text-[--rose] h-fit mr-2 bg-[--cream]">
+                          <TbBrowserPlus 
+                              className="w-6 h-6"
+                          />
+                          <p className="font-bold">Ingyenes emlékoldal</p>
+                  </Link>
+                  <Link 
+                      href="/erme" 
+                      className="sm:hidden flex flex-nowrap gap-2 items-center justify-center py-1 px-2 rounded-full bg-gradient-to-br from-[--rose] to-[--blue] text-white h-fit">
+                          <Image src="/emlekqr-plus-white.svg" alt="EmlékQR Plusz" title="Válts EmlékQR Plusz-ra" width={15} height={15} />
+                          <p className="font-bold">EmlékQR+</p>
+                  </Link>
                 </ul>
             </div>
             <Link id="logo" href="/" className="min-w-[40px] md:min-w-[220px]">
@@ -117,19 +131,22 @@ export default function MainNav() {
                     EmlékQR+<br></br>emlékoldal
                   </label>
           </Link>
-          <Link 
-              href="/ingyenes-emlekoldal-keszites" 
-              className="sm:hidden flex flex-nowrap items-center justify-center py-1 px-2 rounded-xl text-[--blue] h-fit self-center mr-2 bg-[--cream]">
-                  <TbBrowserPlus 
-                      className="w-6 h-6"
-                  />
-          </Link>
-          <Link 
-              href="/erme" 
-              className="sm:hidden flex flex-nowrap items-center justify-center py-1 px-2 rounded-xl bg-gradient-to-br from-[--rose] to-[--blue] text-white h-fit self-center">
-                  <Image src="/emlekqr-plus-white.svg" alt="EmlékQR Plusz" title="Válts EmlékQR Plusz-ra" width={22} height={22} />
-          </Link>
-          
+          <div className="flex flex-row gap-0">
+            <Link 
+                href="/ingyenes-emlekoldal-keszites" 
+                className="sm:hidden flex flex-nowrap gap-2 items-center justify-center py-2 px-2 rounded-xl text-[--rose] h-fit self-center mr-2 bg-[--cream]">
+                    <TbBrowserPlus 
+                        className="w-4 h-4"
+                    />
+                    <p className="text-[10px] leading-3 font-bold">Próbáld ki</p>
+            </Link>
+            <Link 
+                href="/erme" 
+                className="sm:hidden flex flex-nowrap gap-2 items-center justify-center py-2 px-2 rounded-xl bg-gradient-to-br from-[--rose] to-[--blue] text-white h-fit self-center">
+                    <Image src="/emlekqr-plus-white.svg" alt="EmlékQR Plusz" title="Válts EmlékQR Plusz-ra" width={15} height={15} />
+                    <p className="text-[10px] leading-3 font-bold">EmlékQR+</p>
+            </Link>
+          </div>
         </div>
       </div>
       

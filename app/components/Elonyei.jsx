@@ -37,7 +37,7 @@ export default function Elonyei() {
                         </div>
                         <Link
                             href="/erme"
-                            className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white w-fit"
+                            className="flex items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 mx-1 rounded-full bg-[--blue] hover:bg-[--blue-hover] transition-all text-white w-fit self-center lg:self-start mt-4"
                             >
                             Érme rendelés
                         </Link>
