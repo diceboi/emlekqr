@@ -31,7 +31,7 @@ export default function OsszehasonlitasInner() {
             </div>
 
             <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2 mx-4">
-              <TbCheck className="w-6 h-6 text-[--success]" /> <Label>Nyilvános emlékoldal</Label>
+              <TbCheck className="w-6 h-6 text-[--success]" /> <Label>Profilkép</Label>
             </div>
 
             <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white py-2 mx-4">
@@ -96,7 +96,7 @@ export default function OsszehasonlitasInner() {
             </div>
 
             <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2 mx-4">
-              <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Nyilvános emlékoldal</Label>
+              <TbCheck className="w-6 h-6 text-[--success]" /><Label classname={"text-white"}>Profilkép</Label>
             </div>
 
             <div className="flex flex-nowrap justify-center gap-2 items-center border-b border-white border-opacity-25 py-2 mx-4">
