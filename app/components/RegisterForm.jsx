@@ -70,6 +70,20 @@ const RegisterForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode
         });
   
         if (signInRes?.ok) {
+
+          await fetch("/api/email/regisztracio", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email,
+              name,
+              keresztnev,
+              vezeteknev,
+            }),
+          });
+
           toast.success("Sikeres regisztráció és bejelentkezés.");
           togglePopup()
           window.location.reload()

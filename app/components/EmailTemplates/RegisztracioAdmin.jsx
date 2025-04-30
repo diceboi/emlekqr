@@ -12,32 +12,27 @@ import {
 import * as React from 'react';
 
 
-export const Kapcsolat = ({nev, email, message, subject}) => (
+export const RegisztracioAdmin = ({name, email}) => (
   <Html>
     <Head />
-    <Preview>Új regisztráció: {nev}</Preview>
+    <Preview>Új regisztráció: {name}</Preview>
     <Body style={main}>
       <Container style={container}>
         <Img src='https://www.emlek-qr.hu/emleqr-logo-base.png' style={{ width: '150px', height: 'auto', margin: 'auto', paddingTop: '20px' }} />
-        <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Kedves Gabi, {nev} regisztrált az oldalon.</Heading>
+        <Heading style={{...h1, textAlign: 'center', marginTop: '32px', marginBottom: '32px'}}>Kedves Gabi, {name} regisztrált az oldalon.</Heading>
         <Text style={{ ...text, marginBottom: '24px'}}>
-          Az üzenet a következő volt:
+          Az ügyfél adatai a következők:
         </Text>
         <Text style={{...text}}>
-          Név: <span className='font-light'>{nev}</span><br></br>
-          Tárgy: <span className='font-light'>{subject}</span><br></br>
+          Név: <span className='font-light'>{name}</span><br></br>
           Email cím: <span className='font-light'>{email}</span><br></br>
-          Üzenet: <span className='font-light'>{message}</span><br></br>
-        </Text>
-        <Text style={{...text}}>
-          Kérlek válaszolj neki amint időd engedi!
         </Text>
       </Container>
     </Body>
   </Html>
 );
 
-export default Kapcsolat;
+export default RegisztracioAdmin;
 
 const main = {
   backgroundColor: '#ffffff',
@@ -46,6 +41,7 @@ const main = {
 const container = {
   paddingLeft: '32px',
   paddingRight: '32px',
+  paddingBottom: '32px',
   margin: '0 auto',
   background: '#f5efed',
   borderRadius: '24px'
