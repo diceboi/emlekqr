@@ -12,7 +12,7 @@ import H3 from "../UI/H3"
 import H4 from "../UI/H4"
 import Paragraph from "../UI/Paragraph"
 
-export default function Tributes({ data, currenttributes, issession, free }) {  
+export default function Tributes({ data, currenttributes, issession, free, peldaoldal }) {  
 
   const { isEditable, openPopup, togglePopup } = useContext(Context);
 
@@ -65,21 +65,21 @@ export default function Tributes({ data, currenttributes, issession, free }) {
             </button>
         </div>
       </Modal>
-      <div className="flex gap-4 items-center pt-8 pb-4">
+      <div className={`flex gap-4 items-center pt-8 pb-4`}>
         <TbMessage className="w-10 h-10 text-[--rose] bg-[--cream] rounded-full p-2" />
         <H4 classname={"text-[--rose]"}>Hozzászólások</H4>
       </div>
       {!issession && !free &&
         availableTributes.map((tribute, index) => (
-          <TributeTile key={index} tribute={tribute} owner={data} session={issession} alltributes={currenttributes}/>
+          <TributeTile key={index} tribute={tribute} owner={data} session={issession} alltributes={currenttributes} peldaoldal={peldaoldal} />
         ))}
 
       {issession &&
         currenttributes.map((tribute, index) => (
-          <TributeTile key={index} tribute={tribute} owner={data} session={issession} alltributes={currenttributes}/>
+          <TributeTile key={index} tribute={tribute} owner={data} session={issession} alltributes={currenttributes} peldaoldal={peldaoldal}/>
         ))}
 
-      <MainCommentForm session={issession} main={true}/>
+      <MainCommentForm session={issession} main={true} peldaoldal={peldaoldal} />
     </>
   );
 }

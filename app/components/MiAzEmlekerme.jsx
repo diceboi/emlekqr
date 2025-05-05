@@ -29,7 +29,7 @@ export default function MiAzEmlekerme({ session, userdata }) {
 
             </div>
             <div className="flex flex-col w-full lg:w-1/2 justify-start gap-8 z-10 lg:py-16">
-                <H2 classname={"text-[--rose]"}>Mi az az emlékérme?</H2>
+                <H2 classname={"text-[--rose]"}>Mit nyújt az EmlékQR+ ?</H2>
                 <Paragraph classname={""}>Az EmlékQR emlékérme egy különleges, modern megoldás arra, hogy örökre <b><b>megőrizzük és megoszthassuk másokkal</b></b> azon szeretteink emlékét, akik már nem lehetnek velünk .<br></br><br></br>Az emlékoldallal életre keltheted szeretteid <b><b>élettörténetét, fotóit, vagy akár videókat is megoszthatsz.</b></b> Oszd meg az emlékeket ismerőseiddel, szeretteiddel, ezáltal ők is hozzászólhatnak és együtt őrizhetitek meg a közös emlékeket.<br></br><br></br>Az emlékoldalhoz tartozó érmét elhelyezheted az emlékhelyen, melyet mobiltelefonnal egyszerűen beolvasva szintén elérhető az emlékoldal.
 
                 </Paragraph>

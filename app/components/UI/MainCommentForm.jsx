@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { toast } from 'sonner'
 
-export default function MainCommentForm({ session, currenttribute, main, to }) {
+export default function MainCommentForm({ session, currenttribute, main, to, peldaoldal }) {
 
   const router = useRouter()
   
@@ -104,7 +104,7 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
   
 
   return (
-    <form className="flex flex-col gap-4 my-8" onSubmit={handleSubmit(onSubmit)}>
+    <form className={`flex flex-col gap-4 my-8`} onSubmit={handleSubmit(onSubmit)}>
       {main === true ? (
         <h4>Hozzászólás</h4>
       ):(
@@ -164,7 +164,7 @@ export default function MainCommentForm({ session, currenttribute, main, to }) {
             Hozzászólás kitöltése kötelező
           </p>
         )}
-        <button type="submit" className="w-fit self-end">
+        <button type="submit" className={`w-fit self-end ${peldaoldal ? 'pointer-events-none' : 'pointer-events-auto'}`}>
           <TbArrowUpRight className="w-8 h-8 p-1 bg-white rounded-full hover:text-white hover:bg-[--blue] transition-all" />
         </button>
       </div>

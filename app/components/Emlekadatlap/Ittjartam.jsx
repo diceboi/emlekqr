@@ -17,9 +17,12 @@ export default function Ittjartam({
   currentuser,
   allittjartam,
   session,
+  peldaoldal,
 }) {
   const { openPopup, togglePopup, setOpenPopup, isEditable } = useContext(Context);
   const adatlap = data?.uri;
+
+  console.log("Példaoldal: ", peldaoldal)
 
   return (
     <>
@@ -68,10 +71,10 @@ export default function Ittjartam({
               setOpenPopup("Ittjartam");
             }
           }}
-          className={`flex flex-nowrap items-center gap-2 px-2 py-1 rounded-full min-w-fit bg-[--blue] hover:bg-[--blue-hover]`}
+          className={`flex flex-nowrap items-center gap-2 px-2 py-1 rounded-full min-w-fit bg-[--blue] hover:bg-[--blue-hover] ${peldaoldal ? 'pointer-events-none' : 'pointer-events-auto'}`}
         >
           <TbWalk className="text-white min-w-4 h-4" />
-          <Label classname={"min-w-fit text-white cursor-pointer"}>
+          <Label classname={`min-w-fit text-white cursor-pointer`}>
           {allittjartam?.length > 0 ? "Én is itt jártam" : "Itt jártam"}
           </Label>
         </button>

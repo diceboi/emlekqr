@@ -60,7 +60,7 @@ export default function ProfileInfo({ data, tributes, session, cursor, free, pel
           )
         )}
         {visibleSection === "tributes" && (
-          <Tributes id="tributes" data={data?.owner || null} currenttributes={tributes || null} issession={session} free={free} />
+          <Tributes id="tributes" data={data?.owner || null} currenttributes={tributes || null} issession={session} free={free} peldaoldal={peldaoldal} />
         )}
       </div>
     </div>

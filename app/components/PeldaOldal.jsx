@@ -28,6 +28,21 @@ const getEmlekadatlap = async (uri) => {
     }
 };
 
+const getAllIttjartam = async (uri) => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_URL;
+    const res = await fetch(`${baseUrl}/api/getIttjartam?adatlap=${uri}`, { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error("Az adatok letöltése nem sikerült");
+    }
+    const data = await res.json();
+    return data?.data?.ittjartam || []; // ✅ helyes kulcsnév
+  } catch (error) {
+    console.log("Az Ittjartam adatok betöltése sikertelen", error);
+    return [];
+  }
+};
+
 const getTributes = async (uri) => {
     try {
       const baseUrl = process.env.NEXT_PUBLIC_URL; // Adjust this as per your environment
@@ -81,6 +96,8 @@ export default async function PeldaOldal() {
     const tribute = await getTributes("0001001");
     const fixedCurrentTributes = tribute?.data?.Tribute || null;
 
+    const allittjartam = await getAllIttjartam("0001001");
+
   return (
     <section className="relative w-full bg-white px-4 pb-20">
         <div className="relative flex flex-col gap-4 py-20">
@@ -90,7 +107,7 @@ export default async function PeldaOldal() {
         <div className="flex flex-nowrap">
           <div className="container flex flex-col m-auto gap-8">
             <div className="relative group group-hover:p-4">
-              <CoverPicture data={fixedCurrentData} currentuser={fixedCurrentUser} cursor={false} free={false}/>
+              <CoverPicture data={fixedCurrentData} currentuser={fixedCurrentUser} cursor={false} free={false} peldaoldal={true}/>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40">
                 <H3 classname={'px-4 py-2 bg-[--blue] text-white text-center group-hover:block hidden rounded-3xl'}>Borítókép</H3>
                 <TbHandClick className="group-hover:hidden block min-w-16 h-auto text-white animate-bounce z-40"/>
@@ -102,8 +119,8 @@ export default async function PeldaOldal() {
                 id="profile-data"
                 className="relative group flex flex-col xl:flex-row gap-8 xl:gap-20 items-center w-full"
             >
-                <ProfilePicture session={fixedSession} data={fixedCurrentData} cursor={false} free={false}/>
-                <ProfileData session={fixedSession} data={fixedCurrentData} cursor={false}/>
+                <ProfilePicture session={fixedSession} data={fixedCurrentData} cursor={false} free={false} allittjartam={allittjartam} peldaoldal={true}/>
+                <ProfileData session={fixedSession} data={fixedCurrentData} cursor={false} peldaoldal={true}/>
                 <div className="absolute bottom-8 left-8 z-40">
                   <H3 classname={'px-4 py-2 bg-[--blue] text-white text-center group-hover:block hidden rounded-3xl'}>Profilkép,<br></br>Információk</H3>
                   <TbHandClick className="group-hover:hidden block min-w-16 h-auto text-[--blue] animate-bounce z-40"/>

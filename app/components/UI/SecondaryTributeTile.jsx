@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { TbMessage } from "react-icons/tb";
 import MainCommentForm from "./MainCommentForm";
 
-export default function SecondaryTributeTile({ tribute, issession, tributes, maintributeid }) {
+export default function SecondaryTributeTile({ tribute, issession, tributes, maintributeid, peldaoldal }) {
 
     const [replyOpen, setReplyOpen] = useState(false)
     const [ userData, setUserData] = useState(null);
@@ -64,7 +64,7 @@ export default function SecondaryTributeTile({ tribute, issession, tributes, mai
             <h4 className="text-sm">{tribute.from}</h4>
           </div>
           <p className="text-sm">{tribute.message}</p>
-            <button className="flex flex-nowrap gap-1 items-center self-start text-xs text-neutral-500 hover:bg-[--cream] px-2 py-1 rounded-full border border-neutral-300" onClick={toggleReply}><TbMessage /> Válasz</button>
+            <button className={`flex flex-nowrap gap-1 items-center self-start text-xs text-neutral-500 hover:bg-[--cream] px-2 py-1 rounded-full border border-neutral-300 ${peldaoldal ? 'pointer-events-none' : 'pointer-events-auto'}`} onClick={toggleReply}><TbMessage /> Válasz</button>
         </div>
       </div>
       {secondaryTributes.map((secondarytribute, index) => (

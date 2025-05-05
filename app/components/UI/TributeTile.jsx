@@ -11,7 +11,7 @@ import SecondaryTributeTile from "../UI/SecondaryTributeTile"
 import Modal from "./Modal";
 import Paragraph from "./Paragraph";
 
-export default function TributeTile({ tribute, owner, session, alltributes }) {
+export default function TributeTile({ tribute, owner, session, alltributes, peldaoldal }) {
 
     const { isEditable, openPopup, togglePopup } = useContext(Context);
 
@@ -137,7 +137,7 @@ export default function TributeTile({ tribute, owner, session, alltributes }) {
           <p className="text-sm">{tribute.message}</p>
           {tribute.verified === true &&(
             <>
-            <button className="flex flex-nowrap gap-1 items-center self-start text-xs text-neutral-500 hover:bg-[--cream] px-2 py-1 rounded-full border border-neutral-300" onClick={toggleReply}><TbMessage /> Válasz</button>
+            <button className={`flex flex-nowrap gap-1 items-center self-start text-xs text-neutral-500 hover:bg-[--cream] px-2 py-1 rounded-full border border-neutral-300 ${peldaoldal ? 'pointer-events-none' : 'pointer-events-auto'}`} onClick={toggleReply}><TbMessage /> Válasz</button>
             {/*<TbTrash className="absolute top-4 right-4 w-6 h-6 text-[--error] hover:text-white bg-transparent hover:bg-[--error] p-1 cursor-pointer rounded-full" onClick={() => {togglePopup("DeleteComment")}} />*/}
             </>
           )}
@@ -164,7 +164,7 @@ export default function TributeTile({ tribute, owner, session, alltributes }) {
         )}
       </div>
       {secondaryTributes.map((secondarytribute, index) => (
-        <SecondaryTributeTile key={index} maintributeid={tribute._id} tribute={secondarytribute} issession={session} tributes={alltributes}/>
+        <SecondaryTributeTile key={index} maintributeid={tribute._id} tribute={secondarytribute} issession={session} tributes={alltributes} peldaoldal={peldaoldal} />
       ))}
       {replyOpen && (
         <div className="lg:pl-16">
