@@ -145,7 +145,7 @@ export default async function EmlekoldalAkcioPage() {
     const userData = await getUserData(session?.user?.email)
 
   return (
-    <section className="relative w-full bg-white px-4 pb-20 overflow-hidden">
+    <section className="relative w-full bg-white px-4 overflow-hidden">
       <div className="absolute lg:top-0 top-60 lg:left-[20vw] left-0 w-52 h-52 opacity-25 ">
         <Arrow />
       </div>
@@ -201,7 +201,7 @@ export default async function EmlekoldalAkcioPage() {
             <ProfileData
               session={fixedSession}
               data={fixedCurrentData}
-              cursor={false}
+              cursor={true}
             />
           </div>
           <div className="relative group">
@@ -217,7 +217,22 @@ export default async function EmlekoldalAkcioPage() {
         </div>
       </div>
 
-      <section className="w-full py-20 bg-white">
+      <section className="w-full py-20">
+        <div className="relative flex flex-col gap-8 lg:py-20 py-8">
+          <H2 classname={"text-center self-center text-[--rose] lg:w-1/2 w-full"}>
+            Ne hagyd hogy feledésbe merüljenek szeretteid legszebb pillanatai!
+          </H2>
+          <Paragraph
+            classname={
+              "text-center self-center lg:w-1/2 w-full"
+            }
+          >
+            Van olyan szeretted akinek szívesen elmesélnéd a történetét? Hozd létre saját, egyedi emlék-univerzumát! Élettörténetek, képek, közös pillanatok mind egy helyen. Oszd meg másokkal és éljétek át együtt újra a legszebb pillanatokat, megőrizve a következő generáció számára is.
+          </Paragraph>
+        </div>
+      </section>
+
+      <section className="w-full lg:py-20 py-8 bg-white">
         <div className="flex lg:flex-row flex-col gap-8 container m-auto ">
           <div className="flex flex-col bg-[--cream] gap-8 items-center rounded-3xl  lg:w-1/2 w-full">
             <div className="relative lg:w-1/2 w-full h-[40vh]">
@@ -309,12 +324,12 @@ export default async function EmlekoldalAkcioPage() {
           </div>
 
           <div className="flex flex-col bg-gradient-to-br from-[--rose] to-[--blue] gap-8 items-center rounded-3xl lg:w-1/2 w-full">
-            <div className="relative lg:w-1/2 w-full h-[40vh]">
+            <div className="relative w-full h-[40vh] overflow-hidden rounded-3xl">
               <Image
-                src="/ermek/negyzet-erme.webp"
+                src="/image-kepek/erme-kezben.webp"
                 fill
-                alt="Tökélete ajándék"
-                style={{ objectFit: "contain", objectPosition: "center" }}
+                alt="Érme kézben"
+                style={{ objectFit: "cover", objectPosition: "center" }}
               />
             </div>
             <div className="flex flex-col justify-center items-center lg:gap-8 gap-4 w-full p-8">
@@ -385,8 +400,10 @@ export default async function EmlekoldalAkcioPage() {
                   <Label classname={"text-white"}>Minden funkció</Label>
                 </div>
 
+                <p className="bg-[--error] lg:p-2 p-1 rounded-t-lg text-center font-bold lg:text-xl text-lg text-white w-fit -mb-4 self-center mt-4">-26% Akció</p>
+
                 <Link
-                  href="/erme"
+                  href="#emlekerme"
                   className="flex flex-nowrap items-center justify-center gap-4 py-1 px-4 lg:py-2 lg:px-4 mt-4 rounded-full bg-white hover:bg-opacity-75 font-semibold transition-all text-[--rose] h-fit self-center"
                 >
                   <Image
@@ -399,6 +416,8 @@ export default async function EmlekoldalAkcioPage() {
                   />
                   Érme rendelés
                 </Link>
+
+                
               </div>
           </div>
         </div>

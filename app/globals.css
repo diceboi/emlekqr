@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+  }
+
 :root {
     --blue: #2292a4;
     --blue-hover:#1a6f7c;
