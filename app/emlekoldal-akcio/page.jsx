@@ -105,44 +105,45 @@ export default async function EmlekoldalAkcioPage() {
   const fixedSession = {
     Session: {
       user: {
-        name: "Bokros Gabriella",
-        email: "gabibokros70@gmail.com",
+        name: "Szász Szabolcs",
+        email: "szasz.szabolcs1995@gmail.com",
         image: undefined,
       },
     },
   };
 
   let fixedCurrentUser = {
-    _id: "663e4ac41d3c4c611480c791",
-    name: "Bokros Gabriella",
-    vezeteknev: "Bokros",
-    keresztnev: "Gabriella",
-    email: "gabibokros70@gmail.com",
-    password: "$2b$05$78ln3FiIjOyjzT5gXaccI.uY09ozpZ5myNyrvMdOE3bbANK2Xt6N6",
-    createdAt: "2024-05-10T16:26:44.764Z",
-    updatedAt: "2024-11-11T20:29:55.459Z",
+    _id: "660db3b33c2b3630564fa59e",
+    name: "Szász Szabolcs",
+    vezeteknev: "Szász",
+    keresztnev: "Szabolcs",
+    email: "szasz.szabolcs1995@gmail.com",
+    password: "$2b$05$GQPrNaOV6NtT4k23Evhpd.u/kZVrbOviMqsracQlbr/NkVSxkxUZC",
+    createdAt: "2024-04-03T19:53:23.558+00:00",
+    updatedAt: "2025-04-25T19:25:56.293+00:00",
     __v: 0,
     city: "Kaposvár",
-    phone: "+36302732236",
-    secret: "",
+    phone: "+36303068676",
+    secret: "279473",
     zip: "7400",
     stripeSubscription: "",
-    address1: "Zárda utca 23. fsz. 2.",
+    address1: "cs_test_b1iAKhf1QoDBOpzEsnB11JfNlRfVEps73CZvlR7TKcbiIXOwVkeUyYDsxk",
     checkoutSession:
-      "cs_test_b1egfKlO7SnIAak1aMvbP4HnVET71By63OLKQUNOpZRBXIEWj3LPEchos6",
-    address2: "teszt",
+      "cs_test_b1iAKhf1QoDBOpzEsnB11JfNlRfVEps73CZvlR7TKcbiIXOwVkeUyYDsxk",
+    address2: "",
+    address1: "Egyenesi út. 101.",
   };
 
-  const emlekadatlap = await getEmlekadatlap("0000022");
+  const emlekadatlap = await getEmlekadatlap("0001001");
   const fixedCurrentData = emlekadatlap?.data?.Emlekadatlap || null;
 
-  const tribute = await getTributes("0000022");
+  const tribute = await getTributes("0001001");
   const fixedCurrentTributes = tribute?.data?.Tribute || null;
 
-  const allittjartam = await getAllIttjartam("0000022");
+  const allittjartam = await getAllIttjartam("0001001");
 
   const session = await getServerSession()
-    const userData = await getUserData(session?.user?.email)
+  const userData = await getUserData(session?.user?.email)
 
   return (
     <section className="relative w-full bg-white px-4 overflow-hidden">

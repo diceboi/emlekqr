@@ -22,8 +22,6 @@ export default function Ittjartam({
   const { openPopup, togglePopup, setOpenPopup, isEditable } = useContext(Context);
   const adatlap = data?.uri;
 
-  console.log("Példaoldal: ", peldaoldal)
-
   return (
     <>
       <Modal

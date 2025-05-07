@@ -31,8 +31,6 @@ export default function Story({ data, free, peldaoldal }) {
     addStoryBlock();
   };
 
-  console.log("Story: ", storyBlocks)
-
   return (
     <div className="flex flex-col gap-8 px-1 py-8 rounded-2xl">
       <div className="flex gap-4 items-center">
@@ -40,11 +38,13 @@ export default function Story({ data, free, peldaoldal }) {
         <H4 classname={"text-[--rose]"}>Történet</H4>
       </div>
 
-      {peldaoldal ? (
-        <StoryYearPeldaOldal data={storyBlocks[0]} />
-      ) : storyBlocks && storyBlocks.length > 0 ? (
+      {storyBlocks && storyBlocks.length > 0 ? (
         storyBlocks.map((item, index) => (
-          <StoryYear data={item} key={index} index={index} free={free} />
+          peldaoldal ? (
+            <StoryYearPeldaOldal data={item} key={index} />
+          ) : (
+            <StoryYear data={item} key={index} index={index} free={free} />
+          )
         ))
       ) : (
         <h4>Írj le történeteket szerettedről!</h4>
