@@ -69,7 +69,7 @@ export default function Ittjartam({
               setOpenPopup("Ittjartam");
             }
           }}
-          className={`flex flex-nowrap items-center gap-2 px-2 py-1 rounded-full min-w-fit bg-[--blue] hover:bg-[--blue-hover] ${peldaoldal ? 'pointer-events-none' : 'pointer-events-auto'}`}
+          className={`flex flex-nowrap items-center gap-2 px-2 py-1 rounded-full min-w-fit bg-[--blue] hover:bg-[--blue-hover]`}
         >
           <TbWalk className="text-white min-w-4 h-4" />
           <Label classname={`min-w-fit text-white cursor-pointer`}>
