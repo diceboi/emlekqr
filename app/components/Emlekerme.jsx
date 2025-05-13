@@ -35,6 +35,7 @@ import Paragraph from "./UI/Paragraph";
 import Label from "./UI/Label";
 
 import EmlekermeInner from "./EmlekermeInner";
+import VideosVelemenyek from "./VideosVelemenyek";
 
 export default function Emlekerme({ session, userdata }) {
   return (
@@ -218,6 +219,11 @@ export default function Emlekerme({ session, userdata }) {
             </div>
           </div>
         </div>
+
+        <div className="p-4">
+          <VideosVelemenyek />
+        </div>
+        
       </section>
     </>
   );
