@@ -17,6 +17,7 @@ import Camel from "../components/Animations/Camel";
 import Hearth from "../components/Animations/Hearth";
 import Link from "next/link";
 import MiAzEmlekerme from "../components/MiAzEmlekerme";
+import VideosVelemenyek from "../components/VideosVelemenyek"
 
 import {
   TbBrowserPlus,
@@ -147,30 +148,32 @@ export default async function EmlekoldalAkcioPage() {
 
   return (
     <section className="relative w-full px-4 bg-neutral-50">
-      <div className="absolute lg:top-0 top-60 lg:left-[20vw] left-0 w-52 h-52 opacity-25 ">
-        <Arrow />
-      </div>
-      <div className="lg:flex hidden absolute top-72 lg:left-[40vw] left-[30vw] w-52 h-52 opacity-25">
-        <Camel />
-      </div>
-      <div className="absolute lg:top-12 -top-16 lg:right-[20vw] -right-6 w-52 h-52 opacity-25">
-        <Hearth />
-      </div>
-      <div className="relative flex flex-col gap-4 lg:py-40 py-20">
-        <H1 classname={"text-center self-center text-[--rose]"}>
-          Készíts egyedi emlékoldalt
-        </H1>
-        <Paragraph
-          classname={
-            "text-center self-center p-4 bg-[--blue-15] lg:w-1/2 w-full rounded-lg "
-          }
-        >
-          Keltsd életre szeretteid emlékét egy{" "}
-          <b>
-            <b>gyönyörű, színes, nosztalgiadús</b>
-          </b>{" "}
-          emlékoldallal és őrizd meg az utókornak!
-        </Paragraph>
+      <div className="relative overflow-hidden">
+        <div className="absolute lg:top-0 top-60 lg:left-[20vw] left-0 w-52 h-52 opacity-25 ">
+          <Arrow />
+        </div>
+        <div className="lg:flex hidden absolute top-72 lg:left-[40vw] left-[30vw] w-52 h-52 opacity-25">
+          <Camel />
+        </div>
+        <div className="absolute lg:top-12 -top-16 lg:right-[20vw] -right-6 w-52 h-52 opacity-25">
+          <Hearth />
+        </div>
+        <div className="relative flex flex-col gap-4 lg:py-40 py-20">
+          <H1 classname={"text-center self-center text-[--rose]"}>
+            Készíts egyedi emlékoldalt
+          </H1>
+          <Paragraph
+            classname={
+              "text-center self-center p-4 bg-[--blue-15] lg:w-1/2 w-full rounded-lg "
+            }
+          >
+            Keltsd életre szeretteid emlékét egy{" "}
+            <b>
+              <b>gyönyörű, színes, nosztalgiadús</b>
+            </b>{" "}
+            emlékoldallal és őrizd meg az utókornak!
+          </Paragraph>
+        </div>
       </div>
 
       <div className="flex flex-nowrap">
@@ -401,8 +404,6 @@ export default async function EmlekoldalAkcioPage() {
                   <Label classname={"text-white"}>Minden funkció</Label>
                 </div>
 
-                <p className="bg-[--error] lg:p-2 p-1 rounded-t-lg text-center font-bold lg:text-xl text-lg text-white w-fit -mb-4 self-center mt-4">-26% Akció</p>
-
                 <Link
                   href="#emlekerme"
                   className="flex flex-nowrap items-center justify-center gap-4 py-1 px-4 lg:py-2 lg:px-4 mt-4 rounded-full bg-white hover:bg-opacity-75 font-semibold transition-all text-[--rose] h-fit self-center"
@@ -422,6 +423,12 @@ export default async function EmlekoldalAkcioPage() {
               </div>
           </div>
         </div>
+      </section>
+      <section className="flex flex-col lg:gap-16 gap-8 justify-center container m-auto w-full lg:pt-20 pt-8">
+        <H2 classname={"text-center self-center text-[--rose] lg:w-1/2 w-full"}>
+          Ők már elégedett emlékoldal tulajdonosok
+        </H2>
+        <VideosVelemenyek />
       </section>
       <MiAzEmlekerme session={session} userdata={userData} />
     </section>

@@ -100,3 +100,36 @@ html {
     image-orientation: from-image;
     object-fit: cover; /* Ensure it fills the container correctly */
   }
+
+
+
+  /*Swiper css*/
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--rose)!important; /* red */
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 22px;
+  border-radius: 9999px;
+  transition: background-color 0.3s;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 24px!important;
+  font-weight: 900!important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--cream)!important;
+  opacity: 1!important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--rose)!important;
+}
