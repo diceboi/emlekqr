@@ -177,7 +177,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                     >
                         <div className="flex flex-col gap-1">
                             <Label classname={`cursor-pointer leading-3 ${payment === STRIPE_PRICE_ID_FIVE ? "text-black" : "text-black"}`}>Most a tiéd lehet:</Label>
-                            <p className={`p-2 rounded-md text-center font-bold lg:text-3xl text-lg leading-3 bg-[--error] ${payment === STRIPE_PRICE_ID_FIVE ? "text-white" : "text-white"}`}>9 990 Ft</p>
+                            <p className={`p-2 rounded-md text-center font-bold lg:text-3xl text-2xl leading-3 bg-[--error] ${payment === STRIPE_PRICE_ID_FIVE ? "text-white" : "text-white"}`}>9 990 Ft</p>
                             <Label classname={`uppercase ${payment === STRIPE_PRICE_ID_FIVE ? "text-black" : "text-black"}`}>örök érvényű</Label>
                         </div>
                     </button>
