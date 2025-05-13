@@ -8,6 +8,7 @@ import Hasznalata from "./components/Hasznalata"
 import BeforeLeavePopup from "./components/UI/BeforeLeavePopup"
 import Fotomontazs from "./components/Fotomontazs"
 import Velemenyek from "./components/Velemenyek";
+import VideosVelemenyek from "./components/VideosVelemenyek";
 import Osszehasonlitas from "./components/Osszehasonlitas";
 
 import { getServerSession } from "next-auth";
@@ -48,8 +49,10 @@ export default async function Home() {
     <PeldaOldal />
     <HomeCTA />
     {/*<MilyenAlkalomra />*/}
+    <VideosVelemenyek />
     <Hasznalata />
-    <Velemenyek />
+    {/*<Velemenyek />*/}
+    
     </>
   );
 }

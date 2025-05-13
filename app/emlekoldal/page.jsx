@@ -424,12 +424,7 @@ export default async function EmlekoldalAkcioPage() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:gap-16 gap-8 justify-center container m-auto w-full lg:pt-20 pt-8">
-        <H2 classname={"text-center self-center text-[--rose] lg:w-1/2 w-full"}>
-          Ők már elégedett emlékoldal tulajdonosok
-        </H2>
-        <VideosVelemenyek />
-      </section>
+      <VideosVelemenyek />
       <MiAzEmlekerme session={session} userdata={userData} />
     </section>
   );
