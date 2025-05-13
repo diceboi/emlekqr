@@ -146,7 +146,7 @@ export default async function EmlekoldalAkcioPage() {
   const userData = await getUserData(session?.user?.email)
 
   return (
-    <section className="relative w-full bg-white px-4 overflow-hidden">
+    <section className="relative w-full px-4 bg-neutral-50">
       <div className="absolute lg:top-0 top-60 lg:left-[20vw] left-0 w-52 h-52 opacity-25 ">
         <Arrow />
       </div>
@@ -205,7 +205,7 @@ export default async function EmlekoldalAkcioPage() {
               cursor={true}
             />
           </div>
-          <div className="relative group">
+          <div className="group">
             <ProfileInfo
               session={fixedSession}
               data={fixedCurrentData}

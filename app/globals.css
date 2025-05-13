@@ -67,8 +67,8 @@ html {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width:  3px;
+    height: 3px;
   }
   
   /* Track */
@@ -79,13 +79,13 @@ html {
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: var(--blue); 
+    background: #000; 
     border-radius: 5px;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--blue); 
+    background: #000; 
   }
 
   /*Custom shadow*/

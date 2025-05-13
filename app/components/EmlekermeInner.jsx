@@ -47,7 +47,9 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 const STRIPE_PRICE_ID_ONE = process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_ONE;
 const STRIPE_PRICE_ID_TWO = process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_TWO;
 const STRIPE_PRICE_ID_THREE = process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_THREE;
-const STRIPE_PRICE_ID_FOUR = process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_FOUR
+const STRIPE_PRICE_ID_FOUR = process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_FOUR;
+const STRIPE_PRICE_ID_FIVE = process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_FIVE;
+
 
 export default function EmlekermeInner({ session, userdata, classname }) {
 
@@ -61,7 +63,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
     const router = useRouter();
 
     useEffect(() => {
-        setPayment(process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_FOUR);
+        setPayment(process.env.NEXT_PUBLIC_STRIPE_PRICE_ID_FIVE);
         setMode('payment')
     }, []);
 
@@ -167,25 +169,16 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                 
             </div>
             
-            <div className="flex flex-col gap-2">
-                <Label classname={""}>Válassz fizetési módot: </Label>
-                
-                <div className="flex flex-row bg-[--cream] rounded-3xl shadow-inner">
+            <div className="flex flex-col gap-2">              
+                <div className="flex flex-row bg-[--cream] rounded-3xl">
                     <button 
-                        onClick={() => setPayment(STRIPE_PRICE_ID_ONE, setMode('subscription'))} 
-                        className={`flex flex-nowrap justify-center items-center px-4 py-2 gap-2 rounded-l-3xl ${payment === STRIPE_PRICE_ID_ONE ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all w-full`}
+                        onClick={() => setPayment(STRIPE_PRICE_ID_FIVE, setMode('payment'))} 
+                        className={`relative flex flex-nowrap justify-center items-center px-4 py-2 gap-3 rounded-3xl ${payment === STRIPE_PRICE_ID_FIVE ? "" : "bg-transparent hover:bg-[--blue-15]"} transition-all w-full`}
                     >
-                        <Label classname={`cursor-pointer ${payment === STRIPE_PRICE_ID_ONE ? "text-white" : "text-black"}`}>7000 Ft / év</Label>
-                    </button>
-                    <button 
-                        onClick={() => setPayment(STRIPE_PRICE_ID_FOUR, setMode('payment'))} 
-                        className={`relative flex flex-nowrap justify-center items-center px-4 py-2 gap-3 rounded-r-3xl ${payment === STRIPE_PRICE_ID_FOUR ? "bg-[--blue] hover:bg-[--blue]" : "bg-transparent hover:bg-[--blue-15]"} transition-all w-full`}
-                    >
-                        <p className="absolute -top-6 right-0 bg-[--error] lg:p-2 p-1 rounded-lg text-center font-bold lg:text-xl text-lg text-white">-26%</p>
-                        <div className="flex flex-col">
-                            <Label classname={`cursor-pointer line-through leading-3 ${payment === STRIPE_PRICE_ID_FOUR ? "text-white opacity-75" : "text-black"}`}>40 000 Ft </Label>
-                            <p className={`p-2 rounded-md text-center font-bold lg:text-2xl text-lg leading-3 ${payment === STRIPE_PRICE_ID_FOUR ? "text-white" : "text-[--error]"}`}>29 600 Ft</p>
-                            <Label classname={`${payment === STRIPE_PRICE_ID_FOUR ? "text-white opacity-75" : "text-black"}`}>örök érvényű</Label>
+                        <div className="flex flex-col gap-1">
+                            <Label classname={`cursor-pointer leading-3 ${payment === STRIPE_PRICE_ID_FIVE ? "text-black" : "text-black"}`}>Most a tiéd lehet:</Label>
+                            <p className={`p-2 rounded-md text-center font-bold lg:text-3xl text-lg leading-3 bg-[--error] ${payment === STRIPE_PRICE_ID_FIVE ? "text-white" : "text-white"}`}>9 990 Ft</p>
+                            <Label classname={`uppercase ${payment === STRIPE_PRICE_ID_FIVE ? "text-black" : "text-black"}`}>örök érvényű</Label>
                         </div>
                     </button>
                 </div>
