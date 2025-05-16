@@ -106,7 +106,7 @@ const RegisterForm = ({ from, bgcolor, shadow, email, productPriceId, type, mode
   return (
     sessionStatus !== "authenticated" && (
         <div className={`flex flex-col items-center gap-4 ${bgcolor} p-4 rounded-3xl ${shadow} lg:w-96`}>
-          <H3 classname={"text-center text-[--rose] font-semibold mb-8"}>{title}</H3>
+          <H3 classname={"text-center text-[--rose] font-semibold lg:mb-8 mb-4"}>{title}</H3>
           <form className="flex flex-col w-full items-center" onSubmit={handleSubmit}>
             <input
               type="text"

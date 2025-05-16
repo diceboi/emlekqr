@@ -40,7 +40,7 @@ const getEmlekadatlap = async (uri) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_URL; // Adjust this as per your environment
     const res = await fetch(`${baseUrl}/api/emlekadatlap?uri=${uri}`, {
-      cache: "no-store",
+      next: { revalidate: 60 },
     });
     if (!res.ok) {
       throw new Error("Az adatok letöltése nem sikerült");
@@ -57,7 +57,7 @@ const getAllIttjartam = async (uri) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_URL;
     const res = await fetch(`${baseUrl}/api/getIttjartam?adatlap=${uri}`, {
-      cache: "no-store",
+      next: { revalidate: 60 },
     });
     if (!res.ok) {
       throw new Error("Az adatok letöltése nem sikerült");
@@ -74,7 +74,7 @@ const getTributes = async (uri) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_URL; // Adjust this as per your environment
     const res = await fetch(`${baseUrl}/api/tributes?uri=${uri}`, {
-      cache: "no-store",
+      next: { revalidate: 60 },
     });
     if (!res.ok) {
       throw new Error("Az adatok letöltése nem sikerült");
@@ -90,7 +90,7 @@ const getTributes = async (uri) => {
 const getUserData = async (email) => {
     try {
       const baseUrl = process.env.NEXT_PUBLIC_URL;
-      const res = await fetch(`${baseUrl}/api/getUserData?email=${email}`, { cache: 'no-store' });
+      const res = await fetch(`${baseUrl}/api/getUserData?email=${email}`, { next: { revalidate: 60 } });
       if (!res.ok) {
         throw new Error("Failed to fetch user data");
       }

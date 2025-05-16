@@ -238,7 +238,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                     </button>
                 )}
                 {!session && (
-                    <button onClick={() => {setForm('login'), togglePopup("Login")}} className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-gradient-to-br from-[--rose] to-[--blue] hover:bg-gradient-to-r hover:scale-105 transition-all text-white w-fit">
+                    <button onClick={() => {setForm('register'), togglePopup("Login")}} className="flex flex-nowrap items-center justify-center gap-2 py-1 px-4 lg:py-2 lg:px-6 rounded-full bg-gradient-to-br from-[--rose] to-[--blue] hover:bg-gradient-to-r hover:scale-105 transition-all text-white w-fit">
                         <PiShoppingCart className="w-6 h-6" />
                         Tovább a pénztárba
                     </button>
