@@ -2,7 +2,7 @@
 
 import { FacebookProvider, CustomChat } from 'react-facebook';
 
-export default function Messneger() {  
+export default function Messenger() {  
       return (
         <>
         <FacebookProvider appId="3994118814175573" chatSupport>
