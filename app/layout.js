@@ -9,6 +9,8 @@ import ContextProvider from "./Context";
 import UpdateEmlekadatlapContextProvider from "./UpdateEmlekadatlapContext";
 import { Toaster } from 'sonner'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
+import Messenger from "./components/Messenger";
+
 
 const geologica = Geologica({ subsets: ["latin"] });
 
@@ -85,6 +87,7 @@ export default async function RootLayout({ children }) {
               <MainNav />
               {children}
               <Footer />
+              <Messenger />
             </body>
             <GoogleAnalytics gaId="G-8MXRK3GSNX" />
             <GoogleTagManager gtmId="AW-16786648939" />
