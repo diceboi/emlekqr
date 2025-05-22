@@ -9,7 +9,7 @@ import ContextProvider from "./Context";
 import UpdateEmlekadatlapContextProvider from "./UpdateEmlekadatlapContext";
 import { Toaster } from 'sonner'
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
-import Messenger from "./components/Messenger";
+import Messenger from "./components/Messenger"
 
 
 const geologica = Geologica({ subsets: ["latin"] });
