@@ -50,7 +50,7 @@ export default function Fotomontazs() {
                         whileInView={{ opacity: 1, y:0 }}
                         transition={{ duration: .4, ease: 'easeOut' }}
                         className="relative lg:w-[80vw] w-[120vw] lg:h-[80vh] h-[40vh] overflow-hidden lg:border-[20px] border-4 border-white shadow-2xl lg:-ml-0 -ml-[32vw]">
-                            <Image src="/image-kepek/nagypapa-tortenetei.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
+                            <Image src="/nagypapa-tortenetei.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
                             <H2 classname={'text-white z-20 absolute lg:bottom-8 bottom-4 lg:right-8 right-4 text-right'}>Nagypapa<br></br>legendás<br></br>történetei</H2>
                     </motion.div>
 
@@ -62,7 +62,7 @@ export default function Fotomontazs() {
                             whileInView={{ opacity: 1, y:0 }}
                             transition={{ duration: .4, ease: 'easeIn' }}
                             className="relative lg:w-5/12 w-[50vw] lg:h-[80vh] h-[30vh] overflow-hidden lg:border-[20px] border-4 border-white shadow-2xl lg:ml-20 ml-0 lg:-mr-0 -mr-[20vw]">
-                                <Image src="/image-kepek/csaladi-pillanatok.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
+                                <Image src="/csaladi-pillanatok.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
                                 <H2 classname={'lg:block hidden text-white z-20 absolute lg:bottom-8 bottom-4 lg:left-8 left-4 text-left'}>Ikonikus<br></br>pillanatok</H2>
                             </motion.div>
                             <motion.div 
@@ -70,7 +70,7 @@ export default function Fotomontazs() {
                             whileInView={{ opacity: 1, y:0 }}
                             transition={{ duration: .4, ease: 'easeIn' }}
                             className="relative lg:w-8/12 w-[110vw] lg:h-[80vh] h-[40vh] overflow-hidden lg:border-[20px] border-4 border-white shadow-2xl lg:mt-40 mt-32 lg:-ml-10 lg:-mr-0 -mr-[20vw]">
-                                <Image src="/image-kepek/vicces-pillanatok.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
+                                <Image src="/vicces-pillanatok.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
                                 <H2 classname={'text-white z-20 absolute lg:top-8 top-4 lg:left-8 left-4 text-left'}>Vicces<br></br>sztorik</H2>
                             </motion.div>
                         </div>
@@ -82,7 +82,7 @@ export default function Fotomontazs() {
                         whileInView={{ opacity: 1, y:0 }}
                         transition={{ duration: .4, ease: 'easeIn' }}
                         className="relative lg:w-[80vw] w-[120vw] lg:h-[80vh] h-[40vh] overflow-hidden lg:border-[20px] border-4 border-white shadow-2xl rotate-45 -mt-20 lg:-ml-0 -ml-[32vw]">
-                            <Image src="/image-kepek/elso-nyaralas.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
+                            <Image src="/elso-nyaralas.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
                             <H2 classname={'text-white z-20 absolute lg:bottom-8 bottom-4 lg:left-8 left-[32vw] text-left'}>Az első<br></br>közös<br></br>nyaralás</H2>
                     </motion.div>
 
@@ -94,7 +94,7 @@ export default function Fotomontazs() {
                             whileInView={{ opacity: 1, y:0 }}
                             transition={{ duration: .4, ease: 'easeIn' }}
                             className="relative lg:w-8/12 w-[100vw] lg:h-[80vh] h-[40vh] overflow-hidden lg:border-[20px] border-4 border-white shadow-2xl lg:mt-40 mt-32 lg:-ml-10 ml-4 lg:-mr-0 -mr-[32vw] z-10">
-                                <Image src="/image-kepek/eletre-szolo-szerelmek.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
+                                <Image src="/eletre-szolo-szerelmek.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
                                 <H2 classname={'text-white z-20 absolute lg:bottom-8 bottom-4 lg:right-8 right-12 text-right'}>Életre szóló<br></br>szerelmek</H2>
                             </motion.div>
                             <motion.div 
@@ -102,7 +102,7 @@ export default function Fotomontazs() {
                             whileInView={{ opacity: 1, y:0 }}
                             transition={{ duration: .4, ease: 'easeIn' }}
                             className="relative lg:w-5/12 w-[50vw] lg:h-[80vh] h-[30vh] overflow-hidden lg:border-[20px] border-4 border-white shadow-2xl lg:ml-8 -ml-28 ">
-                                <Image src="/image-kepek/trombita.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
+                                <Image src="/trombita.webp" alt="Fotómontázs kép 1" fill style={{ objectFit: 'cover', objectPosition: 'center' }}/>
                                 <H2 classname={'lg:block hidden text-white z-20 absolute lg:bottom-8 bottom-4 lg:left-8 left-4 text-left'}>Bolondos<br></br>dallamok</H2>
                             </motion.div>
                         </div>

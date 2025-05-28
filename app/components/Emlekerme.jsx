@@ -80,7 +80,7 @@ export default function Emlekerme({ session, userdata }) {
           <div className="flex flex-col justify-center gap-4 lg:pl-16 lg:py-16 py-8 lg:w-1/2 lg:-mt-[400px]">
             <div className="">
               <Image
-                src="/image-kepek/erme-kezben.webp"
+                src="/erme-kezben.webp"
                 width={1000}
                 height={500}
                 className="rounded-xl"
@@ -135,7 +135,7 @@ export default function Emlekerme({ session, userdata }) {
           <div className="flex flex-col justify-center gap-4 lg:pl-16 lg:py-16 py-8 lg:w-1/2 ">
             <div className="">
               <Image
-                src="/image-kepek/szemelyre-szabhato.webp"
+                src="/szemelyre-szabhato.webp"
                 width={1000}
                 height={500}
                 className="rounded-xl"
@@ -189,7 +189,7 @@ export default function Emlekerme({ session, userdata }) {
           <div className="flex flex-col justify-center gap-4 lg:pl-16 lg:py-16 py-8 lg:w-1/2">
             <div className="">
               <Image
-                src="/image-kepek/fiok-kepek.webp"
+                src="/fiok-kepek.webp"
                 width={1000}
                 height={500}
                 className="rounded-xl"

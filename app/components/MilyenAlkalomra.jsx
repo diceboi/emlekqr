@@ -57,7 +57,7 @@ export default function MilyenAlkalomra() {
                             initial={sizes.initialSize}
                             whileHover={sizes.hoverSize}
                         >
-                            <Image src={"/image-kepek/ajandek.webp"} fill style={{ objectFit: "cover", objectPosition: "center" }} alt="temetes"/>
+                            <Image src={"/ajandek.webp"} fill style={{ objectFit: "cover", objectPosition: "center" }} alt="temetes"/>
                         </motion.div>
                         <H4 classname={"text-[--blue] lg:px-8 px-4"}>Emléktárgy, személyes ajándék</H4>
                         <Paragraph classname={"lg:px-8 px-4"}>
@@ -73,7 +73,7 @@ export default function MilyenAlkalomra() {
                         initial={sizes.initialSize}
                         whileHover={sizes.hoverSize}
                         >
-                            <Image src={"/image-kepek/halottak-napja.webp"} fill style={{ objectFit: "cover", objectPosition: "center" }} alt="temetes"/>
+                            <Image src={"/halottak-napja.webp"} fill style={{ objectFit: "cover", objectPosition: "center" }} alt="temetes"/>
                         </motion.div>
                         <H4 classname={"text-[--blue] lg:px-8 px-4"}>Halottak napja, mindenszentek napja</H4>
                         <Paragraph classname={"lg:px-8 px-4"}>
@@ -89,7 +89,7 @@ export default function MilyenAlkalomra() {
                         initial={sizes.initialSize}
                         whileHover={sizes.hoverSize}
                         >
-                            <Image src={"/image-kepek/temetes.webp"} fill style={{ objectFit: "cover", objectPosition: "center" }} alt="temetes"/>
+                            <Image src={"/temetes.webp"} fill style={{ objectFit: "cover", objectPosition: "center" }} alt="temetes"/>
                         </motion.div>
                         <H4 classname={"text-[--blue] lg:px-8 px-4"}>Temetés alkalmával</H4>
                         <Paragraph classname={"lg:px-8 px-4"}>

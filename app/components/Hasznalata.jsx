@@ -108,7 +108,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring", delay: 0.3 }}
-                  src="/image-kepek/ittjartam.webp"
+                  src="/ittjartam.webp"
                   alt="Kör érme"
                   className="w-60 shadow-lg rounded-3xl"
                 />
@@ -210,7 +210,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/erme-kamera.webp"
+                  src="/erme-kamera.webp"
                   alt="Kör érme"
                   className="w-full h-full object-cover rounded-3xl"
                 />
@@ -230,7 +230,7 @@ export default function Hasznalata() {
                     animate={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.2 }}
-                    src="/image-kepek/szerkeszd-online-2.webp"
+                    src="/szerkeszd-online-2.webp"
                     alt="Kör érme"
                     className="absolute top-10 left-20"
                   />
@@ -239,7 +239,7 @@ export default function Hasznalata() {
                     whileInView={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.4 }}
-                    src="/image-kepek/szerkeszd-online-3.webp"
+                    src="/szerkeszd-online-3.webp"
                     alt="Kör érme"
                     className="absolute top-20 right-20"
                   />
@@ -249,7 +249,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/szerkeszd-online-1.webp"
+                  src="/szerkeszd-online-1.webp"
                   alt="Kör érme"
                   className="z-10"
                 />
@@ -269,7 +269,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/meselj-el-1.webp"
+                  src="/meselj-el-1.webp"
                   alt="Mesélj el egy történetet"
                   className=""
                 />
@@ -279,7 +279,7 @@ export default function Hasznalata() {
                     animate={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.1 }}
-                    src="/image-kepek/csaladi-haz-1.webp"
+                    src="/csaladi-haz-1.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -288,7 +288,7 @@ export default function Hasznalata() {
                     whileInView={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.2 }}
-                    src="/image-kepek/csaladi-haz-2.webp"
+                    src="/csaladi-haz-2.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -297,7 +297,7 @@ export default function Hasznalata() {
                     whileInView={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.3 }}
-                    src="/image-kepek/csaladi-haz-3.webp"
+                    src="/csaladi-haz-3.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -318,7 +318,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/helyezd-el-3.webp"
+                  src="/helyezd-el-3.webp"
                   alt="Kör érme"
                   className="rounded-3xl"
                 />
@@ -338,7 +338,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring", delay: 0.1 }}
-                  src="/image-kepek/emlekezz-1.webp"
+                  src="/emlekezz-1.webp"
                   alt="Kör érme"
                   className=""
                 />
@@ -347,7 +347,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring", delay: 0.2 }}
-                  src="/image-kepek/emlekezz-2.webp"
+                  src="/emlekezz-2.webp"
                   alt="Kör érme"
                   className="-mt-10"
                 />
@@ -356,7 +356,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring", delay: 0.3 }}
-                  src="/image-kepek/emlekezz-3.webp"
+                  src="/emlekezz-3.webp"
                   alt="Kör érme"
                   className="-mt-10"
                 />
@@ -376,7 +376,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/keress-1.webp"
+                  src="/keress-1.webp"
                   alt="Kör érme"
                   className="absolute top-1/4 left-0 -translate-x-1/2 -translate-y-1/2 w-full h-auto"
                 />
@@ -385,7 +385,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring", delay: 0.4 }}
-                  src="/image-kepek/keress-2.webp"
+                  src="/keress-2.webp"
                   alt="Kör érme"
                   className="absolute top-1/4 left-0 -translate-x-1/2 -translate-y-1/2 w-full h-auto"
                 />
@@ -427,7 +427,7 @@ export default function Hasznalata() {
                   animate={{ y: "-50%", x: "-50%" }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 0.2 }}
-                  src="/image-kepek/meselj-el-6.webp"
+                  src="/meselj-el-6.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[200px] h-[200px]"
                 />
@@ -436,7 +436,7 @@ export default function Hasznalata() {
                   animate={{ y: "-50%", x: "-50%" }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 0.4 }}
-                  src="/image-kepek/meselj-el-7.webp"
+                  src="/meselj-el-7.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[200px] h-[200px]"
                 />
@@ -445,7 +445,7 @@ export default function Hasznalata() {
                   animate={{ y: "-50%", x: "-50%" }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 0.5 }}
-                  src="/image-kepek/meselj-el-8.webp"
+                  src="/meselj-el-8.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[200px] h-[200px]"
                 />
@@ -454,7 +454,7 @@ export default function Hasznalata() {
                   animate={{ y: "-50%", x: "-50%" }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 0.7 }}
-                  src="/image-kepek/meselj-el-9.webp"
+                  src="/meselj-el-9.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[200px] h-[200px]"
                 />
@@ -463,7 +463,7 @@ export default function Hasznalata() {
                   animate={{ y: "-50%", x: "-50%" }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 0.9 }}
-                  src="/image-kepek/szerkeszd-online-3.webp"
+                  src="/szerkeszd-online-3.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[200px] h-[200px]"
                 />
@@ -472,7 +472,7 @@ export default function Hasznalata() {
                   animate={{ y: "-50%", x: "-50%" }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 1 }}
-                  src="/image-kepek/szerkeszd-online-2.webp"
+                  src="/szerkeszd-online-2.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[200px] h-[200px]"
                 />
@@ -480,7 +480,7 @@ export default function Hasznalata() {
                   initial={{ y: 0, x: 0, opacity: 0.8 }}
                   whileInView={{ y: 0, x: 0, opacity: 0.3 }}
                   transition={{ duration: 2, bounce: "spring" }}
-                  src="/image-kepek/fiok-kepek.webp"
+                  src="/fiok-kepek.webp"
                   alt="Kutyus kép"
                   className="w-full h-auto rounded-3xl"
                 />
@@ -568,7 +568,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/erme-kamera.webp"
+                  src="/erme-kamera.webp"
                   alt="Kör érme"
                   className="w-full h-full object-cover rounded-3xl"
                 />
@@ -592,7 +592,7 @@ export default function Hasznalata() {
                     animate={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.2 }}
-                    src="/image-kepek/szerkeszd-online-2.webp"
+                    src="/szerkeszd-online-2.webp"
                     alt="Kör érme"
                     className="absolute top-20 left-10 max-w-[150px]"
                   />
@@ -601,7 +601,7 @@ export default function Hasznalata() {
                     whileInView={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.4 }}
-                    src="/image-kepek/szerkeszd-online-3.webp"
+                    src="/szerkeszd-online-3.webp"
                     alt="Kör érme"
                     className="absolute top-32 right-10 max-w-[150px]"
                   />
@@ -611,7 +611,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/szerkeszd-online-1.webp"
+                  src="/szerkeszd-online-1.webp"
                   alt="Kör érme"
                   className="z-10"
                 />
@@ -635,7 +635,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/meselj-el-1.webp"
+                  src="/meselj-el-1.webp"
                   alt="Mesélj el egy történetet"
                   className=""
                 />
@@ -645,7 +645,7 @@ export default function Hasznalata() {
                     animate={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.1 }}
-                    src="/image-kepek/csaladi-haz-1.webp"
+                    src="/csaladi-haz-1.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -654,7 +654,7 @@ export default function Hasznalata() {
                     whileInView={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.2 }}
-                    src="/image-kepek/csaladi-haz-2.webp"
+                    src="/csaladi-haz-2.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -663,7 +663,7 @@ export default function Hasznalata() {
                     whileInView={{ opacity: "100%", y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, bounce: "spring", delay: 0.3 }}
-                    src="/image-kepek/csaladi-haz-3.webp"
+                    src="/csaladi-haz-3.webp"
                     alt="Kutyus kép"
                     className=""
                   />
@@ -688,7 +688,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/helyezd-el-3.webp"
+                  src="/helyezd-el-3.webp"
                   alt="Kör érme"
                   className="w-full h-auto rounded-3xl"
                 />
@@ -715,7 +715,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring", delay: 0.1 }}
-                  src="/image-kepek/emlekezz-1.webp"
+                  src="/emlekezz-1.webp"
                   alt="Kör érme"
                   className=""
                 />
@@ -724,7 +724,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring", delay: 0.2 }}
-                  src="/image-kepek/emlekezz-2.webp"
+                  src="/emlekezz-2.webp"
                   alt="Kör érme"
                   className="-mt-10"
                 />
@@ -733,7 +733,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring", delay: 0.3 }}
-                  src="/image-kepek/emlekezz-3.webp"
+                  src="/emlekezz-3.webp"
                   alt="Kör érme"
                   className="-mt-10"
                 />
@@ -751,7 +751,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring", delay: 0.3 }}
-                  src="/image-kepek/ittjartam.webp"
+                  src="/ittjartam.webp"
                   alt="Kör érme"
                   className="w-60 shadow-lg rounded-3xl"
                 />
@@ -772,7 +772,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring" }}
-                  src="/image-kepek/keress-1.webp"
+                  src="/keress-1.webp"
                   alt="Kör érme"
                   className="absolute top-1/4 left-0 -translate-x-1/2 -translate-y-1/2 w-full h-auto"
                 />
@@ -781,7 +781,7 @@ export default function Hasznalata() {
                   whileInView={{ opacity: "100%", y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4, bounce: "spring", delay: 0.4 }}
-                  src="/image-kepek/keress-2.webp"
+                  src="/keress-2.webp"
                   alt="Kör érme"
                   className="absolute top-1/4 left-0 -translate-x-1/2 -translate-y-1/2 w-full h-auto"
                 />
@@ -828,7 +828,7 @@ export default function Hasznalata() {
                   initial={{ y: "-500%", x: "-50%" }}
                   animate={{ y: "-50%", x: "-50%" }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 0.2 }}
-                  src="/image-kepek/meselj-el-6.webp"
+                  src="/meselj-el-6.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[75px] h-[75px]"
                 />
@@ -836,7 +836,7 @@ export default function Hasznalata() {
                   initial={{ y: "-50%", x: "-500%" }}
                   animate={{ y: "-50%", x: "-50%" }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 0.4 }}
-                  src="/image-kepek/meselj-el-7.webp"
+                  src="/meselj-el-7.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[75px] h-[75px]"
                 />
@@ -844,7 +844,7 @@ export default function Hasznalata() {
                   initial={{ y: "-500%", x: "-500%" }}
                   animate={{ y: "-50%", x: "-50%" }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 0.5 }}
-                  src="/image-kepek/meselj-el-8.webp"
+                  src="/meselj-el-8.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[75px] h-[75px]"
                 />
@@ -852,7 +852,7 @@ export default function Hasznalata() {
                   initial={{ y: "50%", x: "500%" }}
                   animate={{ y: "-50%", x: "-50%" }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 0.7 }}
-                  src="/image-kepek/meselj-el-9.webp"
+                  src="/meselj-el-9.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[75px] h-[75px]"
                 />
@@ -860,7 +860,7 @@ export default function Hasznalata() {
                   initial={{ y: "-500%", x: "-500%" }}
                   animate={{ y: "-50%", x: "-50%" }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 0.9 }}
-                  src="/image-kepek/szerkeszd-online-3.webp"
+                  src="/szerkeszd-online-3.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[75px] h-[75px]"
                 />
@@ -868,7 +868,7 @@ export default function Hasznalata() {
                   initial={{ y: "-500%", x: "-50%" }}
                   animate={{ y: "-50%", x: "-50%" }}
                   transition={{ duration: 0.2, bounce: "spring", delay: 1 }}
-                  src="/image-kepek/szerkeszd-online-2.webp"
+                  src="/szerkeszd-online-2.webp"
                   alt="Kutyus kép"
                   className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[75px] h-[75px]"
                 />
@@ -876,7 +876,7 @@ export default function Hasznalata() {
                   initial={{ y: 0, x: 0, scale: 1, opacity: 0.8 }}
                   whileInView={{ y: 0, x: 0, scale: 1.1, opacity: 0.3 }}
                   transition={{ duration: 2, bounce: "spring" }}
-                  src="/image-kepek/fiok-kepek.webp"
+                  src="/fiok-kepek.webp"
                   alt="Kutyus kép"
                   className="w-full h-auto"
                 />

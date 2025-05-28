@@ -43,7 +43,7 @@ export default function KaracsonyInner({ session, userdata }) {
         <Snowfall />
         <div className="absolute w-full h-full">
           <Image
-            src="/image-kepek/karacsony.webp"
+            src="/karacsony.webp"
             fill
             style={{ objectFit: "cover", objectPosition: "40% 20%" }}
             className="opacity-30"

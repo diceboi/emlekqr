@@ -332,7 +332,7 @@ export default function ProfileEditButton({ session, user, data, free, existinga
                 <TbArrowBadgeDownFilled className="block lg:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 min-w-12 h-auto text-[--blue] z-10"/>
               </div>
               <div className="relative flex flex-col gap-2 items-center justify-between bg-[--cream] rounded-xl p-2">
-                <Image src="/image-kepek/scan.webp" width={100} height={100} alt="Érme" className="lg:w-[100px] w-[75px] h-auto"/>
+                <Image src="/scan.webp" width={100} height={100} alt="Érme" className="lg:w-[100px] w-[75px] h-auto"/>
                 <h3 className="text-xl text-center font-semibold tracking-tight text-[--rose]">Olvasd be</h3>
                 <TbArrowBadgeRightFilled className="hidden lg:block absolute top-1/2 -right-8 -translate-y-1/2 min-w-12 h-auto text-[--blue] z-10"/>
                 <TbArrowBadgeDownFilled className="block lg:hidden absolute -bottom-8 left-1/2 -translate-x-1/2 min-w-12 h-auto text-[--blue] z-10"/>

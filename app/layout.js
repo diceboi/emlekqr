@@ -20,7 +20,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-      <meta property="og:image" content="/image-kepek/ajandek.webp" />
+      <meta property="og:image" content="/ajandek.webp" />
 
       <Script
         id="fb-pixel"

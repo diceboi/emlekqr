@@ -34,19 +34,19 @@ export default function VideosVelemenyekInner() {
         }}
       >
         <SwiperSlide>
-          <VideoPlayer src="/videok/visszajelzes1.mp4" poster="/videos/poster.jpg" />
+          <VideoPlayer src="/visszajelzes1.mp4" poster="/videos/poster.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <VideoPlayer src="/videok/visszajelzes2.mp4" poster="/videos/poster.jpg" />
+          <VideoPlayer src="/visszajelzes2.mp4" poster="/videos/poster.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <VideoPlayer src="/videok/visszajelzes3.mp4" poster="/videos/poster.jpg" />
+          <VideoPlayer src="/visszajelzes3.mp4" poster="/videos/poster.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <VideoPlayer src="/videok/visszajelzes4.mp4" poster="/videos/poster.jpg" />
+          <VideoPlayer src="/visszajelzes4.mp4" poster="/videos/poster.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <VideoPlayer src="/videok/visszajelzes5.mp4" poster="/videos/poster.jpg" />
+          <VideoPlayer src="/visszajelzes5.mp4" poster="/videos/poster.jpg" />
         </SwiperSlide>
       </Swiper>
     </section>

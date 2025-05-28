@@ -13,7 +13,7 @@ export default function Elonyei() {
             <div className="flex flex-col gap-16 px-4">
                 <div className="flex lg:flex-row flex-col items-center lg:gap-16 gap-4">
                     <div className="relative lg:min-h-[500px] min-h-[250px] lg:w-1/2 w-full">
-                        <Image src="/image-kepek/szemelyre-szabhato.webp" alt="Személyre szabható" fill style={{ objectFit: "contain" }} />
+                        <Image src="/szemelyre-szabhato.webp" alt="Személyre szabható" fill style={{ objectFit: "contain" }} />
                     </div>
                     <div className="flex flex-col gap-4 lg:w-1/2 w-full">
                         <H3 classname={"text-[--blue]"}>Mi az az Emlékoldal?</H3>
@@ -25,7 +25,7 @@ export default function Elonyei() {
 
                 <div className="flex lg:flex-row-reverse flex-col items-center lg:gap-16 gap-4">
                     <div className="relative lg:min-h-[500px] min-h-[250px] lg:w-1/2 w-full bg-gradient-to-t from-[--cream] to-transparent rounded-3xl">
-                        <Image src="/image-kepek/emlekqr-plusz.webp" alt="Maradandó megemlékezés" fill style={{ objectFit: "contain" }} />
+                        <Image src="/emlekqr-plusz.webp" alt="Maradandó megemlékezés" fill style={{ objectFit: "contain" }} />
                     </div>
                     <div className="flex flex-col gap-4 lg:w-1/2 w-full">
                         <H3 classname={"text-[--blue]"}>EmlékQR+ csomag</H3>

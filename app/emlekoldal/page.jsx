@@ -330,7 +330,7 @@ export default async function EmlekoldalAkcioPage() {
           <div className="flex flex-col bg-gradient-to-br from-[--rose] to-[--blue] gap-8 items-center rounded-3xl lg:w-1/2 w-full">
             <div className="relative w-full h-[40vh] overflow-hidden rounded-3xl">
               <Image
-                src="/image-kepek/erme-kezben.webp"
+                src="/erme-kezben.webp"
                 fill
                 alt="Érme kézben"
                 style={{ objectFit: "cover", objectPosition: "center" }}
