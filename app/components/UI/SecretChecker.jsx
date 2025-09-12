@@ -18,8 +18,6 @@ export default function SecretChecker({ currentdata, session, currentuser }) {
     }
   }, [currentdata, openPopup, setOpenPopup, modalShown]);
 
-  console.log(currentdata)
-
   return (
     <>
       {modalShown === false && (

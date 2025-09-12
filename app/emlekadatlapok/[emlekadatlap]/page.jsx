@@ -126,11 +126,11 @@ export default async function Emlekadatlap({ params, searchParams  }) {
     <section className="relative w-full px-2 lg:px-0 pt-10 pb-32 lg:pt-20">
       
       {!currentData && (
-        <SecretChecker currentdata={currentData} session={session} currentuser={currentUser}/>   
+        <SecretChecker currentdata={currentData} session={session} currentuser={currentUser} />   
       )}
 
       {currentData?.secret && session && session?.user?.email === currentData?.owner && (
-        <ErmeChecker currentdata={currentData} session={session} currentuser={currentUser} existingadatlapok={existingAdatlapok}/>
+        <ErmeChecker currentdata={currentData} session={session} currentuser={currentUser} existingadatlapok={existingAdatlapok} emlekadatlap={params.emlekadatlap}/>
       )}  
 
       <div className="container-inner flex flex-col m-auto gap-8">

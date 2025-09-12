@@ -12,6 +12,7 @@ export default function ErmeChecker({
   session,
   currentuser,
   existingadatlapok,
+  emlekadatlap
 }) {
   const { openPopup, setOpenPopup } = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
@@ -182,7 +183,19 @@ export default function ErmeChecker({
           </button>
           <button
             className="px-4 py-2 rounded-full transition-all text-white lg:w-fit self-center bg-[--blue] hover:bg-[--blue-hover] cursor-pointer"
-            onClick={() => {setModalShown(true); setOpenPopup(null)}}
+            onClick={async () => {
+              try {
+                await fetch("/api/setPaid", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ uri: emlekadatlap }),
+                });
+                setOpenPopup(null);
+                window.location.reload();
+              } catch (err) {
+                console.error("setPaid hiba:", err);
+              }
+            }}
           >
             Nem, újat kezdek.
           </button>
