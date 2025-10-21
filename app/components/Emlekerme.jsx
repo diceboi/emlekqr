@@ -69,7 +69,7 @@ export default function Emlekerme({ session, userdata }) {
             </div>
           </div>
 
-          <div className="flex w-full lg:-mt-[550px] mt-20 justify-end lg:sticky top-40 right-0">
+          <div className="flex w-full lg:-mt-[550px] mt-20 justify-end lg:sticky top-20 right-0">
             <EmlekermeInner
               session={session}
               userdata={userdata}

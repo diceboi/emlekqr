@@ -128,17 +128,31 @@ export default function EmlekermeInner({ session, userdata, classname }) {
         </>  
     </Modal>
 
-        <div className={`flex flex-col gap-8 rounded-2xl bg-white lg:shadow-2xl shadow-md lg:p-8 p-4 ${classname}`}>
+        <div className={`flex flex-col gap-4 rounded-2xl bg-white lg:shadow-2xl shadow-md lg:p-8 p-4 ${classname}`}>
             <div className="flex flex-col">
-                { visibleErme === "négyzet" && (
-                    <EmlekermeSquare />
-                )}
-                { visibleErme === "kör" && (
-                    <EmlekermeCircle />
-                )}
-                { visibleErme === "ovál" && (
-                    <EmlekermeOval />
-                )}
+                <div className="flex flex-row gap-2">
+                    { visibleErme === "négyzet" && (
+                        <EmlekermeSquare />
+                    )}
+                    { visibleErme === "kör" && (
+                        <EmlekermeCircle />
+                    )}
+                    { visibleErme === "ovál" && (
+                        <EmlekermeOval />
+                    )}
+                    <div className="flex flex-row rounded-3xl w-1/2">
+                        <button 
+                            onClick={() => setPayment(STRIPE_PRICE_ID_FIVE, setMode('payment'))} 
+                            className={`relative flex flex-nowrap justify-center items-center px-4 py-2 gap-3 rounded-3xl w-full ${payment === STRIPE_PRICE_ID_FIVE ? "" : "bg-transparent hover:bg-[--blue-15]"} transition-all w-full`}
+                        >
+                            <div className="flex flex-col gap-1 w-full">
+                                <Label classname={`cursor-pointer leading-3 min-w-fit ${payment === STRIPE_PRICE_ID_FIVE ? "text-black" : "text-black"}`}>Most a tiéd lehet:</Label>
+                                <p className={`p-2 rounded-md text-center font-bold lg:text-2xl text-xl leading-3 bg-[--error] min-w-fit ${payment === STRIPE_PRICE_ID_FIVE ? "text-white" : "text-white"}`}>9 990 Ft</p>
+                                <Label classname={`uppercase min-w-fit ${payment === STRIPE_PRICE_ID_FIVE ? "text-black" : "text-black"}`}>örök érvényű*</Label>
+                            </div>
+                        </button>
+                    </div>
+                </div>
                 
                 <div className="flex flex-col gap-2">
                     <Label classname={""}>Válassz formát: </Label>
@@ -170,18 +184,7 @@ export default function EmlekermeInner({ session, userdata, classname }) {
             </div>
             
             <div className="flex flex-col gap-2">              
-                <div className="flex flex-row bg-[--cream] rounded-3xl">
-                    <button 
-                        onClick={() => setPayment(STRIPE_PRICE_ID_FIVE, setMode('payment'))} 
-                        className={`relative flex flex-nowrap justify-center items-center px-4 py-2 gap-3 rounded-3xl ${payment === STRIPE_PRICE_ID_FIVE ? "" : "bg-transparent hover:bg-[--blue-15]"} transition-all w-full`}
-                    >
-                        <div className="flex flex-col gap-1">
-                            <Label classname={`cursor-pointer leading-3 ${payment === STRIPE_PRICE_ID_FIVE ? "text-black" : "text-black"}`}>Most a tiéd lehet:</Label>
-                            <p className={`p-2 rounded-md text-center font-bold lg:text-3xl text-2xl leading-3 bg-[--error] ${payment === STRIPE_PRICE_ID_FIVE ? "text-white" : "text-white"}`}>9 990 Ft</p>
-                            <Label classname={`uppercase ${payment === STRIPE_PRICE_ID_FIVE ? "text-black" : "text-black"}`}>örök érvényű</Label>
-                        </div>
-                    </button>
-                </div>
+                
                 {/*<motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -225,7 +228,9 @@ export default function EmlekermeInner({ session, userdata, classname }) {
                 )}
                 */}
             </div>
-
+            <div className="">
+                    <Label>*Az örök érvényű azt jelenti, hogy a weboldal fennállásáig érvényes.</Label>
+            </div>
             <div className="flex flex-row items-center justify-center gap-4">
                 {session && (!userdata?.data.User.secret || userdata?.data.User.secret === "") && (
                     <button
