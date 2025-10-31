@@ -13,7 +13,7 @@ export async function POST(req) {
     console.log('Subscription ID:', subscriptionId);
 
     try {
-        const emlekadatlap = await Emlekadatlap.create({ uri, secret: writtensecret, owner: email, subscription: subscriptionId });
+        const emlekadatlap = await Emlekadatlap.create({ uri, secret: writtensecret, owner: email, subscription: subscriptionId, public: true });
         console.log('Emlekadatlap created:', emlekadatlap);
         return NextResponse.json({ data: { Emlekadatlap: emlekadatlap } });
     } catch (error) {

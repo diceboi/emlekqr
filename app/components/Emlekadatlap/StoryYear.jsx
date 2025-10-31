@@ -203,8 +203,6 @@ export default function StoryYear({ data, index, free }) {
     removeStoryBlock(index);
   };
 
-  console.log("StoryYear: ", data)
-
   return (
     <>
       <Lightbox

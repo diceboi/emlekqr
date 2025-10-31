@@ -8,18 +8,18 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { toast } from 'sonner'
 
-export default function MainCommentForm({ session, currenttribute, main, to, peldaoldal }) {
+export default function MainCommentForm({ session, main, to, peldaoldal }) {
 
-  const router = useRouter()
-  
+  const router = useRouter();
   const pathname = usePathname();
-  const lastDigits = pathname.slice(-7);
+
+  // BIZTONSÁGOSABB ID KINYERÉS: utolsó szegmens
+  const adatlapId = pathname?.split("/").pop();
 
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
   const [ userData, setUserData] = useState(null);
-  const [ currentSession, setCurrentSession ] = useState(null)
 
-  const getUserData = async (email) => {
+  const getUserByEmail = async (email) => {
     try {
       const response = await fetch(`/api/getUserData?email=${email}`);
       const result = await response.json();
@@ -34,65 +34,53 @@ export default function MainCommentForm({ session, currenttribute, main, to, pel
   };
 
   useEffect(() => {
-    // Fetch user data if session exists
     if (session?.user?.email) {
-      getUserData(session.user.email);
+      getUserByEmail(session.user.email);
     }
-  }, [currentSession]);
+  }, [session?.user?.email]);
 
   const onSubmit = async (data) => {
     const formData = {
       from: session ? session.user.name : data.Name,
-      fromprofileid: userData._id,
+      fromprofileid: userData?._id || null,
       message: data.Komment,
-      to: lastDigits,
+      to: adatlapId,
       verified: false,
       deleted: false,
-      parent: to,
-      main: main,
-      byregisteredprofile: session ? true : false
+      parent: to || null,
+      main: !!main,
+      byregisteredprofile: !!session
     };
   
     try {
-      // Submit comment data
       const res = await fetch('/api/addComment', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ formData })
       });
   
       const result = await res.json();
   
       if (res.ok) {
-        toast.success('Az hozzászólást sikeresen elküldtük. Akkor fog megjelenni ha az adatlap tulajdonos jóváhagyja.');
-        reset(); // Reset the form after successful submission
+        toast.success('A hozzászólást elküldtük. Jóváhagyás után jelenik meg.');
+        reset();
         router.refresh();
   
-        // Submit notification data
-        const notificationRes = await fetch('/api/addNotification', {
+        // értesítés
+        await fetch('/api/addNotification', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             personal: true,
             viewed: false,
             notificationtype: "comment",
-            adatlap: lastDigits,
+            adatlap: adatlapId,
             from: session ? session.user.name : data.Name,
             images: "",
             videos: "",
             message: "hozzászólt az emlékoldaladhoz"
           })
         });
-  
-        if (notificationRes.ok) {
-          console.log('Notification sent successfully');
-        } else {
-          console.error('Error sending notification');
-        }
       } else {
         console.error('Error submitting comment:', result);
       }
@@ -105,13 +93,9 @@ export default function MainCommentForm({ session, currenttribute, main, to, pel
 
   return (
     <form className={`flex flex-col gap-4 my-8`} onSubmit={handleSubmit(onSubmit)}>
-      {main === true ? (
-        <h4>Hozzászólás</h4>
-      ):(
-        <h4>Válasz</h4>
-      )}
+      {main === true ? <h4>Hozzászólás</h4> : <h4>Válasz</h4>}
       <div className="flex flex-col gap-4 bg-[--cream] p-4 rounded-xl">
-        {!session && (
+        {!session ? (
           <>
             <input
               className="bg-transparent p-2 focus:appearance-none outline-0"
@@ -125,17 +109,16 @@ export default function MainCommentForm({ session, currenttribute, main, to, pel
               </p>
             )}
           </>
-        )}
-        {session && (
+        ) : (
           <>
             <div className="flex flex-nowrap items-center gap-2">
               <div className="relative w-10 h-10 rounded-full overflow-hidden">
                 <Image
-                src={ userData?.image || "/blank-profile.webp"}
-                fill
-                style={{ objectFit: "cover" }}
-                alt="Profile"
-              />
+                  src={ userData?.image || "/blank-profile.webp"}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  alt="Profile"
+                />
               </div>
               
               <input

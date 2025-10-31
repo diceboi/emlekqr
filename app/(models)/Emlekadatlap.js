@@ -106,6 +106,10 @@ const emlekadatlapSchema = new Schema(
       type: String,
       required: false,
     },
+    public: {
+      type: Boolean,
+      required: false,
+    },
   },
   {
     timestamps: true,
