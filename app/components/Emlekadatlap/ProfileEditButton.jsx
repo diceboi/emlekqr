@@ -237,8 +237,8 @@ export default function ProfileEditButton({
         }}
       >
         <div className="flex flex-col gap-8">
-          <Paragraph>A "Publikus" azt jelenti, hogy a weboldalon keresztül vagy az érme beszkennelésével is bárki rátalálhat az emlékoldalra. </Paragraph>
-          <Paragraph>A "Privát" azt jelenti, hogy csak az emlékérmét beszkennelve található meg az emlékoldal. Így te döntheted el, hogy csak magadnak szeretnél egy kis időkapszulát, vagy kiteszed az érmét az emlékhelyre és másoknak is elérhetővé teszed. </Paragraph>
+          <Paragraph>A &quot;Publikus&quot; azt jelenti, hogy a weboldalon keresztül vagy az érme beszkennelésével is bárki rátalálhat az emlékoldalra. </Paragraph>
+          <Paragraph>A &quot;Privát&quot; azt jelenti, hogy csak az emlékérmét beszkennelve található meg az emlékoldal. Így te döntheted el, hogy csak magadnak szeretnél egy kis időkapszulát, vagy kiteszed az érmét az emlékhelyre és másoknak is elérhetővé teszed. </Paragraph>
         </div>
       </Modal>
 
